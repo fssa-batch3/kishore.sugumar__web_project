@@ -77,18 +77,18 @@
 .product_img{
     width: 150px;
     height: 150px;
-    margin: 0px 0px 0px 30px;
+    margin: 10px 0px 10px 20px;
 }
 .content{
     display: flex;
     justify-content: space-between;
-    border-style: solid;
-    border-width: 1px;
-    margin: 20px 0px 20px 0px;
+    background-color: whitesmoke;
+    margin: 30px 0px 40px 120px;
     font-size: 23px;
+    width: 1200PX;
 }
 .product_name{
-    margin: 60px 0px 0px 0px;
+    margin: 70px 0px 0px 0px;
 }
 .btn_primary{
     width: 150px;
@@ -101,14 +101,14 @@
     margin: 150px 0px 0px 1250px ;
 }
 .event-date{
-    margin: 60px 0px 0px 0px;
+    margin: 70px 0px 0px 0px;
 }
 .rate{
-    margin: 60px 20px 0px 0px;
+    margin: 70px 20px 0px 0px;
 }
 .content i{
     font-size: 30px;
-    margin: 60px 40px 0px 0px;
+    margin: 70px 40px 0px 0px;
     color: red;
 }
 .nav_link{
