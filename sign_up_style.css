@@ -1,0 +1,83 @@
+.body{
+    width: 1440px;
+    font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
+}
+:root{
+    --primary:#82817D;
+    --secondery:black;
+}
+.main{
+    position: relative;
+    top:100px;
+    display: flex;
+    justify-content: center;
+
+}
+.main-left{
+    width: 650px;
+    height: 650px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.main-right{
+    width: 650px;
+    height: 650px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+i{
+    font-size: 20px;
+}
+.input{
+    border-style: solid;
+    border-width: 0px 0px 2px 0px;
+    width: 400px;
+    height: 25px;
+    margin: 0px 0px 0px 30px;
+    position: relative;
+    left: 30px;
+}
+.btn{
+    width: 150px;
+    height: 35px;
+    font-size: 20px;
+    border-width: 0px;
+    background-color:var(--primary);
+    color: var(--secondery);
+}
+.btn:hover{
+    transform: translateY(2px);
+    transition: 0.1s;
+    box-shadow: 1px 1px 5px 1px gray;
+}
+.nav-link{
+    text-decoration: none;
+    color: black;
+    border-style: solid;
+    border-width: 0px 0px 2px 0px;
+}
+.left_content{
+    padding:30px 0px 0px 0px ;
+}
+.right_content{
+    position: relative;
+    top: 25px;
+}
+.agree{
+    padding:30px 0px 0px 0px ; 
+}
+.gender{
+    font-size: 22px;
+    position: relative;
+    right: 60px;
+}
+.radio{
+    font-size: 18px;
+    position: relative;
+    right: 50px;
+    padding: 0px 10px 0px 10px;
+}
