@@ -1,0 +1,80 @@
+.body{
+    width: 1440px;
+    font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
+}
+:root{
+    --primary:#82817D;
+    --secondery:black;
+}
+.header{
+    display: flex;
+    background-color:var(--primary);
+    color: var(--secondery);
+}
+.title{
+    margin-left: 550px;
+    font-size: 18px;
+}
+.logo{
+    margin: 10px;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
+.main{
+    display:flex;
+    justify-content: center;
+    position: relative;
+    top: 100px;
+}
+.main-left{
+    width: 500px;
+    height: 600px;
+    margin:35px 0px 0px 0px ;
+}
+.main-left h2{
+    text-align: center;
+    font-size: 30px;
+    font-style: bold;
+}
+.left_content i{
+    font-size: 25px;
+}
+.main-right{
+    width:500px;
+    height: 600px;
+    margin-left: 10px;
+    text-align: center;
+}
+.profile-img{
+    width: 300px;
+    height: 300px;
+    margin:25px;
+    padding: 20px 0px 0px 0px;
+}
+.left_content{
+    padding:25px;
+    font-size: 20px;
+    position: relative;
+    left: 150px;
+    display: flex;
+}
+.fa-solid{
+    font-size: 22px;
+}
+.btn{
+    height: 35px;
+    width: 150px;
+    margin: 250px 15px 0px 500px;
+    background-color:var(--primary);
+    border-width: 1px;
+    font-size: 18px;
+    color: var(--secondery);
+}
+.seller_detail{
+    margin: 0px 0px 0px 30px;
+    border-style: solid;
+    border-width: 0px 0px 1px 0px;
+    padding: 0px 50px 0px 0px ;
+    width: 130px;
+}
