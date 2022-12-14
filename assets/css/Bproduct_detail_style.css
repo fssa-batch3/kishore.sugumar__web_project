@@ -93,6 +93,7 @@
     display: flex;
 }
 .left-content{
+    text-align: center;
     margin: 70px 0px 50px 50px;
 }
 .buy{
@@ -359,6 +360,7 @@ h4{
     height:450px;
     border-radius: 20px;
     margin: 0px 0px 0px 100px;
+    padding: 20px 0px 20px;
 }
 .thumbnail1{
     width: 75px;
