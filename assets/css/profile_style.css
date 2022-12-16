@@ -3,12 +3,13 @@
     font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
 }
 :root{
-    --primary:#82817D;
+    --primary:#F6C445;
     --secondery:black;
+    --teritary:#FED87A;
 }
 .header{
     display: flex;
-    background-color:var(--primary);
+    background-color:var(--teritary);
     color: var(--secondery);
 }
 .title{

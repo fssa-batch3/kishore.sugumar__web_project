@@ -3,8 +3,9 @@
     font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
 }
 :root{
-    --primary:#82817D;
+    --primary:#F6C445;
     --secondery:black;
+    --teritary:#FED87A;
 }
 .logo{
     width: 60px;
@@ -21,7 +22,7 @@
 .header{
     display:flex;
     justify-content:space-between ;
-    background-color:var(--primary);
+    background-color:var(--teritary);
     height:75px;
     border-radius: 10px;
 }
@@ -139,7 +140,7 @@ h4{
     display: flex;
     justify-content: center;
     align-content: center;
-    background-color: var(--primary);
+    background-color:var(--teritary);
     height: 100px;
 }
 .contact{

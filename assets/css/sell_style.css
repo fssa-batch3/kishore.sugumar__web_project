@@ -2,21 +2,12 @@
     width: 10px;
     height: 550px;
     font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
+    background-color: black;
 }
 .sell{
-    width: 1300px;
-    height: 850px;
+    width: 1000px;
+    height: 600px;
 }
 .img{
-    margin: 0px 0px 0px 50px;
-}
-.body p{
-    width: 310px;
-    font-size: 40px;
-    color: white;
-    position: relative;
-    bottom: 490px;
-    left: 545px;
-    transform: rotateZ('angle');
-    rotate: 16deg;
+    margin: 140px 0px 0px 225px;
 }

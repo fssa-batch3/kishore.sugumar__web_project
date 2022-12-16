@@ -4,8 +4,9 @@
     font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
 }
 :root{
-    --primary:#82817D;
+    --primary:#F6C445;
     --secondery:black;
+    --teritary:#FED87A;
 }
 .main{
     position: relative;
@@ -22,6 +23,9 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+.main-right h1{
+    color:#fbbf26;
 }
 .main-right{
     width: 650px;

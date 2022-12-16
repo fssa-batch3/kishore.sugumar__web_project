@@ -5,13 +5,14 @@
     background-image: url(../img/);
 }
 :root{
-    --primary:#82817D;
+    --primary:#F6C445;
     --secondery:black;
+    --teritary:#FED87A;
 }
 .header{
     display: flex;
     justify-content: space-between;
-    background-color:var(--primary);
+    background-color:var(--teritary);
     color: var(--secondery);
     border-radius: 10px;
 }
@@ -242,6 +243,11 @@
      border-radius: 20px;
      width: 320px;
 }
+.similar:hover{
+    transform: translateY(-5px);
+    box-shadow: 5px 7px 20px gray;
+    transition: 0.5s;
+}
 .similar p{
     font-size: 25px;
 }
@@ -286,7 +292,7 @@ h4{
     display: flex;
     justify-content: center;
     align-content: center;
-    background-color: var(--primary);
+    background-color: var(--teritary);
     height: 100px;
 }
 .contact{
