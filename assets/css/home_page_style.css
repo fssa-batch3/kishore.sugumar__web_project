@@ -60,12 +60,12 @@
     background-color: rgb(41, 40, 40);
     color: white;
     width: 100px;
-    height: 43.35px;
-    position: relative;
-    top: 1.95px;
+    height: 46px;
     border-radius: 0px 25px 25px 0px;
     font-size: 18px;
     border: 1px;
+    position: relative;
+    top: 1px;
 }
 .search{
     width: 950px;
