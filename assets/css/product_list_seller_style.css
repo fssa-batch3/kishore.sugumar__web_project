@@ -54,7 +54,7 @@
     justify-content: space-between;
     margin: 50px 0px 20px 0px;
     border-radius: 10px;
-    box-shadow: 2px 2px gray;
+    box-shadow:5px 7px 20px gray;
 }
 .content_1{
     width:1350px;
@@ -63,7 +63,7 @@
     justify-content: space-between;
     margin: 50px 0px 20px 0px;
     border-radius: 10px;
-    box-shadow: 2px 2px gray;
+    box-shadow:5px 7px 20px gray;
 }
 .product_name1{
     margin: 50px 110px 0px 0px;
