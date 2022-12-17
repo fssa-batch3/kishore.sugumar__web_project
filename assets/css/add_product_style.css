@@ -82,3 +82,94 @@
 .classify{
     margin: 0px 0px 0px 40px;
 }
+.footer_left{
+    display: flex;
+    font-size: 30px;
+}
+.footer_left a{
+    text-decoration: none;
+    color: black;
+    padding: 0px 20px 0px 20px;
+}
+.footer_left a:hover{
+    color: white;
+}
+h4{
+    font-size: 25px;
+    padding-top: 5px;
+    padding-bottom: 15px;
+}
+.footer_top{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    background-color:var(--teritary);
+    height: 100px;
+    margin-top: 50px;
+}
+.contact{
+    font-size: 20px;
+}
+.socials span{
+    font-size: 23px;
+    position: relative;
+    top: 5px;
+}
+.line{
+    border-right: 2px solid black;
+    height: 80px;
+    margin: 10px 55px 10px 0px;
+}
+.socials{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-evenly;
+    position: relative;
+    top: 30px;
+    left: 50px;
+}
+.insta{
+    padding: 10px 10px 8px 10px;
+    border: 1px solid gray;
+    border-radius: 100%;
+    margin-left: 20px;
+}
+.insta:hover{
+    background-image: linear-gradient(315deg, #7110D2, #DE46A9);
+    color: white;
+}
+.fb{
+    padding: 10px 10px 8px 10px;
+    border: 1px solid gray;
+    border-radius: 100%;
+    margin-left: 20px;
+}
+.fb:hover{
+    background-color: #3B5998;
+    color: white;
+}
+.youtube{
+    padding: 10px 10px 8px 10px;
+    border: 1px solid gray;
+    border-radius: 100%;
+    margin-left: 20px;
+}
+.youtube:hover{
+    background-color: red;
+    color: white;
+}
+.twiter{
+    padding: 10px 10px 8px 10px;
+    border: 1px solid gray;
+    border-radius: 100%;
+    margin-left: 20px;
+}
+.twiter:hover{
+    background-color: #00ACEE;
+    color: white;
+}
+.copy{
+    text-align: center;
+    padding: 10px 0px 0px 0px;
+}

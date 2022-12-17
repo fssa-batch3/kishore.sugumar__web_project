@@ -1,0 +1,11 @@
+
+.body{
+    width: 1430px;
+    font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
+    background-image: url(../img/);
+}
+:root{
+    --primary:#F6C445;
+    --secondery:black;
+    --teritary:#FED87A;
+}

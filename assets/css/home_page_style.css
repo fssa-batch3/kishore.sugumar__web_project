@@ -17,7 +17,7 @@
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    margin: 7px 10px 0px 30px;
+    margin: 7px 10px 0px 60px;
 }
 .header{
     display:flex;
@@ -26,7 +26,8 @@
     border-radius: 10px;
 }
 .header h1{
-    margin: 17px 0px 0px 20px;
+    width: 200px;
+    margin: 17px 20px 0px 20px;
     color:var(--secondery);
 }
 .heart i:hover{
@@ -45,7 +46,7 @@
     border-radius: 25px 0px 0px 25px;
     padding: 12px 0px 12px 40px;
     transition: width 0.4s ease-in-out;
-    margin: 15px 0px 0px 20px;
+    margin: 15px 0px 0px 30px;
     background: 0px 5px 0px 0px;
     background-color: white;
     background-image: url('../img/search.png');
@@ -65,7 +66,7 @@
     font-size: 18px;
     border: 1px;
     position: relative;
-    top: 1px;
+    top: 0px;
 }
 .search{
     width: 950px;
@@ -101,7 +102,7 @@
 }
 .heading h2{
     margin: auto;
-    padding: 35px 0px 0px 590px;
+    padding: 35px 0px 0px 595px;
     color:var(--primary);
     font-size: 32px;
 }
@@ -153,6 +154,10 @@
     scale: 1.05;
     background-color: whitesmoke;
     transition: .4s;
+}
+.product_profile a{
+    text-decoration: none;
+    color: black;
 }
 .product_name{
     margin: 0px 0px 20px 0px ;
@@ -283,7 +288,7 @@ h4{
     color: white;
 }
 .youtube{
-    padding: 10px 10px 8px 10px;
+    padding: 10px 10px 10px 10px;
     border: 1px solid gray;
     border-radius: 100%;
     margin-left: 20px;
