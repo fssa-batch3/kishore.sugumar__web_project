@@ -2,7 +2,8 @@
     font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
 }
 .img{
-    opacity: .17;
+    opacity: .7;
+    width: 1440px;
 }
 .main{
     display: flex;
@@ -10,7 +11,7 @@
 }
 .right-content{
     width: 970px;
-    padding: 20px;
+    padding: 15px;
     text-align: center;
     background-color: rgb(198, 198, 198);
 }
@@ -49,7 +50,7 @@
 .left-content{
     background-color: rgb(198, 198, 198);
     width: 450px;
-    height: 545px;
+    height: 540px;
     padding-top: 10px;
 }
 .contact{
