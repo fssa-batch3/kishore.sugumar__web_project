@@ -25,3 +25,8 @@
 .content h2{
     font-size:35px; 
 }
+.content a{
+    text-decoration: none;
+    color: black;
+}
+
