@@ -32,33 +32,19 @@
     font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
 }
 .heading{
+    display: flex;
+    justify-content: space-between;
     margin: 50px 0px 0px 0px;
-    text-align: center;
 }
 .heading h2{
-    margin: auto;
-    padding: 35px 0px 0px 0px;
     color:var(--primary);
     font-size: 32px;
 }
-.border-1{
+.border{
     height: 1px;
-    width: 600px;
+    width: 570px;
     margin:auto;
     border: 1.5px solid black  ;
-    position: relative;
-    right: 420px;
-    top: 60px;
-    background-color:black;
-}
-.border-2{
-    height: 1px;
-    width: 600px;
-    margin: 0px auto;
-    border: 1.5px solid black ;
-    position: relative;
-    left: 420px;
-    top: 60px;
     background-color:black;
 }
 .border-10{
