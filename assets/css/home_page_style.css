@@ -189,6 +189,7 @@
 .footer_left{
     display: flex;
     font-size: 30px;
+    margin-right:50px ;
 }
 .footer_left a{
     text-decoration: none;
@@ -216,7 +217,7 @@
 .line{
     border-right: 2px solid black;
     height: 80px;
-    margin: 10px 55px 10px 0px;
+    margin: 10px 65px 10px 20px;
 }
 .socials{
     display: flex;
