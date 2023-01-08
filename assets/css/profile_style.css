@@ -28,7 +28,7 @@
     height: 500px;
 }
 .main-left{
-    width: 500px;
+    width: 600px;
     height: 500px;
     margin-right: 10px;
 }
@@ -54,7 +54,7 @@
     left: 80px;
 }
 .left_content1{
-    padding:25px;
+    padding:25px ;
     font-size: 16px;
     position: relative;
     left: 80px;

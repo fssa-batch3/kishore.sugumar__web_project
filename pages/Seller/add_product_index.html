@@ -29,7 +29,7 @@
                 Product Name:
             </div>
             <div>
-                <input type="name" class="product_name"/>
+                <input type="name" id="name" class="product_name"/>
             </div>
             <div class="left_content">
                 Product Description:
@@ -40,15 +40,15 @@
             <div class="left-aling">
                 <div>
                     <div>Product Price:</div>
-                    <div><input type="number" class="input"/></div>
+                    <div><input type="number" id="price" class="input"/></div>
                 </div>
                 <div  class="classify">
                     <div>Category</div>
-                    <div><input type="text" class="input"/></div>
+                    <div><input type="text" id="text" class="input"/></div>
                 </div>
             </div>
             <div class="left_content">Used month</div>
-            <div><input type="number" class="input"/></div>
+            <div><input type="number" id="number" class="input"/></div>
         </div>
         <div class="main-right">
             <div><i class="fa fa-add"></i></div>
@@ -73,6 +73,18 @@
          </div>
      <div class="copy">Copyright © 2021 - 2022 VANHA - Website Designed By KISHORE</div>
   </footer>
+
+  <script>
+    const email = document.getElementById("name").value
+    const password = document.getElementById("price").value
+    const date = document.getElementById("text").value
+    const new_password = document.getElementById("number").value
+
+    console.log(price)
+    console.log(name)
+    console.log(text)
+    console.log(number)
+  </script>
     
 </body>
 </html>

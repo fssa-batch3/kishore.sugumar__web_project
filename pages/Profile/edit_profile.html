@@ -31,15 +31,15 @@
              </div>
              <div class="left_content1">
                 <label> <i class="fa-solid fa-user"></i> </label>
-                <input class="input" type="text" placeholder="name" />
+                <input class="input" type="name" id="name" placeholder="name" />
             </div>
             <div class="left_content1">
                 <label> <i class="fa-solid fa-envelope"></i> </label>
-                <input class="input" type="email" placeholder="example@abc.com"/>
+                <input class="input" type="email" id="email" placeholder="example@abc.com"/>
             </div>
             <div class="left_content1">
                 <lable><i class="fa-regular fa-calendar-days"></i></lable>
-                <input class="input" type="date" placeholder="dd_mm_yy"/>
+                <input class="input" type="date" id="date" placeholder="dd_mm_yy"/>
             </div>
             <div class="left_content1">
                 <label class="gender"> <b>Gender</b>  </label>
@@ -49,11 +49,11 @@
             </div>
             <div class="left_content1">
                 <label><i class="fa-solid fa-phone" style="font-size: 25px;"></i></label>
-                <input class="input" type="tel" placeholder="Phone Numer"/>
+                <input class="input" type="tel" id="phone_number" placeholder="Phone Numer"/>
             </div>
             <div class="left_content1">
                 <label><i class="fa fa-location" style="font-size: 25px;"></i></label>
-                <input class="input" type="text" placeholder="Location"/>
+                <input class="input" type="text" id="location" placeholder="Location"/>
             </div>
         </div>  
         <div class="main-right">
@@ -79,5 +79,21 @@
          </div>
      <div class="copy">Copyright © 2021 - 2022 VANHA - Website Designed By KISHORE</div>
   </footer>
+
+  <script>
+    const email = document.getElementById("email").value
+    const password = document.getElementById("name").value
+    const date = document.getElementById("date").value
+    const new_password = document.getElementById("location").value
+    const confirm_password = document.getElementById("phone_number").value
+
+    console.log(email)
+    console.log(phone_number)
+    console.log(name)
+    console.log(location)
+    console.log(date)
+  </script>
+
+
 </body>
 </html>

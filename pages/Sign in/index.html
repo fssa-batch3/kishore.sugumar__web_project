@@ -2,7 +2,7 @@
 <html lang="en">
   <head>    
     <link rel="stylesheet" href="../../assets/css/sign_in_style.css">
-    <link rel="stylesheet" href="./assets/css/normalize.css">
+    <link rel="stylesheet" href="../../assets/css/normalize.css">
     <link rel="dns-prefetch" href="//fonts.googleapis.com" />
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700," rel="stylesheet" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
@@ -25,15 +25,14 @@
             </div>
             <div class="right_content">
                 <label> <i class="fa-solid fa-envelope"></i> </label>
-                <input class="input" type="email" placeholder="example@abc.com"/>
+                <input class="input" id="email" type="email" placeholder="example@abc.com"/>
             </div>
             <div class="right_content">
                 <label> <i class="fa-solid fa-lock"></i> </label>
-                <input class="input" type="password" placeholder="********"/>
+                <input class="input" id="password" type="password" placeholder="********" />
             </div>
             <div class="right_content">
-                <a href="../Profile/buyer_index.html" class="nav-link2"> <button class="btn">Log in<i class="fa-solid fa-done"></i></button> 
-                </a>
+                <button class="btn" onclick="register()">Log in</button> 
             </div>
             <div class="right_content">
                 <p>or login with</p>
@@ -45,5 +44,27 @@
             </div>
         </div>
     </main>
+
+ <script>
+
+
+  function register(){
+    const email= document.getElementById("email").value
+    const password = document.getElementById("password").value
+
+
+    console.log(email)
+    console.log(password)
+
+
+   localStorage.setItem("user_email",email)
+   localStorage.setItem("user_password",password)
+
+window.location.href= "../Profile/buyer_index.html"
+}
+
+
+    </script>
+
   </body>
 </html>

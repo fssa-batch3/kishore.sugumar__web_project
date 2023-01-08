@@ -1,190 +1,148 @@
 
 .body{
+    max-width: 100%;
     font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
 }
 :root{
-    --primary:#F6C445;
-    --secondery:black;
-    --teritary:#FED87A;
+    --primary:rgb(222, 239, 253);
+    --secondery: black;
+    --teritary:#9AC1F0;
+    --fourth:rgb(214, 214, 214);
 }
 .header{
     display:flex;
+    align-content: space-between;
     justify-content:space-between ;
-    background-color:var(--teritary);
-    height:75px;
-    border-radius: 10px;
-}
-.header h1{
-    margin: 17px 0px 0px 80px;
-    color:var(--secondery);
+    box-shadow: 10px 8px 16px 0px var(--teritary);
+    background-color:var(--fourth);  
 }
 .logo{
-    width: 60px;
-    height: 60px;
+    margin: 5px 10px;
+    width: 15%;
+    height: auto;
     border-radius: 50%;
-    margin: 7px 0px 0px 20px;
 }
 .profile_img{
-    width: 60px;
-    height: 60px;
+    float: right;
+    margin: 5px 10px 0px 0px;
+    width: 8%;
+    height: auto;
     border-radius: 50%;
-    margin: 7px 20px 0px 80px;
 }
-.footer{
-    margin-top: 50px;
-}
-.footer_left{
-    display: flex;
-    font-size: 30px;
-}
-.footer_left a{
-    text-decoration: none;
-    color: black;
-    padding: 0px 20px 0px 20px;
-}
-.footer_left a:hover{
-    color: white;
-}
-h4{
-    font-size: 25px;
-    padding-top: 5px;
-    padding-bottom: 15px;
-}
-.footer_top{
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    background-color:var(--teritary);
-    height: 100px;
-}
-.contact{
-    font-size: 20px;
-}
-.socials span{
-    font-size: 23px;
-    position: relative;
-    top: 5px;
-}
-.line{
-    border-right: 2px solid black;
-    height: 80px;
-    margin: 10px 55px 10px 0px;
-}
-.socials{
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: space-evenly;
-    position: relative;
-    top: 30px;
-    left: 50px;
-}
-.insta{
-    padding: 10px 10px 8px 10px;
-    border: 1px solid gray;
-    border-radius: 100%;
-    margin-left: 20px;
-}
-.insta:hover{
-    background-image: linear-gradient(315deg, #7110D2, #DE46A9);
-    color: white;
-}
-.fb{
-    padding: 10px 10px 8px 10px;
-    border: 1px solid gray;
-    border-radius: 100%;
-    margin-left: 20px;
-}
-.fb:hover{
-    background-color: #3B5998;
-    color: white;
-}
-.youtube{
-    padding: 10px 10px 8px 10px;
-    border: 1px solid gray;
-    border-radius: 100%;
-    margin-left: 20px;
-}
-.youtube:hover{
-    background-color: red;
-    color: white;
-}
-.twiter{
-    padding: 10px 10px 8px 10px;
-    border: 1px solid gray;
-    border-radius: 100%;
-    margin-left: 20px;
-}
-.twiter:hover{
-    background-color: #00ACEE;
-    color: white;
-}
-.copy{
-    text-align: center;
-    padding: 10px 0px 0px 0px;
-}
-.img{
-    width: 1400px;
-    height: 585px;
+.header h1{
+    width: 200px;
+    font-size:  2vw;
+    margin: 3% 0% 2% 60%;
 }
 .main{
     text-align: center;
-}
-.main h1{
-    font-size: 45px;
-    margin-bottom:30px ;
+    margin-bottom: 10%;
 }
 .main li{
-    font-size: 25px;
+    font-size: 1.5vw;
     list-style: none;
 }
+.main h1{
+    font-size: 2vw;
+}
 .main ul{
-    margin-bottom:30px ;
+    margin-bottom:10%;
+}
+.img{
+    margin-top: 3%;
+    width: 50%;
+    height: auto;
 }
 .coustomers{
     display: flex;
     justify-content: space-evenly;
-    margin: 100px 0px 0px 0px;
+    margin: 10% 0% 0% 0%;
+    padding: 3% 0%;
+    background-color: var(--fourth);
 }
 .seller-img{
-    width: 350px;
-    height: 300px;
-    padding: 30px;
+    width: 60%;
+    height: auto;
+    padding: 5%;
 }
 .buyer-img{
-    width: 350px;
-    height: 300px;
-    padding: 30px 30px 30px 30px;
+    width: 65%;
+    height: auto;
+    padding: 30px;
 }
 .seller{
-    width: 490px;
-    height: 700px;
-    box-shadow:5px 7px 20px gray;
+    width: 30%;
+    height: auto;
+    box-shadow:5px 7px 20px var(--teritary);
+    background-color: white;
 }
 .seller h2{
-    font-size: 35px;
+    font-size:2vw;
 }
 .seller h3{
-    font-size: 40px;
+    font-size: 1.5vw;
 }
 .buyer{   
-    width: 490px;
-    height: 700px;
-    box-shadow:5px 7px 20px gray;
+    width: 30%;
+    height: auto;
+    box-shadow:5px 7px 20px var(--teritary);
+    background-color: white;
 }
 .buyer h2{
-    font-size: 35px;
+    font-size:2vw;
 }
 .buyer h3{
-    font-size: 40px;
+    font-size: 1.5vw;
 }
 .seller p{
-    width: 350px;
-    font-size: 25px;
-    margin: 0px 0px 0px 70px;
+    width: 80%;
+    font-size: 1vw;
+    margin: 0% 0% 0% 10%;
 }
 .buyer p{
-    width: 350px;
-    font-size: 25px;
-    margin: 0px 0px 0px 70px;
+    width: 80%;
+    font-size: 1vw;
+    margin: 0% 0% 0% 10%;
+}
+.footer_top{
+    display: flex;
+    text-align: center;
+    justify-content: space-evenly;
+    align-content: space-around;
+    background-color:var(--fourth);
+    box-shadow: 5px 3px 15px 4px var(--teritary);
+    height: 80%;
+}
+.footer_left{
+    display: flex;
+    font-size: 1.2vw;
+}
+.footer_left a{
+    text-decoration: none;
+    color: black;
+}
+.footer_left a:hover{
+    color: var(--teritary);
+}
+.footer_left p{
+    padding: 25px ;
+    width:auto;
+}
+.links{
+    font-size: 1.5vw;
+    margin: 10% 0% 0% 0%;
+}
+.socials{
+    display: flex;
+    font-size: 1.5vw;
+}
+.icon{
+    margin: 10px 10px 0px 10px;
+}
+.icon:hover{
+    color: var(--teritary);
+}
+.copy{
+    text-align: center;
+    padding: 10px 0px 0px 0px;
 }

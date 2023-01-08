@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VANHA</title>
     <link rel="stylesheet" href="../../assets/css/sign_up_style.css">
-    <link rel="stylesheet" href="./assets/css/normalize.css">
     <link rel="dns-prefetch" href="//fonts.googleapis.com" />
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700," rel="stylesheet" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
@@ -20,15 +19,15 @@
          </div>
          <div class="left_content">
             <label> <i class="fa-solid fa-user"></i> </label>
-            <input class="input" type="text" placeholder="name" />
+            <input class="input" id="name" type="text" placeholder="name"/>
         </div>
         <div class="left_content">
             <label> <i class="fa-solid fa-envelope"></i> </label>
-            <input class="input" type="email" placeholder="example@abc.com"/>
+            <input class="input" id="email" placeholder="example@abc.com" />
         </div>
         <div class="left_content">
             <lable><i class="fa-regular fa-calendar-days"></i></lable>
-            <input class="input" type="date" placeholder="dd_mm_yy"/>
+            <input class="input" id="date" placeholder="dd_mm_yy" />
         </div>
         <div class="left_content">
             <label class="gender"> <b>Gender</b>  </label>
@@ -38,19 +37,18 @@
         </div>
         <div class="left_content">
             <label><i class="fa-solid fa-key"></i></label>
-            <input class="input" type="password" placeholder="new password"/>
+            <input type="password" class="input" id="new_password" placeholder="new password" />
         </div>
         <div class="left_content">
             <label><i class="fa fa-key"></i></label>
-            <input class="input" type="password" placeholder="confirm password"/>
+            <input class="input" type="password" id="confirm_password" placeholder="confirm_password" />
         </div>
         <div class="agree">
-            <input type="checkbox" name="checkbox" required="true"/>
+            <input type="checkbox" id="checkbox" name="checkbox" required="true"/>
             <label> I agree</label>
         </div>
         <div class="left_content">
-            <a href="../Profile/buyer_index.html" class="nav-link2"> <button class="btn">Register</button> 
-            </a>
+             <button class="btn" type="button" onclick="register()">Register</button> 
         </div>
     </div>  
     <div class="main-right">
@@ -61,8 +59,34 @@
             <a href="../Sign in/index.html" class="nav-link">I am already member</a>
         </div>
     </div> 
-        
   </main>
+
+
+  <script> 
+
+   function register(){
+
+    const name= document.getElementById("name").value
+    const email = document.getElementById("email").value
+    const date = document.getElementById("date").value
+    const new_password = document.getElementById("new_password").value
+    const confirm_password = document.getElementById("confirm_password").value
+
+    console.log(name)
+    console.log(email)
+    console.log(date)
+    console.log(new_password)
+    console.log(confirm_password)
+
+    localStorage.setItem("user_name",name)
+    localStorage.setItem("user_email",email)
+    localStorage.setItem("user_date",date)
+    localStorage.setItem("user_new_password",new_password)
+    localStorage.setItem("user_confirm_password",confirm_password)
+
+window.location.href="../Profile/buyer_index.html"
+}
+  </script>
     
 </body>
 </html>

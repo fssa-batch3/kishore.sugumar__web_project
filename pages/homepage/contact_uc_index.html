@@ -44,26 +44,48 @@
             <p>Contact Us if you have any query</p>
             <div class="inputs">
                 <div class="your_detail">
-                    <div><input type="text" placeholder="Your Name"></div>
-                    <div><input type="email" placeholder="Email Address"></div>
+                    <div><input type="name" id="name" placeholder="Your Name" ></div>
+                    <div><input type="email" id="email" placeholder="Email Address" ></div>
                 </div>
                 <div class="your_detail">
-                        <div><input type="tel" placeholder="Phone Number"></div>
-                        <div><input type="text" placeholder="Subject"></div>
+                        <div><input type="tel" id="tel" placeholder="Phone Number" ></div>
+                        <div><input type="text" id="text" placeholder="Subject" ></div>
                 </div>
             </div>
             <div>
-                <textarea placeholder="Message"></textarea>
+                <textarea placeholder="Message" id="message"></textarea>
             </div>
             <div class="buttons">
                 <div>
-                    <a href="../../index.html"><button class="btn_primary">Submit</button></a>
+                    <button class="btn_primary" onclick="Submit()">Submit</button>
                 </div>
                 <div>
-                    <a href="../../index.html"><button class="btn_secondary">Discard</button></a>
+                    <button class="btn_secondary" onclick="Discard()">Discard</button>
                 </div>
             </div>
         </section>
     </main>
+
+    <script>
+function submit(){
+        const email = document.getElementById("email").value
+        const password = document.getElementById("name").value
+        const tel = document.getElementById("tel").value
+        const text = document.getElementById("text").value
+        const message = document.getElementById("message").value
+
+        console.log(email)
+        console.log(name)
+        console.log(tel)
+        console.log(text)
+        console.log(message)
+
+window.location.href="../Profile/buyer_index.html"
+}
+function Discard(){
+    window.location.href="../Profile/buyer_index.html"
+}
+
+    </script>    
 </body>
 </html>

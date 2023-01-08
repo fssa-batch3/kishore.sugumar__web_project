@@ -33,6 +33,10 @@
      </nav>
     </header>
     <main class="main">
+      <div class="search_bar">
+        <input type="text" placeholder="Search.." name="search" id="search" class="search">
+        <button class="submit" onclick="search()"><i class="fa fa-search"></i></button>
+      </div>
         <div class="top_main">
           <div class="classfy">
             <div class="dropdown">
@@ -112,25 +116,38 @@
         
     </main>
     <footer class="footer">
-         <div class="footer_top">
-            <div class="footer_left">
-                  <p> <a href="./pages/homepage/about_us_index.html"> About us </p> </a>
-                  <p> <a href="./pages/homepage/contact_uc_index.html"> Contact us</p> </a>
-            </div>
-            <div class="line"></div>
-            <div class="contact">
-                <div class="links">follow us</div>
-                <div class="socials">
-                  <div class="insta"> <i class="fa-brands fa-instagram" style="font-size:30px"></i> </div>
-                  <div class="fb"> <i class="fa-brands fa-facebook-f" style="font-size:30px"></i> </div>
-                  <div class="twiter"> <i class="fa-brands fa-twitter" style="font-size:30px"></i> </div>
-                  <div class="youtube"> <i class="fa-brands fa-youtube" style="font-size:30px"></i> </div>
-              </div>
-            </div>
-            </div>
-          </div>
-      <div class="copy">Copyright © 2021 - 2022 VANHA - Website Designed By KISHORE</div>
-   </footer>
+      <div class="footer_top">
+         <div class="footer_left">
+               <p> <a href="./pages/homepage/about_us_index.html"> About us </p> </a>
+               <p> <a href="./pages/homepage/contact_uc_index.html"> Contact us</p> </a>
+         </div>
+         <div class="contact">
+             <div class="links">follow us</div>
+             <div class="socials">
+               <span class="icon"> <i class="fa-brands fa-instagram" ></i> </span >
+               <span class="icon"> <i class="fa-brands fa-facebook-f"></i> </span >
+               <span class="icon"> <i class="fa-brands fa-twitter"></i> </span >
+               <span class="icon"> <i class="fa-brands fa-youtube"></i> </span >
+           </div>
+         </div>
+         </div>
+       </div>
+   <div class="copy">Copyright © 2021 - 2022 VANHA - Website Designed By KISHORE</div>
+</footer>
+
+   <script>
+
+
+    function search(){
+          console.log(document.getElementById("search").value)
+    
+          console.log(search)
+    
+    window.location.href="./pages/Buyer/product_detail_index.html"
+    }
+    
+    
+        </script>
     
 </body>
 </html>
