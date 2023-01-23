@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../assets/css/home_page_style.css">
-    <link rel="stylesheet" href="./assets/css/normalize.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="dns-prefetch" href="//fonts.googleapis.com"/>
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700," rel="stylesheet"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
-    <title>VANHA</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../assets/css/home_page_style.css">
+  <link rel="stylesheet" href="../../assets/css/normalize.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="dns-prefetch" href="//fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700," rel="stylesheet"/>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+  <title>VANHA</title>
 </head>
-<body>
-  <main>
+<body class="body">
+  <main class="main">
     <div class="top_main">
       <div  class="grid-container">
-          <div class="product_profile">
+          <!-- <div class="product_profile">
             <img src="../../assets/img/load product/bike.png" alt="Audi Q3" class="product_img">
             <div class="product_name"><a href="#"><b>MV Agusta 1000rr</b></a></div><div class="product_name"><b>Price:</b> 40Lakhs (INR) </div>
           </div>
@@ -39,28 +39,27 @@
             <div class="product_profile">
               <img src="../../assets/img/load product/TV.png" alt="Iphone_charger" class="product_img">
               <div class="product_name"><a href="#"><b>Samsung TV</b></a></div><div class="product_name"> <b>Price:</b>  3 Lakhs (INR)</div>
-            </div> 
+            </div>  -->
       </div>    
     </div>
     <div class="load">
-        <div><i class="fa fa-angle-double-up"></i></div>
-        <div><button class="btn1"><a href="../../index.html">Back to Home</a></button></div>
+      <div><i class="fa fa-angle-double-up"></i></div>
+      <div><button class="btn1"><a href="../../index.html">Back to Home</a></button></div>
     </div>
   </main>
   <footer class="footer">
     <div class="footer_top">
        <div class="footer_left">
-             <p> <a href="./pages/homepage/about_us_index.html"> About us </p> </a>
-             <p> <a href="./pages/homepage/contact_uc_index.html"> Contact us</p> </a>
+            <p> <a href="./pages/homepage/about_us_index.html"> About us </p> </a>
+            <p> <a href="./pages/homepage/contact_uc_index.html"> Contact us</p> </a>
        </div>
-       <div class="line"></div>
        <div class="contact">
            <div class="links">follow us</div>
            <div class="socials">
-             <div class="insta"> <i class="fa-brands fa-instagram" style="font-size:30px"></i> </div>
-             <div class="fb"> <i class="fa-brands fa-facebook-f" style="font-size:30px"></i> </div>
-             <div class="twiter"> <i class="fa-brands fa-twitter" style="font-size:30px"></i> </div>
-             <div class="youtube"> <i class="fa-brands fa-youtube" style="font-size:30px"></i> </div>
+             <span class="icon"> <i class="fa-brands fa-instagram" ></i> </span >
+             <span class="icon"> <i class="fa-brands fa-facebook-f"></i> </span >
+             <span class="icon"> <i class="fa-brands fa-twitter"></i> </span >
+             <span class="icon"> <i class="fa-brands fa-youtube"></i> </span >
          </div>
        </div>
        </div>
@@ -68,6 +67,97 @@
  <div class="copy">Copyright © 2021 - 2022 VANHA - Website Designed By KISHORE</div>
 </footer>
 
+<script>
+
+const product_list = [
+    {
+      "name":"MV Agusta 1000rr",
+      "img":"../../assets/img/load product/bike.png",
+      "price":"40Lakhs",
+      "currency":" (INR)"
+    },
+    {
+      "name":"AUDI Cycle",
+      "img":"../../assets/img/load product/\cycle.png",
+      "price":"4Lakhs (INR)",
+      "currency":" (INR)"
+    },
+    {
+      "name":"Gamimg Setup",
+      "img":"../../assets/img/load product/setup.png",  
+      "price":"10 Lakhs (INR)",
+      "currency":" (INR)"
+    }, 
+    {
+      "name":"HUBOLT Watch",
+      "img":"../../assets/img/load product/Watch4.png",
+      "price":"20 Lakhs (INR)",
+      "currency":" (INR)"
+    },
+    {
+      "name":"Mahindra THAR",
+      "img":"../../assets/img/load product/thor.png",
+      "price":"14.4 Lakhs (INR)",
+      "currency":" (INR)"
+    }, 
+    {
+      "name":"Samsung TV",
+      "img":"../../assets/img/load product/TV.png",
+      "price":"3 Lakhs (INR)",
+      "currency":" (INR)"
+    } 
+]
+
+for (let i = 0; i <= 5; i++) {
+
+div_card = document.createElement("div");
+div_card.setAttribute("class", "card");
+console.log(div_card);
+
+button = document.createElement("button");
+button.setAttribute("class", "card-button");
+button.innerText = "More info";
+div_card.append(button);
+
+div_detail = document.createElement("div");
+div_detail.setAttribute("class", "card-details");
+div_card.append(div_detail);
+
+image = document.createElement("img");
+image.setAttribute("src", product_list[i].img)
+document.body.appendChild(image);
+image.setAttribute("alt", "product_img");
+image.setAttribute("class", "product_img");
+div_detail.append(image);
+
+h3 = document.createElement("h3");
+h3.setAttribute("class", "text-title");
+h3.innerHTML = product_list[i].name;
+div_detail.append(h3);
+
+div_price = document.createElement("div");
+div_price.setAttribute("class", "text-body");
+div_detail.append(div_price);
+
+p_price = document.createElement("span");
+div_price.prepend(p_price);
+
+p_bold = document.createElement("b");
+p_bold.innerText = "Price:";
+p_price.append(p_bold);
+
+p_rate = document.createElement("span");
+p_rate.innerHTML = product_list[i].Price;
+div_price.append(p_rate);
+
+p_currency = document.createElement("span");
+p_currency.innerHTML = product_list[i].currency;
+div_price.append(p_currency);
+
+document.querySelector("div.grid-container").append(div_card);
+
+}
+</script>
     
 </body>
 </html>

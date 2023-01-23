@@ -17,10 +17,12 @@
 <body class="body">
    <header>
       <nav class="navbar">
-        <div class="web-name"><img src="./assets/img/illsuration/logo.jpg" class="logo" alt="logo"></a>
-        <h1 >V A N H A</h1></div>
+        <div class="web-name">
+          <img src="./assets/img/illsuration/logo.jpg" class="logo" alt="logo"></a>
+          <h1 >V A N H A</h1>
+        </div>
         <input type="checkbox" id="toggler">
-        <label for="toggler"><i class="fa fa-bars"></i></label>
+        <label for="toggler"><i class="fa-solid fa-bars"></i></label>
         <div class="menu">
             <ul class="list">
                 <li><a href="./index.html">Home</a></li>
@@ -34,7 +36,7 @@
     </header>
     <main class="main">
       <div class="search_bar">
-        <input type="text" placeholder="Search.." name="search" id="search" class="search">
+        <input type="text" name="text" class="input"  id="search"  placeholder="Search..">
         <button class="submit" onclick="search()"><i class="fa fa-search"></i></button>
       </div>
         <div class="top_main">
@@ -76,50 +78,68 @@
         </div>
         <div class="bottom_main">
             <div  class="grid-container">
-              <div class="product_profile">
-                <a href="./pages/Buyer/product_8_index.html">
-                <img src="./assets/img/Car/Car.png" alt="Audi Q3" class="product_img">
-                <div class="product_name"><b>Audi Q3</b></div><div class="product_name"><b>Price:</b> 40 Lakhs (INR)</div></a>
-              </div>
-                <div class="product_profile">
-                    <a href="./pages/Buyer/product_3_index.html">
-                    <img src="./assets/img/Laptop/My project1.png" alt="laptop" class="product_img">
-                    <div class="product_name"><b>ASUS Laptop</b></div> <div class="product_name"> <b>Price:</b> 1.14 Lakhs (INR)</div></a>
+              <!-- <div class="card">
+                <div class="card-details">
+                  <img src="./assets/img/Car/Car.png" alt="Audi Q3" class="product_img">
+                  <h3 class="text-title">Audi Q3</h3>
+                  <p class="text-body"><b>Price:</b> 40 Lakhs (INR)</p>
                 </div>
-                <div class="product_profile">
-                  <a href="./pages/Buyer/product_4_index.html">
+                <button class="card-button">More info</button>
+              </div>
+              <div class="card">
+                <div class="card-details">
+                  <img src="./assets/img/Laptop/My project1.png" alt="laptop" class="product_img">
+                  <h3 class="text-title">ASUS Laptop</h3>
+                  <p class="text-body"><b>Price:</b> 1.14 Lakhs (INR)</p>
+                </div>
+                <button class="card-button">More info</button>
+              </div>
+              <div class="card">
+                <div class="card-details">
                   <img src="./assets/img/Gaming/PS4.jpg" alt="ps4" class="product_img">
-                  <div class="product_name"><b>Play Station 4</b></div><div class="product_name"> <b>Price:</b> 5.26 Lakhs (INR)</div></a>
-                  </a>
+                  <h3 class="text-title">Play Station 4</h3>
+                  <p class="text-body"> <b>Price:</b> 5.26 Lakhs (INR)</p>
                 </div>
-              <div class="product_profile">
-                  <a href="./pages/Buyer/product_6_index.html">
+                <button class="card-button">More info</button>
+              </div>
+              <div class="card">
+                <div class="card-details">
                   <img src="./assets/img/Piano/Piano.png" alt="Piano" class="product_img">
-                  <div class="product_name"><b>Yamaha YDP-163R Piano</b></div> <div class="product_name"> <b>Price:</b> 48,000 (INR)</div></a>
+                  <h3 class="text-title">Yamaha YDP-163R Piano</h3>
+                  <p class="text-body"> <b>Price:</b> 48,000 (INR)</p>
+                </div>
+                <button class="card-button">More info</button>
               </div>
-              <div class="product_profile">
-                <a href="./pages/Buyer/product_7_index.html">
-                <img src="./assets/img/Speaker/marshal.png" alt="Speaker" class="product_img">
-                <div class="product_name"><b>Marshall Speaker</b></div><div class="product_name"> <b>Price:</b> 58000 (INR)</div></a>
+              <div class="card">
+                <div class="card-details">
+                  <img src="./assets/img/Speaker/marshal.png" alt="Speaker" class="product_img">
+                  <h3 class="text-title">Marshall Speaker</h3>
+                  <p class="text-body"><b>Price:</b> 58000 (INR)</p>
+                </div>
+                <button class="card-button">More info</button>
               </div>
-              <div class="product_profile">
-                <a href="./pages/Buyer/product_5_index.html">
-                <img src="./assets/img/Charger/Iphone_charger.jpg" alt="Iphone_charger" class="product_img">
-                <div class="product_name"><b>IPHONE Charger</b></div><div class="product_name"> <b>Price:</b> 4000(INR)</div></a>
-              </div>
-            </div>       
-        </div>
+              <div class="card">
+                <div class="card-details">
+                  <img src="./assets/img/Charger/Iphone_charger.jpg" alt="Iphone_charger" class="product_img">
+                  <h3 class="text-title">IPHONE Charger</h3>
+                  <div class="text-body">
+                      <span><b>Price:</b></span> <span>4000(INR)</span>
+                  </div>
+                </div>
+                <button class="card-button">More info</button>
+              </div> -->
+            </div>
+      </div>
         <div class="load">
           <div><button class="btn1"><a href="./pages/homepage/load_index.html">Load More</a></button></div>
           <div><i class="fa fa-angle-double-down"></i></div>
         </div>
-        
     </main>
     <footer class="footer">
       <div class="footer_top">
          <div class="footer_left">
-               <p> <a href="./pages/homepage/about_us_index.html"> About us </p> </a>
-               <p> <a href="./pages/homepage/contact_uc_index.html"> Contact us</p> </a>
+              <p> <a href="./pages/homepage/about_us_index.html"> About us </p> </a>
+              <p> <a href="./pages/homepage/contact_uc_index.html"> Contact us</p> </a>
          </div>
          <div class="contact">
              <div class="links">follow us</div>
@@ -135,19 +155,106 @@
    <div class="copy">Copyright © 2021 - 2022 VANHA - Website Designed By KISHORE</div>
 </footer>
 
-   <script>
+<script>
 
+  // function search(){
 
-    function search(){
-          console.log(document.getElementById("search").value)
+  //   console.log(document.getElementById("search").value)
+  //   console.log(search)
     
-          console.log(search)
-    
-    window.location.href="./pages/Buyer/product_detail_index.html"
+  //   window.location.href="./pages/Buyer/product_detail_index.html"
+  // }
+
+  const product_list = [
+   {
+    "img":"./assets/img/Car/Car.png",
+    "name":"Audi Q3",
+    "Price":"40 Lakhs",
+    "currency":" (INR)"
+   },
+   {
+    "name":"ASUS Laptop",
+    "img":"./assets/img/Laptop/My project1.png",
+    "Price":"1.14 Lakhs",
+    "currency":" (INR)"
+    },
+    {
+    "name":"Play Station",
+    "img":"./assets/img/Gaming/PS4.jpg",
+    "Price":"5.26 Lakhs",
+    "currency":" (INR)"
+    },
+    {
+    "name":"Yamaha YDP-163R Piano",
+    "img":"./assets/img/Piano/Piano.png",
+    "price":"48,000",
+    "currency":" (INR)"
+    },
+    {
+    "name":"Marshall Speaker",
+    "img":"./assets/img/Speaker/marshal.png",
+    "price":"58,000",
+    "currency":" (INR)"
+    },
+    {
+    "name":"IPHONE Charger", 
+    "img":"./assets/img/Charger/Iphone_charger.jpg",
+    "price":"4,000",
+    "currency":" (INR)"
     }
+]
+
+  for (let i = 0; i <= 5; i++) {
+
+    div_card = document.createElement("div");
+    div_card.setAttribute("class", "card");
+    console.log(div_card);
+
+    button = document.createElement("button");
+    button.setAttribute("class", "card-button");
+    button.innerText = "More info";
+    div_card.append(button);
+
+    div_detail = document.createElement("div");
+    div_detail.setAttribute("class", "card-details");
+    div_card.append(div_detail);
+
+    image = document.createElement("img");
+    image.setAttribute("src", product_list[i].img)
+    document.body.appendChild(image);
+    image.setAttribute("alt", "product_img");
+    image.setAttribute("class", "product_img");
+    div_detail.append(image);
+
+    h3 = document.createElement("h3");
+    h3.setAttribute("class", "text-title");
+    h3.innerHTML = product_list[i].name;
+    div_detail.append(h3);
+
+    div_price = document.createElement("div");
+    div_price.setAttribute("class", "text-body");
+    div_detail.append(div_price);
+
+    p_price = document.createElement("span");
+    div_price.prepend(p_price);
+
+    p_bold = document.createElement("b");
+    p_bold.innerText = "Price:";
+    p_price.append(p_bold);
+
+    p_rate = document.createElement("span");
+    p_rate.innerHTML = product_list[i].Price;
+    div_price.append(p_rate);
     
-    
-        </script>
+    p_currency = document.createElement("span");
+    p_currency.innerHTML = product_list[i].currency;
+    div_price.append(p_currency);
+
+    document.querySelector("div.grid-container").append(div_card);
+
+  }
+       
+</script>
     
 </body>
 </html>

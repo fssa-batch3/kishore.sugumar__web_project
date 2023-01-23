@@ -13,7 +13,6 @@
     top:100px;
     display: flex;
     justify-content: center;
-
 }
 .main-left{
     width: 650px;
@@ -100,4 +99,10 @@
     color: #20BF55 ;
     transform: translateY(2px);
     transition: 0.1s;
+}
+@media (max-width:400px){
+    .main{
+        display: flex;
+        flex-direction: column;
+    }
 }
