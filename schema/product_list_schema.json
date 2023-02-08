@@ -1,6 +1,6 @@
 {
     "name":"string",
-    "image":"string",
+    "image":{"string(source)", "string(alt)"},
     "price":"number",
     "currency":"string"
 }

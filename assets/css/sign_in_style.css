@@ -39,6 +39,9 @@
     border-width: 0px 0px 2px 0px;
     width: 400px;
     height: 25px;
+    margin: 0px 0px 0px 30px;
+    position: relative;
+    left: 30px;
     padding-left: 20px;
 }
 .right_content{

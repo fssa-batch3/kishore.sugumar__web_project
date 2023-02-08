@@ -1,260 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./assets/css/home_page_style.css">
-    <link rel="stylesheet" href="./assets/css/normalize.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./assets/css/home_page_style.css">
     <link rel="dns-prefetch" href="//fonts.googleapis.com"/>
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700," rel="stylesheet"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
-    <title>VANHA</title>
-    <link rel="stylesheet" href="">
+    <script src="./assets/js/index.js"></script>
+    <title>Document</title>
 </head>
 <body class="body">
-   <header>
-      <nav class="navbar">
-        <div class="web-name">
-          <img src="./assets/img/illsuration/logo.jpg" class="logo" alt="logo"></a>
-          <h1 >V A N H A</h1>
-        </div>
-        <input type="checkbox" id="toggler">
-        <label for="toggler"><i class="fa-solid fa-bars"></i></label>
-        <div class="menu">
-            <ul class="list">
-                <li><a href="./index.html">Home</a></li>
-                <li><a href="./pages/homepage/about_us_index.html">About</a></li>
-                <li><a href="./pages/homepage/contact_uc_index.html">Contact</a></li>
-                <li><a href="./pages/Buyer/wishlist_index.html">Wish list</a></li>
-                <li><a href="./pages/Sign in/index.html">Log in</a></li>
-            </ul>
-        </div>
-     </nav>
+    <header class="header">
+            <img src="./assets/img/illsuration/logo.jpg" alt="logo" class="logo">
+            <img src="./assets/img/avator/buyer_2.png" alt="profile_buyer" class="buyer_img">
     </header>
+    <div>
+        <input type="search" id="search" class="search" placeholder="Search....">
+    </div>
     <main class="main">
-      <div class="search_bar">
-        <input type="text" name="text" class="input"  id="search"  placeholder="Search..">
-        <button class="submit" onclick="search()"><i class="fa fa-search"></i></button>
-      </div>
-        <div class="top_main">
-          <div class="classfy">
-            <div class="dropdown">
-              <span>Vehicles<i class="fa fa-angle-down"></i></span>
-              <div class="dropdown-content">
-              <div class="sub-heading"><a href="./pages/homepage/sub_bike.html">Bike</a></div>
-              <div class="sub-heading"><a href="./pages/homepage/sub_car.html">Car</a></div>
-              </div>
-            </div>
-            <div class="dropdown">
-              <span>Electronics<i class="fa fa-angle-down"></i></span>
-              <div class="dropdown-content">
-              <div class="sub-heading"><a href="./pages/homepage/sub_laptop&desktop.html">Laptop & Desktop</a></div>
-              <div class="sub-heading"><a href="./pages/homepage/sub_phone.html">Mobile</a></div>
-              </div>
-            </div>            
-          </div>
-          <div class="illsuration">
-            <div class="design">
-              <div class="image_aling"><img src="./assets/img/illsuration/sell_home.png" alt="illsuration_img" class="illsuration_img"></div>
-              <h1>Sell It</h1>
-            </div>
-            <div class="design">
-              <div class="image_aling"><img src="./assets/img/illsuration/Search_home.png" alt="illsuration_img" class="illsuration_img"></div>
-              <h1>Search It</h1>
-            </div>
-            <div class="design">
-              <div class="image_aling"><img src="./assets/img/illsuration/buy_home.png" alt="illsuration_img" class="illsuration_img"></div>
-              <h1>Buy It</h1>
-            </div>
-          </div>
-          <div class="heading">
-            <div class="border"></div>
-            <h2>Newly Launched</h2>
-            <div class="border"></div>
-          </div>
-        </div>
-        <div class="bottom_main">
-            <div  class="grid-container">
-              <!-- <div class="card">
-                <div class="card-details">
-                  <img src="./assets/img/Car/Car.png" alt="Audi Q3" class="product_img">
-                  <h3 class="text-title">Audi Q3</h3>
-                  <p class="text-body"><b>Price:</b> 40 Lakhs (INR)</p>
+        <section class="nav_links">
+            <div><a href="#"><i class="fa fa-home"></i></a></div>
+            <div><a onclick="about()"><i class="fa fa-address-card"></i></a></div>
+            <div><a href="#footer"><i class="fa fa-address-book"></i></a></div>
+            <div><a onclick="wishlist()"><i class="fa fa-heart"></i></a></div>
+            <div><a onclick="sign_in()"><i class="fa fa-sign-in"></i></a></div>
+        </section>
+        <section class="classfy">
+          <div class="sub_classfy">
+            <p><a href="./pages/homepage/sub_bike.html">Bike</a></p>
+            <p><a href="#">Car</a></p>
+            <p><a href="#">Laptop & Desktop</a></p>
+            <p><a href="#">Mobile</a></p>
+          </div>        
+        </section>
+        <section class="content">
+            <div class="illsuration">
+                <div class="design">
+                  <div class="image_aling"><img src="./assets/img/illsuration/sell_home.png" alt="illsuration_img" class="illsuration_img"></div>
+                  <h1>Sell It</h1>
                 </div>
-                <button class="card-button">More info</button>
-              </div>
-              <div class="card">
-                <div class="card-details">
-                  <img src="./assets/img/Laptop/My project1.png" alt="laptop" class="product_img">
-                  <h3 class="text-title">ASUS Laptop</h3>
-                  <p class="text-body"><b>Price:</b> 1.14 Lakhs (INR)</p>
+                <div class="design">
+                  <div class="image_aling"><img src="./assets/img/illsuration/Search_home.png" alt="illsuration_img" class="illsuration_img"></div>
+                  <h1>Search It</h1>
                 </div>
-                <button class="card-button">More info</button>
-              </div>
-              <div class="card">
-                <div class="card-details">
-                  <img src="./assets/img/Gaming/PS4.jpg" alt="ps4" class="product_img">
-                  <h3 class="text-title">Play Station 4</h3>
-                  <p class="text-body"> <b>Price:</b> 5.26 Lakhs (INR)</p>
+                <div class="design">
+                  <div class="image_aling"><img src="./assets/img/illsuration/buy_home.png" alt="illsuration_img" class="illsuration_img"></div>
+                  <h1>Buy It</h1>
                 </div>
-                <button class="card-button">More info</button>
               </div>
-              <div class="card">
-                <div class="card-details">
-                  <img src="./assets/img/Piano/Piano.png" alt="Piano" class="product_img">
-                  <h3 class="text-title">Yamaha YDP-163R Piano</h3>
-                  <p class="text-body"> <b>Price:</b> 48,000 (INR)</p>
-                </div>
-                <button class="card-button">More info</button>
+              <div class="heading">
+                <div class="border"></div>
+                <h2>Newly Launched</h2>
+                <div class="border"></div>
               </div>
-              <div class="card">
-                <div class="card-details">
-                  <img src="./assets/img/Speaker/marshal.png" alt="Speaker" class="product_img">
-                  <h3 class="text-title">Marshall Speaker</h3>
-                  <p class="text-body"><b>Price:</b> 58000 (INR)</p>
-                </div>
-                <button class="card-button">More info</button>
+              <div  class="grid-container">
+                
               </div>
-              <div class="card">
-                <div class="card-details">
-                  <img src="./assets/img/Charger/Iphone_charger.jpg" alt="Iphone_charger" class="product_img">
-                  <h3 class="text-title">IPHONE Charger</h3>
-                  <div class="text-body">
-                      <span><b>Price:</b></span> <span>4000(INR)</span>
-                  </div>
-                </div>
-                <button class="card-button">More info</button>
-              </div> -->
-            </div>
-      </div>
-        <div class="load">
-          <div><button class="btn1"><a href="./pages/homepage/load_index.html">Load More</a></button></div>
-          <div><i class="fa fa-angle-double-down"></i></div>
-        </div>
+        </section>
     </main>
-    <footer class="footer">
-      <div class="footer_top">
-         <div class="footer_left">
-              <p> <a href="./pages/homepage/about_us_index.html"> About us </p> </a>
-              <p> <a href="./pages/homepage/contact_uc_index.html"> Contact us</p> </a>
-         </div>
-         <div class="contact">
-             <div class="links">follow us</div>
-             <div class="socials">
-               <span class="icon"> <i class="fa-brands fa-instagram" ></i> </span >
-               <span class="icon"> <i class="fa-brands fa-facebook-f"></i> </span >
-               <span class="icon"> <i class="fa-brands fa-twitter"></i> </span >
-               <span class="icon"> <i class="fa-brands fa-youtube"></i> </span >
-           </div>
-         </div>
-         </div>
-       </div>
-   <div class="copy">Copyright © 2021 - 2022 VANHA - Website Designed By KISHORE</div>
-</footer>
-
-<script>
-
-  // function search(){
-
-  //   console.log(document.getElementById("search").value)
-  //   console.log(search)
+    <footer class="footer" id="footer">
+      <section class="contact">
+        <div class="contact_detail">
+          <i class="fa fa-phone"></i>
+          <p>Phone Number : +0123456789</p>
+        </div>
+        <div class="contact_detail">
+          <i class="fa fa-envelope"></i>
+          <p>Email Address : vanha.@abc.com</p>
+        </div>
+        <div class="contact_detail">
+          <i class="fa fa-location"></i>
+          <p>Location : Chennai:600069</p>
+        </div>
+      </section>
+      <section class="line"></section>
+      <section class="follow_links">
+        <div><p>Follow Us</p></div>
+        <ul class="links">
+          <li class="insta"><i class="fa-brands fa-instagram"></i></li>
+          <li class="face"><i class="fa-brands fa-facebook-f"></i></li>
+          <li class="twit"><i class="fa-brands fa-twitter"></i></li>
+          <li class="you"><i class="fa-brands fa-youtube"></i></li>
+        </ul>
+      </section>
+    </footer>
+    <div class="copy">Copyright © 2021 - 2022 VANHA - Website Designed By KISHORE</div>
+    <script >
+      function about(){
+        window.location.href="./pages/homepage/about_us_index.html";
+      }
+      function wishlist(){
+        window.location.href="./pages/Buyer/wishlist_index.html";
+      }
+      function sign_in(){
+        window.location.href="./pages/Sign in/index.html";
+      }
+      function search(){
     
-  //   window.location.href="./pages/Buyer/product_detail_index.html"
-  // }
-
-  const product_list = [
-   {
-    "img":"./assets/img/Car/Car.png",
-    "name":"Audi Q3",
-    "Price":"40 Lakhs",
-    "currency":" (INR)"
-   },
-   {
-    "name":"ASUS Laptop",
-    "img":"./assets/img/Laptop/My project1.png",
-    "Price":"1.14 Lakhs",
-    "currency":" (INR)"
-    },
-    {
-    "name":"Play Station",
-    "img":"./assets/img/Gaming/PS4.jpg",
-    "Price":"5.26 Lakhs",
-    "currency":" (INR)"
-    },
-    {
-    "name":"Yamaha YDP-163R Piano",
-    "img":"./assets/img/Piano/Piano.png",
-    "price":"48,000",
-    "currency":" (INR)"
-    },
-    {
-    "name":"Marshall Speaker",
-    "img":"./assets/img/Speaker/marshal.png",
-    "price":"58,000",
-    "currency":" (INR)"
-    },
-    {
-    "name":"IPHONE Charger", 
-    "img":"./assets/img/Charger/Iphone_charger.jpg",
-    "price":"4,000",
-    "currency":" (INR)"
-    }
-]
-
-  for (let i = 0; i <= 5; i++) {
-
-    div_card = document.createElement("div");
-    div_card.setAttribute("class", "card");
-    console.log(div_card);
-
-    button = document.createElement("button");
-    button.setAttribute("class", "card-button");
-    button.innerText = "More info";
-    div_card.append(button);
-
-    div_detail = document.createElement("div");
-    div_detail.setAttribute("class", "card-details");
-    div_card.append(div_detail);
-
-    image = document.createElement("img");
-    image.setAttribute("src", product_list[i].img)
-    document.body.appendChild(image);
-    image.setAttribute("alt", "product_img");
-    image.setAttribute("class", "product_img");
-    div_detail.append(image);
-
-    h3 = document.createElement("h3");
-    h3.setAttribute("class", "text-title");
-    h3.innerHTML = product_list[i].name;
-    div_detail.append(h3);
-
-    div_price = document.createElement("div");
-    div_price.setAttribute("class", "text-body");
-    div_detail.append(div_price);
-
-    p_price = document.createElement("span");
-    div_price.prepend(p_price);
-
-    p_bold = document.createElement("b");
-    p_bold.innerText = "Price:";
-    p_price.append(p_bold);
-
-    p_rate = document.createElement("span");
-    p_rate.innerHTML = product_list[i].Price;
-    div_price.append(p_rate);
-    
-    p_currency = document.createElement("span");
-    p_currency.innerHTML = product_list[i].currency;
-    div_price.append(p_currency);
-
-    document.querySelector("div.grid-container").append(div_card);
-
-  }
-       
-</script>
-    
+        console.log(document.getElementById("search").value)
+        console.log(search)
+        
+        window.location.href="./pages/Buyer/product_detail_index.html"
+      }
+      const product_list = [
+       {
+        "image":{"source":"./assets/img/Car/Car.png",
+                 "alt":"audi Q3"},
+        "name":"Audi Q3",
+        "price":"40 Lakhs",
+        "currency":" (INR)"
+       },
+       {
+        "image":{"source":"./assets/img/Laptop/My project1.png",
+                 "alt":"asus laptop"},
+        "name":"ASUS Laptop",
+        "price":"1.14 Lakhs",
+        "currency":" (INR)"
+        },
+        {
+        "name":"Play Station",
+        "image":{"source":"./assets/img/Gaming/PS4.jpg",
+                 "alt":"Play Station"},
+        "price":"1.26 Lakhs",
+        "currency":" (INR)"
+        },
+        {
+        "name":"Yamaha YDP-163R Piano",
+        "image":{"source":"./assets/img/Piano/Piano.png",
+                 "alt":"Yamaha YDP-163R Piano"},
+        "price":"48,000",
+        "currency":" (INR)"
+        },
+        {
+        "name":"Marshall Speaker",
+        "image":{"source":"./assets/img/Speaker/marshal.png",
+                 "alt":"Marshall Speaker"},
+        "price":"58,000",
+        "currency":" (INR)"
+        },
+        {
+        "name":"IPHONE Charger", 
+        "image":{"source":"./assets/img/Charger/Iphone_charger.jpg",
+                 "alt":"IPHONE Charger"},
+        "price":"4,000",
+        "currency":" (INR)"
+        },
+    ]
+    product()
+      
+    </script>
 </body>
 </html>

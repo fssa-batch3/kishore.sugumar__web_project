@@ -26,22 +26,12 @@
             <input class="input" id="email" placeholder="example@abc.com" />
         </div>
         <div class="left_content">
-            <lable><i class="fa-regular fa-calendar-days"></i></lable>
-            <input class="input" id="date" placeholder="dd_mm_yy" />
-        </div>
-        <div class="left_content">
-            <label class="gender"> <b>Gender</b>  </label>
-            <input type="radio" name="male_female_Other" class="radio"/> <label class="radio"> Male </label>
-            <input type="radio" name="male_female_Other" class="radio"/> <label class="radio"> Female </label>
-            <input type="radio" name="male_female_Other" class="radio"/> <label class="radio"> Others </label>
-        </div>
-        <div class="left_content">
             <label><i class="fa-solid fa-key"></i></label>
-            <input type="password" class="input" id="new_password" placeholder="new password" />
+            <input type="password" class="input" id="password" placeholder="new password" />
         </div>
         <div class="left_content">
             <label><i class="fa fa-key"></i></label>
-            <input class="input" type="password" id="confirm_password" placeholder="confirm_password" />
+            <input class="input" type="password" placeholder="confirm_password" />
         </div>
         <div class="agree">
             <input type="checkbox" id="checkbox" name="checkbox" required="true"/>
@@ -64,27 +54,20 @@
 
   <script> 
 
-   function register(){
+function register(){
 
-    const name= document.getElementById("name").value
-    const email = document.getElementById("email").value
-    const date = document.getElementById("date").value
-    const new_password = document.getElementById("new_password").value
-    const confirm_password = document.getElementById("confirm_password").value
+    user_data = JSON.parse(localStorage.getItem('user_data')) || [];
 
-    console.log(name)
-    console.log(email)
-    console.log(date)
-    console.log(new_password)
-    console.log(confirm_password)
+    user_data.push({
+    name : document.getElementById("name").value,
+    email : document.getElementById("email").value,
+    password : document.getElementById("password").value,
+    });
 
-    localStorage.setItem("user_name",name)
-    localStorage.setItem("user_email",email)
-    localStorage.setItem("user_date",date)
-    localStorage.setItem("user_new_password",new_password)
-    localStorage.setItem("user_confirm_password",confirm_password)
+localStorage.setItem("user_data", JSON.stringify(user_data));
+alert("Registered Successfully")
 
-window.location.href="../Profile/buyer_index.html"
+// window.location.href="../Sign in/index.html"
 }
   </script>
     

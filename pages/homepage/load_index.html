@@ -10,6 +10,7 @@
   <link rel="dns-prefetch" href="//fonts.googleapis.com"/>
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700," rel="stylesheet"/>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+  <script src="../../assets/js/index.js"></script>
   <title>VANHA</title>
 </head>
 <body class="body">
@@ -72,91 +73,49 @@
 const product_list = [
     {
       "name":"MV Agusta 1000rr",
-      "img":"../../assets/img/load product/bike.png",
+      "image":{"source":"../../assets/img/load product/bike.png",
+             "alt":"MV Agusta 1000rr"},
       "price":"40Lakhs",
       "currency":" (INR)"
     },
     {
       "name":"AUDI Cycle",
-      "img":"../../assets/img/load product/\cycle.png",
-      "price":"4Lakhs (INR)",
+      "image":{"source":"../../assets/img/load product/cycle.png",
+             "alt":"AUDI Cycle"},
+      "price":"4 Lakhs",
       "currency":" (INR)"
     },
     {
       "name":"Gamimg Setup",
-      "img":"../../assets/img/load product/setup.png",  
-      "price":"10 Lakhs (INR)",
+      "image":{"source":"../../assets/img/load product/setup.png",
+             "alt":"Gamimg Setup"},
+      "price":"10 Lakhs",
       "currency":" (INR)"
     }, 
     {
       "name":"HUBOLT Watch",
-      "img":"../../assets/img/load product/Watch4.png",
-      "price":"20 Lakhs (INR)",
+      "image":{"source":"../../assets/img/load product/Watch4.png",
+             "alt":"HUBOLT Watch"},
+      "price":"20 Lakhs",
       "currency":" (INR)"
     },
     {
       "name":"Mahindra THAR",
-      "img":"../../assets/img/load product/thor.png",
-      "price":"14.4 Lakhs (INR)",
+      "image":{"source":"../../assets/img/load product/thor.png",
+             "alt":"Mahindra THAR"},
+      "price":"14.4 Lakhs",
       "currency":" (INR)"
     }, 
     {
       "name":"Samsung TV",
-      "img":"../../assets/img/load product/TV.png",
-      "price":"3 Lakhs (INR)",
+      "image":{"source":"../../assets/img/load product/TV.png",
+             "alt":"Samsung TV"},
+      "price":"3 Lakhs ",
       "currency":" (INR)"
     } 
 ]
+product()
 
-for (let i = 0; i <= 5; i++) {
-
-div_card = document.createElement("div");
-div_card.setAttribute("class", "card");
-console.log(div_card);
-
-button = document.createElement("button");
-button.setAttribute("class", "card-button");
-button.innerText = "More info";
-div_card.append(button);
-
-div_detail = document.createElement("div");
-div_detail.setAttribute("class", "card-details");
-div_card.append(div_detail);
-
-image = document.createElement("img");
-image.setAttribute("src", product_list[i].img)
-document.body.appendChild(image);
-image.setAttribute("alt", "product_img");
-image.setAttribute("class", "product_img");
-div_detail.append(image);
-
-h3 = document.createElement("h3");
-h3.setAttribute("class", "text-title");
-h3.innerHTML = product_list[i].name;
-div_detail.append(h3);
-
-div_price = document.createElement("div");
-div_price.setAttribute("class", "text-body");
-div_detail.append(div_price);
-
-p_price = document.createElement("span");
-div_price.prepend(p_price);
-
-p_bold = document.createElement("b");
-p_bold.innerText = "Price:";
-p_price.append(p_bold);
-
-p_rate = document.createElement("span");
-p_rate.innerHTML = product_list[i].Price;
-div_price.append(p_rate);
-
-p_currency = document.createElement("span");
-p_currency.innerHTML = product_list[i].currency;
-div_price.append(p_currency);
-
-document.querySelector("div.grid-container").append(div_card);
-
-}
 </script>
     
 </body>
