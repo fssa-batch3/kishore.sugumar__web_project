@@ -1,0 +1,63 @@
+.footer{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 20px;
+    background-color: var(--secondary);
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+  }
+  .contact_detail{
+    text-align: center;
+  }
+  .contact{
+    padding: 10px 0px 10px 0px;
+    color: var(--tertiary);
+  }
+  .contact i{
+    font-size: 18px;
+    color: var(--tertiary);
+  }
+  .line{
+    border-right: 1px solid rgb(163, 163, 163);
+    height: 200px;
+    margin-top: 20px;
+  }
+  .follow_links p{
+    text-align: center;
+    color: var(--tertiary);
+    margin-top: 75px;
+  }
+  .links{
+    display: flex;
+    justify-content: space-between;
+    padding-left: 0px;
+  }
+  .links li{
+    font-size: 25px;
+    padding: 4px 8px;
+    margin: 10px;
+    border: 1px solid;
+    border-radius: 25px;
+    list-style-type: none;
+    color: var(--tertiary);
+  }
+  .insta:hover{
+    color:white;
+    background-image: linear-gradient(315deg, #7110D2, #DE46A9) ;
+  }
+  .face:hover{
+    color:white;
+    background-color: #3B5998;
+  }
+  .twit:hover{
+    color:white;
+    background-color: #00ACEE;
+  }
+  .you:hover{
+    color:white;
+    background-color: red;
+  }
+  .copy{
+    font-size: 14px;
+    text-align: center;
+    padding: 10px 0px 0px 0px;
+  }

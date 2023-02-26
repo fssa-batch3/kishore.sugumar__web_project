@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="dns-prefetch" href="//fonts.googleapis.com" />
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700," rel="stylesheet" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="../assets/css/account.css">
+	<link rel="stylesheet" href="../assets/css/buttons.css">
+	<title>V A N H A</title>
+</head>
+<body class="body-re">
+	<form class="form" onsubmit="register(event)">
+		<img src="../assets/img/illustration/logo.png" alt="logo" class="logo_re">
+		<p class="heading">Sign up</p>
+		<div class="field">
+			<input type="text" class="input-field" id="name" placeholder="User name" autocomplete="off"
+				pattern="[a-zA-Z\s]+" title="Use only alphabets" required="true">
+		</div>
+		<div class="field">
+			<input type="email" class="input-field" id="email" placeholder="example@abc.com" autocomplete="off"
+				pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" title="Use proper email" required="true">
+		</div>
+		<div class="field">
+			<input type="tel" class="input-field" id="phone" placeholder="Phone Number" autocomplete="off"
+				pattern="[0-9]+" title="Enter your mobile number" required="true">
+		</div>
+		<div class="field">
+			<input type="password" class="input-field" id="password" placeholder="Password"
+				pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&amp;*_=+-]).{8,24}$" maxlength="10"
+				minlength="8"
+				title="password must contain atleast one uppercase, one lower, one special character and numbers. minimum 8 character maximum 10 character"
+				required="true">
+		</div>
+		<div class="field">
+			<input type="password" class="input-field" id="c_password" placeholder="confirm Password" required="true">
+		</div>
+		<div class="btn">
+			<button class="button2" id="btn">Register</button>
+			<button class="button3" id="btn" onclick="back()">Back</button>
+		</div>
+	</form>
+	<script>
+		function back(){
+			location.href = "../index.html";
+		}
+function register(e) {
+  e.preventDefault();
+  let password = document.getElementById("password").value;
+  let c_password = document.getElementById("c_password").value;
+
+  let unique_id = uuidv4();
+
+  if (password !== c_password) {
+    alert("Passwords do not match");
+    return;
+  }
+
+  let user_detail = {
+    unique_id: unique_id,
+    name: document.getElementById("name").value,
+    email: document.getElementById("email").value,
+    phone: document.getElementById("phone").value,
+    password: password,
+  };
+
+  let stored_data = JSON.parse(localStorage.getItem("user_data")) || [];
+  let idExist = false;
+
+  for (let i = 0; i < stored_data.length; i++) {
+    if (user_detail.unique_id === stored_data[i].unique_id) {
+      idExist = true;
+      break;
+    }
+  }
+  if (idExist) {
+    alert('This email is already registered');
+    return;
+  }
+  
+  stored_data.push(user_detail);
+  localStorage.setItem("user_data", JSON.stringify(stored_data));
+  localStorage.setItem("unique_id",unique_id);
+  window.location.href ="../index.html";
+}
+
+	</script>
+	<script src="https://cdn.jsdelivr.net/npm/uuid@8.3.2/dist/umd/uuidv4.min.js"></script>
+</body>
+
+</html>

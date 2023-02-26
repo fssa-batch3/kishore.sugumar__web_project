@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../assets/css/add_product_style.css">
+  <link rel="stylesheet" href="../assets/css/buttons.css">
+  <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700," rel="stylesheet" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../assets/css/footer.css">
+  <title>VANHA</title>
+</head>
+
+<body class="body">
+  <header class="header">
+    <div>
+      <h1>Add Product</h1>
+    </div>
+    <div><img src="../assets/img/buyer.png" alt="seller_img" class="seller_img"></div>
+  </header>
+  <main>
+    <div class="main">
+      <div class="main-left">
+        <div>
+          Product Name:
+        </div>
+        <div>
+          <input type="name" id="name" class="product_name" />
+        </div>
+        <div class="left_content">
+          Product Description:
+        </div>
+        <div>
+          <textarea class="textarea" placeholder="Make it as points..."></textarea>
+        </div>
+        <div class="left-aling">
+          <div>
+            <div>Product Price:</div>
+            <div><input type="text" id="price" class="input" /></div>
+          </div>
+          <div class="classify">
+            <div>
+              <lable>Category</lable>
+            </div>
+            <select class="Category">
+              <option value="Bike">Bike</option>
+              <option value="Car">Car</option>
+              <option value="Desktop (or) Laptop">Desktop (or) Laptop</option>
+              <option value="Mobile">Mobile</option>
+            </select>
+          </div>
+        </div>
+        <div class="left_content">Used month</div>
+        <div><input type="text" id="number" class="input" /></div>
+      </div>
+      <div class="middle-line"></div>
+      <div class="main-right">
+        <form action="upload.php" method="post" enctype="multipart/form-data">
+          <input type="file" name="image">
+          <button type="submit">Upload</button>
+          <button class="cancel" style="display: none;" onclick="remove(event)">cancel</button>
+        </form>
+        <form action="upload.php" method="post" enctype="multipart/form-data">
+          <input type="file" name="image">
+          <button type="submit">Upload</button>
+          <button class="cancel" style="display: none;" onclick="remove(event)">cancel</button>
+        </form>
+        <form action="upload.php" method="post" enctype="multipart/form-data">
+          <input type="file" name="image">
+          <button type="submit">Upload</button>
+          <button class="cancel" style="display: none;" onclick="remove(event)">cancel</button>
+        </form>
+        <form action="upload.php" method="post" enctype="multipart/form-data">
+          <input type="file" name="image">
+          <button type="submit">Upload</button>
+          <button class="cancel" style="display: none;" onclick="remove(event)">cancel</button>
+        </form>
+      </div>
+    </div>
+    <section class="btn">
+      <div><button class="button2">Add product</button></div>
+      <div><button class="button3" onclick="back()">Discard</button></div>
+    </section>
+  </main>
+
+  <footer class="footer" id="footer">
+  </footer>
+  <script src="../assets/JS/footer.js"></script>
+  <script>
+    footer()
+    function back() {
+      location.href = "./buyer profile.html";
+    }
+    function addImagePreview(form) {
+      const input = form.querySelector('input[type="file"]');
+      const submit = form.querySelector('input[type="submit"]');
+
+      input.addEventListener('change', () => {
+        const file = input.files[0];
+        const reader = new FileReader();
+
+        reader.addEventListener('load', () => {
+          const img = new Image();
+
+          img.addEventListener('load', () => {
+            console.log(`Image dimensions: ${img.width} x ${img.height}`);
+            img.width = 300;
+            img.height = 200;
+            form.insertBefore(img, submit);
+            input.style.display = 'none';
+          });
+
+          img.src = reader.result;
+        });
+
+        reader.readAsDataURL(file);
+        document.querySelector(".cancel").removeAttribute("style", "display:none");
+        document.querySelector(".cancel").setAttribute("style", "display:inline");
+      });
+    }
+
+    // Call the function for each form on the page
+    const forms = document.querySelectorAll('form');
+    forms.forEach(form => addImagePreview(form));
+
+    const forms2 = document.querySelectorAll('.other-form');
+    forms2.forEach(form => addImagePreview(form));
+
+    const forms3 = document.querySelectorAll('.another-form');
+    forms3.forEach(form => addImagePreview(form));
+
+    const forms4 = document.querySelectorAll('.yet-another-form');
+    forms4.forEach(form => addImagePreview(form));
+  </script>
+
+</body>
+
+</html>

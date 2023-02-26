@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700," rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../assets/css/buttons.css">
+    <link rel="stylesheet" href="../assets/css/profile.css">
+    <link rel="stylesheet" href="../assets/css/footer.css">
+    <title>Document</title>
+</head>
+
+<body class="body">
+    <div id="overlay">
+        <div class="closebtn" onclick="off()" title="Close Overlay"><i class="fa-solid fa-xmark"></i></div>
+        <form class="form">
+            <p class="heading-in">Profile</p>
+            <div class="field">
+                <input type="text" class="input-field" id="name" placeholder="Name" autocomplete="off" required="true">
+            </div>
+            <div class="field">
+                <input type="email" class="input-field" id="email" placeholder="example@abc.com" autocomplete="off"
+                    required="true">
+            </div>
+            <div class="field">
+                <input type="tel" class="input-field" id="phone" placeholder="+91" autocomplete="off" required="true">
+            </div>
+            <div class="field">
+                <input type="text" class="input-field" id="location" placeholder="Location" required="true">
+            </div>
+            <div class="btn">
+                <button class="button2" onclick="update(event)">Save</button>
+            </div>
+        </form>
+    </div>
+    <header class="header">
+        <div><img src="../assets/img/illustration/logo.png" alt="logo" class="logo"></div>
+        <div class="web">
+            <p>V A N H A</p>
+        </div>
+    </header>
+    <div class="card">
+        <img src="../assets/img/buyer.png" class="profile-img">
+        <div class="details">
+            <h1 class="title" id="user_name"></h1>
+            <span class="caption"><i class="fa fa-envelope"></i>
+                <h4 id="user_email"></h4>
+            </span>
+            <span class="caption"><i class="fa fa-phone"></i>
+                <h4 id="user_phone"></h4>
+            </span>
+            <span class="caption"><i class="fa fa-location"></i>
+                <h4 id="user_location"></h4>
+            </span>
+        </div>
+        <div class="btn">
+            <button class="button2 edit" onclick="on()">Edit</button>
+            <button class="button3" onclick="del(event)">Log out</button>
+        </div>
+    </div>
+    <div class="list">
+        <div class="topic">
+            <h1>My Product list</h1>
+            <button class="button2 add" onclick="addprod()">Add new product</button>
+        </div>
+        <div class="box">
+        </div>
+    </div>
+    <footer class="footer" id="footer">
+    </footer>
+    <div class="copy">Copyright © 2021 - 2022 VANHA - Website Designed By KISHORE</div>
+</body>
+<script src="../assets/JS/footer.js"></script>
+<script src="../assets/JS/index.js"></script>
+<script>
+    footer()
+    list()
+    function addprod() {
+        location.href = "./add product.html";
+    }
+    function on() {
+        document.getElementById("overlay").style.display = "block";
+    }
+    function off() {
+        document.getElementById("overlay").style.display = "none";
+    }
+
+    let unique_id = localStorage.getItem("unique_id");
+    let stored_data = JSON.parse(localStorage.getItem("user_data")) || [];
+
+    const get_object = (unique_id, stored_data) => stored_data.find(val => val.unique_id === unique_id);
+    let data = get_object(unique_id, stored_data);
+
+    document.getElementById("user_name").innerText = data.name;
+    document.getElementById("user_email").innerText = data.email;
+    document.getElementById("user_phone").innerText = data.phone;
+    document.getElementById("user_location").innerText = data.location;
+
+    document.getElementById("name").value = data.name;
+    document.getElementById("email").value = data.email;
+    document.getElementById("phone").value = data.phone;
+    document.getElementById("location").value = data.location;
+</script>
+
+</html>

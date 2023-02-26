@@ -1,156 +1,175 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="./assets/css/home_page_style.css">
-    <link rel="dns-prefetch" href="//fonts.googleapis.com"/>
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700," rel="stylesheet"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
-    <script src="./assets/js/index.js"></script>
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="./assets/css/home page.css">
+  <link rel="stylesheet" href="./assets/css/account.css">
+  <link rel="stylesheet" href="./assets/css/buttons.css">
+  <link rel="stylesheet" href="./assets/css/footer.css">
+  <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700," rel="stylesheet" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <title>Document</title>
 </head>
+
 <body class="body">
-    <header class="header">
-            <img src="./assets/img/illsuration/logo.jpg" alt="logo" class="logo">
-            <img src="./assets/img/avator/buyer_2.png" alt="profile_buyer" class="buyer_img">
-    </header>
-    <div>
-        <input type="search" id="search" class="search" placeholder="Search....">
-    </div>
-    <main class="main">
-        <section class="nav_links">
-            <div><a href="#"><i class="fa fa-home"></i></a></div>
-            <div><a onclick="about()"><i class="fa fa-address-card"></i></a></div>
-            <div><a href="#footer"><i class="fa fa-address-book"></i></a></div>
-            <div><a onclick="wishlist()"><i class="fa fa-heart"></i></a></div>
-            <div><a onclick="sign_in()"><i class="fa fa-sign-in"></i></a></div>
-        </section>
-        <section class="classfy">
-          <div class="sub_classfy">
-            <p><a href="./pages/homepage/sub_bike.html">Bike</a></p>
-            <p><a href="#">Car</a></p>
-            <p><a href="#">Laptop & Desktop</a></p>
-            <p><a href="#">Mobile</a></p>
-          </div>        
-        </section>
-        <section class="content">
-            <div class="illsuration">
-                <div class="design">
-                  <div class="image_aling"><img src="./assets/img/illsuration/sell_home.png" alt="illsuration_img" class="illsuration_img"></div>
-                  <h1>Sell It</h1>
-                </div>
-                <div class="design">
-                  <div class="image_aling"><img src="./assets/img/illsuration/Search_home.png" alt="illsuration_img" class="illsuration_img"></div>
-                  <h1>Search It</h1>
-                </div>
-                <div class="design">
-                  <div class="image_aling"><img src="./assets/img/illsuration/buy_home.png" alt="illsuration_img" class="illsuration_img"></div>
-                  <h1>Buy It</h1>
-                </div>
-              </div>
-              <div class="heading">
-                <div class="border"></div>
-                <h2>Newly Launched</h2>
-                <div class="border"></div>
-              </div>
-              <div  class="grid-container">
-                
-              </div>
-        </section>
-    </main>
-    <footer class="footer" id="footer">
-      <section class="contact">
-        <div class="contact_detail">
-          <i class="fa fa-phone"></i>
-          <p>Phone Number : +0123456789</p>
+  <header class="header">
+    <img src="./assets/img/illustration/logo.png" alt="logo" class="logo">
+    <img src="./assets/img/buyer.png" alt="profile_buyer" class="buyer_img" onclick="profile()">
+  </header>
+  <div>
+    <input type="search" id="search" class="search" placeholder="Search....">
+    <button class="button4"><i class="fa-solid fa-magnifying-glass"></i></button>
+  </div>
+  <main class="main">
+    <section class="nav_links">
+      <div><a onclick="about()"><i class="fa fa-address-card"></i></a></div>
+      <div><a href="#footer"><i class="fa fa-address-book"></i></a></div>
+      <div><a onclick="wishlist()"><i class="fa fa-heart"></i></a></div>
+      <div><a onclick="bidlist()"><i class="fa-regular fa-rectangle-list"></i></a></div>
+      <div><a onclick="on()"><i class="fa fa-sign-in"></i></a></div>
+    </section>
+    <section class="classfy">
+      <div class="sub_classfy">
+        <p onclick="product_detail()">Bike</p>
+        <p onclick="product_detail()">Car</a></p>
+        <p onclick="product_detail()">Laptop Desktop</a></p>
+        <p onclick="product_detail()">Mobile</a></p>
+      </div>
+    </section>
+    <section class="content">
+      <div class="illsuration">
+        <div class="design">
+          <div class="image_aling"><img src="./assets/img/illustration/sell_home.png" alt="illsuration_img"
+              class="illsuration_img"></div>
+          <h1>Sell It</h1>
         </div>
-        <div class="contact_detail">
-          <i class="fa fa-envelope"></i>
-          <p>Email Address : vanha.@abc.com</p>
+        <div class="design">
+          <div class="image_aling"><img src="./assets/img/illustration/Search_home.png" alt="illsuration_img"
+              class="illsuration_img"></div>
+          <h1>Search It</h1>
         </div>
-        <div class="contact_detail">
-          <i class="fa fa-location"></i>
-          <p>Location : Chennai:600069</p>
+        <div class="design">
+          <div class="image_aling"><img src="./assets/img/illustration/buy_home.png" alt="illsuration_img"
+              class="illsuration_img"></div>
+          <h1>Buy It</h1>
         </div>
-      </section>
-      <section class="line"></section>
-      <section class="follow_links">
-        <div><p>Follow Us</p></div>
-        <ul class="links">
-          <li class="insta"><i class="fa-brands fa-instagram"></i></li>
-          <li class="face"><i class="fa-brands fa-facebook-f"></i></li>
-          <li class="twit"><i class="fa-brands fa-twitter"></i></li>
-          <li class="you"><i class="fa-brands fa-youtube"></i></li>
-        </ul>
-      </section>
-    </footer>
-    <div class="copy">Copyright © 2021 - 2022 VANHA - Website Designed By KISHORE</div>
-    <script >
-      function about(){
-        window.location.href="./pages/homepage/about_us_index.html";
-      }
-      function wishlist(){
-        window.location.href="./pages/Buyer/wishlist_index.html";
-      }
-      function sign_in(){
-        window.location.href="./pages/Sign in/index.html";
-      }
-      function search(){
-    
-        console.log(document.getElementById("search").value)
-        console.log(search)
-        
-        window.location.href="./pages/Buyer/product_detail_index.html"
-      }
-      const product_list = [
-       {
-        "image":{"source":"./assets/img/Car/Car.png",
-                 "alt":"audi Q3"},
-        "name":"Audi Q3",
-        "price":"40 Lakhs",
-        "currency":" (INR)"
-       },
-       {
-        "image":{"source":"./assets/img/Laptop/My project1.png",
-                 "alt":"asus laptop"},
-        "name":"ASUS Laptop",
-        "price":"1.14 Lakhs",
-        "currency":" (INR)"
-        },
-        {
-        "name":"Play Station",
-        "image":{"source":"./assets/img/Gaming/PS4.jpg",
-                 "alt":"Play Station"},
-        "price":"1.26 Lakhs",
-        "currency":" (INR)"
-        },
-        {
-        "name":"Yamaha YDP-163R Piano",
-        "image":{"source":"./assets/img/Piano/Piano.png",
-                 "alt":"Yamaha YDP-163R Piano"},
-        "price":"48,000",
-        "currency":" (INR)"
-        },
-        {
-        "name":"Marshall Speaker",
-        "image":{"source":"./assets/img/Speaker/marshal.png",
-                 "alt":"Marshall Speaker"},
-        "price":"58,000",
-        "currency":" (INR)"
-        },
-        {
-        "name":"IPHONE Charger", 
-        "image":{"source":"./assets/img/Charger/Iphone_charger.jpg",
-                 "alt":"IPHONE Charger"},
-        "price":"4,000",
-        "currency":" (INR)"
-        },
-    ]
-    product()
-      
-    </script>
+      </div>
+      <div class="heading">
+        <div class="border"></div>
+        <h2>Newly Launched</h2>
+        <div class="border"></div>
+      </div>
+      <div class="grid-container">
+      </div>
+    </section>
+  </main>
+  <div id="overlay">
+    <div class="closebtn" onclick="off()" title="Close Overlay"><i class="fa-solid fa-xmark"></i></div>
+    <form class="form" onsubmit="log_in(event)">
+      <p class="heading-in">Sign in</p>
+      <div class="field">
+        <input type="email" class="input-field" id="email" placeholder="example@abc.com" autocomplete="off"
+          required="true">
+      </div>
+      <div class="field">
+        <input type="password" class="input-field" id="password" placeholder="Password" required="true">
+      </div>
+      <div class="btn">
+        <button class="button1">Login</button>
+        <button class="button2" onclick="signup()">Sign Up</button>
+      </div>
+      <div class="socila_link">
+        <p>or</p>
+        <p>Login with</p>
+        <div class="links-in">
+          <div class="face-in"><i class="fa-brands fa-facebook"></i></div>
+          <div class="twit-in"><i class="fa-brands fa-twitter"></i></div>
+          <div class="goog-in"><i class="fa-brands fa-google"></i></div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <footer class="footer" id="footer">
+    <section class="contact">
+      <div class="contact_detail">
+        <i class="fa fa-phone"></i>
+        <p>Phone Number : +0123456789</p>
+      </div>
+      <div class="contact_detail">
+        <i class="fa fa-envelope"></i>
+        <p>Email Address : vanha.@abc.com</p>
+      </div>
+      <div class="contact_detail">
+        <i class="fa fa-location"></i>
+        <p>Location : Chennai:600069</p>
+      </div>
+    </section>
+    <section class="line"></section>
+    <section class="follow_links">
+      <div>
+        <p>Follow Us</p>
+      </div>
+      <ul class="links">
+        <li class="insta"><i class="fa-brands fa-instagram"></i></li>
+        <li class="face"><i class="fa-brands fa-facebook-f"></i></li>
+        <li class="twit"><i class="fa-brands fa-twitter"></i></li>
+        <li class="you"><i class="fa-brands fa-youtube"></i></li>
+      </ul>
+    </section>
+  </footer>
+  <div class="copy">Copyright © 2021 - 2022 VANHA - Website Designed By KISHORE</div>
+  <script src="./assets/js/index.js"></script>
+  <script src="http://wzrd.in/standalone/uuid%2Fv4@latest"></script>
+  <script>
+//     const product_list = [
+//   {
+//     "image":{"source":"./assets/img/Car/Car.png",
+//              "alt":"audi Q3"},
+//     "name":"Audi Q3",
+//     "price":"40 Lakhs",
+//   },
+//   {
+//     "image":{"source":"./assets/img/Laptop/My project1.png",
+//              "alt":"asus laptop"},
+//     "name":"ASUS Laptop",
+//     "price":"1.14 Lakhs",
+//   },
+//   {
+//     "name":"Play Station",
+//     "image":{"source":"./assets/img/Gaming/PS4.jpg",
+//              "alt":"Play Station"},
+//     "price":"1.26 Lakhs",
+//   },
+//   {
+//     "name":"Yamaha YDP-163R Piano",
+//     "image":{"source":"./assets/img/Piano/Piano.png",
+//              "alt":"Yamaha YDP-163R Piano"},
+//     "price":"48,000",
+//     "currency":" (INR)"
+//   },
+//   {
+//     "name":"Marshall Speaker",
+//     "image":{"source":"./assets/img/Speaker/marshal.png",
+//              "alt":"Marshall Speaker"},
+//     "price":"58,000",
+//   },
+//   {
+//     "name":"IPHONE Charger", 
+//     "image":{"source":"./assets/img/Charger/Iphone_charger.jpg",
+//              "alt":"IPHONE Charger"},
+//     "price":"4,000",
+//   },
+// ];
+for (let i = 0; i < 12; i++) {
+    product(i);
+  }
+  </script>
 </body>
 </html>
