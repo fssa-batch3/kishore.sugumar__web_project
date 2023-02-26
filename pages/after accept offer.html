@@ -41,19 +41,19 @@
             <div class="contact-detail">
               <div class="right_content">
                  <label> <i class="fa-solid fa-user"></i> </label>
-                 <span class="buyer_detail">Chandru</span>
+                 <span class="buyer_detail" id="buyer_name"></span>
               </div>
               <div class="right_content">
                  <label><i class="fa-solid fa-phone"></i></label>
-                 <span class="buyer_detail">88******99</span>
+                 <span class="buyer_detail" id="buyer_phone"></span>
               </div>
               <div class="right_content">
                  <label><i class="fa-solid fa-location"></i></label>
-                 <span class="buyer_detail">Madurai</span>
+                 <span class="buyer_detail" id="buyer_location"></span>
               </div>
             </div>
             <div class="btn">
-                <button class="button2" >Sell</button>
+                <button class="button2" onclick="sell()">Sell</button>
                 <button class="button3" onclick="back()">Back</button>
             </div>
         </section>
@@ -66,6 +66,9 @@
 
         function back(){
             window.location.href="./accept offer.html";
+        }
+        function sell(){
+            window.location.href="./sold page.html";
         }
     </script>
 </body>
