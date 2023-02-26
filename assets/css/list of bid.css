@@ -10,8 +10,7 @@
 .header{
     display:flex;
     align-content: space-between;
-    justify-content:space-between ;
-    box-shadow: 10px 8px 16px 0px var(--primary);
+    justify-content:space-between;
     background-color:var(--secondary);
     color: var(--tertiary);
     box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
