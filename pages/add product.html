@@ -13,8 +13,9 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
     integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="../assets/css/footer.css">
-    <title>V A N H A</title>
+  <link rel="stylesheet" href="../assets/css/footer.css">
+  <script src="../assets/JS/index.js"></script>
+  <title>V A N H A</title>
 </head>
 
 <body class="body">
@@ -31,7 +32,7 @@
           Product Name:
         </div>
         <div>
-          <input type="name" id="name" class="product_name" />
+          <input type="name" id="prod_name" class="product_name" />
         </div>
         <div class="left_content">
           Product Description:
@@ -42,44 +43,46 @@
         <div class="left-aling">
           <div>
             <div>Product Price:</div>
-            <div><input type="text" id="price" class="input" /></div>
+            <div><input type="text" id="prod_price" class="input" /></div>
           </div>
           <div class="classify">
             <div>
               <lable>Category</lable>
             </div>
             <select class="Category">
-              <option value="Bike">Bike</option>
-              <option value="Car">Car</option>
-              <option value="Desktop (or) Laptop">Desktop (or) Laptop</option>
-              <option value="Mobile">Mobile</option>
+              <option value="Bike" id="bike">Bike</option>
+              <option value="Car" id="car">Car</option>
+              <option value="Desktop (or) Laptop" id="desk&lap">Desktop (or) Laptop</option>
+              <option value="Mobile" id="mobile">Mobile</option>
             </select>
           </div>
         </div>
         <div class="left_content">Used month</div>
-        <div><input type="text" id="number" class="input" /></div>
+        <div><input type="text" id="prod_date" class="input" /></div>
       </div>
       <div class="middle-line"></div>
       <div class="main-right">
-        <form action="upload.php" method="post" enctype="multipart/form-data">
-          <input type="file" name="image">
-          <button type="submit">Upload</button>
+        <form action="upload.php" method="post" enctype="multipart/form-data" class="form">
+          <div class="img1">
+          <input type="file" name="image1">
+          <img src="" alt="uplode_img" id="img">
           <button class="cancel" style="display: none;" onclick="remove(event)">cancel</button>
-        </form>
-        <form action="upload.php" method="post" enctype="multipart/form-data">
-          <input type="file" name="image">
-          <button type="submit">Upload</button>
+          </div>
+          <div class="img2">
+          <input type="file" name="image2">
+          <img src="" alt="uplode_img" id="img">
           <button class="cancel" style="display: none;" onclick="remove(event)">cancel</button>
-        </form>
-        <form action="upload.php" method="post" enctype="multipart/form-data">
-          <input type="file" name="image">
-          <button type="submit">Upload</button>
+          </div>
+          <div class="img3">
+          <input type="file" name="image3">
+          <img src="" alt="uplode_img" id="img">
           <button class="cancel" style="display: none;" onclick="remove(event)">cancel</button>
-        </form>
-        <form action="upload.php" method="post" enctype="multipart/form-data">
-          <input type="file" name="image">
-          <button type="submit">Upload</button>
+          </div>
+          <div class="img4">
+          <input type="file" name="image4">
+          <img src="" alt="uplode_img" id="img">
           <button class="cancel" style="display: none;" onclick="remove(event)">cancel</button>
+          </div>
         </form>
       </div>
     </div>
@@ -94,49 +97,55 @@
   <script src="../assets/JS/footer.js"></script>
   <script>
     footer()
+
     function back() {
       location.href = "./buyer profile.html";
     }
-    function addImagePreview(form) {
-      const input = form.querySelector('input[type="file"]');
-      const submit = form.querySelector('input[type="submit"]');
+    const form = document.querySelector('#myForm');
+const fileInputs = document.querySelectorAll('input[type="file"]');
+const imagePreviews = document.querySelectorAll('#img');
 
-      input.addEventListener('change', () => {
-        const file = input.files[0];
-        const reader = new FileReader();
+fileInputs.forEach((fileInput, index) => {
+  const cancelButton = document.createElement('button');
+  cancelButton.textContent = 'Cancel';
+  cancelButton.style.display = 'none';
+  fileInput.parentNode.insertBefore(cancelButton, fileInput.nextSibling);
 
-        reader.addEventListener('load', () => {
-          const img = new Image();
+  fileInput.addEventListener('change', () => {
+    cancelButton.style.display = 'inline-block';
 
-          img.addEventListener('load', () => {
-            console.log(`Image dimensions: ${img.width} x ${img.height}`);
-            img.width = 300;
-            img.height = 200;
-            form.insertBefore(img, submit);
-            input.style.display = 'none';
-          });
+    const reader = new FileReader();
+    reader.onload = () => {
+      imagePreviews[index].src = reader.result;
+      imagePreviews[index].style.width = '300px';
+      imagePreviews[index].style.height = '150px';
+    };
+    reader.readAsDataURL(fileInput.files[0]);
 
-          img.src = reader.result;
-        });
+    const formData = new FormData();
+    formData.append('file', fileInput.files[0]);
+    fetch('/upload', {
+      method: 'POST',
+      body: formData
+    })
+    .then(response => {
 
-        reader.readAsDataURL(file);
-        document.querySelector(".cancel").removeAttribute("style", "display:none");
-        document.querySelector(".cancel").setAttribute("style", "display:inline");
-      });
-    }
+    })
+    .catch(error => {
+      console.error(error);
 
-    // Call the function for each form on the page
-    const forms = document.querySelectorAll('form');
-    forms.forEach(form => addImagePreview(form));
+    });
+  });
 
-    const forms2 = document.querySelectorAll('.other-form');
-    forms2.forEach(form => addImagePreview(form));
-
-    const forms3 = document.querySelectorAll('.another-form');
-    forms3.forEach(form => addImagePreview(form));
-
-    const forms4 = document.querySelectorAll('.yet-another-form');
-    forms4.forEach(form => addImagePreview(form));
+  cancelButton.addEventListener('click', (event) => {
+    event.preventDefault();
+    fileInput.value = null;
+    cancelButton.style.display = 'none';
+    imagePreviews[index].src = '';
+    imagePreviews[index].style.width = '';
+    imagePreviews[index].style.height = '';
+  });
+});
   </script>
 
 </body>

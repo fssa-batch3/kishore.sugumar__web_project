@@ -50,21 +50,25 @@
     margin-top: 20px;
 }
 .main-right{
+    margin-top: 60px;
+}
+.form{
     display: grid;
     grid-template-columns: repeat(2, 320px);
-    margin-top: 100px;
+    grid-gap:30px
 }
-.main-right form{
-    margin: 10px;
-    border-width: 1px 0px 0px 0px;
-    border-color: rgb(178, 178, 178);
+.img1, .img2, .img3, .img4 {
+    border-width:5px 0px 0px 0px;
+    padding-top: 10px;
+    border-color:black;
     border-style: solid;
-    padding: 5px;
-}
-.main-right form{
     background-image: url(../img/illustration/sell.png);
     width: 300px;
     height: 220px;
+}
+.main-right form{
+    margin: 10px;
+    padding: 5px;
 }
 .main-right p{
     font-size: 25px;

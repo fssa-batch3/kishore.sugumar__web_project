@@ -41,6 +41,11 @@ function product(i) {
 
   document.querySelector("div.grid-container").append(div_card);
 }
+// ---------------------uplode image-------------------------//
+
+function addImagePreview(form) {
+
+}
 // -----------------------------------list-seller-----------------------------------------------//
 function list(){
   div_card = document.createElement("div");
