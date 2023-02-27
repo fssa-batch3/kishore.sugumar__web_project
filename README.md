@@ -12,20 +12,20 @@
 ### user flow : 
 - `<link>` : https://drive.google.com/drive/folders/12dfKZeC8N-IIPNB0H9HVRO43dRF8pfBY
 
-###User CRUD :
-*Login
-*Register
-*Read
-*Upadte
-*Delete 
+### User CRUD :
+* Login
+* Register
+* Read
+* Upadte
+* Delete 
 
-###Product CRUD :
-*Add product
-*Read product
-*Upadte product
-*Delete product
+### Product CRUD :
+* Add product
+* Read product
+* Upadte product
+* Delete product
 
-###Features:
-*Bargain option
-*Contact option
+### Features:
+* Bargain option
+* Contact option
 
