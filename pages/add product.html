@@ -16,6 +16,7 @@
     crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="../assets/css/footer.css">
   <script src="../assets/JS/index.js"></script>
+  <script src="../assets/JS/product.js"></script>
   <title>V A N H A</title>
 </head>
 
@@ -73,7 +74,7 @@
                 <div>
                   <h4>Product Price:</h4>
                 </div>
-                <div><input type="number" class="input" id="prod_price" required/></div>
+                <div><input type="number" class="input" id="prod_price" required /></div>
               </div>
             </div>
             <div class="left-aling">
@@ -81,7 +82,7 @@
                 <div class="left_content">
                   <h4>Used</h4>
                 </div>
-                <div><input type="number" id="prod_date" class="input" required/></div>
+                <div><input type="number" id="prod_date" class="input" required /></div>
               </div>
               <div class="duration">
                 <div>
@@ -150,71 +151,31 @@
 
     // let photoElements = document.querySelectorAll('.photo');
 
-const bike = document.getElementById("bike");
-const car = document.getElementById("car");
-const laptop = document.getElementById("laptop");
-const mobile = document.getElementById("mobile");
+    const bike = document.getElementById("bike");
+    const car = document.getElementById("car");
+    const laptop = document.getElementById("laptop");
+    const mobile = document.getElementById("mobile");
 
-bike.addEventListener("click", function() {
-  const title = document.querySelector('#category_title');
-  title.innerHTML = "Bike";
-});
+    bike.addEventListener("click", function () {
+      const title = document.querySelector('#category_title');
+      title.innerHTML = "Bike";
+    });
 
-car.addEventListener("click", function() {
-  const title = document.querySelector('#category_title');
-  title.innerHTML = "Car";
-});
+    car.addEventListener("click", function () {
+      const title = document.querySelector('#category_title');
+      title.innerHTML = "Car";
+    });
 
-laptop.addEventListener("click", function() {
-  const title = document.querySelector('#category_title');
-  title.innerHTML = "Laptop & Desktop";
-});
+    laptop.addEventListener("click", function () {
+      const title = document.querySelector('#category_title');
+      title.innerHTML = "Laptop & Desktop";
+    });
 
-mobile.addEventListener("click", function() {
-  const title = document.querySelector('#category_title');
-  title.innerHTML = "Mobile";
-});
+    mobile.addEventListener("click", function () {
+      const title = document.querySelector('#category_title');
+      title.innerHTML = "Mobile";
+    });
 
-
-function active(e){
-
-  e.preventDefault();
-
-  let products = JSON.parse(localStorage.getItem("product_data")) || [];
-  let user_id = JSON.parse(localStorage.getItem("unique_id"));
-  
-  let unique_id = uuidv4();
-
-const now = new Date();
-const year = now.getFullYear();
-const month = now.getMonth() + 1;
-const day = now.getDate();
-const date = year + "-" + month + "-" + day;
-
-  const prodName = document.getElementById("prod_name").value;
-  const description = document.getElementById("description").value;
-  const prodPrice = document.getElementById("prod_price").value;
-  const prodDate = document.getElementById("prod_date").value;
-  const duration = document.getElementById("duration").value;
-  const category = document.getElementById("category_title").textContent;
-
-  const product = {
-    unique: unique_id,
-    name: prodName,
-    description: description,
-    price: prodPrice,
-    date: prodDate,
-    duration: duration,
-    category: category,
-    user_id:user_id,
-    uploded_on: date
-  };
-
-  products.push(product);
-  localStorage.setItem("product_data", JSON.stringify(products));
-  document.getElementById("form").reset();
-  window.location.href ="./buyer profile.html";
-};
 
   </script>
 </body>

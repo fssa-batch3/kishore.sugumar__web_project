@@ -112,7 +112,7 @@
 
 .main {
     margin-top: 50px;
-    background-color:transparent;
+    background-color: transparent;
     backdrop-filter: blur(100px);
 }
 
@@ -163,7 +163,7 @@
     padding-left: 10px;
     color: white;
     background-color: #363636;
-    box-shadow: 2px 5px 10px rgba(0,0,0,0.3);
+    box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.3);
     transition: 300ms ease-in-out;
 }
 
@@ -177,7 +177,7 @@
     padding: 10px 0px 0px 10px;
     color: white;
     background-color: #363636;
-    box-shadow: 2px 5px 10px rgba(0,0,0,0.3);
+    box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.3);
     transition: 300ms ease-in-out;
 }
 
@@ -192,7 +192,7 @@
     margin-top: 5px;
     color: white;
     background-color: #363636;
-    box-shadow: 2px 5px 10px rgba(0,0,0,0.3);
+    box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.3);
     transition: 300ms ease-in-out;
 }
 
@@ -206,7 +206,7 @@
     margin-top: 5px;
     color: white;
     background-color: #363636;
-    box-shadow: 2px 5px 10px rgba(0,0,0,0.3);
+    box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.3);
     transition: 300ms ease-in-out;
     outline: none;
     border-radius: 5px;
@@ -272,29 +272,29 @@
 
 }
 
-.closebtn{
+.closebtn {
     float: right;
-    margin:0px 20px 20px 0px;
+    margin: 0px 20px 20px 0px;
     font-size: 50px;
     color: aliceblue;
 }
 
-.closebtn:hover{
+.closebtn:hover {
     color: #ffd343;
 }
 
-#overlay h1{
+#overlay h1 {
     font-size: 40px;
     color: #ffd343;
     margin-top: 50px;
 }
 
-.aling{
+.aling {
     display: flex;
 }
 
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+    -webkit-appearance: none;
+    margin: 0;
 }

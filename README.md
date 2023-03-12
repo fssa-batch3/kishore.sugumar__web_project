@@ -22,10 +22,14 @@
 ### Product CRUD :
 * Add product
 * Read product
+* Show product detail
 * Upadte product
 * Delete product
 
-### Features:
+### Bargain option :
+* Create bargain request
+* Read bargain request
+
+### Features :
 * Bargain option
 * Contact option
-

@@ -1,77 +1,91 @@
-:root{
-    --primary:#7d8e95;
-    --secondary:#222f30;
-    --tertiary:#ffd8af ;
-    --fourth:#f1b194 ;
+:root {
+    --primary: #7d8e95;
+    --secondary: #222f30;
+    --tertiary: #ffd8af;
+    --fourth: #f1b194;
 }
-.body{
+
+.body {
     font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
 }
-.header{
-    display:flex;
+
+.header {
+    display: flex;
     align-content: space-between;
-    justify-content:space-between;
-    background-color:var(--secondary);
+    justify-content: space-between;
+    background-color: var(--secondary);
     color: var(--tertiary);
     box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }
-.logo{
+
+.logo {
     width: 120px;
     height: 50px;
-    margin:10px;
+    margin: 10px;
 }
-.profile_img{
+
+.profile_img {
     width: 50px;
-    height:50px;
-    margin:10px;
+    height: 50px;
+    margin: 10px;
     border-radius: 50%;
 }
-.header h1{
+
+.header h1 {
     padding-top: 5px;
 }
+
 /*------------productdetail------------*/
-.main{
+.main {
     display: flex;
     justify-content: space-evenly;
     margin-top: 80px;
 }
-.product_img{
+
+.product_img {
     width: 350px;
     height: 300px;
     margin-top: 20px;
     border-radius: 20px;
 }
-.main_left{
+
+.main_left {
     text-align: center;
     border-radius: 10px;
     width: 500px;
     height: 500px;
     background-color: whitesmoke;
-    box-shadow:5px 7px 20px gray;
+    box-shadow: 5px 7px 20px gray;
 }
-h1{
+
+h1 {
     font-size: 30px;
     margin: 10px 0px 10px 0px;
 }
-.rate{
+
+.rate {
     font-size: 20px;
 }
-.main_right{
+
+.main_right {
     border-radius: 10px;
     width: 530px;
     height: 650px;
     background-color: whitesmoke;
-    box-shadow:5px 7px 20px gray;
+    box-shadow: 5px 7px 20px gray;
 }
-.main_right h2{
+
+.main_right h2 {
     color: var(--primary);
     margin-left: 35%;
 }
-.algn{
+
+.algn {
     height: 35px;
     margin-top: 33px;
 }
-.content{
+
+.content {
     width: 90%;
     display: flex;
     border-radius: 20px;
@@ -83,43 +97,52 @@ h1{
     font-size: 23px;
     background-color: rgb(227, 227, 227);
 }
-.buyer_img{
+
+.buyer_img {
     width: 80px;
     height: 80px;
     margin: 10px 10px 10px 20px;
     border-radius: 50%;
 }
-.buyer{
+
+.buyer {
     width: 200px;
     height: 200px;
     margin: 10px 10px 10px 20px;
     border-radius: 50%;
 }
-.rate{
+
+.rate {
     margin: 35px 0px 0px 0px;
 }
+
 /* -------------after acept offer----------- */
-.img{
-    margin:20px;
+.img {
+    margin: 20px;
 }
-.right_content{
+
+.right_content {
     width: 300px;
     margin: 50px 0px 0px 30px;
     border-style: solid;
     border-width: 0px 0px 1px 0px;
     padding: 0px 20px 10px 0px;
 }
-.right_content i{
+
+.right_content i {
     font-size: 20px;
     padding-right: 20px;
 }
-.contact-detail{
+
+.contact-detail {
     margin: 55px 0px 0px 20px;
 }
-.btn{
+
+.btn {
     margin-top: 50px;
     text-align: center;
 }
-.face i{
+
+.face i {
     padding: 0px 3px;
 }

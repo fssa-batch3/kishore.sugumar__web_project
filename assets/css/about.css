@@ -1,101 +1,122 @@
-:root{
-    --primary:#7d8e95;
-    --secondary:#222f30;
-    --tertiary:#ffd8af ;
-    --fourth:#f1b194 ;
+:root {
+    --primary: #7d8e95;
+    --secondary: #222f30;
+    --tertiary: #ffd8af;
+    --fourth: #f1b194;
 }
-.body{
+
+.body {
     font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
 }
-.header{
-    display:flex;
+
+.header {
+    display: flex;
     align-content: space-between;
-    justify-content:space-between ;
-    background-color:var(--secondary);
+    justify-content: space-between;
+    background-color: var(--secondary);
     color: var(--tertiary);
     box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }
-.logo{
+
+.logo {
     width: 120px;
     height: 60px;
-    margin:10px;
+    margin: 10px;
 }
-.profile_img{
+
+.profile_img {
     width: 60px;
     height: 60px;
-    margin:10px;
+    margin: 10px;
     border-radius: 50%;
 }
-.main{
+
+.main {
     text-align: center;
     margin-bottom: 10%;
 }
-.main li{
+
+.main li {
     font-size: 1.5vw;
     list-style: none;
 }
-.main h1{
+
+.main h1 {
     font-size: 2vw;
 }
-.main ul{
-    margin-bottom:10%;
+
+.main ul {
+    margin-bottom: 10%;
 }
-.img{
+
+.img {
     margin-top: 3%;
     width: 50%;
     height: auto;
 }
-.coustomers{
+
+.coustomers {
     display: flex;
     justify-content: space-evenly;
     margin: 10% 0% 0% 0%;
     padding: 3% 0%;
     background-color: var(--secondary);
 }
-.seller-img{
+
+.seller-img {
     width: 60%;
     height: auto;
     padding: 5%;
 }
-.buyer-img{
+
+.buyer-img {
     width: 65%;
     height: auto;
     padding: 30px;
 }
-.seller{
+
+.seller {
     width: 30%;
     height: auto;
-    box-shadow:5px 7px 20px var(--teritary);
+    box-shadow: 5px 7px 20px var(--teritary);
     background-color: white;
 }
-.seller h2{
-    font-size:2vw;
+
+.seller h2 {
+    font-size: 2vw;
 }
-.seller h3{
+
+.seller h3 {
     font-size: 1.5vw;
 }
-.buyer{   
+
+.buyer {
     width: 30%;
     height: auto;
-    box-shadow:5px 7px 20px var(--teritary);
+    box-shadow: 5px 7px 20px var(--teritary);
     background-color: white;
 }
-.buyer h2{
-    font-size:2vw;
+
+.buyer h2 {
+    font-size: 2vw;
 }
-.buyer h3{
+
+.buyer h3 {
     font-size: 1.5vw;
 }
-.seller p{
+
+.seller p {
     width: 80%;
     font-size: 1vw;
     margin: 0% 0% 0% 10%;
 }
-.buyer p{
+
+.buyer p {
     width: 80%;
     font-size: 1vw;
     margin: 0% 0% 0% 10%;
 }
-.face i{
+
+.face i {
     padding: 2px 0px;
 }

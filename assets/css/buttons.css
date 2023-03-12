@@ -9,10 +9,12 @@
     background-color: #252525;
     color: white;
 }
+
 .button1:hover {
     background-color: rgb(102, 160, 219);
     color: white;
 }
+
 .button2 {
     padding: 10px 20px;
     margin-right: 10px;
@@ -24,10 +26,12 @@
     background-color: #252525;
     color: white;
 }
+
 .button2:hover {
     background-color: rgb(93, 220, 93);
     color: white;
 }
+
 .button3 {
     padding: 10px 20px;
     border-radius: 5px;
@@ -39,20 +43,23 @@
     background-color: #252525;
     color: white;
 }
+
 .button3:hover {
     background-color: rgb(249, 82, 31);
     color: white;
 }
-.button4{
+
+.button4 {
     width: 40px;
-    height: 3em; 
+    height: 3em;
     background-color: white;
     border-width: 0px;
     position: relative;
     bottom: 59px;
     border-radius: 0px 5px 5px 0px;
 }
-.button4:hover{
+
+.button4:hover {
     background-color: rgb(123, 191, 249);
     color: white;
 }

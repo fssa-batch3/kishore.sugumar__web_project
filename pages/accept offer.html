@@ -64,7 +64,7 @@
             div.classList.add("content");
 
             const img = document.createElement("img");
-              img.src = product.img_src;
+            img.src = product.img_src;
             img.alt = "product_img";
             img.classList.add("buyer_img");
             div.appendChild(img);
@@ -77,8 +77,8 @@
             const sellButton = document.createElement("button");
             sellButton.classList.add("button2", "algn");
             sellButton.textContent = "sell";
-            sellButton.onclick = function() {
-                window.location.href="./after accept offer.html";
+            sellButton.onclick = function () {
+                window.location.href = "./after accept offer.html";
             };
             div.appendChild(sellButton);
 

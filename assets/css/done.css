@@ -1,39 +1,46 @@
-:root{
-    --secondary:#222f30;
-    --tertiary:#ffd8af ;
+:root {
+    --secondary: #222f30;
+    --tertiary: #ffd8af;
 }
-.body{
+
+.body {
     background-image: url(../img/illustration/a02f3b64-258c-4b08-8e9b-366a04f95ef8.png);
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: 100% 100%;
     font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
 }
-.body a{
+
+.body a {
     text-decoration: none;
     color: var(--tertiary);
 }
-.tick{
+
+.tick {
     width: 200px;
     height: 200px;
     margin-top: 50px;
     background-color: rgb(182, 215, 245);
 }
-.content{
+
+.content {
     width: 500px;
     height: 500px;
-    box-shadow:5px 7px 20px gray;
+    box-shadow: 5px 7px 20px gray;
     text-align: center;
     margin: 200px 0px 0px 450px;
     background-color: var(--secondary);
 }
-.content h1{
-    font-size:55px; 
+
+.content h1 {
+    font-size: 55px;
 }
-.content h2{
-    font-size:35px; 
+
+.content h2 {
+    font-size: 35px;
 }
-.content a{
+
+.content a {
     text-decoration: none;
     color: black;
 }

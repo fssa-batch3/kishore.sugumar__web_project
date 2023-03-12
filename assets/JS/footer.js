@@ -1,11 +1,11 @@
-function footer(){
+function footer() {
     // Select the footer element
     const footer = document.querySelector("footer.footer");
-    
+
     // Create the contact section element
     const contactSection = document.createElement('section');
     contactSection.classList.add('contact');
-    
+
     // Create the phone number element
     const phoneDetail = document.createElement('div');
     phoneDetail.classList.add('contact_detail');
@@ -15,7 +15,7 @@ function footer(){
     phoneNumber.textContent = 'Phone Number : +0123456789';
     phoneDetail.appendChild(phoneIcon);
     phoneDetail.appendChild(phoneNumber);
-    
+
     // Create the email address element
     const emailDetail = document.createElement('div');
     emailDetail.classList.add('contact_detail');
@@ -25,7 +25,7 @@ function footer(){
     emailAddress.textContent = 'Email Address : vanha.@abc.com';
     emailDetail.appendChild(emailIcon);
     emailDetail.appendChild(emailAddress);
-    
+
     // Create the location element
     const locationDetail = document.createElement('div');
     locationDetail.classList.add('contact_detail');
@@ -35,16 +35,16 @@ function footer(){
     locationAddress.textContent = 'Location : Chennai:600069';
     locationDetail.appendChild(locationIcon);
     locationDetail.appendChild(locationAddress);
-    
+
     // Add all the contact elements to the contact section
     contactSection.appendChild(phoneDetail);
     contactSection.appendChild(emailDetail);
     contactSection.appendChild(locationDetail);
-    
+
     // Create the line section element
     const lineSection = document.createElement('section');
     lineSection.classList.add('line');
-    
+
     // Create the follow links section element
     const followSection = document.createElement('section');
     followSection.classList.add('follow_links');
@@ -80,9 +80,9 @@ function footer(){
     linksUl.appendChild(youLi);
     followDiv.appendChild(linksUl);
     followSection.appendChild(followDiv);
-    
+
     // Add all the sections to the footer element
     footer.appendChild(contactSection);
     footer.appendChild(lineSection);
     footer.appendChild(followSection);
-    }
+}
