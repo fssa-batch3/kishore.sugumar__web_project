@@ -93,26 +93,6 @@ function update(e) {
   window.location.reload();
   return;
 }
-// -----------------------------delete profile--------------------------------------//
-
-//   function del(event) {
-//     if (confirm("Are you sure you want to delete your profile")) {
-//       let users = JSON.parse(localStorage.getItem('user_data'));
-//       let unique_id = JSON.parse(localStorage.getItem('unique'));
-
-//       function profile_data(e) {
-//         return e.email == unique_id;
-//       }
-
-//       let user_data = users.find(profile_data);
-//       let i_User = users.indexOf(user_data);
-//       console.log(i_User);
-//       users.splice(i_User, 1);
-//       localStorage.setItem("user_data", JSON.stringify(users));
-//       delete localStorage.unique;
-//       location.href = "../index.html"
-//     }
-//   }
 // -------------------------delete profile-----------------------//
 function del(event) {
   event.preventDefault();
@@ -120,9 +100,14 @@ function del(event) {
   let users = JSON.parse(localStorage.getItem("user_data"));
   let unique = JSON.parse(localStorage.getItem("unique_id"));
   let products = JSON.parse(localStorage.getItem("product_data"));
+  let wish_list = JSON.parse(localStorage.getItem("wishlist"));
 
   products = products.filter((product) => product.user_id !== unique);
   localStorage.setItem("product_data", JSON.stringify(products));
+
+  wish_list = wish_list.filter((data) => data.user_id !== unique);
+  localStorage.setItem("product_data", JSON.stringify(wish_list));
+
 
   let index = users.findIndex((user) => user.email === unique);
   if (index !== -1) {
@@ -131,7 +116,10 @@ function del(event) {
       localStorage.setItem("user_data", JSON.stringify(users));
 
       products = products.filter((product) => product.user_id !== unique);
+      wish_list = wish_list.filter((data) => data.user_id !== unique);
+
       localStorage.setItem("product_data", JSON.stringify(products));
+      localStorage.setItem("wishlist", JSON.stringify(wish_list));
 
       localStorage.removeItem("unique_id");
 

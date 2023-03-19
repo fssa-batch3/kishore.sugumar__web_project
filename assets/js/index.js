@@ -12,11 +12,15 @@ function product() {
       div_detail.setAttribute("class", "card-details");
       div_card.append(div_detail);
 
+      let anch = document.createElement("a");
+      anch.setAttribute("href", "./pages/product page.html?product_id=" + prod[i].unique);
+      div_detail.append(anch);
+
       let image = document.createElement("img");
       image.setAttribute("src", "");
       image.setAttribute("alt", "");
       image.setAttribute("class", "product_img");
-      div_detail.append(image);
+      anch.append(image);
 
       let h3 = document.createElement("h3");
       h3.setAttribute("class", "text-title");
@@ -56,11 +60,12 @@ function product() {
 }
 //------------------------------------product card-------------------------------------------//
 function card() {
+  const category_prod = new URLSearchParams(window.location.search).get('Category');
   let prod = JSON.parse(localStorage.getItem("product_data"));
   let unique = JSON.parse(localStorage.getItem("unique_id"));
 
   for (let i = 0; i < prod.length; i++) {
-    if (unique != prod[i].user_id) {
+    if (unique != prod[i].user_id && category_prod === prod[i].category) {
       let div_card = document.createElement("div");
       div_card.setAttribute("class", "card");
 
@@ -68,11 +73,15 @@ function card() {
       div_detail.setAttribute("class", "card-details");
       div_card.append(div_detail);
 
+      let anch = document.createElement("a");
+      anch.setAttribute("href", "./product page.html?product_id=" + prod[i].unique);
+      div_detail.append(anch);
+
       let image = document.createElement("img");
       image.setAttribute("src", "");
       image.setAttribute("alt", "");
       image.setAttribute("class", "product_img");
-      div_detail.append(image);
+      anch.append(image);
 
       let h3 = document.createElement("h3");
       h3.setAttribute("class", "text-title");
@@ -139,13 +148,14 @@ function list(product) {
         unique.innerHTML = prod[i].unique;
         div_card.append(unique);
 
+        let anch = document.createElement("a");
+        anch.setAttribute("href", "./accept offer.html?product_id=" + prod[i].unique);
+        div_card.append(anch);
+
         button1 = document.createElement("button");
         button1.classList.add("button1", "algn");
         button1.textContent = "offers";
-        button1.onclick = function () {
-          window.location.href = "./accept offer.html";
-        };
-        div_card.append(button1);
+        anch.append(button1);
 
         button3 = document.createElement("button");
         button3.classList.add("button2", "algn");
@@ -170,57 +180,98 @@ function list(product) {
     }
   }
 }
-//---------------------------wish list--------------------------//
-function wish() {
-  div_card = document.createElement("div");
-  div_card.classList.add("content");
+//-----------------------------------similar prdocut----------------------------------------//
+function similar() {
+  const prod_data = JSON.parse(localStorage.getItem("product_data"));
 
-  image = document.createElement("img");
-  image.setAttribute("src", "");
-  image.setAttribute("alt", "");
-  image.classList.add("product-img");
-  div_card.prepend(image);
+  const productId = new URLSearchParams(window.location.search).get("product_id");
 
-  h1 = document.createElement("h1");
-  h1.textContent = "";
-  div_card.append(h1);
+  const similarProducts = [];
 
-  button1 = document.createElement("button");
-  button1.classList.add("button1", "algn");
-  button1.textContent = "Bid";
-  div_card.append(button1);
+  while (similarProducts.length < Math.min(4, prod_data.length)) {
+    const randomIndex = Math.floor(Math.random() * prod_data.length);
+    const randomProduct = prod_data[randomIndex];
+    
+    if (randomProduct.category === product.category && randomProduct.unique !== productId) {
+      similarProducts.push(randomProduct);
+    }
+  }
 
-  button2 = document.createElement("button");
-  button2.classList.add("button3", "algn");
-  button2.textContent = "Remove";
-  div_card.append(button2);
+  for (let i = 0; i < similarProducts.length; i++) {
+    let div_card = document.createElement("div");
+    div_card.setAttribute("class", "prod_card");
+    div_card.onclick = function (event) {
+      window.location.href="./product page.html?product_id=" + similarProducts[i].unique;
+    }
 
-  document.querySelector("div.box").append(div_card);
+    let div_detail = document.createElement("div");
+    div_detail.setAttribute("class", "card-details");
+    div_card.append(div_detail);
 
+    let image = document.createElement("img");
+    image.setAttribute("src", similarProducts[i].image_url);
+    image.setAttribute("alt", similarProducts[i].name);
+    image.setAttribute("class", "product_img");
+    div_detail.append(image);
+
+    let h3 = document.createElement("h3");
+    h3.setAttribute("class", "text-title");
+    h3.innerHTML = similarProducts[i].name;
+    div_detail.append(h3);
+
+    let unique = document.createElement("p");
+    unique.setAttribute("class", "unique");
+    unique.setAttribute("id", "unique");
+    unique.innerHTML = similarProducts[i].unique;
+    div_detail.append(unique);
+
+    let div_price = document.createElement("div");
+    div_price.setAttribute("class", "text-body");
+    div_detail.append(div_price);
+
+    let p_price = document.createElement("span");
+    div_price.prepend(p_price);
+
+    let p_bold = document.createElement("b");
+    p_bold.innerText = "Price:";
+    p_price.append(p_bold);
+
+    let p_rate = document.createElement("span");
+    p_rate.innerHTML = similarProducts[i].price;
+    div_price.append(p_rate);
+
+    let p_currency = document.createElement("span");
+    p_currency.innerHTML = " (INR)";
+    div_price.append(p_currency);
+
+    document.body.appendChild(div_card);
+
+    document.querySelector("section.similar_container").append(div_card);
+  }
 }
 //---------------------------bid list---------------------------//
-function bid() {
-  div_card = document.createElement("div");
-  div_card.classList.add("content");
+// function bid() {
+//   div_card = document.createElement("div");
+//   div_card.classList.add("content");
 
-  image = document.createElement("img");
-  image.setAttribute("src", "");
-  image.setAttribute("alt", "");
-  image.classList.add("product-img");
-  div_card.prepend(image);
+//   image = document.createElement("img");
+//   image.setAttribute("src", "");
+//   image.setAttribute("alt", "");
+//   image.classList.add("product-img");
+//   div_card.prepend(image);
 
-  h1 = document.createElement("h1");
-  h1.textContent = "";
-  div_card.append(h1);
+//   h1 = document.createElement("h1");
+//   h1.textContent = "";
+//   div_card.append(h1);
 
-  button2 = document.createElement("button");
-  button2.classList.add("button2", "algn");
-  button2.textContent = "Bid more";
-  div_card.append(button2);
+//   button2 = document.createElement("button");
+//   button2.classList.add("button2", "algn");
+//   button2.textContent = "Bid more";
+//   div_card.append(button2);
 
-  document.querySelector("div.box").append(div_card);
+//   document.querySelector("div.box").append(div_card);
 
-}
+// }
 //-----------------------home page-----------------------------------------//
 function show_on() {
   document.getElementById("register").style.display = "block";
@@ -239,9 +290,6 @@ function profile() {
   else {
     window.location.href = "./pages/buyer profile.html";
   }
-}
-function product_detail() {
-  window.location.href = "./pages/sub product list.html";
 }
 function about() {
   window.location.href = "./pages/about us.html";
@@ -285,3 +333,21 @@ function editform_on() {
 function editform_off() {
   document.getElementById("prod_edit").style.display = "none";
 }
+// -------------------------product page------------------------//
+function img(thumb) {
+  var main_image = document.getElementById("imagebox");
+  main_image.src = thumb.src
+}
+function seller_off() {
+  document.getElementById("overlay").style.display = "none";
+}
+function seller_on() {
+  let user = JSON.parse(localStorage.getItem("unique_id"));
+  if (!user) {
+    alert("There is no account please 'Log in'")
+  }
+  else {
+    document.getElementById("overlay").style.display = "block";
+  }
+}
+// ---------------------------------------------------------------//

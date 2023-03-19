@@ -36,6 +36,9 @@
       <div class="tooltip"><a href="#footer"><i class="fa fa-address-book"></i></a>
         <span class="tooltiptext">Contact Us</span>
       </div>
+      <div class="tooltip"><a><i class="fa fa-bell"></i></a>
+        <span class="tooltiptext">Notification</span>
+      </div>
       <div class="tooltip"><a onclick="wishlist()"><i class="fa fa-heart"></i></a>
         <span class="tooltiptext">Wish List</span>
       </div>
@@ -49,10 +52,18 @@
     <section class="classfy">
       <div class="sub_classfy">
         <h3>Category</h3>
-        <p onclick="product_detail()"><i class="fa-sharp fa-solid fa-person-biking"></i></p>
-        <p onclick="product_detail()"><i class="fa-solid fa-car-side"></i></p>
-        <p onclick="product_detail()"><i class="fa-solid fa-laptop"></i><i class="fa-solid fa-desktop"></i></p>
-        <p onclick="product_detail()"><i class="fa-solid fa-tablet-screen-button"></i></p>
+        <a href="./pages/sub product list.html?Category=" + Cate>
+          <p value="Bike" id="categ"><i class="fa-sharp fa-solid fa-person-biking"></i></p>
+        </a>
+        <a href="./pages/sub product list.html?Category=" + Cate>
+          <p value="Car" id="categ"><i class="fa-solid fa-car-side"></i></p>
+        </a>
+        <a href="./pages/sub product list.html?Category=" + Cate>
+          <p value="Laptop-Desktop" id="categ"><i class="fa-solid fa-laptop"></i><i class="fa-solid fa-desktop"></i></p>
+        </a>
+        <a href="./pages/sub product list.html?Category=" + Cate>
+          <p value="Mobile" id="categ"><i class="fa-solid fa-tablet-screen-button"></i></p>
+        </a>
       </div>
     </section>
     <section class="content">
@@ -80,6 +91,7 @@
       </div>
       <div class="grid-container">
       </div>
+      <button class="button1 algn" id="loadmore">Load more</button>
     </section>
   </main>
   <!-- -----------------------register----------------------- -->
@@ -151,9 +163,40 @@
   <script src="./assets/js/index.js"></script>
   <script src="./assets/JS/profile.js"></script>
   <script>
-    alert("Hi")
+    const links = document.querySelectorAll('a[href^="./pages/sub product list.html?Category="]');
+
+    links.forEach(link => {
+      const category = link.querySelector('p').getAttribute('value');
+      const url = `./pages/sub product list.html?Category=${category}`;
+      link.setAttribute('href', url);
+    });
     footer();
     product();
+
+    // ---------load more--------//
+
+    var cardContainer = document.getElementById("grid-container");
+    var cards = document.getElementsByClassName("card");
+    var loadMoreBtn = document.getElementById("loadmore");
+    var currentIndex = 6;
+
+    for (var i = 0; i < cards.length; i++) {
+      if (i >= currentIndex) {
+        cards[i].style.display = "none";
+      }
+    }
+    loadMoreBtn.addEventListener("click", function () {
+      for (var i = currentIndex; i < currentIndex + 6; i++) {
+        if (cards[i]) {
+          cards[i].style.display = "block";
+        }
+      }
+      currentIndex += 6;
+      if (currentIndex >= cards.length) {
+        loadMoreBtn.style.display = "none";
+      }
+    });
+
   </script>
 </body>
 

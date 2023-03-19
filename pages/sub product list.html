@@ -31,19 +31,47 @@
   <main class="main">
     <div class="heading">
       <div class="border"></div>
-      <h2>####</h2>
+      <h2 id="cate_name"></h2>
       <div class="border"></div>
     </div>
     <div id="grid-container">
     </div>
+    <button class="button1 algn" id="loadmore">Load more</button>
   </main>
   <footer class="footer" id="footer">
   </footer>
   <div class="copy">Copyright © 2021 - 2022 VANHA - Website Designed By KISHORE</div>
   <script src="../assets/JS/index.js"></script>
   <script>
+
+    document.querySelector("#cate_name").innerHTML= new URLSearchParams(window.location.search).get('Category');;
     footer();
     card();
+
+        // ---------load more--------//
+
+        var cardContainer = document.getElementById("grid-container");
+    var cards = document.getElementsByClassName("card");
+    var loadMoreBtn = document.getElementById("loadmore");
+    var currentIndex = 12;
+
+    for (var i = 0; i < cards.length; i++) {
+      if (i >= currentIndex) {
+        cards[i].style.display = "none";
+      }
+    }
+    loadMoreBtn.addEventListener("click", function () {
+      for (var i = currentIndex; i < currentIndex + 8; i++) {
+        if (cards[i]) {
+          cards[i].style.display = "block";
+        }
+      }
+      currentIndex += 8;
+      if (currentIndex >= cards.length) {
+        loadMoreBtn.style.display = "none";
+      }
+    });
+
   </script>
 </body>
 

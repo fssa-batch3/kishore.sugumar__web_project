@@ -22,14 +22,32 @@
 ### Product CRUD :
 * Add product
 * Read product
-* Show product detail
+* Show product detail (Product page)
 * Upadte product
 * Delete product
 
+### Wish List:
+* Create product
+* Read product
+* Delete product
+
+### Bidded List:
+* Create product
+* Read product
+
+### Showing Contact:
+* Create Contact
+* Read Contact
+
 ### Bargain option :
 * Create bargain request
-* Read bargain request
+* Read bargain request (seller)
+
+### Contact option :
+* Add contact info
+* Show contact info
 
 ### Features :
 * Bargain option
 * Contact option
+* Notification

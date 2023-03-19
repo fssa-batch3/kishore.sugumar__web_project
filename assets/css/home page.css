@@ -3,6 +3,7 @@
     --secondary: #222f30;
     --tertiary: #ffeba7;
     --fourth: #fdd13f;
+    --fifth: #4c585e;
 }
 
 .body {
@@ -50,7 +51,7 @@
 }
 
 .nav_links {
-    height: 450px;
+    height: 530px;
     position: sticky;
     top: 0px;
     background-color: var(--secondary);
@@ -65,6 +66,10 @@
     cursor: pointer;
 }
 
+a {
+    color: var(--secondary);
+}
+
 .nav_links a {
     color: var(--tertiary);
 }
@@ -75,7 +80,7 @@
 
 .classfy {
     margin: 0px 10px 0px 10px;
-    width: 220px;
+    width: 180px;
     font-size: 1.5rem;
     justify-content: center;
 }
@@ -261,4 +266,7 @@
     justify-content: space-evenly;
     grid-gap: 40px;
     margin: 5% 0% 0% 0%;
+}
+.algn{
+    margin-top: 50px;
 }

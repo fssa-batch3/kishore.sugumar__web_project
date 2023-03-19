@@ -3,6 +3,7 @@
     --secondary: #222f30;
     --tertiary: #ffd8af;
     --fourth: #f1b194;
+    --fifth: #4c585e;
 }
 
 .body {
@@ -40,6 +41,10 @@
 .heading h2 {
     color: var(--primary);
     font-size: 2vw;
+}
+
+.main{
+    text-align: center;
 }
 
 .border {
@@ -100,4 +105,8 @@
     grid-template-columns: repeat(4, 300px);
     justify-content: space-evenly;
     row-gap: 25px;
+}
+
+.algn{
+    margin-top: 50px;
 }

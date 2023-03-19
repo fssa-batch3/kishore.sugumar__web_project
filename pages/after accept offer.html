@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
         integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="../assets/css/list of bid.css">
+    <link rel="stylesheet" href="../assets/css/buyer page.css">
     <link rel="stylesheet" href="../assets/css/buttons.css">
     <link rel="stylesheet" href="../assets/css/footer.css">
     <script src="../assets/JS/footer.js"></script>
@@ -29,33 +29,38 @@
     </header>
     <main class="main">
         <section class="main_left">
-            <img src="" alt="product_img" class="product_img">
+            <img src="../assets/img/shoe5.png" alt="product_img" class="product_img">
             <div class="product_detail">
-                <h1></h1>
+                <h1 id="product_name"></h1>
                 <div class="rate">
-                    <p>Price</p>
+                    <p><b>Price :</b></p>
+                    <h3 id="prod_price"></h3>
+                    <h3 class="inr"><b>(INR)</b></h3>
                 </div>
-                <span class="price"></span><span>(INR)</span>
+            </div>
         </section>
         <section class="main_right">
-            <div class="img"><img src="../assets/img/buyer.png" alt="buyer_img" class="buyer"></div>
+            <div class="img">
+                <img src="../assets/img/buyer.png" alt="buyer_img" class="buyer">
+                <span>Buyer info</span>
+            </div>
             <div class="contact-detail">
                 <div class="right_content">
                     <label> <i class="fa-solid fa-user"></i> </label>
-                    <span class="buyer_detail" id="buyer_name"></span>
+                    <h3 class="buyer_detail" id="buyer_name"></h3>
                 </div>
                 <div class="right_content">
                     <label><i class="fa-solid fa-phone"></i></label>
-                    <span class="buyer_detail" id="buyer_phone"></span>
+                    <h3 class="buyer_detail" id="buyer_phone"></h3>
                 </div>
                 <div class="right_content">
                     <label><i class="fa-solid fa-location"></i></label>
-                    <span class="buyer_detail" id="buyer_location"></span>
+                    <h3 class="buyer_detail" id="buyer_location"></h3>
                 </div>
             </div>
             <div class="btn">
                 <button class="button2" onclick="sell()">Sell</button>
-                <button class="button3" onclick="back()">Back</button>
+                <button class="button3" onclick="redirect()">Back</button>
             </div>
         </section>
     </main>
@@ -63,11 +68,28 @@
     </footer>
     <div class="copy">Copyright © 2021 - 2022 VANHA - Website Designed By KISHORE</div>
     <script>
-        footer();
-
-        function back() {
-            window.location.href = "./accept offer.html";
+        function redirect() {
+            const productId = new URLSearchParams(window.location.search).get('product_id');
+            window.location.href = `./accept offer.html?product_id=${productId}`;
         }
+        footer();
+        let product = JSON.parse(localStorage.getItem("product_data"));
+        let buyer = JSON.parse(localStorage.getItem("user_data"))
+
+        let productId = new URLSearchParams(window.location.search).get('product_id');
+        let buyerId = new URLSearchParams(window.location.search).get('buyer_id');
+
+        const product_i = product.findIndex(item => item.unique === productId);
+        let product_index = product[product_i];
+        const buyer_i = buyer.findIndex(item => item.email === buyerId);
+        let buyer_index = buyer[buyer_i];
+
+        document.querySelector("#product_name").innerHTML = product[product_i].name;
+        document.querySelector("#prod_price").innerHTML = product[product_i].price;
+        document.querySelector("#buyer_name").innerHTML = buyer[buyer_i].name
+        document.querySelector("#buyer_phone").innerHTML = buyer[buyer_i].phone
+        document.querySelector("#buyer_location").innerHTML = buyer[buyer_i].location
+
         function sell() {
             window.location.href = "./sold page.html";
         }

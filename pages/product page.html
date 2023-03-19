@@ -17,6 +17,8 @@
     <link rel="stylesheet" href="../assets/css/product_page.css">
     <script src="../assets/JS/footer.js"></script>
     <script src="../assets/JS/index.js"></script>
+    <script src="../assets/JS/wishlist.js"></script>
+    <script src="../assets/JS/bidlist.js"></script>
     <title>V A N H A</title>
 </head>
 
@@ -31,59 +33,61 @@
     <main class="main">
         <section class="main_left">
             <div class="thumbnail-imgs">
-                <img src="../assets/img/shoe5.png" alt="" onclick="img(this)">
-                <img src="../assets/img/shoe6.png" alt="" onclick="img(this)">
-                <img src="../assets/img/shoe7.png" alt="" onclick="img(this)">
-                <img src="../assets/img/shoe8.png" alt="" onclick="img(this)">
+                <img src="" alt="" onclick="img(this)">
+                <img src="" alt="" onclick="img(this)">
+                <img src="" alt="" onclick="img(this)">
+                <img src="" alt="" onclick="img(this)">
             </div>
             <div class="main-img">
-                <img id="imagebox" src="../assets/img/shoe5.png" alt="">
+                <img id="imagebox" src="" alt="">
             </div>
         </section>
         <section class="main_right">
             <div class="product-detail">
-                <h2 class="prod_name">#####</h2>
+                <h1 class="prod_name" id="prod_name"></h1>
+                <p class="desc"><b>Description :</b></p>
                 <p id="description">
-                    Power Output(RMS): 80 W<br>
-                    Power Source: Power Cord<br>
-                    Bluetooth Version: 5<br>
-                    Wireless music streaming via Bluetooth<br>
-                    Customize your sound: Fine-tune your music to meet your requirement<br>
-                    Combines contemporary technology with iconic Marshall design to deliver hard-hitting sound while
-                    retaining a classic look<br>
-                    Marshall Bluetooth app: Customise your listening experience or control the music you're listening
-                    to.<br>
-                    Produces clean and precise audio, even at the highest levels.<br>
-                    Power Output(RMS): 80 W<br>
-                    Power Source: Power Cord<br>
-                    Bluetooth Version: 5<br>
-                    Wireless music streaming via Bluetooth<br>
-                    Customize your sound: Fine-tune your music to meet your requirement<br>
-                    Combines contemporary technology with iconic Marshall design to deliver hard-hitting sound while
-                    retaining a classic look<br>
                 </p>
                 <div class="rate">
-                    <h2><span>Price:</span><span id="prod_price">####</span><span>(INR)</span></h2>
+                    <p><b>Price :</b></p>
+                    <h3 id="prod_price"></h3>
+                    <h3 class="inr"><b>(INR)</b></h3>
+                </div>
+                <div class="duration">
+                    <p><b>Used period :</b></p>
+                    <h3 id="prod_date"></h3>
+                    <h3 id="duration"></h3>
+                </div>
+
+                <div class="seller-name">
+                    <p>Contact info :</p>
                 </div>
                 <div class="seller-profile" onclick="seller_on()">
                     <img src="../assets/img/profile21.png" alt="seller-img" id="seller_img" class="seller-img">
-                    <div class="seller-name" id="seller-name">
-                        <p>Tamilselvan Kothandam</p>
+                    <div class="seller-name">
+                        <h1 id="seller_name"></h1>
                     </div>
                 </div>
                 <div class="bid-area">
-                    <input type="number" class="bid-amount" id="bid_amount" placeholder="amount" />
-                    <button class="button2" id="bid">Bid</button>
-                    <button class="button1" id="wishlist"><i class="fa fa-heart"></i>wishlist</button>
+                    <input type="number" class="bid-amount" id="bid_amount" placeholder="amount" required pattern="[0-9]+"/>
+                    <button class="button2" id="bid" onclick="bid()">Bid</button>
+                    <button class="button1" id="wishlist" onclick="wish()"><i class="fa fa-heart"></i>wishlist</button>
                 </div>
             </div>
         </section>
     </main>
+    <section class="similar">
+        <h1>Similar product</h1>
+        <div class="strike"></div>
+    </section>
+    <section class="similar_container">
+            
+    </section>
     <section id="overlay">
         <div class="card">
             <img src="../assets/img/profile21.png" class="profile-img" alt="seller img">
             <div class="details">
-                <h1 class="title" id="seller_name"></h1>
+                <h1 class="title" id="seller"></h1>
                 <span class="caption"><i class="fa fa-phone"></i>
                     <h4 id="seller_phone"></h4>
                 </span>
@@ -100,24 +104,34 @@
     </footer>
     <div class="copy">Copyright © 2021 - 2022 VANHA - Website Designed By KISHORE</div>
     <script>
-        footer()
-        function img(thumb) {
-            var main_image = document.getElementById("imagebox");
-            main_image.src = thumb.src
-        }
-        function seller_off() {
-            document.getElementById("overlay").style.display = "none";
-        }
-        function seller_on() {
-            let user = JSON.parse(localStorage.getItem("unique_id"));
-            if (!user) {
-                alert("There is no account please 'Log in'")
-            }
-            else {
-                document.getElementById("overlay").style.display = "block";
-            }
-        }
+        const productId = new URLSearchParams(window.location.search).get('product_id');
 
+        const prod_data = JSON.parse(localStorage.getItem("product_data"));
+
+        var product = prod_data.find(data => {
+            return data.unique === productId
+        });
+
+        var name = document.querySelector("#prod_name").innerHTML = product.name;
+        var description = document.querySelector("#description").innerHTML = product.description;
+        var price = document.querySelector("#prod_price").innerHTML = product.price;
+        var date = document.querySelector("#prod_date").innerHTML = product.date;
+        var duration = document.querySelector("#duration").innerHTML = product.duration;
+
+        const user_data = JSON.parse(localStorage.getItem("user_data"));
+
+        var user = user_data.find(data => {
+            return data.email === product.user_id
+        });
+
+        var seller_name = document.querySelector("#seller_name").innerHTML = user.name;
+        var seller_phone = document.querySelector("#seller_phone").innerHTML = user.phone;
+        var seller_location = document.querySelector("#seller_location").innerHTML = user.location;
+
+        var seller = document.querySelector("#seller").innerHTML = user.name;
+
+        footer();
+        similar();
     </script>
 </body>
 

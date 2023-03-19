@@ -6,7 +6,7 @@ function active(e) {
   let products = JSON.parse(localStorage.getItem("product_data")) || [];
   let user_id = JSON.parse(localStorage.getItem("unique_id"));
 
-  let unique_id = uuidv4();
+  let unique_id = crypto.randomUUID();
 
   const now = new Date();
   const year = now.getFullYear();
@@ -87,9 +87,9 @@ function edit_prod(e) {
 
   let stored_data = JSON.parse(localStorage.getItem("product_data"));
   let unique = document.getElementById("unique_id").innerHTML;
-  console.log(unique)
+
   let prod_data = stored_data.find(product => product.unique === unique);
-  console.log(prod_data)
+
   if (prod_data) {
     prod_data.category = category;
     prod_data.user_id = user_id;
@@ -121,47 +121,3 @@ function remove_prod(e, uniqueId) {
   }
   window.location.reload();
 }
-  //---------------------------add product----------------------//
-// function active(category){
-//   document.getElementById("add_product").addEventListener("click", function addProduct(e) {
-//     e.preventDefault();
-
-//     let unique_id = uuidv4();
-
-//     let product_detail = {
-//       unique_id: unique_id,
-//       prod_name: document.getElementById("prod_name").value,
-//       description: document.getElementById("description").value,
-//       prod_price: document.getElementById("prod_price").value,
-//       prod_rupee: document.getElementById("rupee").value,
-//       prod_date: document.getElementById("prod_date").value,
-//       prod_duration: document.getElementById("duration").value,
-//       user_id: document.getElementById("user_name").innerText
-//     };
-
-//     if (!product_detail.prod_name || !product_detail.description || !product_detail.prod_price || !product_detail.prod_rupee || !product_detail.prod_date || !product_detail.prod_duration) {
-//       alert('One or more input elements is missing!');
-//       return;
-//     }
-
-//     let product_data = JSON.parse(localStorage.getItem('product_data')) || {"bike":[], "car":[], "laptop&desktop":[], "mobile":[]};
-
-//     let category = document.getElementById("category").value;
-//     if (product_data.hasOwnProperty(category)) {
-//       product_data[category].push(product_detail);
-//     } else {
-//       product_data[category] = [product_detail];
-//     }
-
-//     localStorage.setItem('product_data', JSON.stringify(product_data));
-
-//     let uniqueIds = JSON.parse(localStorage.getItem(unique_id)) || [];
-
-//     uniqueIds.push(unique_id);
-//     localStorage.setItem('unique_ids', JSON.stringify(uniqueIds));
-
-//     document.getElementById("form").reset();
-//     alert("Product Created successfully")
-//     window.location.href = "./buyer profile.html";
-// })
-// };

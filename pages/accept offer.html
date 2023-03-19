@@ -29,62 +29,38 @@
     </header>
     <main class="main">
         <section class="main_left">
-            <img src="" alt="product_img" class="product_img">
+            <img src="../assets/img/shoe5.png" alt="product_img" class="product_img">
             <div class="product_detail">
-                <h1></h1>
+                <h1 id="product_name"></h1>
                 <div class="rate">
-                    <p>Price</p>
+                    <p><b>Price :</b></p>
+                    <h3 id="prod_price"></h3>
+                    <h3 class="inr"><b>(INR)</b></h3>
                 </div>
-                <span class="price"></span><span>(INR)</span>
+            </div>
         </section>
         <section class="main_right">
             <h2>New Request</h2>
             <div id="bid-list">
 
             </div>
+            <div class="btn">
+                <button class="button3" onclick="redirect()">Back</button>
+            </div>
         </section>
     </main>
     <footer class="footer" id="footer">
     </footer>
     <div class="copy">Copyright © 2021 - 2022 VANHA - Website Designed By KISHORE</div>
+    <script src="../assets/JS/bidlist.js"></script>
     <script>
-
-        const products = [
-            { img_src: "../../assets/img/avator/buyer_1.png", rate: "5500 (INR)" },
-            { img_src: "../../assets/img/avator/buyer_2.png", rate: "8400 (INR)" },
-            { img_src: "../../assets/img/avator/buyer_3.png", rate: "3200 (INR)" }
-        ];
-
-        const container = document.getElementById("bid-list");
-
-        for (let i = 0; i < products.length; i++) {
-            const product = products[i];
-
-            const div = document.createElement("div");
-            div.classList.add("content");
-
-            const img = document.createElement("img");
-            img.src = product.img_src;
-            img.alt = "product_img";
-            img.classList.add("buyer_img");
-            div.appendChild(img);
-
-            const rateDiv = document.createElement("div");
-            rateDiv.classList.add("rate");
-            rateDiv.textContent = product.rate;
-            div.appendChild(rateDiv);
-
-            const sellButton = document.createElement("button");
-            sellButton.classList.add("button2", "algn");
-            sellButton.textContent = "sell";
-            sellButton.onclick = function () {
-                window.location.href = "./after accept offer.html";
-            };
-            div.appendChild(sellButton);
-
-            container.appendChild(div);
-        }
+        sell_prod();
+        buyer_list();
         footer();
+
+        function redirect() {
+            window.location.href = `./buyer profile.html`;
+        }
     </script>
 </body>
 
