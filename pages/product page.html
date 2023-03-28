@@ -14,21 +14,14 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="../assets/css/buttons.css">
     <link rel="stylesheet" href="../assets/css/footer.css">
+    <link rel="stylesheet" href="../assets/css/header.css">
     <link rel="stylesheet" href="../assets/css/product_page.css">
-    <script src="../assets/JS/footer.js"></script>
-    <script src="../assets/JS/index.js"></script>
-    <script src="../assets/JS/wishlist.js"></script>
-    <script src="../assets/JS/bidlist.js"></script>
+
     <title>V A N H A</title>
 </head>
 
 <body class="body">
-    <header class="header">
-        <img src="../assets/img/illustration/logo.png" alt="logo" class="logo">
-        <div>
-            <h1>V A N H A</h1>
-        </div>
-        <img src="../assets/img/buyer.png" alt="buyer img" class="profile_img">
+    <header class="header" id="header">
     </header>
     <main class="main">
         <section class="main_left">
@@ -63,13 +56,14 @@
                     <p>Contact info :</p>
                 </div>
                 <div class="seller-profile" onclick="seller_on()">
-                    <img src="../assets/img/profile21.png" alt="seller-img" id="seller_img" class="seller-img">
+                    <img src="../assets/img/profile21.png" alt="seller-img" id="seller_img" class="seller_img">
                     <div class="seller-name">
                         <h1 id="seller_name"></h1>
                     </div>
                 </div>
                 <div class="bid-area">
-                    <input type="number" class="bid-amount" id="bid_amount" placeholder="amount" required pattern="[0-9]+"/>
+                    <input type="number" class="bid-amount" id="bid_amount" placeholder="amount" required
+                        pattern="[0-9]+" />
                     <button class="button2" id="bid" onclick="bid()">Bid</button>
                     <button class="button1" id="wishlist" onclick="wish()"><i class="fa fa-heart"></i>wishlist</button>
                 </div>
@@ -81,11 +75,11 @@
         <div class="strike"></div>
     </section>
     <section class="similar_container">
-            
+
     </section>
     <section id="overlay">
         <div class="card">
-            <img src="../assets/img/profile21.png" class="profile-img" alt="seller img">
+            <img src="../assets/img/profile21.png" class="seller_Image" alt="seller img">
             <div class="details">
                 <h1 class="title" id="seller"></h1>
                 <span class="caption"><i class="fa fa-phone"></i>
@@ -103,6 +97,11 @@
     <footer class="footer" id="footer">
     </footer>
     <div class="copy">Copyright © 2021 - 2022 VANHA - Website Designed By KISHORE</div>
+    <script src="../assets/JS/footer.js"></script>
+    <script src="../assets/JS/header.js"></script>
+    <script src="../assets/JS/index.js"></script>
+    <script src="../assets/JS/wishlist.js"></script>
+    <script src="../assets/JS/bidlist.js"></script>
     <script>
         const productId = new URLSearchParams(window.location.search).get('product_id');
 
@@ -131,7 +130,18 @@
         var seller = document.querySelector("#seller").innerHTML = user.name;
 
         footer();
+        allheader();
         similar();
+
+        let email = JSON.parse(localStorage.getItem("unique_id"));
+        let stored_data = JSON.parse(localStorage.getItem("user_data")) || [];
+
+        const get_object = (email, stored_data) => stored_data.find(val => val.email === email);
+        let data = get_object(email, stored_data);
+
+        let profileImage = document.getElementById("profile-img");
+        profileImage.setAttribute("src", data.image);
+        profileImage.setAttribute("alt", data.name + " Image");
     </script>
 </body>
 

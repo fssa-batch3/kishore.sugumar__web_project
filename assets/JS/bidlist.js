@@ -6,6 +6,10 @@ function bid() {
 
     let bid = JSON.parse(localStorage.getItem("bid")) || [];
 
+    if (!buyer_id) {
+        alert("There is no account 'Log in'")
+        return;
+    };    
     if (price === "") {
         alert('Quote any amount')
         return;
@@ -108,11 +112,12 @@ function bid_prod(product) {
                 displayedProducts.push(productObj.unique);
 
                 let div_card = document.createElement("div");
+                div_card.setAttribute("data-unique", productObj.unique);
                 div_card.classList.add("content");
 
                 let image = document.createElement("img");
                 image.setAttribute("src", "");
-                image.setAttribute("alt", "");
+                image.setAttribute("alt", productObj.name + "Image");
                 image.classList.add("product-img");
                 div_card.prepend(image);
 
@@ -121,12 +126,6 @@ function bid_prod(product) {
                 h3.setAttribute("id", "prod_name");
                 h3.textContent = "Product name : " +productObj.name;
                 div_card.append(h3);
-
-                let unique = document.createElement("p");
-                unique.setAttribute("class", "unique");
-                unique.setAttribute("id", "prod_id");
-                unique.innerHTML = productObj.unique;
-                div_card.append(unique);
 
                 let maxBidPrice = 0;
                 bid.forEach((bidItem2) => {

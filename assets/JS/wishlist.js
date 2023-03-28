@@ -8,11 +8,12 @@ function wish() {
         user_id: JSON.parse(localStorage.getItem("unique_id")),
     };
 
-    let idExist = false;
-
     for (let i = 0; i < wishpro.length; i++) {
+        if(!user_id){
+            alert("There is no account 'Log in'");
+            return;
+        }
         if (productId === wishpro[i].product && wishpro[i].user_id === user_id) {
-            idExist = true;
             alert('Already liked !');
             return;
         }
@@ -33,6 +34,7 @@ function wish_prod(product) {
             const productObj = prod.find(p => p.unique === prod_wish[i].product);
             if (productObj) {
                 div_card = document.createElement("div");
+                div_card.setAttribute("data-unique", productObj.unique);
                 div_card.classList.add("content");
 
                 let anch = document.createElement("a");
@@ -41,7 +43,7 @@ function wish_prod(product) {
 
                 image = document.createElement("img");
                 image.setAttribute("src", "");
-                image.setAttribute("alt", "");
+                image.setAttribute("alt",productObj["name"]+ " Image");
                 image.classList.add("product-img");
                 anch.prepend(image);
 
@@ -50,12 +52,6 @@ function wish_prod(product) {
                 h3.setAttribute("id", "prod_name");
                 h3.textContent = productObj["name"];
                 div_card.append(h3);
-
-                let unique = document.createElement("p");
-                unique.setAttribute("class", "unique");
-                unique.setAttribute("id", "prod_id");
-                unique.innerHTML = productObj.unique;
-                div_card.append(unique);
 
                 button2 = document.createElement("button");
                 button2.classList.add("button3", "algn");

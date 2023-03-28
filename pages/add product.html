@@ -15,20 +15,21 @@
     integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="../assets/css/footer.css">
-  <script src="../assets/JS/index.js"></script>
-  <script src="../assets/JS/product.js"></script>
+  <link rel="stylesheet" href="../assets/css/header.css">
   <title>V A N H A</title>
 </head>
 
 <body class="body">
-  <header class="header">
-    <div>
-      <h2>Add Product</h2>
-    </div>
-    <div><img src="../assets/img/illustration/logo.png" alt="logo" class="logo"></div>
-    <div><img src="../assets/img/buyer.png" alt="seller_img" class="seller_img"></div>
+  <header class="header" id="header">
+
+
   </header>
   <main>
+    <div class="heading">
+      <div class="border"></div>
+      <h2 class="head">Add product</h2>
+      <div class="border"></div>
+    </div>
     <section class="sub" id="category">
       <div>
         <span class="tooltip">
@@ -51,17 +52,18 @@
         </span>
       </div>
     </section>
+
     <div id="overlay">
       <form class="main" id="form">
         <div class="closebtn" onclick="off()" title="Close Overlay"><i class="fa-solid fa-xmark"></i></div>
         <h1 id="category_title"></h1>
-        <section class="aling">
+        <section class="aling" type="form">
           <div class="main-left">
             <div>
               <h4>Product Name:</h4>
             </div>
             <div>
-              <input type="name" id="prod_name" class="product_name" required />
+              <input type="name" id="prod_name" class="product_name" required>
             </div>
             <div class="left_content">
               <h4>Product Description:</h4>
@@ -74,7 +76,7 @@
                 <div>
                   <h4>Product Price:</h4>
                 </div>
-                <div><input type="number" class="input" id="prod_price" required /></div>
+                <div><input type="number" class="input" id="prod_price" required></div>
               </div>
             </div>
             <div class="left-aling">
@@ -82,7 +84,7 @@
                 <div class="left_content">
                   <h4>Used</h4>
                 </div>
-                <div><input type="number" id="prod_date" class="input" required /></div>
+                <div><input type="number" id="prod_date" class="input" required></div>
               </div>
               <div class="duration">
                 <div>
@@ -139,10 +141,14 @@
 
   <footer class="footer" id="footer">
   </footer>
+  <div class="copy">Copyright © 2021 - 2022 VANHA - Website Designed By KISHORE</div>
   <script src="../assets/JS/footer.js"></script>
   <script src="../assets/JS/index.js"></script>
-  <div class="copy">Copyright © 2021 - 2022 VANHA - Website Designed By KISHORE</div>
+  <script src="../assets/JS/index.js"></script>
+  <script src="../assets/JS/product.js"></script>
+  <script src="../assets/JS/header.js"></script>
   <script>
+    allheader()
     footer()
     function back() {
       location.href = "./buyer profile.html";
@@ -175,7 +181,15 @@
       title.innerHTML = "Mobile";
     });
 
+    let email = JSON.parse(localStorage.getItem("unique_id"));
+    let stored_data = JSON.parse(localStorage.getItem("user_data")) || [];
 
+    const get_object = (email, stored_data) => stored_data.find(val => val.email === email);
+    let data = get_object(email, stored_data);
+
+    let profileImage = document.getElementById("profile-img");
+    profileImage.setAttribute("src", data.image);
+    profileImage.setAttribute("alt", data.name + " Image");
   </script>
 </body>
 

@@ -15,10 +15,7 @@
     <link rel="stylesheet" href="../assets/css/buttons.css">
     <link rel="stylesheet" href="../assets/css/profile.css">
     <link rel="stylesheet" href="../assets/css/footer.css">
-    <script src="../assets/JS/footer.js"></script>
-    <script src="../assets/JS/index.js"></script>
-    <script src="../assets/JS/product.js"></script>
-    <script src="../assets/JS/profile.js"></script>
+    <link rel="stylesheet" href="../assets/css/header.css">
     <title>V A N H A</title>
 </head>
 
@@ -44,19 +41,17 @@
             </div>
             <div class="field">
                 <input type="text" class="input-field" id="prod_name" placeholder="product_name" autocomplete="off"
-                    required="true">
+                pattern="^(?!\s)[a-zA-Z\s\d/]+$" required="true">
             </div>
             <div class="field">
-                <textarea class="textarea" id="description" placeholder="make it as point...."></textarea>
+                <textarea class="textarea" id="description" placeholder="make it as point...."  pattern="^(?!\s)"></textarea>
             </div>
             <div class="field">
-                <input type="tel" class="input-field" id="prod_price" placeholder="product_price" autocomplete="off"
+                <input type="number" class="input-field" id="prod_price" placeholder="product_price" autocomplete="off"
                     required="true">
             </div>
             <div class="duration">
                 <select class="Category" id="duration" required>
-                    <option value="" style="font-size:5pt;" disabled>&nbsp;</option>
-                    <option class="option" style="font-size:12pt">select duration</option>
                     <option value="" style="font-size:5pt;" disabled>&nbsp;</option>
                     <option class="option" value="Month" style="font-size:12pt">Month</option>
                     <option value="" style="font-size:5pt;" disabled>&nbsp;</option>
@@ -65,7 +60,7 @@
                 </select>
             </div>
             <div class="field">
-                <input type="text" class="input-field" id="used_period" placeholder="used_month" required>
+                <input type="number" class="input-field" id="used_period" placeholder="used_month" required>
             </div>
             <div class="btn">
                 <button class="button2" onclick="edit_prod(event)">Save</button>
@@ -77,18 +72,17 @@
         <div class="closebtn" onclick="off()" title="Close Overlay"><i class="fa-solid fa-xmark"></i></div>
         <form class="form">
             <p class="heading-in">Edit Profile</p>
+            <p>
+                <span class="detail">Email :</span><span class="prod_val" id="email"></span>
+            </p>
             <div class="field">
-                <input type="text" class="input-field" id="name" placeholder="Name" autocomplete="off" required="true">
+                <input type="text" class="input-field" id="name" placeholder="Name" autocomplete="off" pattern="^(?!\s)[a-zA-Z\s]+$" required="true">
             </div>
             <div class="field">
-                <input type="email" class="input-field" id="email" placeholder="example@abc.com" autocomplete="off"
-                    required="true">
+                <input type="tel" class="input-field" id="phone" placeholder="+91" autocomplete="off" pattern="^(?!\s)[0-9]+" required="true">
             </div>
             <div class="field">
-                <input type="tel" class="input-field" id="phone" placeholder="+91" autocomplete="off" required="true">
-            </div>
-            <div class="field">
-                <input type="text" class="input-field" id="location" placeholder="Location" required="true">
+                <input type="text" class="input-field" id="location" placeholder="Location" pattern="^(?!\s)[a-zA-Z\s]+$" required="true">
             </div>
             <div class="btn">
                 <button class="button2" onclick="update(event)">Save</button>
@@ -96,15 +90,11 @@
         </form>
     </div>
     <!-- -------------------------------header------------------------ -->
-    <header class="header">
-        <div><img src="../assets/img/illustration/logo.png" alt="logo" class="logo"></div>
-        <div class="web">
-            <p>V A N H A</p>
-        </div>
+    <header class="header" id="header">
     </header>
     <!-- -------------------------profile----------------------- -->
     <div class="card">
-        <img src="../assets/img/buyer.png" class="profile-img" alt="buyer_img">
+        <img class="user-img" id="user-img">
         <div class="details">
             <h1 class="title" id="user_name"></h1>
             <span class="caption"><i class="fa fa-envelope"></i>
@@ -117,8 +107,9 @@
                 <h4 id="user_location"></h4>
             </span>
             <div class="btn">
-                <button class="button2 edit" onclick="on()">Edit</button>
-                <button class="button3" onclick="del(event)">Log out</button>
+                <button class="button1 edit" onclick="on()">Edit</button>
+                <button class="button2" onclick="logout()">Log out</button>
+                <button class="button3" onclick="del(event)">Delete</button>
             </div>
         </div>
     </div>
@@ -136,14 +127,25 @@
     </footer>
     <div class="copy">Copyright © 2021 - 2022 VANHA - Website Designed By KISHORE</div>
 </body>
+<!-- -----------------------------------script--------------------------------- -->
+<script src="../assets/JS/footer.js"></script>
+<script src="../assets/JS/header.js"></script>
+<script src="../assets/JS/index.js"></script>
+<script src="../assets/JS/product.js"></script>
+<script src="../assets/JS/profile.js"></script>
 <script>
+    allheader()
     footer()
     // ------------------------------//
     let email = JSON.parse(localStorage.getItem("unique_id"));
+    let profileImage = document.getElementById("user-img");
     let stored_data = JSON.parse(localStorage.getItem("user_data")) || [];
 
     const get_object = (email, stored_data) => stored_data.find(val => val.email === email);
     let data = get_object(email, stored_data);
+
+    profileImage.setAttribute("src", data.image);
+    profileImage.setAttribute("alt", data.name + " Image");
 
     document.getElementById("user_name").innerText = data.name;
     document.getElementById("user_email").innerText = data.email;
@@ -151,7 +153,7 @@
     document.getElementById("user_location").innerText = data.location;
 
     document.getElementById("name").value = data.name;
-    document.getElementById("email").value = data.email;
+    document.getElementById("email").innerHTML = data.email;
     document.getElementById("phone").value = data.phone;
     document.getElementById("location").value = data.location;
     // --------------------------------//

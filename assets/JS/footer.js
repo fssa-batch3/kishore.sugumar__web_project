@@ -52,6 +52,7 @@ function footer() {
     const followText = document.createElement('p');
     followText.textContent = 'Follow Us';
     followDiv.appendChild(followText);
+
     const linksUl = document.createElement('ul');
     linksUl.classList.add('links');
     const instaLi = document.createElement('li');
@@ -59,21 +60,25 @@ function footer() {
     const instaIcon = document.createElement('i');
     instaIcon.classList.add('fa-brands', 'fa-instagram');
     instaLi.appendChild(instaIcon);
+
     const faceLi = document.createElement('li');
     faceLi.classList.add('face');
     const faceIcon = document.createElement('i');
     faceIcon.classList.add('fa-brands', 'fa-facebook-f');
     faceLi.appendChild(faceIcon);
+
     const twitLi = document.createElement('li');
     twitLi.classList.add('twit');
     const twitIcon = document.createElement('i');
     twitIcon.classList.add('fa-brands', 'fa-twitter');
     twitLi.appendChild(twitIcon);
+
     const youLi = document.createElement('li');
     youLi.classList.add('you');
     const youIcon = document.createElement('i');
     youIcon.classList.add('fa-brands', 'fa-youtube');
     youLi.appendChild(youIcon);
+    
     linksUl.appendChild(instaLi);
     linksUl.appendChild(faceLi);
     linksUl.appendChild(twitLi);
@@ -86,3 +91,32 @@ function footer() {
     footer.appendChild(lineSection);
     footer.appendChild(followSection);
 }
+
+{/* <footer class="footer" id ="footer">
+  <section class="contact">
+    <div class="contact_detail">
+      <i class="fa fa-phone"></i>
+      <p>Phone Number : +0123456789</p>
+    </div>
+    <div class="contact_detail">
+      <i class="fa fa-envelope"></i>
+      <p>Email Address : vanha.@abc.com</p>
+    </div>
+    <div class="contact_detail">
+      <i class="fa fa-location"></i>
+      <p>Location : Chennai:600069</p>
+    </div>
+  </section>
+  <section class="line"></section>
+  <section class="follow_links">
+    <div>
+      <p>Follow Us</p>
+      <ul class="links">
+        <li class="insta"><i class="fab fa-instagram"></i></li>
+        <li class="face"><i class="fab fa-facebook-f"></i></li>
+        <li class="twit"><i class="fab fa-twitter"></i></li>
+        <li class="you"><i class="fab fa-youtube"></i></li>
+      </ul>
+    </div>
+  </section>
+</footer> */}

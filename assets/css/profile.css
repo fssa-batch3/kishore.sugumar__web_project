@@ -9,29 +9,6 @@
 .body {
   font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
 }
-
-.header {
-  display: flex;
-  background-color: var(--secondary);
-  color: var(--tertiary);
-  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
-}
-
-.web {
-  position: absolute;
-  top: -5px;
-  left: 670px;
-  color: var(--tertiary);
-  font-size: 30px;
-}
-
-.logo {
-  width: 150px;
-  height: 50px;
-  margin: 10px;
-  background-color: #363636;
-}
-
 /* ----profile------ */
 .card {
   margin: 0% 0% 2% 35%;
@@ -48,7 +25,7 @@
   font-size: 40px;
 }
 
-.profile-img {
+.user-img {
   width: 200px;
   border-radius: 50%;
   padding: 20px;

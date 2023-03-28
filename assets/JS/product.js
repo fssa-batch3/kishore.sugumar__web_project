@@ -21,6 +21,26 @@ function active(e) {
   const duration = document.getElementById("duration").value;
   const category = document.getElementById("category_title").textContent;
 
+  let image;
+  if(category == "Bike"){
+    image =  "https://source.unsplash.com/featured/?motorcycle";
+  }
+  if(category == "Car"){
+    image = "https://source.unsplash.com/featured/?car";
+  }
+  if(category == "Laptop-Desktop"){
+    image =  "https://source.unsplash.com/featured/?laptop";
+  }
+  if(category == "Mobile"){
+    image = "https://source.unsplash.com/featured/?mobile-phone";
+  }
+
+  if (prodName === "" || description === "" || prodPrice === "" || prodDate === "" || duration === "") {
+    alert ("Please fill in all required fields");
+    return;
+  }
+
+
   const product = {
     unique: unique_id,
     name: prodName,
@@ -30,7 +50,8 @@ function active(e) {
     duration: duration,
     category: category,
     user_id: user_id,
-    uploded_on: date
+    uploded_on: date,
+    image:image
   };
 
   products.push(product);
@@ -85,8 +106,13 @@ function edit_prod(e) {
   let used_period = document.getElementById("used_period").value;
   let duration = document.getElementById("duration").value;
 
+  if (category === "" || user_id === "" || prod_name === "" || description === "" || prod_price === "" || used_period === "" || duration === "") {
+    alert ("Please fill in all required fields");
+    return;
+  }
+
   let stored_data = JSON.parse(localStorage.getItem("product_data"));
-  let unique = document.getElementById("unique_id").innerHTML;
+  let unique = document.getElementById("unique_id").innerText;
 
   let prod_data = stored_data.find(product => product.unique === unique);
 

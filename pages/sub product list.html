@@ -13,15 +13,15 @@
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700," rel="stylesheet" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
   <link rel="stylesheet" href="../assets/css/footer.css">
+  <link rel="stylesheet" href="../assets/css/header.css">
   <link rel="stylesheet" href="../assets/css/sub page.css">
   <link rel="stylesheet" href="../assets/css/buttons.css">
   <link rel="icon" href="../assets/img/illustration/v-removebg-preview.png">
-  <script src="../assets/JS/footer.js"></script>
   <title>V A N H A</title>
 </head>
 
 <body class="body">
-  <header class="header">
+  <header class="header" id="header">
     <img src="../assets/img/illustration/logo.png" alt="logo" class="logo">
     <div>
       <h1>V A N H A</h1>
@@ -42,15 +42,17 @@
   </footer>
   <div class="copy">Copyright © 2021 - 2022 VANHA - Website Designed By KISHORE</div>
   <script src="../assets/JS/index.js"></script>
+  <script src="../assets/JS/footer.js"></script>
+  <script src="../assets/JS/header.js"></script>
   <script>
-
-    document.querySelector("#cate_name").innerHTML= new URLSearchParams(window.location.search).get('Category');;
+    allheader()
+    document.querySelector("#cate_name").innerHTML = new URLSearchParams(window.location.search).get('Category');;
     footer();
     card();
 
-        // ---------load more--------//
+    // ---------load more--------//
 
-        var cardContainer = document.getElementById("grid-container");
+    var cardContainer = document.getElementById("grid-container");
     var cards = document.getElementsByClassName("card");
     var loadMoreBtn = document.getElementById("loadmore");
     var currentIndex = 12;
@@ -71,6 +73,17 @@
         loadMoreBtn.style.display = "none";
       }
     });
+
+    //---------------------------for buyer img--------------------------
+    let email = JSON.parse(localStorage.getItem("unique_id"));
+    let stored_data = JSON.parse(localStorage.getItem("user_data")) || [];
+
+    const get_object = (email, stored_data) => stored_data.find(val => val.email === email);
+    let data = get_object(email, stored_data);
+
+    let profileImage = document.getElementById("profile-img");
+    profileImage.setAttribute("src", data.image);
+    profileImage.setAttribute("alt", data.name + " Image");
 
   </script>
 </body>

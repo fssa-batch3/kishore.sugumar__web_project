@@ -10,39 +10,6 @@
     font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
 }
 
-.header {
-    display: flex;
-    align-content: space-between;
-    justify-content: space-between;
-    background-color: var(--secondary);
-    color: var(--tertiary);
-    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
-}
-
-.logo {
-    width: 120px;
-    height: 60px;
-    margin: 10px;
-}
-
-.profile_img {
-    width: 60px;
-    height: 60px;
-    margin: 10px;
-    border-radius: 50%;
-}
-
-.heading {
-    display: flex;
-    justify-content: space-between;
-    margin: 5% 0%;
-}
-
-.heading h2 {
-    color: var(--primary);
-    font-size: 2vw;
-}
-
 .main{
     text-align: center;
 }
@@ -52,7 +19,11 @@
     width: 35%;
     margin: auto;
     border: 1.5px solid;
-    background-color: black;
+    border-color: var(--primary);
+}
+
+#cate_name{
+    color: var(--fifth);
 }
 
 .unique {
@@ -105,6 +76,7 @@
     grid-template-columns: repeat(4, 300px);
     justify-content: space-evenly;
     row-gap: 25px;
+    margin: 50px 0px;
 }
 
 .algn{

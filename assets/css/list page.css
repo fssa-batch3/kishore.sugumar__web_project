@@ -11,51 +11,17 @@
     font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
 }
 
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-content: space-around;
-    background-color: var(--secondary);
-    border: 2px solid var(--secondary);
-    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
-}
-
-.header h1 {
-    font-size: 25px;
-    color: var(--tertiary);
-}
-
-.logo {
-    background-color: #3f404b;
-    width: 6em;
-    margin: 5px;
-}
-
-.buyer_img {
-    width: 4em;
-    height: 4em;
-    border-radius: 50%;
-    margin: 5px;
-}
-
-.heading {
-    display: flex;
-    justify-content: space-between;
-    margin: 2% 0%;
-}
-
-.heading h2 {
-    color: var(--primary);
-    font-size: 2vw;
-}
 
 .border {
     height: 1%;
     width: 35%;
     margin: auto;
     border: 1.5px solid;
+    border-color: var(--primary);
 }
-
+.heading h2{
+    color: var(--fifth);
+}
 /* ----list of prod----- */
 .product-img {
     width: 310px;

@@ -10,6 +10,7 @@ function product() {
 
       let div_detail = document.createElement("div");
       div_detail.setAttribute("class", "card-details");
+      div_detail.setAttribute("data-unique", prod[i].unique);
       div_card.append(div_detail);
 
       let anch = document.createElement("a");
@@ -17,8 +18,9 @@ function product() {
       div_detail.append(anch);
 
       let image = document.createElement("img");
-      image.setAttribute("src", "");
-      image.setAttribute("alt", "");
+      image.setAttribute("src", prod[i].image);
+      image.setAttribute("alt", prod[i].name + "Image");
+      image.setAttribute("id", prod[i].unique)
       image.setAttribute("class", "product_img");
       anch.append(image);
 
@@ -26,12 +28,6 @@ function product() {
       h3.setAttribute("class", "text-title");
       h3.innerHTML = prod[i].name;
       div_detail.append(h3);
-
-      let unique = document.createElement("p");
-      unique.setAttribute("class", "unique");
-      unique.setAttribute("id", "unique");
-      unique.innerHTML = prod[i].unique;
-      div_detail.append(unique);
 
       let div_price = document.createElement("div");
       div_price.setAttribute("class", "text-body");
@@ -71,6 +67,7 @@ function card() {
 
       let div_detail = document.createElement("div");
       div_detail.setAttribute("class", "card-details");
+      div_detail.setAttribute("data-unique", prod[i].unique);
       div_card.append(div_detail);
 
       let anch = document.createElement("a");
@@ -78,8 +75,8 @@ function card() {
       div_detail.append(anch);
 
       let image = document.createElement("img");
-      image.setAttribute("src", "");
-      image.setAttribute("alt", "");
+      image.setAttribute("src", prod[i].image);
+      image.setAttribute("alt", prod[i].name  + "Image");
       image.setAttribute("class", "product_img");
       anch.append(image);
 
@@ -128,11 +125,12 @@ function list(product) {
     if (unique === prod[i].user_id) {
       {
         div_card = document.createElement("div");
+        div_card.setAttribute("data-unique", prod[i].unique);
         div_card.classList.add("content");
 
         image = document.createElement("img");
-        image.setAttribute("src", "");
-        image.setAttribute("alt", "");
+        image.setAttribute("src", prod[i].image);
+        image.setAttribute("alt", prod[i]["name"]  + " Image");
         image.classList.add("product-img");
         div_card.prepend(image);
 
@@ -141,12 +139,6 @@ function list(product) {
         h2.setAttribute("id", "prod_name");
         h2.textContent = prod[i]["name"];
         div_card.append(h2);
-
-        let unique = document.createElement("p");
-        unique.setAttribute("class", "unique");
-        unique.setAttribute("id", "prod_id");
-        unique.innerHTML = prod[i].unique;
-        div_card.append(unique);
 
         let anch = document.createElement("a");
         anch.setAttribute("href", "./accept offer.html?product_id=" + prod[i].unique);
@@ -183,25 +175,34 @@ function list(product) {
 //-----------------------------------similar prdocut----------------------------------------//
 function similar() {
   const prod_data = JSON.parse(localStorage.getItem("product_data"));
-
   const productId = new URLSearchParams(window.location.search).get("product_id");
 
-  const similarProducts = [];
+  const prod_cate = prod_data.find(pro => pro.unique === productId);
+  const type = prod_cate.category;
+  const products = prod_data.filter(cate => cate.category === type);
 
-  while (similarProducts.length < Math.min(4, prod_data.length)) {
-    const randomIndex = Math.floor(Math.random() * prod_data.length);
-    const randomProduct = prod_data[randomIndex];
-    
-    if (randomProduct.category === product.category && randomProduct.unique !== productId) {
-      similarProducts.push(randomProduct);
+  let similar_prod = products.filter(product => product.unique !== productId);
+
+  if (similar_prod.length < 4) {
+    return; // or display a message that there are not enough similar products
+  }
+
+  while (similar_prod.length < 4) {
+    const randomIndex = Math.floor(Math.random() * products.length);
+    const randomProduct = products[randomIndex];
+    if (!similar_prod.includes(randomProduct)) {
+      similar_prod.push(randomProduct);
     }
   }
 
-  for (let i = 0; i < similarProducts.length; i++) {
+  for (let i = 0; i < 4; i++) {
+    const randomProduct = similar_prod[i];
+
     let div_card = document.createElement("div");
     div_card.setAttribute("class", "prod_card");
+    div_card.setAttribute("data-unique", randomProduct.unique);
     div_card.onclick = function (event) {
-      window.location.href="./product page.html?product_id=" + similarProducts[i].unique;
+      window.location.href = "./product page.html?product_id=" + randomProduct.unique;
     }
 
     let div_detail = document.createElement("div");
@@ -209,21 +210,15 @@ function similar() {
     div_card.append(div_detail);
 
     let image = document.createElement("img");
-    image.setAttribute("src", similarProducts[i].image_url);
-    image.setAttribute("alt", similarProducts[i].name);
+    image.setAttribute("src", randomProduct.image);
+    image.setAttribute("alt", randomProduct.name + "Image");
     image.setAttribute("class", "product_img");
     div_detail.append(image);
 
     let h3 = document.createElement("h3");
     h3.setAttribute("class", "text-title");
-    h3.innerHTML = similarProducts[i].name;
+    h3.innerHTML = randomProduct.name;
     div_detail.append(h3);
-
-    let unique = document.createElement("p");
-    unique.setAttribute("class", "unique");
-    unique.setAttribute("id", "unique");
-    unique.innerHTML = similarProducts[i].unique;
-    div_detail.append(unique);
 
     let div_price = document.createElement("div");
     div_price.setAttribute("class", "text-body");
@@ -237,7 +232,7 @@ function similar() {
     p_price.append(p_bold);
 
     let p_rate = document.createElement("span");
-    p_rate.innerHTML = similarProducts[i].price;
+    p_rate.innerHTML = randomProduct.price;
     div_price.append(p_rate);
 
     let p_currency = document.createElement("span");
@@ -248,31 +243,20 @@ function similar() {
 
     document.querySelector("section.similar_container").append(div_card);
   }
-}
-//---------------------------bid list---------------------------//
-// function bid() {
-//   div_card = document.createElement("div");
-//   div_card.classList.add("content");
+  }
 
-//   image = document.createElement("img");
-//   image.setAttribute("src", "");
-//   image.setAttribute("alt", "");
-//   image.classList.add("product-img");
-//   div_card.prepend(image);
-
-//   h1 = document.createElement("h1");
-//   h1.textContent = "";
-//   div_card.append(h1);
-
-//   button2 = document.createElement("button");
-//   button2.classList.add("button2", "algn");
-//   button2.textContent = "Bid more";
-//   div_card.append(button2);
-
-//   document.querySelector("div.box").append(div_card);
-
-// }
 //-----------------------home page-----------------------------------------//
+function over() {
+  show_on();
+  off();
+}
+
+function user() {
+  let login = JSON.parse(localStorage.getItem("unique_id"));
+  if (login) {
+
+  }
+}
 function show_on() {
   document.getElementById("register").style.display = "block";
 }

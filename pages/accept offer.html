@@ -15,17 +15,14 @@
     <link rel="stylesheet" href="../assets/css/list of bid.css">
     <link rel="stylesheet" href="../assets/css/buttons.css">
     <link rel="stylesheet" href="../assets/css/footer.css">
+    <link rel="stylesheet" href="../assets/css/header.css">
     <script src="../assets/JS/footer.js"></script>
     <title>V A N H A</title>
 </head>
 
 <body class="body">
-    <header class="header">
-        <img src="../assets/img/illustration/logo.png" alt="logo" class="logo">
-        <div>
-            <h1>V A N H A</h1>
-        </div>
-        <img src="../assets/img/buyer.png" alt="buyer img" class="profile_img">
+    <header class="header" id="header">
+
     </header>
     <main class="main">
         <section class="main_left">
@@ -53,14 +50,26 @@
     </footer>
     <div class="copy">Copyright © 2021 - 2022 VANHA - Website Designed By KISHORE</div>
     <script src="../assets/JS/bidlist.js"></script>
+    <script src="../assets/JS/header.js"></script>
     <script>
         sell_prod();
         buyer_list();
         footer();
+        allheader()
 
         function redirect() {
             window.location.href = `./buyer profile.html`;
         }
+
+        let email = JSON.parse(localStorage.getItem("unique_id"));
+        let stored_data = JSON.parse(localStorage.getItem("user_data")) || [];
+
+        const get_object = (email, stored_data) => stored_data.find(val => val.email === email);
+        let data = get_object(email, stored_data);
+
+        let profileImage = document.getElementById("profile-img");
+        profileImage.setAttribute("src", data.image);
+        profileImage.setAttribute("alt", data.name + " Image");
     </script>
 </body>
 

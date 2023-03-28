@@ -14,6 +14,7 @@ function register(e) {
     email: document.getElementById("regi_email").value,
     phone: document.getElementById("regi_phone").value,
     password: password,
+    image: "https://source.unsplash.com/featured/200x200?people"
   };
 
   let stored_data = JSON.parse(localStorage.getItem("user_data")) || [];
@@ -68,7 +69,7 @@ function update(e) {
   e.preventDefault();
 
   let name = document.getElementById("name").value;
-  let email = document.getElementById("email").value;
+  let email = document.getElementById("email").innerText;
   let phone = document.getElementById("phone").value;
   let location = document.getElementById("location").value;
 
@@ -89,6 +90,12 @@ function update(e) {
     stored_data.push(user_data);
   }
 
+  if (name === "" || email === "" || phone === "" || location === "") {
+    const errorMessage = document.createElement("div");
+    alert ("Please fill in all required fields");
+    return;
+  }
+
   localStorage.setItem("user_data", JSON.stringify(stored_data));
   window.location.reload();
   return;
@@ -101,13 +108,16 @@ function del(event) {
   let unique = JSON.parse(localStorage.getItem("unique_id"));
   let products = JSON.parse(localStorage.getItem("product_data"));
   let wish_list = JSON.parse(localStorage.getItem("wishlist"));
+  let bid = JSON.parse(localStorage.getItem("bid"));
 
   products = products.filter((product) => product.user_id !== unique);
   localStorage.setItem("product_data", JSON.stringify(products));
 
   wish_list = wish_list.filter((data) => data.user_id !== unique);
-  localStorage.setItem("product_data", JSON.stringify(wish_list));
+  localStorage.setItem("wishlist", JSON.stringify(wish_list));
 
+  bid_list = bid.filter((data) => data.buyer_id !== unique);
+  localStorage.setItem("bid", JSON.stringify(bid_list));
 
   let index = users.findIndex((user) => user.email === unique);
   if (index !== -1) {
@@ -117,9 +127,11 @@ function del(event) {
 
       products = products.filter((product) => product.user_id !== unique);
       wish_list = wish_list.filter((data) => data.user_id !== unique);
+      bid_list = bid.filter((data) => data.buyer_id !== unique);
 
       localStorage.setItem("product_data", JSON.stringify(products));
       localStorage.setItem("wishlist", JSON.stringify(wish_list));
+      localStorage.setItem("bid", JSON.stringify(bid_list));
 
       localStorage.removeItem("unique_id");
 
@@ -129,4 +141,10 @@ function del(event) {
       return;
     }
   }
+}
+// -------------------------log out profile-----------------------//
+function logout(){
+  localStorage.removeItem("unique_id");
+  window.location.href = "../index.html";
+  window.location.relode();
 }
