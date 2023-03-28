@@ -3,6 +3,7 @@ var buyer_img = myOrigin + "/assets/img/buyer.png"
 var logoSrc = myOrigin + "/assets/img/illustration/logo.png";
 var profilepage = myOrigin + "/pages/buyer profile.html";
 
+
 let beforelogin =
     `
     <img src="${logoSrc}" alt="logo" class="logo">
@@ -48,7 +49,6 @@ let AfterLoginNew =
     <h2 class="web-name">V A N H A</h2>
     <a href="${profilepage}"><img class="profile-img"></a>
 `;
-
 function home_Header(){
     let userId = JSON.parse(localStorage.getItem("unique_id"));
     let logheader = document.getElementById('header');
@@ -56,7 +56,7 @@ function home_Header(){
       logheader.innerHTML = beforelogin;
     }
     else {
-      logheader.innerHTML = AfterLogin;
+        logheader.innerHTML = AfterLogin;
     }
 }
 
@@ -67,6 +67,20 @@ function allheader(){
       nextheader.innerHTML = beforeloginNew;
     }
     else {
+    userIdentity();
       nextheader.innerHTML = AfterLoginNew;
     }
+}
+
+function userIdentity(){
+    let userId = JSON.parse(localStorage.getItem("unique_id"));
+
+    let user_data = JSON.parse(localStorage.getItem("user_data"));
+
+    let userImage = user_data.find(userid => userid.email === userId);
+
+    let photo = document.getElementsByClassName("profile-img");
+
+    photo.setAttribute("src", userImage.image);
+    photo.setAttribute("alt", userImage.name + " Image");
 }

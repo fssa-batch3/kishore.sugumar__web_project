@@ -1,76 +1,47 @@
 let userId = [
     {
         email: "sesslyn@gmail.com",
-        image: "https://freeimage.host/i/HNNZsP2",
+        image: "https://iili.io/HNUCkOP.png",
         name: "Sesslyn",
         password: "Sess#123",
-        phone: "789054321"
+        phone: "789054321",
+        location: "Tirutani"
     },
     {
         email: "uthra@gmail.com",
-        image: "https://freeimage.host/i/HNNDo79",
+        image: "https://iili.io/HNUCSzF.jpg",
         name: "Uthra",
         password: "Uthr#123",
-        phone: "7904911208"
+        phone: "7904911208",
+        location: "Pondicherry"
     },
     {
         email: "meena@gmail.com",
-        image: "https://freeimage.host/i/HNNDzmu",
+        image: "https://iili.io/HNUCZbt.jpg",
         name: "Meena",
         password: "Meen#123",
-        phone: "7418679291"
+        phone: "7416687991",
+        location: "Trichy"
     },
     {
         email: "karkuvel@gmail.com",
-        image: "https://freeimage.host/i/HNNDALx",
+        image: "https://iili.io/HNUBEMJ.jpg",
         name: "Karkuvel",
         password: "Kark#123",
-        phone: "9876567890"
+        phone: "9870000890",
+        location: "Madurai"
     },
     {
         email: "tamil@gmail.com",
-        image: "https://freeimage.host/i/HNND5qQ",
+        image: "https://iili.io/HNNDXBR.jpg",
         name: "Tamil",
         password: "Tami#123",
-        phone: "7890654321"
+        phone: "7890654321",
+        location: "Chennai"
     },
-    {
-        email: "ajun@gmail.com",
-        image: "https://freeimage.host/i/HNND71V",
-        name: "Ajun",
-        password: "Ajun#123",
-        phone: "8907654321"
-    },
-    {
-        email: "praveen@gmail.com",
-        image: "https://freeimage.host/i/HNNDcdP",
-        name: "Praveen",
-        password: "Prav#123",
-        phone: "8745362109"
-    },
-    {
-        email: "alagu@gmail.com",
-        image: "https://freeimage.host/i/HNNDGIa",
-        name: "Alagu",
-        password: "Alag#123",
-        phone: "8745362109"
-    },
-    {
-        email: "karthi@gmail.com",
-        image: "https://freeimage.host/i/HNNDMhJ",
-        name: "Karthi",
-        password: "Kart#123",
-        phone: "9345678901"
-    },
-    {
-        email: "thamim@gmail.com",
-        image: "https://freeimage.host/i/HNNDXBR",
-        name: "Thamim",
-        password: "Tham#123",
-        phone: "9456789123"
-    }
 ];
 
+localStorage.setItem("user_data", JSON.stringify(userId))
 
 let product_data = [{
     "category": "Bike",
@@ -133,66 +104,6 @@ let product_data = [{
     "user_id": "tamil@gmail.com"
 },
 {
-    "category": "Bike",
-    "date": "3",
-    "description": "Engine TypeLiquid cooled, 4 - stroke, SOHC, 4 - valveDisplacement155 ccMax Torque14.1 Nm @7500 rpmNo.of Cylinders1Cooling SystemLiquid CooledValve Per Cylinder4StartingSelf Start OnlyFuel SupplyFuel InjectionClutchWet, Multiple DiscGear BoxConstant mesh 6 SpeedBore58.0 mmStroke58.7 mmCompression Ratio11.6 : 1Emission Typebs6",
-    "duration": "Year",
-    "image": "",
-    "name": "Yamaha MT 15",
-    "price": "",
-    "unique": "8f680fa7-9f50-45dc-bd96-2c2a7e1e685c",
-    "uploaded_on": "2023-03-27",
-    "user_id": "ajun@gmail.com"
-},
-{
-    "category": "Bike",
-    "date": "3",
-    "description": "Engine TypeLiquid - cooled, 4 - stroke, SOHC, 4 - valveDisplacement155 ccMax Torque14.1 Nm @8500 rpmNo.of Cylinders1Cooling SystemLiquid CooledValve Per Cylinder4StartingSelf Start OnlyFuel SupplyFuel InjectionClutchWet, multiple - discIgnitionTCI(Transistor controlled ignition)Gear Box6 - SpeedBore58 mmStroke58.7 mmCompression Ratio11.6: 1Emission Typebs6",
-    "duration": "Year",
-    "image": "",
-    "name": "Yamaha R15S",
-    "price": "",
-    "unique": "8f680fa7-9f50-45dc-bd96-2c2a7e1e685c",
-    "uploaded_on": "2023-03-27",
-    "user_id": "praveen@gmail.com"
-},
-{
-    "category": "Bike",
-    "date": "3",
-    "description": "Engine Type4 - Stroke, 1 - cylinder, Oil cooledDisplacement249 ccMax Torque22.2 Nm @7300 rpmNo.of Cylinders1Cooling SystemOil CooledStartingSelf Start OnlyFuel SupplyFuel InjectionClutchWet, multi - plate typeGear Box6 SpeedBore76 mmStroke54.9 mmEmission Typebs6",
-    "duration": "Year",
-    "image": "",
-    "name": "Suzuki Gixxer SF 250",
-    "price": "",
-    "unique": "8f680fa7-9f50-45dc-bd96-2c2a7e1e685c",
-    "uploaded_on": "2023-03-27",
-    "user_id": "alagu@gmail.com"
-},
-{
-    "category": "Bike",
-    "date": "3",
-    "description": "No.Of Batteries3Motor Power(w)32000Range(Eco Mode)261 km / chargeRange(Normal Mode)200 km / chargeRange(Sport Mode)171 km / chargeStartingRemote Start, Push Button StartGear BoxSingle reduction helical gear box Ride Modes - Glide | Combat | Ballistic, Park Assist, SRB10 Battery Pack, Battery Management System, IEC 62196 - 6 Charging Port, Throttle Control, Up To 75 km Of Range Per Hour Of Charge, Ambient Light Sensor, Headlight Auto On / Off",
-    "duration": "Year",
-    "image": "",
-    "name": "Ultraviolette F77",
-    "price": "",
-    "unique": "8f680fa7-9f50-45dc-bd96-2c2a7e1e685c",
-    "uploaded_on": "2023-03-27",
-    "user_id": "karthi@gmail.com"
-},
-{
-    "category": "Bike",
-    "date": "3",
-    "description": "Motor Power(w)1000StartingPush Button Start Bluetooth ConnectivityBluetooth, WiFiAnti Theft AlarmYesSpeedometerDigitalTripmeterDigitalAdditional Features Of VariantGPS, MHX(Maximum Heat Exchanging), Driver Alert System, IoT - led GamificationSeat TypeSplitClockDigitalPassenger FootrestYes Braking TypeCombine Braking SystemCharging PointYesFast ChargingYesMobile ApplicationYesSpeedometerDigitalTripmeterDigitalClockDigitalRiding ModesYesAdditional FeaturesGPS, MHX(Maximum Heat Exchanging), Driver Alert System, IoT - led GamificationPassenger FootrestYesDisplayYes",
-    "duration": "Year",
-    "image": "",
-    "name": "Oben Rorr",
-    "price": "",
-    "unique": "8f680fa7-9f50-45dc-bd96-2c2a7e1e685c",
-    "uploaded_on": "2023-03-27",
-    "user_id": "thamim@gmail.com"
-},
-{
     "category": "Car",
     "date": "2",
     "description": "Engine Type1.2 L i-CNGDisplacement (cc)1199Max Power72bhp@6000rpmMax Torque95nm@3500rpmNo. of cylinder3Valves Per Cylinder4TransmissionTypeManualGear Box5-Speed Fuel TypeCNGCNG Mileage (ARAI)26.49CNG Fuel Tank Capacity (Litres)60.0Secondary Fuel TypePetrolPetrol Mileage (ARAI)20.09Petrol Fuel Tank Capacity (Litres)35.0Emission Norm ComplianceBS VI",
@@ -252,66 +163,6 @@ let product_data = [{
     "uploaded_on": "2023-03-27",
     "user_id": "tamil@gmail.com"
 },
-{
-    "category": "Car",
-    "date": "11",
-    "description": "Engine Type1.5L Turbo GDi PetrolDisplacement (cc)1482Max Power157.57bhp@5500rpmMax Torque253Nm@1500-3500rpmNo. of cylinder4Valves Per Cylinder4 TransmissionTypeAutomaticGear Box7-speed DCT Fuel TypePetrolPetrol Mileage (ARAI)20.6Petrol Fuel Tank Capacity (Litres)45.0Emission Norm ComplianceBS VI 2.0",
-    "duration": "Month",
-    "image": "",
-    "name": "",
-    "price": "Hyundai Verna",
-    "unique": "8f680fa7-9f50-45dc-bd96-2c2a7ep098ht",
-    "uploaded_on": "2023-03-27",
-    "user_id": "ajun@gmail.com"
-},
-{
-    "category": "Car",
-    "date": "9",
-    "description": "Engine TypemHawk 130 EngineDisplacement (cc)2184Max Power130bhp@3750rpmMax Torque300nm@1600-2800rpmNo. of cylinder4Valves Per Cylinder4 ransmissionTypeAutomaticGear Box6 SpeedDrive Type4X4 Fuel TypeDieselDiesel Fuel Tank Capacity (Litres)57.0Diesel Highway Mileage10.0Emission Norm ComplianceBS VI",
-    "duration": "Month",
-    "image": "",
-    "name": "Mahindra Thar",
-    "price": "",
-    "unique": "8f680fa7-9f50-45dc-bd96-2c2a7emkhry5",
-    "uploaded_on": "2023-03-27",
-    "user_id": "praveen@gmail.com"
-},
-{
-    "category": "Car",
-    "date": "11",
-    "description": "Engine Type1.0 SCeDisplacement (cc)999Max Power67.06bhp@5500rpmMax Torque91Nm@4250rpmNo. of cylinder3Valves Per Cylinder4TransmissionTypeAutomaticGear Box5 Speed Fuel TypePetrolPetrol Mileage (ARAI)22.3Petrol Fuel Tank Capacity (Litres)28.0Petrol Highway Mileage17.0Emission Norm ComplianceBS VI",
-    "duration": "Month",
-    "image": "",
-    "name": "Renault KWID",
-    "price": "",
-    "unique": "8f680fa7-9f50-45dc-bd96-2c2a7e09874t",
-    "uploaded_on": "2023-03-27",
-    "user_id": "alagu@gmail.com"
-},
-{
-    "category": "Car",
-    "date": "16",
-    "description": "Engine Type1.3 L HR13DDT Turbo PetrolDisplacement (cc)1330Max Power153.87bhp@5500rpmMax Torque254nm@1600rpmNo. of cylinder4Valves Per Cylinder4Valve ConfigurationDOHCFuel Supply SystemGDI TransmissionTypeAutomaticGear Box6-Speed Fuel TypePetrolPetrol Mileage (ARAI)14.23Petrol Fuel Tank Capacity (Litres)50.0Emission Norm ComplianceBS VI",
-    "duration": "Month",
-    "image": "",
-    "name": "Nissan Kicks",
-    "price": "",
-    "unique": "8f680fa7-9f50-45dc-bd96-2c2a7e123thu",
-    "uploaded_on": "2023-03-27",
-    "user_id": "karthi@gmail.com"
-},
-{
-    "category": "Car",
-    "date": "20",
-    "description": "Displacement (cc)1490Max Power91.18bhp@5500rpmMax Torque122Nm@4400-4800rpmNo. of cylinder3Valves Per Cylinder4TransmissionTypeAutomaticDrive Type2WD Fuel TypePetrolPetrol Mileage (ARAI)27.97Petrol Fuel Tank Capacity (Litres)45.0Emission Norm ComplianceBS VI",
-    "duration": "Month",
-    "image": "",
-    "name": "Toyota Urban Cruiser Hyryder",
-    "price": "",
-    "unique": "8f680fa7-9f50-45dc-bd96-2c2a7e09poxt",
-    "uploaded_on": "2023-03-27",
-    "user_id": "thamim@gmail.com"
-},
 ]
 
 // sesslyn@gmail.com
@@ -319,11 +170,6 @@ let product_data = [{
 // meena@gmail.com
 // karkuvel@gmail.com
 // tamil@gmail.com
-// ajun@gmail.com
-// praveen@gmail.com
-// alagu@gmail.com
-// karthi@gmail.com
-// thamim@gmail.com
 
 // {
 //     "category": "",

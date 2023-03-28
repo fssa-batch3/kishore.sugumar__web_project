@@ -40,7 +40,7 @@
 * Read (completed)
     * Scenario 1: Successfully view a profile.
       * Steps:
-        1. Log in.
+        1. Log in as a user.
         2. Navigate to the profile page.
         3. View the detail of your's in profile.
     * Expected Result:
@@ -48,7 +48,7 @@
 * Upadte (completed)
     * Scenario 1: Successfully update a profile.
       * Steps:
-        1. Log in.
+        1. Log in as a user.
         2. Navigate to the profile page.
         3. Click "Edit" button
         4. And your profile.
@@ -57,7 +57,7 @@
 * Log out (completed)
     * Scenario 1: Successfully logout from the website.
       * Steps:
-        1. Log in.
+        1. Log in as a user.
         2. Navigate to the profile page.
         3. Click "Log out" button
     * Expected Result:
@@ -65,7 +65,7 @@
 * Delete (completed)
     * Scenario 1: Successfully logout from the website.
       * Steps:
-        1. Log in.
+        1. Log in as a user.
         2. Navigate to the profile page.
         3. Click "Delete" button
     * Expected Result:
@@ -73,9 +73,9 @@
 
 ### Product CRUD (seller):
 * Add product (completed)
-    * Scenario 1: Successfully logout from the website.
+    * Scenario 1: Successfully add product.
       * Steps:
-        1. Log in.
+        1. Log in as a user.
         2. Navigate to the profile page.
         3. Click "Add product" button.
         4. Choose the category.
@@ -85,17 +85,17 @@
         * The user is redirected to the profile page.
         * The product is added to his profile page at bottom.
 * Read product (completed)
-    * Scenario 1: Successfully logout from the website.
+    * Scenario 1: Successfully view product.
       * Steps:
-        1. Log in.
+        1. Log in as a user.
         2. Navigate to the profile page.
         3. Scroll down.
     * Expected Result:
         * The user should see their products below the profile page.
 * Upadte product (completed)
-    * Scenario 1: Successfully logout from the website.
+    * Scenario 1: Successfully edit product.
       * Steps:
-        1. Log in.
+        1. Log in as a user.
         2. Navigate to the profile page.
         3. Scroll down.
         4. In your product card click "Edit" button.
@@ -104,9 +104,9 @@
     * Expected Result:
         * The user is redirected to the profile page.
 * Delete product (completed)
-    * Scenario 1: Successfully logout from the website.
+    * Scenario 1: Successfully remove product.
       * Steps:
-        1. Log in.
+        1. Log in as a user.
         2. Navigate to the profile page.
         3. Scroll down.
         4. In your product card click "Remove" button.
@@ -115,9 +115,9 @@
 
 ### Product CRUD (buyer):
 * View products/items (completed)
-    * Scenario 1: Successfully view products/items
+    * Scenario 1: Successfully view products/items.
       * Steps:
-        1. Log in as a buyer.
+        1. Log in as a user.
         2. Navigate to the product listing page.
         3. View the list of available products/items.
     * Expected Result:
@@ -125,7 +125,7 @@
 * View product/item details (completed)
     * Scenario 1: Successfully view product/item details
       * Steps:
-        1. Log in as a buyer.
+        1. Log in as a user.
         2. Navigate to the product listing page.
         3. Select a product/item to view its details.
     * Expected Result:
@@ -135,7 +135,7 @@
 * Add product (completed)
     * Scenario 1: Successfully add product/item to wishlist
       * Steps:
-        1. Log in.
+        1. Log in as a user.
         2. Navigate to the product listing page.
         3. Select a product/item to wish list.
         4. Click the "Wish list" button.
@@ -144,7 +144,7 @@
 * Read product (completed)
     * Scenario 1: Successfully see the product/item in the wishlist page.
       * Steps:
-        1. Log in.
+        1. Log in as a user.
         2. Navigate to the wish list page.
         3. View the list of available items that user added.
     * Expected Result:
@@ -152,7 +152,7 @@
 * Delete product (completed)
     * Scenario 1: Successfully logout from the website.
       * Steps:
-        1. Log in.
+        1. Log in as a user.
         2. Navigate to the wish list page.
         4. In the product card click "Remove" button.
     * Expected Result:
@@ -162,7 +162,7 @@
 * Read Contact
     * Scenario 1: Successfully view product/item details
       * Steps:
-        1. Log in.
+        1. Log in as a user.
         2. Navigate to the product listing page.
         3. Select a product/item to view its details.
         4. Click the seller profile in the page below the detail of product.  
@@ -174,7 +174,7 @@
 * Add product (completed)
     * Scenario 1: Successfully add product/item to wishlist
       * Steps:
-        1. Log in.
+        1. Log in as a user.
         2. Navigate to the product listing page.
         3. Bid any amount in the input.
         4. Click the "Bid" button.
@@ -183,7 +183,7 @@
 * Read product
     * Scenario 1: Successfully see the product/item in the bid page.
       * Steps:
-        1. Log in.
+        1. Log in as a user.
         2. Navigate to the bid list page.
         3. View the list of available items that user bided.
     * Expected Result:
@@ -193,9 +193,11 @@
 * Read bargain request 
     * Scenario 1: Successfully view the offers of the product.
       * Steps:
-        1. Log in.
+        1. Log in as a user.
         2. Navigate to the profile page.
         3. Scroll down.
         4. In your product card click "Offers" button.
     * Expected Result:
-        * The user can view the list of offers from the different yours.
+        * The user can view the list of offers from the different user's.
+
+### End
