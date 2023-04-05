@@ -45,6 +45,9 @@ function sell_prod() {
 
     document.querySelector("#product_name").innerHTML = product.name;
     document.querySelector("#prod_price").innerHTML = product.price;
+    let img = document.querySelector("#product_img");
+    img.setAttribute("src", product.image);
+    img.setAttribute("alt", product.name + "image");
 
 }
 
@@ -116,7 +119,7 @@ function bid_prod(product) {
                 div_card.classList.add("content");
 
                 let image = document.createElement("img");
-                image.setAttribute("src", "");
+                image.setAttribute("src", productObj.image);
                 image.setAttribute("alt", productObj.name + "Image");
                 image.classList.add("product-img");
                 div_card.prepend(image);

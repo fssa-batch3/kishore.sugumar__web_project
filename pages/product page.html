@@ -26,13 +26,13 @@
     <main class="main">
         <section class="main_left">
             <div class="thumbnail-imgs">
-                <img src="" alt="" onclick="img(this)">
-                <img src="" alt="" onclick="img(this)">
-                <img src="" alt="" onclick="img(this)">
-                <img src="" alt="" onclick="img(this)">
+                <!-- <img src="" alt="" id="sub_img" onclick="img(this)">
+                <img src="" alt="" id="sub_img" onclick="img(this)">
+                <img src="" alt="" id="sub_img" onclick="img(this)">
+                <img src="" alt="" id="sub_img" onclick="img(this)"> -->
             </div>
             <div class="main-img">
-                <img id="imagebox" src="" alt="">
+                <img id="imagebox">
             </div>
         </section>
         <section class="main_right">
@@ -116,6 +116,19 @@
         var price = document.querySelector("#prod_price").innerHTML = product.price;
         var date = document.querySelector("#prod_date").innerHTML = product.date;
         var duration = document.querySelector("#duration").innerHTML = product.duration;
+        var image = document.querySelector("#imagebox")
+        image.setAttribute('src', product.image);
+        image.setAttribute('alt', product.name);
+
+for (let i = 0; i < 4; i++) {
+  const img = document.createElement('img');
+  img.setAttribute('src', product.image[i]);
+  img.setAttribute('alt', product.name);
+  img.setAttribute('id', `sub_img${i}`);
+  img.setAttribute('onclick', 'img(this)');
+  document.querySelector(".thumbnail-imgs").appendChild(img)
+}
+
 
         const user_data = JSON.parse(localStorage.getItem("user_data"));
 
@@ -139,9 +152,9 @@
         const get_object = (email, stored_data) => stored_data.find(val => val.email === email);
         let data = get_object(email, stored_data);
 
-        let profileImage = document.getElementById("profile-img");
-        profileImage.setAttribute("src", data.image);
-        profileImage.setAttribute("alt", data.name + " Image");
+        // let profileImage = document.getElementById("profile-img");
+        // profileImage.setAttribute("src", data.image);
+        // profileImage.setAttribute("alt", data.name + " Image");
     </script>
 </body>
 

@@ -25,7 +25,7 @@
     </header>
     <main class="main">
         <section class="main_left">
-            <img src="../assets/img/shoe5.png" alt="product_img" class="product_img">
+            <img class="product_img" id="product_img">
             <div class="product_detail">
                 <h1 id="product_name"></h1>
                 <div class="rate">
@@ -83,6 +83,10 @@
         const buyer_i = buyer.findIndex(item => item.email === buyerId);
         let buyer_index = buyer[buyer_i];
 
+        let img = document.querySelector("#product_img");
+        img.setAttribute("src", product[product_i].image);
+        img.setAttribute("alt", product[product_i].name + "image");
+
         document.querySelector("#product_name").innerHTML = product[product_i].name;
         document.querySelector("#prod_price").innerHTML = product[product_i].price;
         document.querySelector("#buyer_name").innerHTML = buyer[buyer_i].name
@@ -99,9 +103,6 @@
         const get_object = (email, stored_data) => stored_data.find(val => val.email === email);
         let data = get_object(email, stored_data);
 
-        let profileImage = document.getElementById("profile-img");
-        profileImage.setAttribute("src", data.image);
-        profileImage.setAttribute("alt", data.name + " Image");
     </script>
 </body>
 

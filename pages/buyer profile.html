@@ -20,53 +20,6 @@
 </head>
 
 <body class="body">
-    <!-- ---------------------product-edit---------------------- -->
-    <div id="prod_edit">
-        <div class="closebtn" onclick="editform_off()" title="Close Overlay"><i class="fa-solid fa-xmark"></i></div>
-        <form class="form">
-            <p class="heading-in">Edit Product </p>
-            <div class="stanard">
-                <p>
-                    <span class="detail">Category :</span><span class="prod_val" id="category"></span>
-                </p>
-                <p>
-                    <span class="detail">uploded on :</span><span class="prod_val" id="uploded_on"></span>
-                </p>
-                <p>
-                    <span class="detail">unique ID :</span><span class="prod_val" id="unique_id"></span>
-                </p>
-                <p>
-                    <span class="detail">User ID:</span><span class="prod_val" id="user_id"></span>
-                </p>
-            </div>
-            <div class="field">
-                <input type="text" class="input-field" id="prod_name" placeholder="product_name" autocomplete="off"
-                pattern="^(?!\s)[a-zA-Z\s\d/]+$" required="true">
-            </div>
-            <div class="field">
-                <textarea class="textarea" id="description" placeholder="make it as point...."  pattern="^(?!\s)"></textarea>
-            </div>
-            <div class="field">
-                <input type="number" class="input-field" id="prod_price" placeholder="product_price" autocomplete="off"
-                    required="true">
-            </div>
-            <div class="duration">
-                <select class="Category" id="duration" required>
-                    <option value="" style="font-size:5pt;" disabled>&nbsp;</option>
-                    <option class="option" value="Month" style="font-size:12pt">Month</option>
-                    <option value="" style="font-size:5pt;" disabled>&nbsp;</option>
-                    <option class="option" value="Year" style="font-size:12pt">Year</option>
-                    <option value="" style="font-size:5pt;" disabled>&nbsp;</option>
-                </select>
-            </div>
-            <div class="field">
-                <input type="number" class="input-field" id="used_period" placeholder="used_month" required>
-            </div>
-            <div class="btn">
-                <button class="button2" onclick="edit_prod(event)">Save</button>
-            </div>
-        </form>
-    </div>
     <!-- ----------------------------edit-profile------------------------ -->
     <div id="overlay">
         <div class="closebtn" onclick="off()" title="Close Overlay"><i class="fa-solid fa-xmark"></i></div>
@@ -76,13 +29,16 @@
                 <span class="detail">Email :</span><span class="prod_val" id="email"></span>
             </p>
             <div class="field">
-                <input type="text" class="input-field" id="name" placeholder="Name" autocomplete="off" pattern="^(?!\s)[a-zA-Z\s]+$" required="true">
+                <input type="text" class="input-field" id="name" placeholder="Name" autocomplete="off"
+                    pattern="^(?!\s)[a-zA-Z\s]+$" required="true">
             </div>
             <div class="field">
-                <input type="tel" class="input-field" id="phone" placeholder="+91" autocomplete="off" pattern="^(?!\s)[0-9]+" required="true">
+                <input type="tel" class="input-field" id="phone" placeholder="+91" autocomplete="off"
+                    pattern="^(?!\s)[0-9]+" required="true">
             </div>
             <div class="field">
-                <input type="text" class="input-field" id="location" placeholder="Location" pattern="^(?!\s)[a-zA-Z\s]+$" required="true">
+                <input type="text" class="input-field" id="location" placeholder="Location"
+                    pattern="^(?!\s)[a-zA-Z\s]+$" required="true">
             </div>
             <div class="btn">
                 <button class="button2" onclick="update(event)">Save</button>
@@ -94,7 +50,7 @@
     </header>
     <!-- -------------------------profile----------------------- -->
     <div class="card">
-        <img class="user-img" id="user-img">
+        <img class="user-img" id="user-img" alt="">
         <div class="details">
             <h1 class="title" id="user_name"></h1>
             <span class="caption"><i class="fa fa-envelope"></i>

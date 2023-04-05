@@ -42,7 +42,7 @@ function wish_prod(product) {
                 div_card.append(anch);
 
                 image = document.createElement("img");
-                image.setAttribute("src", "");
+                image.setAttribute("src", productObj.image);
                 image.setAttribute("alt",productObj["name"]+ " Image");
                 image.classList.add("product-img");
                 anch.prepend(image);

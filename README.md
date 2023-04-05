@@ -54,6 +54,8 @@
         4. And your profile.
     * Expected Result:
         * The user can view their updated in the same page profile.
+    * Hint:
+        * User cannot uplode the image 
 * Log out (completed)
     * Scenario 1: Successfully logout from the website.
       * Steps:
@@ -84,6 +86,8 @@
     * Expected Result:
         * The user is redirected to the profile page.
         * The product is added to his profile page at bottom.
+    * Hint:
+        * User cannot uplode the image
 * Read product (completed)
     * Scenario 1: Successfully view product.
       * Steps:

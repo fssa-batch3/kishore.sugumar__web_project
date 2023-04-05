@@ -61,7 +61,7 @@ function card() {
   let unique = JSON.parse(localStorage.getItem("unique_id"));
 
   for (let i = 0; i < prod.length; i++) {
-    if (unique != prod[i].user_id && category_prod === prod[i].category) {
+    if (category_prod === prod[i].category && unique !== prod[i].user_id) {
       let div_card = document.createElement("div");
       div_card.setAttribute("class", "card");
 
@@ -148,24 +148,27 @@ function list(product) {
         button1.classList.add("button1", "algn");
         button1.textContent = "offers";
         anch.append(button1);
+        
+        let anc = document.createElement("a");
+        anc.setAttribute("href", "./seller product.html?product_id=" + prod[i].unique);
+        div_card.append(anc);
 
         button3 = document.createElement("button");
         button3.classList.add("button2", "algn");
-        button3.textContent = "Edit";
-        button3.onclick = function (event) {
-          editform_on();
-          update_prod(event, prod[i].unique);
-        }
-        div_card.append(button3);
+        button3.textContent = "View";
+        anc.append(button3);
+
+        let button_remove = document.createElement("div");
+        div_card.append(button_remove);
 
         button2 = document.createElement("button");
-        button2.classList.add("button3", "algn");
+        button2.classList.add("button3", "remo");
         button2.textContent = "Remove";
         button2.setAttribute("id", "remove");
         button2.onclick = function (event) {
           remove_prod(event, prod[i].unique)
         }
-        div_card.append(button2);
+        button_remove.append(button2);
 
         document.querySelector("div.box").append(div_card);
       };
@@ -176,6 +179,7 @@ function list(product) {
 function similar() {
   const prod_data = JSON.parse(localStorage.getItem("product_data"));
   const productId = new URLSearchParams(window.location.search).get("product_id");
+  const user = JSON.parse(localStorage.getItem("unique_id"));
 
   const prod_cate = prod_data.find(pro => pro.unique === productId);
   const type = prod_cate.category;
@@ -196,8 +200,11 @@ function similar() {
   }
 
   for (let i = 0; i < 4; i++) {
+
+
     const randomProduct = similar_prod[i];
 
+    if(randomProduct.user_id !== user){
     let div_card = document.createElement("div");
     div_card.setAttribute("class", "prod_card");
     div_card.setAttribute("data-unique", randomProduct.unique);
@@ -244,6 +251,7 @@ function similar() {
     document.querySelector("section.similar_container").append(div_card);
   }
   }
+}
 
 //-----------------------home page-----------------------------------------//
 function over() {

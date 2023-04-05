@@ -3,38 +3,61 @@
     justify-content: space-between;
     background-color: #222f30;
     margin-bottom: 20px;
-}
-
-.logo {
+    flex-wrap: wrap;
+  }
+  
+  .logo {
     width: 140px;
     height: 50px;
     margin: 5px;
     background-color: rgba(0, 0, 0, 0.26);
-}
-
-.web-name {
+  }
+  
+  .web-name {
     font-size: 26px;
     color: #ffeba7;
     margin: 15px;
-}
-
-.account-btn {
+    flex: 1;
+    text-align: center;
+  }
+  
+  .account-btn {
     margin: 15px 10px 0px;
-}
+  }
 
-.search {
-    width: 300px;
+  .serc{
+    width: 400px;
+  }
+  
+  .search {
+    width: 100%;
+    max-width: 300px;
     height: 3em;
     outline: none;
     border-radius: 5px 0px 0px 5px;
     border-width: 0px;
     padding: 0px 0px 0px 10px;
-    margin-top: 15px;
-}
-
-.profile-img {
-    width: 50px;
-    height: 50px;
-    margin: 5px;
+    margin-top: 12px;
+  }
+  
+  .profile-img {
+    width: 55px;
+    height: 55px;
+    margin: 5px 5px 0px 0px;
     border-radius: 50%;
-}
+  }
+
+@media screen and (min-width: 768px) {
+    .header {
+      flex-wrap: nowrap;
+    }
+    
+    .web-name {
+      flex: initial;
+      text-align: left;
+    }
+    
+    .account-btn {
+      margin: 15px 0px 0px;
+    }
+  }

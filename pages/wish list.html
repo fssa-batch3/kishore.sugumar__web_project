@@ -52,9 +52,6 @@
     const get_object = (email, stored_data) => stored_data.find(val => val.email === email);
     let data = get_object(email, stored_data);
 
-    let profileImage = document.getElementById("profile-img");
-    profileImage.setAttribute("src", data.image);
-    profileImage.setAttribute("alt", data.name + " Image");
   </script>
 </body>
 

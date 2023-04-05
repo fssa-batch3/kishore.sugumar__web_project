@@ -7,7 +7,7 @@ var profilepage = myOrigin + "/pages/buyer profile.html";
 let beforelogin =
     `
     <img src="${logoSrc}" alt="logo" class="logo">
-    <div>
+    <div  class="serc">
         <input type="search" id="search" class="search" placeholder="Search....">
         <button class="button4"><i class="fa-solid fa-magnifying-glass"></i></button>
     </div>
@@ -24,7 +24,7 @@ let beforelogin =
 let AfterLogin =
     ` 
 <img src="${logoSrc}" alt ="logo" class="logo">
-<div>
+<div class="serc">
     <input type="search" id="search" class="search" placeholder="Search....">
     <button class="button4"><i class="fa-solid fa-magnifying-glass"></i></button>
   </div>
@@ -57,30 +57,33 @@ function home_Header(){
     }
     else {
         logheader.innerHTML = AfterLogin;
+          
+      let user_data = JSON.parse(localStorage.getItem("user_data"));
+  
+      let userImage = user_data.find((userid) => userid.email === userId);
+  
+      let photo = document.querySelector(".profile-img");
+  
+      photo.setAttribute("src", userImage.image);
+      photo.setAttribute("alt", userImage.name +  "Image");
     }
 }
 
-function allheader(){
+function allheader() {
     let userId = JSON.parse(localStorage.getItem("unique_id"));
-    let nextheader = document.getElementById('header');
+    let nextheader = document.getElementById("header");
     if (!userId) {
       nextheader.innerHTML = beforeloginNew;
-    }
-    else {
-    userIdentity();
+    } else {
       nextheader.innerHTML = AfterLoginNew;
+  
+      let user_data = JSON.parse(localStorage.getItem("user_data"));
+  
+      let userImage = user_data.find((userid) => userid.email === userId);
+  
+      let photo = document.querySelector(".profile-img");
+  
+      photo.setAttribute("src", userImage.image);
+      photo.setAttribute("alt", userImage.name +  "Image");
     }
-}
-
-function userIdentity(){
-    let userId = JSON.parse(localStorage.getItem("unique_id"));
-
-    let user_data = JSON.parse(localStorage.getItem("user_data"));
-
-    let userImage = user_data.find(userid => userid.email === userId);
-
-    let photo = document.getElementsByClassName("profile-img");
-
-    photo.setAttribute("src", userImage.image);
-    photo.setAttribute("alt", userImage.name + " Image");
-}
+  }

@@ -77,48 +77,69 @@ function active(e) {
 //     };
 //   });
 // });
+//-------------------------read product(in seller page)-----------------//
+function update_prod() {
+
+  const productId = new URLSearchParams(window.location.search).get('product_id');
+
+  const prod_data = JSON.parse(localStorage.getItem("product_data"));
+
+  var product = prod_data.find(data => {
+      return data.unique === productId
+  });
+
+  document.querySelector("#prod_name").innerHTML = product.name;
+  document.querySelector("#description").innerHTML = product.description;
+  document.querySelector("#prod_price").innerHTML = product.price;
+  document.querySelector("#prod_date").innerHTML = product.date;
+  document.querySelector("#duration").innerHTML = product.duration;
+  for (let i = 0; i < 4; i++) {
+      const img = document.createElement('img');
+      img.setAttribute('src', product.image[i]);
+      img.setAttribute('alt', product.name +" image");
+      img.setAttribute('id', `sub_img${i}`);
+      img.setAttribute('class', `product_img`);
+      img.setAttribute('onclick', 'img(this)');
+      document.querySelector(".images").appendChild(img)
+  }
+}
 //-------------------------read product(in edit form)-----------------//
-function update_prod(e, uniqueId) {
-  e.preventDefault();
+function e_prod() {
 
-  let stored_data = JSON.parse(localStorage.getItem("product_data"));
+  const productId = new URLSearchParams(window.location.search).get('product_id');
 
-  let product = stored_data.find((prod) => prod.unique === uniqueId);
+  const prod_data = JSON.parse(localStorage.getItem("product_data"));
 
-  document.getElementById("category").innerHTML = product.category;
-  document.getElementById("uploded_on").innerHTML = product.uploded_on;
-  document.getElementById("unique_id").innerHTML = product.unique;
-  document.getElementById("user_id").innerHTML = product.user_id;
-  document.getElementById("prod_name").value = product.name;
-  document.getElementById("description").value = product.description;
-  document.getElementById("prod_price").value = product.price;
-  document.getElementById("used_period").value = product.date;
+  var product = prod_data.find(data => {
+      return data.unique === productId
+  });
+
+  document.querySelector("#edit_name").value = product.name;
+  document.querySelector("#edit_description").value = product.description;
+  document.querySelector("#edit_price").value = product.price;
+  document.querySelector("#edit_period").value = product.date;
 }
 //-------------------------edit product------------------------//
 function edit_prod(e) {
   e.preventDefault();
 
-  let category = document.getElementById("category").innerHTML;
-  let user_id = document.getElementById("user_id").innerHTML;
-  let prod_name = document.getElementById("prod_name").value;
-  let description = document.getElementById("description").value;
-  let prod_price = document.getElementById("prod_price").value;
-  let used_period = document.getElementById("used_period").value;
-  let duration = document.getElementById("duration").value;
+  let prod_name = document.querySelector("#edit_name").value;
+  let description = document.querySelector("#edit_description").value;
+  let prod_price = document.querySelector("#edit_price").value;
+  let used_period = document.querySelector("#edit_period").value;
+  let duration = document.querySelector("#edit_duration").value;
 
-  if (category === "" || user_id === "" || prod_name === "" || description === "" || prod_price === "" || used_period === "" || duration === "") {
+  if (prod_name === "" || description === "" || prod_price === "" || used_period === "" || duration === "") {
     alert ("Please fill in all required fields");
     return;
   }
 
   let stored_data = JSON.parse(localStorage.getItem("product_data"));
-  let unique = document.getElementById("unique_id").innerText;
+  const unique = new URLSearchParams(window.location.search).get('product_id');
 
   let prod_data = stored_data.find(product => product.unique === unique);
 
   if (prod_data) {
-    prod_data.category = category;
-    prod_data.user_id = user_id;
     prod_data.name = prod_name;
     prod_data.description = description;
     prod_data.price = prod_price;
