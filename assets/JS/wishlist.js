@@ -18,10 +18,17 @@ function wish() {
             return;
         }
     }
-    alert('Added to your Wish list');
+    wishnote()
     wishpro.unshift(prod);
     localStorage.setItem("wishlist", JSON.stringify(wishpro));
     return;
+}
+function wishnote() {
+    var vara = document.getElementById("snackbar1");
+  
+    vara.className = "show";
+  
+    setTimeout(function(){ vara.className = vara.className.replace("show", ""); }, 4000);
 }
 // ------------------------read whishlist---------------------------//
 function wish_prod(product) {

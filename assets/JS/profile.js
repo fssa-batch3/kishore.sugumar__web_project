@@ -46,15 +46,28 @@ function log_in(e) {
     password: document.getElementById("password").value
   }
 
+
   for (let i = 0; i < stored_data.length; i++) {
     if (user_data.email === stored_data[i].email && user_data.password === stored_data[i].password) {
-      alert('Successfully logged in');
       localStorage.setItem("unique_id", JSON.stringify(user_data.email))
-      window.location.reload();
+      snackbar()
+      setTimeout(function() {
+        location.reload();
+      }, 3000);
       return;
     }
   }
   alert('Not able to find the user')
+}
+
+// -------------home page(login)----------//
+function snackbar() {
+
+  var vara = document.getElementById("snackbar");
+
+  vara.className = "show";
+
+  setTimeout(function(){ vara.className = vara.className.replace("show", ""); }, 3000);
 }
 
 //----------------------------overlay---------------------------//
@@ -143,8 +156,13 @@ function del(event) {
   }
 }
 // -------------------------log out profile-----------------------//
-function logout(){
+function logout() {
+var response = confirm("Do you want to log out?");
+if (response) {
   localStorage.removeItem("unique_id");
   window.location.href = "../index.html";
-  window.location.relode();
+} else { 
+  return;
 }
+}
+

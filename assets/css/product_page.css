@@ -283,3 +283,77 @@ input[type=number]::-webkit-outer-spin-button {
     display: flex;
     justify-content: space-evenly;
 }
+
+/* ---------snack bar------------- */
+#snackbar1{
+    visibility: hidden;
+    min-width: 230px;
+    height: 40px;
+    background-color: black;
+    color: #fff;
+    text-align: center; 
+    border-radius: 10px;
+    position: absolute; 
+    z-index: 1;
+    left: 82%; 
+    top: 100px;
+  }
+  #snackbar{
+    visibility: hidden;
+    min-width: 230px;
+    height: 70px;
+    background-color: black;
+    color: #fff;
+    text-align: center; 
+    border-radius: 10px;
+    position: absolute; 
+    z-index: 1;
+    left: 82%; 
+    top: 100px;
+  }
+  
+#snackbar1 span{
+    position: relative;
+    bottom: 20px;
+  }
+  #snackbar span{
+    position: relative;
+    bottom: 30px;
+  }
+  .heart{
+    width: 30px;
+    height:30px;
+    padding: 5px 0px 10px 10px;
+  }
+  .thumb{
+    transform: rotate(180deg);
+    width: 50px;
+    height:50px;
+    padding: 10px 0px 10px 10px;
+  }
+
+  #snackbar.show,   #snackbar1.show {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  }
+  
+  @-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+  }
+  
+  @keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+  }
+  
+  @-webkit-keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+  }
+  
+  @keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+  }

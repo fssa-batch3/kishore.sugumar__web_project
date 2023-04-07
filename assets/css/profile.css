@@ -210,7 +210,7 @@
 }
 .content:hover{
   color: var(--tertiary);
-  background-color: var(--secondary);
+  background-color: var(--primary);
   border-color: var(--primary);
   box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.25);
 }

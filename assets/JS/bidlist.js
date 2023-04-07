@@ -30,11 +30,23 @@ function bid() {
             return;
         }
     }
-    alert('Done')
     bid.unshift(bid_amount);
     localStorage.setItem("bid", JSON.stringify(bid));
-    window.location.reload();
+    bidnote();
+
+    setTimeout(function() {
+      location.reload();
+    }, 3000);
+  }
+
+function bidnote() {
+    var vara = document.getElementById("snackbar");
+  
+    vara.className = "show";
+  
+    setTimeout(function(){ vara.className = vara.className.replace("show", ""); }, 4000);
 }
+
 // -----------------------------read bid (seller)--------------------------//
 function sell_prod() {
     let productId = new URLSearchParams(window.location.search).get('product_id');
