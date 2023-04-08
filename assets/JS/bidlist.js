@@ -139,7 +139,7 @@ function bid_prod(product) {
                 let h3 = document.createElement("h3");
                 h3.setAttribute("class", "prod_name");
                 h3.setAttribute("id", "prod_name");
-                h3.textContent = "Product name : " +productObj.name;
+                h3.textContent = productObj.name;
                 div_card.append(h3);
 
                 let maxBidPrice = 0;

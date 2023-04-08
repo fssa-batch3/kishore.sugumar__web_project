@@ -26,7 +26,7 @@
         <form class="form">
             <p class="heading-in">Edit Profile</p>
             <p>
-                <span class="detail">Email :</span><span class="prod_val" id="email"></span>
+           <span class="prod_val" id="email"></span>
             </p>
             <div class="field">
                 <input type="text" class="input-field" id="name" placeholder="Name" autocomplete="off"
@@ -106,12 +106,22 @@
     document.getElementById("user_name").innerText = data.name;
     document.getElementById("user_email").innerText = data.email;
     document.getElementById("user_phone").innerText = data.phone;
-    document.getElementById("user_location").innerText = data.location;
+    if(!data.location){
+        document.getElementById("user_location").innerText = "Location";
+    }
+    if(data.location){
+        document.getElementById("user_location").innerText = data.location;
+    }
 
     document.getElementById("name").value = data.name;
     document.getElementById("email").innerHTML = data.email;
     document.getElementById("phone").value = data.phone;
-    document.getElementById("location").value = data.location;
+    if(!data.location){
+        document.getElementById("location").value = "";
+    }
+    if(data.location){
+        document.getElementById("location").value = data.location;
+    }
     // --------------------------------//
     list(product);
     // -------------------------------//

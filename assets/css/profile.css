@@ -111,6 +111,11 @@
   font-size: 22px;
 }
 
+.prod_val{
+  color: var(--tertiary);
+  padding-left: 5px;
+}
+
 .field {
   display: flex;
   justify-content: start;
