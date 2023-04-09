@@ -19,7 +19,7 @@
 
 
 ### User CRUD :
-* Login (completed)
+* Register (completed)
     * Scenario 1: Successfully create an account
       * Steps:
         1. Navigate to the registration page.
@@ -28,7 +28,7 @@
     * Expected Result:
         * The user is redirected to the home page.
         * For checking click the profile image in home page it will take your profile.
-* Register (completed)
+* Login (completed)
     * Scenario 1: Successfully login in to account
       * Steps:
         1. Navigate to the login page.
@@ -51,7 +51,7 @@
         1. Log in as a user.
         2. Navigate to the profile page.
         3. Click "Edit" button
-        4. And your profile.
+        4. And edit your profile.
     * Expected Result:
         * The user can view their updated in the same page profile.
     * Hint:

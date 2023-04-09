@@ -187,9 +187,6 @@ function similar() {
 
   let similar_prod = products.filter(product => product.unique !== productId);
 
-  if (similar_prod.length < 4) {
-    return; // or display a message that there are not enough similar products
-  }
 
   while (similar_prod.length < 4) {
     const randomIndex = Math.floor(Math.random() * products.length);
@@ -204,7 +201,7 @@ function similar() {
 
     const randomProduct = similar_prod[i];
 
-    if(randomProduct.user_id !== user){
+    if(randomProduct.user_id !== user && randomProduct.unique !== productId){
     let div_card = document.createElement("div");
     div_card.setAttribute("class", "prod_card");
     div_card.setAttribute("data-unique", randomProduct.unique);

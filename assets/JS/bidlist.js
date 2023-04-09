@@ -44,7 +44,7 @@ function bidnote() {
   
     vara.className = "show";
   
-    setTimeout(function(){ vara.className = vara.className.replace("show", ""); }, 4000);
+    setTimeout(function(){ vara.className = vara.className.replace("show", ""); }, 3000);
 }
 
 // -----------------------------read bid (seller)--------------------------//
