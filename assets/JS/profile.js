@@ -53,7 +53,7 @@ function log_in(e) {
       snackbar()
       setTimeout(function() {
         location.reload();
-      }, 3000);
+      }, 2000);
       return;
     }
   }
