@@ -67,7 +67,7 @@ function snackbar() {
 
   vara.className = "show";
 
-  setTimeout(function(){ vara.className = vara.className.replace("show", ""); }, 3000);
+  setTimeout(function(){ vara.className = vara.className.replace("show", ""); }, 2000);
 }
 
 //----------------------------overlay---------------------------//
