@@ -10,7 +10,7 @@
     font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
 }
 
-.main{
+.main {
     text-align: center;
 }
 
@@ -22,7 +22,7 @@
     border-color: var(--primary);
 }
 
-#cate_name{
+#cate_name {
     color: var(--fifth);
 }
 
@@ -79,6 +79,6 @@
     margin: 50px 0px;
 }
 
-.algn{
+.algn {
     margin-top: 50px;
 }

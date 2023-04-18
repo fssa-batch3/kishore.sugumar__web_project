@@ -52,12 +52,12 @@
 .button4 {
     width: 40px;
     height: 3em;
-    background-color: white;
-    border-width: 0px;
+    border: 2px solid rgb(123, 123, 123);
     border-radius: 0px 5px 5px 0px;
 }
 
 .button4:hover {
+    border-width: 0px;
     background-color: rgb(123, 191, 249);
     color: white;
 }

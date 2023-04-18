@@ -40,6 +40,9 @@
       <div class="tooltip"><a onclick="bidlist()"><i class="fa-regular fa-rectangle-list"></i></a>
         <span class="tooltiptext">Bided List</span>
       </div>
+      <div class="tooltip"><a onclick="conver()"><i class="fa-regular fa-message"></i></a>
+        <span class="tooltiptext">Notification</span>
+      </div>
     </section>
     <section class="classfy">
       <div class="sub_classfy">
@@ -105,9 +108,9 @@
           pattern="^(?!\s)[0-9]+" title="Enter your mobile number" maxlength="10" required="true">
       </div>
       <div class="field">
-        <input type="password" class="input-field" id="regi_password" placeholder="Password"
-          pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&amp;*_=+-]).{8,24}$" maxlength="10" minlength="8"
-          title="password must contain atleast one uppercase, one lower, one special character and numbers. minimum 8 character maximum 10 character"
+        <input type="password" class="input-field" id="regi_password" placeholder="Password (ABde12!#)"
+          pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&amp;*_=+-]).{8,24}$" maxlength="8" minlength="8"
+          title="password must contain atleast one uppercase, one lower, one special character and numbers. It should contain 8 characters"
           required="true">
       </div>
       <div class="field">

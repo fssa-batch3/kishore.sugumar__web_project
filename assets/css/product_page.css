@@ -44,9 +44,10 @@
 }
 
 /* -------------------main-right--------------- */
-.desc{
+.desc {
     color: var(--fifth);
 }
+
 #description {
     width: 500px;
     max-height: 150px;
@@ -66,6 +67,10 @@
     display: flex;
     padding-bottom: 15px;
     float: inline-start;
+    border-width: 0px 0px 2px 0px;
+    border-style: solid;
+    border-color: rgb(160, 160, 160);
+    margin-bottom: 10px;
 }
 
 #duration {
@@ -127,7 +132,8 @@ input[type=number]::-webkit-outer-spin-button {
     border-radius: 10px;
     transition: 0.5s ease-out;
 }
-.seller-profile:hover{
+
+.seller-profile:hover {
     background-color: var(--secondary);
     color: var(--tertiary);
 }
@@ -139,13 +145,29 @@ input[type=number]::-webkit-outer-spin-button {
     margin: 10px;
 }
 
+.seller-info {
+    text-align: center;
+    width: 360px;
+    margin: 0px 10px 10px 0px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.box{
+    display: flex;
+}
+
+.seller-info h1 {
+    color: var(--fifth);
+}
+
 #seller_name {
     width: 230px;
     padding-top: 12%;
 }
 
 /* ----profile------ */
-#overlay {
+#lay {
     position: fixed;
     display: none;
     width: 100%;
@@ -184,6 +206,21 @@ input[type=number]::-webkit-outer-spin-button {
     margin-bottom: 10px;
 }
 
+.message {
+    height: 27px;
+    font-size: 25px;
+    padding: 15px;
+    margin: 35px 0px 0px 20px;
+    border-radius: 50%;
+    color: var(--primary);
+    background-color: var(--secondary);
+}
+
+.message:hover{
+    color: var(--tertiary);
+    background-color: var(--secondary);
+}
+
 .seller_Image {
     width: 200px;
     border-radius: 50%;
@@ -213,10 +250,6 @@ input[type=number]::-webkit-outer-spin-button {
     margin-top: 5px;
 }
 
-.face i {
-    padding: 0px 4px;
-}
-
 /* ----------------similar product------------ */
 .similar {
     display: flex;
@@ -234,6 +267,7 @@ input[type=number]::-webkit-outer-spin-button {
     border-style: solid;
     border-color: var(--primary);
 }
+
 /* ----------product----------------------- */
 .unique {
     display: none;
@@ -285,75 +319,108 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 /* ---------snack bar------------- */
-#snackbar1{
+#snackbar1 {
     visibility: hidden;
     min-width: 230px;
     height: 40px;
     background-color: black;
     color: #fff;
-    text-align: center; 
+    text-align: center;
     border-radius: 10px;
-    position: absolute; 
+    position: absolute;
     z-index: 1;
-    left: 82%; 
+    left: 82%;
     top: 100px;
-  }
-  #snackbar{
+}
+
+#snackbar {
     visibility: hidden;
     min-width: 230px;
     height: 70px;
     background-color: black;
     color: #fff;
-    text-align: center; 
+    text-align: center;
     border-radius: 10px;
-    position: absolute; 
+    position: absolute;
     z-index: 1;
-    left: 82%; 
+    left: 82%;
     top: 100px;
-  }
-  
-#snackbar1 span{
+}
+
+#snackbar1 span {
     position: relative;
     bottom: 20px;
-  }
-  #snackbar span{
+}
+
+#snackbar span {
     position: relative;
     bottom: 30px;
-  }
-  .heart{
+}
+
+.heart {
     width: 30px;
-    height:30px;
+    height: 30px;
     padding: 5px 0px 10px 10px;
-  }
-  .thumb{
+}
+
+.thumb {
     transform: rotate(180deg);
     width: 50px;
-    height:50px;
+    height: 50px;
     padding: 10px 0px 10px 10px;
-  }
+}
 
-  #snackbar.show,   #snackbar1.show {
+#snackbar.show,
+#snackbar1.show {
     visibility: visible;
     -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
     animation: fadein 0.5s, fadeout 0.5s 2.5s;
-  }
-  
-  @-webkit-keyframes fadein {
-    from {bottom: 0; opacity: 0;}
-    to {bottom: 30px; opacity: 1;}
-  }
-  
-  @keyframes fadein {
-    from {bottom: 0; opacity: 0;}
-    to {bottom: 30px; opacity: 1;}
-  }
-  
-  @-webkit-keyframes fadeout {
-    from {bottom: 30px; opacity: 1;}
-    to {bottom: 0; opacity: 0;}
-  }
-  
-  @keyframes fadeout {
-    from {bottom: 30px; opacity: 1;}
-    to {bottom: 0; opacity: 0;}
-  }
+}
+
+@-webkit-keyframes fadein {
+    from {
+        bottom: 0;
+        opacity: 0;
+    }
+
+    to {
+        bottom: 30px;
+        opacity: 1;
+    }
+}
+
+@keyframes fadein {
+    from {
+        bottom: 0;
+        opacity: 0;
+    }
+
+    to {
+        bottom: 30px;
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes fadeout {
+    from {
+        bottom: 30px;
+        opacity: 1;
+    }
+
+    to {
+        bottom: 0;
+        opacity: 0;
+    }
+}
+
+@keyframes fadeout {
+    from {
+        bottom: 30px;
+        opacity: 1;
+    }
+
+    to {
+        bottom: 0;
+        opacity: 0;
+    }
+}

@@ -19,9 +19,11 @@
     border: 1.5px solid;
     border-color: var(--primary);
 }
-.heading h2{
+
+.heading h2 {
     color: var(--fifth);
 }
+
 /* ----list of prod----- */
 .product-img {
     width: 310px;
@@ -47,7 +49,7 @@
     transition: 0.3s ease-out;
 }
 
-.content:hover{
+.content:hover {
     background-color: var(--fifth);
     color: var(--tertiary);
 }
@@ -64,10 +66,6 @@
     margin-bottom: 20px;
 }
 
-.unique{
+.unique {
     display: none;
-}
-
-.face i {
-    padding: 0px 3px;
 }

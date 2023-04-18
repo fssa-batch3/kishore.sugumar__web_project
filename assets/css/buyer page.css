@@ -9,6 +9,7 @@
 .body {
     font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
 }
+
 /*------------productdetail------------*/
 .main {
     display: flex;
@@ -88,11 +89,12 @@ h1 {
     padding: 15px 0px 0px 30px;
     float: inline-start;
 }
+
 .inr b {
     color: var(--primary);
 }
 
-.rate p{
+.rate p {
     padding: 4px 10px 0px 0px;
     color: var(--fifth);
 }
@@ -102,7 +104,7 @@ h1 {
     color: var(--secondary);
 }
 
-.img span{
+.img span {
     font-size: 35px;
     position: relative;
     bottom: 150px;
@@ -138,10 +140,7 @@ h1 {
     text-align: center;
 }
 
-.face i {
-    padding: 0px 3px;
-}
-.buyer_detail{
+.buyer_detail {
     position: relative;
     bottom: 3px;
     font-size: 23px;

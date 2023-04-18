@@ -121,60 +121,61 @@ function list(product) {
   let prod = JSON.parse(localStorage.getItem("product_data"));
   let unique = JSON.parse(localStorage.getItem("unique_id"));
 
-  for (let i = 0; i < prod.length; i++) {
-    if (unique === prod[i].user_id) {
-      {
-        div_card = document.createElement("div");
-        div_card.setAttribute("data-unique", prod[i].unique);
-        div_card.classList.add("content");
+  let products = prod.filter(p => p.user_id === unique);
 
-        image = document.createElement("img");
-        image.setAttribute("src", prod[i].image);
-        image.setAttribute("alt", prod[i]["name"]  + " Image");
-        image.classList.add("product-img");
-        div_card.prepend(image);
+  let reverse = products.slice().reverse();
 
-        h2 = document.createElement("h2");
-        h2.setAttribute("class", "prod_name");
-        h2.setAttribute("id", "prod_name");
-        h2.textContent = prod[i]["name"];
-        div_card.append(h2);
-
-        let anch = document.createElement("a");
-        anch.setAttribute("href", "./accept offer.html?product_id=" + prod[i].unique);
-        div_card.append(anch);
-
-        button1 = document.createElement("button");
-        button1.classList.add("button1", "algn");
-        button1.textContent = "offers";
-        anch.append(button1);
-        
-        let anc = document.createElement("a");
-        anc.setAttribute("href", "./seller product.html?product_id=" + prod[i].unique);
-        div_card.append(anc);
-
-        button3 = document.createElement("button");
-        button3.classList.add("button2", "algn");
-        button3.textContent = "View";
-        anc.append(button3);
-
-        let button_remove = document.createElement("div");
-        div_card.append(button_remove);
-
-        button2 = document.createElement("button");
-        button2.classList.add("button3", "remo");
-        button2.textContent = "Remove";
-        button2.setAttribute("id", "remove");
-        button2.onclick = function (event) {
-          remove_prod(event, prod[i].unique)
-        }
-        button_remove.append(button2);
-
-        document.querySelector("div.box").append(div_card);
-      };
-    }
-  }
+  reverse.forEach(function(elements) {
+    div_card = document.createElement("div");
+          div_card.setAttribute("data-unique", elements.unique);
+          div_card.classList.add("content");
+  
+          image = document.createElement("img");
+          image.setAttribute("src",elements.image);
+          image.setAttribute("alt", elements["name"]  + " Image");
+          image.classList.add("product-img");
+          div_card.prepend(image);
+  
+          h2 = document.createElement("h2");
+          h2.setAttribute("class", "prod_name");
+          h2.setAttribute("id", "prod_name");
+          h2.textContent = elements["name"];
+          div_card.append(h2);
+  
+          let anch = document.createElement("a");
+          anch.setAttribute("href", "./accept offer.html?product_id=" + elements.unique);
+          div_card.append(anch);
+  
+          button1 = document.createElement("button");
+          button1.classList.add("button1", "algn");
+          button1.textContent = "offers";
+          anch.append(button1);
+          
+          let anc = document.createElement("a");
+          anc.setAttribute("href", "./seller product.html?product_id=" + elements.unique);
+          div_card.append(anc);
+  
+          button3 = document.createElement("button");
+          button3.classList.add("button2", "algn");
+          button3.textContent = "View";
+          anc.append(button3);
+  
+          let button_remove = document.createElement("div");
+          div_card.append(button_remove);
+  
+          button2 = document.createElement("button");
+          button2.classList.add("button3", "remo");
+          button2.textContent = "Remove";
+          button2.setAttribute("id", "remove");
+          button2.onclick = function (event) {
+            remove_prod(event, elements.unique)
+          }
+          button_remove.append(button2);
+  
+          document.querySelector("div.box").append(div_card);
+  });
 }
+
 //-----------------------------------similar prdocut----------------------------------------//
 function similar() {
   const prod_data = JSON.parse(localStorage.getItem("product_data"));
@@ -256,6 +257,15 @@ function over() {
   off();
 }
 
+function conver(){
+  let unique = JSON.parse(localStorage.getItem("unique_id"));
+  if (!unique) {
+    alert("There is no account 'Log in'")
+  }
+  else {
+    window.location.href = "./pages/message box.html";
+  }
+}
 function user() {
   let login = JSON.parse(localStorage.getItem("unique_id"));
   if (login) {
@@ -283,6 +293,15 @@ function profile() {
 function about() {
   window.location.href = "./pages/about us.html";
 }
+// function noti() {
+//   let unique = JSON.parse(localStorage.getItem("unique_id"));
+//   if (!unique) {
+//     alert("There is no account please 'Log in'")
+//   }
+//   else {
+//     window.location.href = "";
+//   }
+// }
 function wishlist() {
   let unique = JSON.parse(localStorage.getItem("unique_id"));
   if (!unique) {
@@ -337,6 +356,15 @@ function seller_on() {
   }
   else {
     document.getElementById("overlay").style.display = "block";
+  }
+}
+function message() {
+  let user = JSON.parse(localStorage.getItem("unique_id"));
+  if (!user) {
+    alert("There is no account please 'Log in'")
+  }
+  else {
+    window.location.href = "./chat box.html?product_id=" + productId;
   }
 }
 // ---------------------------------------------------------------//

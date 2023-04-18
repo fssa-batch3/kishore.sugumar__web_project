@@ -36,12 +36,12 @@ let beforeloginNew =
     `<a href="${home}"><img src="${logoSrc}" alt="logo" class="logo"></a>
     <h2 class="web-name">V A N H A</h2>
     <div class="account-btn">
-        <button class="button1" onclick="on()">
+    <a href="${home}"><button class="button1" onclick="moveIn()">
             sign in
-        </button>
-        <button class="button2" onclick="show_on()">
+        </button></a>
+    <a href="${home}"><button class="button2" onclick="moveUp()">
             sign up
-        </button>
+        </button></a>
     </div>
 `;
 let AfterLoginNew =

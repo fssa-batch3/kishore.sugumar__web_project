@@ -65,7 +65,7 @@
     * Expected Result:
         * The user is redirected to the home page.
 * Delete (completed)
-    * Scenario 1: Successfully logout from the website.
+    * Scenario 1: Successfully delete your account.
       * Steps:
         1. Log in as a user.
         2. Navigate to the profile page.

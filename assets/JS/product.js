@@ -54,7 +54,7 @@ function active(e) {
     image:image
   };
 
-  products.push(product);
+  products.unshift(product);
   localStorage.setItem("product_data", JSON.stringify(products));
   document.getElementById("form").reset();
   window.location.href = "./buyer profile.html";

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../assets/img/illustration/v-removebg-preview.png">
+    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700," rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../assets/css/buttons.css">
+    <link rel="stylesheet" href="../assets/css/footer.css">
+    <link rel="stylesheet" href="../assets/css/header.css">
+    <link rel="stylesheet" href="../assets/css/chat box.css">
+    <link rel="stylesheet" href="../assets/css/list of bid.css">
+
+    <title>V A N H A</title>
+</head>
+
+<body class="body">
+    <header class="header" id="header">
+    </header>
+    <main class="main">
+        <section class="product">
+            <section class="main_left">
+                <img class="product_img" id="product_img" alt="">
+                <div class="product_detail">
+                    <h1 id="product_name"></h1>
+                    <div class="rate">
+                        <p><b>Price :</b></p>
+                        <h3 id="prod_price"></h3>
+                        <h3 class="inr"><b>(INR)</b></h3>
+                    </div>
+                </div>
+            </section>
+        </section>
+        <section class="message">
+            <h2>Chat here</h2>
+            <div class="seller">
+                <img id="seller_img">
+                <h3 id="seller_name"></h3>
+            </div>
+            <div class="chat-box">
+            </div>
+            <div class="write">
+                <input type="text" pattern="^(?!\s)[A-Za-z0-9\s]+" class="input-field" id="text" placeholder="Write your message here ....">
+                <button onclick="send()" class="button"><i class="fa-solid fa-paper-plane" ></i></button>
+            </div>
+            <div class="btn">
+                <button class="button3" onclick="redirect()">Back</button>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer" id="footer">
+    </footer>
+    <div class="copy">Copyright © 2021 - 2022 VANHA - Website Designed By KISHORE</div>
+    <script src="../assets/JS/footer.js"></script>
+    <script src="../assets/JS/bidlist.js"></script>
+    <script src="../assets/JS/header.js"></script>
+    <script src="../assets/JS/chat box.js"></script>
+    <script>
+        allheader();
+        footer();
+        sell_prod();
+        sellerDetail();
+        readChat();
+
+    </script>
+</body>
+
+</html>
