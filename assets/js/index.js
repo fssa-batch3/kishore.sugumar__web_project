@@ -134,7 +134,7 @@ function list(product) {
           image.setAttribute("src",elements.image);
           image.setAttribute("alt", elements["name"]  + " Image");
           image.classList.add("product-img");
-          div_card.prepend(image);
+          div_card.append(image);
   
           h2 = document.createElement("h2");
           h2.setAttribute("class", "prod_name");
@@ -256,16 +256,6 @@ function over() {
   show_on();
   off();
 }
-
-function conver(){
-  let unique = JSON.parse(localStorage.getItem("unique_id"));
-  if (!unique) {
-    alert("There is no account 'Log in'")
-  }
-  else {
-    window.location.href = "./pages/message box.html";
-  }
-}
 function user() {
   let login = JSON.parse(localStorage.getItem("unique_id"));
   if (login) {
@@ -293,15 +283,6 @@ function profile() {
 function about() {
   window.location.href = "./pages/about us.html";
 }
-// function noti() {
-//   let unique = JSON.parse(localStorage.getItem("unique_id"));
-//   if (!unique) {
-//     alert("There is no account please 'Log in'")
-//   }
-//   else {
-//     window.location.href = "";
-//   }
-// }
 function wishlist() {
   let unique = JSON.parse(localStorage.getItem("unique_id"));
   if (!unique) {

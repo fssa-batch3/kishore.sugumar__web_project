@@ -31,6 +31,7 @@
       <h2>Bided list</h2>
       <div class="border"></div>
     </div>
+    <h1 id="no_content" style="display:none"></h1>
     <div class="box">
 
     </div>
@@ -47,6 +48,11 @@
     allheader()
     footer();
     bid_prod();
+
+    let bid_array = JSON.parse(localStorage.getItem("bid"));
+    if(!bid_array){
+
+    }
 
     let email = JSON.parse(localStorage.getItem("unique_id"));
     let stored_data = JSON.parse(localStorage.getItem("user_data")) || [];

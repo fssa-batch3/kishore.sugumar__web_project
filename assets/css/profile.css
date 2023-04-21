@@ -207,6 +207,11 @@
 
 }
 
+.content i{
+  padding:10px;
+  font-size:18px
+}
+
 .content {
   text-align: center;
   width: 350px;

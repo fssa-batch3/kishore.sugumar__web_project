@@ -268,3 +268,31 @@
 .devide {
     display: flex;
 }
+
+/* ------------------------messager-part-------------- */
+.messager {
+    display: grid;
+    grid-template-columns: repeat(3, 400px);
+    justify-content: center;
+    gap: 40px;
+}
+
+.messager-list {
+    display: flex;
+    width: auto;
+    background-color: var(--fifth);
+    border-radius: 20px;
+}
+
+.messager-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 25px;
+    margin: 5px;
+}
+
+.messager-name{
+    max-width: 300px;
+    margin: 40px 0px 0px 10px;
+
+}

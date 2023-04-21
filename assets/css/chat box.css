@@ -6,8 +6,11 @@
     --fifth: #4c585e;
 }
 
+.body{
+    font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
+}
+
 .message {
-    text-align: center;
     border-radius: 10px;
     width: 700px;
     height: 720px;

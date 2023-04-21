@@ -22,29 +22,40 @@
 
 <body class="body">
     <header id="header" class="header"></header>
-    <main class="main">
-        <section class="images">
-        </section>
-        <section class="content">
-            <div class="product-detail">
-                <h1 class="prod_name" id="prod_name">###</h1>
-                <p class="desc"><b>Description :</b></p>
-                <p id="description">
-                </p>
-                <div class="rate">
-                    <p><b>Price :</b></p>
-                    <h3 id="prod_price"></h3>
-                    <h3 class="inr"><b>(INR)</b></h3>
-                </div>
-                <div class="durat">
-                    <p><b>Used period :</b></p>
-                    <h3 id="prod_date"></h3>
-                    <h3 id="duration"></h3>
-                </div>
-                <div class="btn">
-                    <button class="button1" onclick="editform_on()">Edit</button>
-                    <button class="button3" onclick="back()">Back</button>
-                </div>
+    <main>
+        <div class="main">
+            <section class="images">
+            </section>
+            <section class="content">
+                <div class="product-detail">
+                    <h1 class="prod_name" id="prod_name">###</h1>
+                    <p class="desc"><b>Description :</b></p>
+                    <p id="description">
+                    </p>
+                    <div class="rate">
+                        <p><b>Price :</b></p>
+                        <h3 id="prod_price"></h3>
+                        <h3 class="inr"><b>(INR)</b></h3>
+                    </div>
+                    <div class="durat">
+                        <p><b>Used period :</b></p>
+                        <h3 id="prod_date"></h3>
+                        <h3 id="duration"></h3>
+                    </div>
+                    <div class="btn">
+                        <button class="button1" onclick="editform_on()">Edit</button>
+                        <button class="button3" onclick="back()">Back</button>
+                    </div>
+            </section>
+        </div>
+        <section class="message-box">
+            <h1>Messages</h1>
+            <div class="messager">
+
+            </div>
+            <div class="chat-box">
+
+            </div>
         </section>
     </main>
     <footer class="footer" id="footer">
@@ -130,6 +141,7 @@
     <script src="../assets/JS/footer.js"></script>
     <script src="../assets/JS/product.js"></script>
     <script src="../assets/JS/index.js"></script>
+    <script src="../assets/JS/chat box.js"></script>
     <script>
 
         function back() {
@@ -139,6 +151,21 @@
         footer()
         update_prod()
         e_prod()
+        messageAlert();
+
+
+        var cards = document.querySelectorAll('.messager-list');
+
+        cards.forEach(function (card) {
+            card.addEventListener('click', function () {
+
+                var cardId = this.getAttribute('data-unique');
+
+                console.log('Clicked card ID:', cardId);
+                
+            });
+        });
+
     </script>
 </body>
 

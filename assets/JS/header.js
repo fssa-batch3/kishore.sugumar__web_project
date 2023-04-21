@@ -1,5 +1,4 @@
 var myOrigin = window.location.origin;
-var buyer_img = myOrigin + "/assets/img/buyer.png"
 var logoSrc = myOrigin + "/assets/img/illustration/logo.png";
 var profilepage = myOrigin + "/pages/buyer profile.html";
 var home = myOrigin + "/index.html";
