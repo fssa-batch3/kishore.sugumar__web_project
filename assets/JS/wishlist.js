@@ -36,10 +36,13 @@ function wish_prod(product) {
     let prod = JSON.parse(localStorage.getItem("product_data"));
     let user_id = JSON.parse(localStorage.getItem("unique_id"));
 
+    let foundProduct = false;
+
     for (let i = 0; i < prod_wish.length; i++) {
         if (prod_wish[i].user_id === user_id) {
             const productObj = prod.find(p => p.unique === prod_wish[i].product);
             if (productObj) {
+                foundProduct = true;
                 div_card = document.createElement("div");
                 div_card.setAttribute("data-unique", productObj.unique);
                 div_card.classList.add("content");
@@ -69,11 +72,31 @@ function wish_prod(product) {
                 }
                 div_card.append(button2);
 
-                document.querySelector("div.box").append(div_card);
+                document.querySelector("#box").append(div_card);
             }
         }
     };
+
+    if (!foundProduct) {
+
+         const box = document.querySelector(".box");
+         box.classList.remove("box");
+         box.classList.add("empty");
+        
+        const noProductMessage = document.createElement("h2");
+        noProductMessage.setAttribute("class","noProduct");
+        noProductMessage.textContent = "There are no products in your wishlist.";
+        document.querySelector("#box").append(noProductMessage);
+
+        image = document.createElement("img");
+        image.setAttribute("src", "../assets/img/illustration/empty wishlist.png");
+        image.setAttribute("alt","illustration image");
+        image.setAttribute("class","illustration-image");
+        document.querySelector("#box").append(image);
+
+    }
 }
+
 // -------------------------delete whishlist-----------------------//
 function remove(e, uniqueid) {
     e.preventDefault();

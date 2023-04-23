@@ -328,7 +328,7 @@ function img(thumb) {
   main_image.src = thumb.src
 }
 function seller_off() {
-  document.getElementById("overlay").style.display = "none";
+  document.getElementById("lay").style.display = "none";
 }
 function seller_on() {
   let user = JSON.parse(localStorage.getItem("unique_id"));
@@ -336,7 +336,7 @@ function seller_on() {
     alert("There is no account please 'Log in'")
   }
   else {
-    document.getElementById("overlay").style.display = "block";
+    document.getElementById("lay").style.display = "block";
   }
 }
 function message() {

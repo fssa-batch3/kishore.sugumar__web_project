@@ -113,7 +113,7 @@ function buyer_list(){
     }
 }
 // -----------------------------read bid (buyer)--------------------------//
-function bid_prod(product) {
+function bid_prod() {
     let user_id = JSON.parse(localStorage.getItem("unique_id"));
     let prod = JSON.parse(localStorage.getItem("product_data"));
     let bid = JSON.parse(localStorage.getItem("bid")) || [];
@@ -182,4 +182,27 @@ function bid_prod(product) {
             }
         }
     }
+    if (bid.length === 0 || displayedProducts.length === 0) {
+        const box = document.querySelector(".box");
+        box.classList.remove("box");
+        box.classList.add("empty");
+       
+       const noProductMessage = document.createElement("h2");
+       noProductMessage.setAttribute("class","noProduct");
+       noProductMessage.textContent = "Your bidlist is empty. 'Bid any product.'";
+       document.querySelector("#box").append(noProductMessage);
+
+       image = document.createElement("img");
+       image.setAttribute("src", "../assets/img/illustration/empty bid list.webp");
+       image.setAttribute("alt","illustration image");
+       image.setAttribute("class","illustration-image");
+       document.querySelector("#box").append(image);
+    }
+}
+
+//----------------------------------------------------------------//
+function redirect(){
+    let productId = new URLSearchParams(window.location.search).get('product_id');
+    var myOrigin = window.location.origin;
+    window.location.href = myOrigin + "/pages/product page.html?product_id=" + productId;
 }

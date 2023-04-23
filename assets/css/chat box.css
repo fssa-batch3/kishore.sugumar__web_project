@@ -13,12 +13,13 @@
 .message {
     border-radius: 10px;
     width: 700px;
-    height: 720px;
+    height: 6\70px;
     background-color: whitesmoke;
     box-shadow: 5px 7px 20px gray;
 }
 
 .message h2 {
+    text-align: center;
     color: white;
     position: sticky;
     top: 0;
@@ -118,8 +119,12 @@
 .other-message {
     font-size: 18px;
     align-self: flex-start;
-    background-color: #f1f0f0;
-    color: #333;
+    background-color: #797979;
+    color: #ffffff;
+    margin-bottom: 2px;
+    padding: 3px 5px 5px 5px;
+    margin: 10px;
+    border-radius: 10px;
 }
 
 .message-container .time-stamp {

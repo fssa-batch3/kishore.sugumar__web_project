@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="../assets/css/footer.css">
     <link rel="stylesheet" href="../assets/css/header.css">
     <link rel="stylesheet" href="../assets/css/seller product.css">
+    <link rel="stylesheet" href="../assets/css/chat box.css">
 
     <title>V A N H A</title>
 </head>
@@ -48,14 +49,24 @@
                     </div>
             </section>
         </div>
+        <h1 class="messageBoxHead">Messages</h1>
         <section class="message-box">
-            <h1>Messages</h1>
             <div class="messager">
 
             </div>
-            <div class="chat-box">
-
-            </div>
+            <section class="messages" style="display: none;">
+                <h2>Chat here</h2>
+                <div class="chat-box">
+                </div>
+                <div class="write">
+                    <input type="text" pattern="^(?!\s)[A-Za-z0-9\s]+" class="input-field" id="text"
+                        placeholder="Write your message here ....">
+                    <button class="button" onclick="sellerReplay()"><i class="fa-solid fa-paper-plane"></i></button>
+                </div>
+                <div class="btn">
+                    <button class="button3" onclick="redirect()">Back</button>
+                </div>
+            </section>
         </section>
     </main>
     <footer class="footer" id="footer">
@@ -152,19 +163,8 @@
         update_prod()
         e_prod()
         messageAlert();
+        sellerRead();
 
-
-        var cards = document.querySelectorAll('.messager-list');
-
-        cards.forEach(function (card) {
-            card.addEventListener('click', function () {
-
-                var cardId = this.getAttribute('data-unique');
-
-                console.log('Clicked card ID:', cardId);
-                
-            });
-        });
 
     </script>
 </body>

@@ -270,16 +270,17 @@
 }
 
 /* ------------------------messager-part-------------- */
+
 .messager {
     display: grid;
-    grid-template-columns: repeat(3, 400px);
-    justify-content: center;
+    grid-template-columns: repeat(3, 300px);
     gap: 40px;
 }
 
 .messager-list {
     display: flex;
     width: auto;
+    height: 110px;
     background-color: var(--fifth);
     border-radius: 20px;
 }
@@ -295,4 +296,21 @@
     max-width: 300px;
     margin: 40px 0px 0px 10px;
 
+}
+
+.messages{
+    border-radius: 10px;
+    width: 700px;
+    height: 660px;
+    background-color: whitesmoke;
+    box-shadow: 5px 7px 20px gray;
+}
+.messages h2 {
+    text-align: center;
+    color: white;
+    position: sticky;
+    top: 0;
+    margin: 0px 0px 10px 0px;
+    padding: 20px 0px;
+    background-color: var(--fifth);
 }

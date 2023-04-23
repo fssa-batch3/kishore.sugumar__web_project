@@ -1,62 +1,43 @@
-function sellerDetail() {
-    let productId = new URLSearchParams(window.location.search).get('product_id');
-    let prod = JSON.parse(localStorage.getItem("product_data"));
-    let seller = JSON.parse(localStorage.getItem("user_data"));
-
-    let index = prod.findIndex(item => item.unique === productId);
-    let product = prod[index]
-
-    let sell = seller.find(function (id) {
-        return product.user_id === id.email;
-    });
-
-    let img = document.getElementById("seller_img");
-    img.setAttribute("src", sell.image);
-    img.setAttribute("alt", sell.name + " image");
-
-    document.getElementById("seller_name").innerText = sell.name;
-
-}
-// ----------------------------create chat ------------------------------//
+// ---------------------------- buyer create chat ------------------------------//
 function send() {
-        let mess = JSON.parse(localStorage.getItem("message")) || [];
-        let productId = new URLSearchParams(window.location.search).get('product_id');
-        let user = JSON.parse(localStorage.getItem("unique_id"));
-        let text = document.getElementById("text").value.trim();
-        const now = new Date();
-    
-        let prodIndex = mess.findIndex(p => p.productId === productId);
-        if (prodIndex === -1) {
-            let newProduct = {
-                productId: productId,
-                content: []
-            }
-            mess.push(newProduct);
-            prodIndex = mess.length - 1;
+    let messageArray = JSON.parse(localStorage.getItem("message")) || [];
+    let productId = new URLSearchParams(window.location.search).get('product_id');
+    let user = JSON.parse(localStorage.getItem("unique_id"));
+    let text = document.getElementById("text").value.trim();
+    const now = new Date();
+
+    let prodIndex = messageArray.findIndex(p => p.productId === productId);
+    if (prodIndex === -1) {
+        let newProduct = {
+            productId: productId,
+            content: []
         }
-    
-        let buyerIndex = mess[prodIndex].content.findIndex(buy => buy.user === user);
-        if (buyerIndex === -1) {
-            let content = {
-                user: user,
-                messages: []
-            }
-            mess[prodIndex].content.push(content);
-            buyerIndex = mess[prodIndex].content.length - 1;
-        }
-    
-        let newMessage = {
-            messager: user,
-            text: text,
-            timestamp: now.getTime()
-        }
-        mess[prodIndex].content[buyerIndex].messages.push(newMessage);
-    
-        localStorage.setItem("message", JSON.stringify(mess));
-        window.location.reload()
+        messageArray.push(newProduct);
+        prodIndex = messageArray.length - 1;
     }
 
-// ---------------------------------buyer read chat---------------------------//
+    let buyerIndex = messageArray[prodIndex].content.findIndex(buy => buy.user === user);
+    if (buyerIndex === -1) {
+        let content = {
+            user: user,
+            messages: []
+        }
+        messageArray[prodIndex].content.push(content);
+        buyerIndex = messageArray[prodIndex].content.length - 1;
+    }
+
+    let newMessage = {
+        messager: user,
+        text: text,
+        timestamp: now.getTime()
+    }
+    messageArray[prodIndex].content[buyerIndex].messages.push(newMessage);
+
+    localStorage.setItem("message", JSON.stringify(messageArray));
+    window.location.reload()
+}
+
+// --------------------------------- buyer read their chat ---------------------------//
 function readChat() {
     const index = JSON.parse(localStorage.getItem("message"));
     const product_id = new URLSearchParams(window.location.search).get('product_id');
@@ -101,7 +82,9 @@ function readChat() {
         }
     }
 };
-// -----------------------------------seller read user who chat-------------------------------//
+
+
+// -----------------------------------seller read other's chat-------------------------------//
 function messageAlert() {
     const unique = new URLSearchParams(window.location.search).get('product_id');
     let messageArray = JSON.parse(localStorage.getItem("message"));
@@ -109,33 +92,109 @@ function messageAlert() {
 
     let productIndex = messageArray.find(m => m.productId === unique);
 
-    if(!productIndex){
+    if (!productIndex) {
         let display = document.querySelector("section.message-box");
         display.setAttribute("style", "display:none");
     }
-    else{
+    else {
 
-    productIndex.content.forEach(function (buyer) {
+        productIndex.content.forEach(function (buyer) {
 
-        let buyerDetail = buyerArray.find(messager => messager.email === buyer.user)
+            let buyerDetail = buyerArray.find(messager => messager.email === buyer.user)
 
-        let div_card = document.createElement("span");
-        div_card.setAttribute("data-unique", buyerDetail.unique);
-        div_card.setAttribute("class", "messager-list");
+            let div_card = document.createElement("span");
+            div_card.setAttribute("data-unique", buyerDetail.email);
+            div_card.setAttribute("class", "messager-list");
 
-        let image = document.createElement("img");
-        image.setAttribute("src", buyerDetail.image);
-        image.setAttribute("alt", buyerDetail["name"] + " Image");
-        image.classList.add("messager-img");
-        div_card.append(image);
+            let image = document.createElement("img");
+            image.setAttribute("src", buyerDetail.image);
+            image.setAttribute("alt", buyerDetail["name"] + " Image");
+            image.classList.add("messager-img");
+            div_card.append(image);
 
-        let h2 = document.createElement("h2");
-        h2.setAttribute("class", "messager-name");
-        h2.textContent = buyerDetail["name"];
-        div_card.append(h2);
+            let h2 = document.createElement("h2");
+            h2.setAttribute("class", "messager-name");
+            h2.textContent = buyerDetail["name"];
+            div_card.append(h2);
 
-        document.querySelector("div.messager").append(div_card);
-    })
+            document.querySelector("div.messager").append(div_card);
+        })
+    }
 }
+//------------------------------------- seller read chats --------------------------------------//
+
+function sellerRead() {
+    var cards = document.querySelectorAll('.messager-list');
+
+    cards.forEach(function (card) {
+        card.addEventListener('click', function () {
+            const unique = new URLSearchParams(window.location.search).get('product_id');
+            var cardId = this.getAttribute('data-unique');
+            let messageArray = JSON.parse(localStorage.getItem("message"));
+            let seller = JSON.parse(localStorage.getItem("unique_id"));
+
+            sessionStorage.setItem("messager", JSON.stringify(cardId))
+
+            let parentMessage = document.querySelector(".messages")
+            parentMessage.setAttribute("style", "")
+
+            let messageArea = document.querySelector(".chat-box")
+
+            messageArea.innerHTML = '';
+
+            let message = messageArray.find(message => message.productId === unique);
+
+            let messager = message.content.find(buyer => buyer.user === cardId);
+            
+            messager.messages.forEach(function (text) {
+
+                let user = JSON.parse(localStorage.getItem("unique"));
+
+                const messageContent = document.createElement("div");   
+                if (text.messager === seller) {
+                    messageContent.classList.add("sent");
+                }
+                else {
+                    messageContent.classList.add("other-message");
+                }
+                messageContent.innerHTML = text.text;
+                messageArea.append(messageContent);
+
+
+            })
+
+        });
+    });
 }
-//-------------------------------------seller read chats--------------------------------------//
+
+// ------------------------------------ buyer replay to the chat ----------------------------//
+
+function sellerReplay() {
+    let seller = JSON.parse(localStorage.getItem("unique_id"));
+    let other = JSON.parse(sessionStorage.getItem("messager"));
+    let product = new URLSearchParams(window.location.search).get('product_id');
+    let messageArray = JSON.parse(localStorage.getItem("message"));
+    let text = document.getElementById("text").value.trim();
+    let now = new Date();
+
+    let message = messageArray.find(message => message.productId === product);
+
+    let messager = message.content.find(buyer => buyer.user === other);
+
+    if (text === "") {
+        return;
+    }
+    else {
+
+        let replay = {
+            messager: seller,
+            text: text,
+            timestamp: now.getTime()
+        }
+
+        messager.messages.push(replay);
+        localStorage.setItem("message", JSON.stringify(messageArray));
+        window.location.reload()
+
+    }
+}

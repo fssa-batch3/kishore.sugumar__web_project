@@ -69,3 +69,17 @@
 .unique {
     display: none;
 }
+
+.empty {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    margin: 50px 0px;
+}
+
+.noProduct{
+    margin-top: 10%;
+}
+.illustration-image {
+    width: 500px;
+}
