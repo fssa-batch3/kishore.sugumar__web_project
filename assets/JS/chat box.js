@@ -13,7 +13,7 @@ function send() {
             content: []
         }
         messageArray.push(newProduct);
-        prodIndex = messageArray.length - 1;
+        prodIndex = mess.length - 1;
     }
 
     let buyerIndex = messageArray[prodIndex].content.findIndex(buy => buy.user === user);
@@ -72,13 +72,8 @@ function readChat() {
                 messageContainer.appendChild(messageContent);
 
                 const messageTimestamp = document.createElement("div");
-                if (cont.messager === user) {
-                    messageTimestamp.classList.add("time-messager");
-                }
-                else {
-                    messageTimestamp.classList.add("time-reciver");
-                }
                 const timestamp = new Date(cont.timestamp);
+                messageTimestamp.setAttribute("class", "time");
                 messageTimestamp.innerHTML = timestamp.toLocaleString();
                 messageContainer.appendChild(messageTimestamp);
 
@@ -197,6 +192,7 @@ function sellerReplay() {
             timestamp: now.getTime()
         }
 
+        console.log(messager)
         messager.messages.push(replay);
         localStorage.setItem("message", JSON.stringify(messageArray));
         window.location.reload()
