@@ -72,8 +72,13 @@ function readChat() {
                 messageContainer.appendChild(messageContent);
 
                 const messageTimestamp = document.createElement("div");
+                if (cont.messager === user) {
+                    messageTimestamp.classList.add("time-messager");
+                }
+                else {
+                    messageTimestamp.classList.add("time-reciver");
+                }
                 const timestamp = new Date(cont.timestamp);
-                messageTimestamp.setAttribute("class", "time");
                 messageTimestamp.innerHTML = timestamp.toLocaleString();
                 messageContainer.appendChild(messageTimestamp);
 
