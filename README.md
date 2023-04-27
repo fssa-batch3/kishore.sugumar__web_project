@@ -204,4 +204,35 @@
     * Expected Result:
         * The user can view the list of offers from the different user's.
 
+### Chat box(buyer):
+* Write message
+    * Scenario 1: Successfully write the message by the user.
+      * Steps:
+        1. Log in as a user.
+        2. Navigate to the product page.
+        3. Click message icon.
+        4. Start to message in the input feild.
+    * Expected Result:
+        * User can view their message in the above box.
+### Chat box(seller):
+* Write message
+    * Scenario 1: Successfully write the message by the user.
+      * Steps:
+        1. Log in as a user.
+        2. Navigate to the profile page.
+        3. Click on the product card.
+        4. Click on message button.
+        5. Start to message in the input feild.
+    * Expected Result:
+        * User can view their message in the above box.
+* Read message
+    * Scenario 1: Successfully view the message by the user.
+      * Steps:
+        1. Log in as a user.
+        2. Navigate to the profile page.
+        3. Click on the product card.
+        4. Click on message button.
+    * Expected Result:
+        * User can view Other message and their message in the above box.
+
 ### End

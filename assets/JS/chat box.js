@@ -6,6 +6,11 @@ function send() {
     let text = document.getElementById("text").value.trim();
     const now = new Date();
 
+                        
+    if (text === "") {
+        return;
+    }
+
     let prodIndex = messageArray.findIndex(p => p.productId === productId);
     if (prodIndex === -1) {
         let newProduct = {
@@ -13,7 +18,7 @@ function send() {
             content: []
         }
         messageArray.push(newProduct);
-        prodIndex = mess.length - 1;
+        prodIndex = messageArray.length - 1;
     }
 
     let buyerIndex = messageArray[prodIndex].content.findIndex(buy => buy.user === user);
@@ -73,7 +78,12 @@ function readChat() {
 
                 const messageTimestamp = document.createElement("div");
                 const timestamp = new Date(cont.timestamp);
-                messageTimestamp.setAttribute("class", "time");
+                if (cont.messager === user) {
+                    messageTimestamp.classList.add("time");
+                }
+                else {
+                    messageTimestamp.classList.add("other-time");
+                }
                 messageTimestamp.innerHTML = timestamp.toLocaleString();
                 messageContainer.appendChild(messageTimestamp);
 
@@ -148,9 +158,10 @@ function sellerRead() {
             
             messager.messages.forEach(function (text) {
 
-                let user = JSON.parse(localStorage.getItem("unique"));
+                const messageContainer = document.createElement("div");
+                messageContainer.classList.add("message-container");
 
-                const messageContent = document.createElement("div");   
+                const messageContent = document.createElement("span");
                 if (text.messager === seller) {
                     messageContent.classList.add("sent");
                 }
@@ -158,9 +169,20 @@ function sellerRead() {
                     messageContent.classList.add("other-message");
                 }
                 messageContent.innerHTML = text.text;
-                messageArea.append(messageContent);
+                messageContainer.appendChild(messageContent);
 
+                const messageTimestamp = document.createElement("div");
+                const timestamp = new Date(text.timestamp);
+                if (text.messager === seller) {
+                    messageTimestamp.classList.add("time");
+                }
+                else {
+                    messageTimestamp.classList.add("other-time");
+                }
+                messageTimestamp.innerHTML = timestamp.toLocaleString();
+                messageContainer.appendChild(messageTimestamp);
 
+                messageArea.append(messageContainer);
             })
 
         });

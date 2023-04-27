@@ -3,8 +3,8 @@ function product() {
   let prod = JSON.parse(localStorage.getItem("product_data"));
   let unique = JSON.parse(localStorage.getItem("unique_id"));
 
-  for (let i = 0; i < prod.length; i++) {
-    if (unique != prod[i].user_id) {
+  for (let i = prod.length - 1; i >= 0; i--) {
+    if (unique !== prod[i].user_id) {
       let div_card = document.createElement("div");
       div_card.setAttribute("class", "card");
 
