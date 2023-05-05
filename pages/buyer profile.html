@@ -1,197 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="../assets/img/illustration/v-removebg-preview.png">
-    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700," rel="stylesheet" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
-        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="../assets/css/buttons.css">
-    <link rel="stylesheet" href="../assets/css/profile.css">
-    <link rel="stylesheet" href="../assets/css/footer.css">
-    <link rel="stylesheet" href="../assets/css/header.css">
-    <title>V A N H A</title>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="../assets/img/illustration/v-removebg-preview.png">
+        <link rel="dns-prefetch" href="//fonts.googleapis.com">
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700," rel="stylesheet">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+            integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+            crossorigin="anonymous" referrerpolicy="no-referrer">
+        <link rel="stylesheet" href="../assets/css/buttons.css">
+        <link rel="stylesheet" href="../assets/css/profile.css">
+        <link rel="stylesheet" href="../assets/css/footer.css">
+        <link rel="stylesheet" href="../assets/css/header.css">
+        <title>V A N H A</title>
+    </head>
 
-<body class="body">
-    <!-- ----------------------------edit-profile------------------------ -->
-    <div id="overlay">
-        <div class="closebtn" onclick="off()" title="Close Overlay"><i class="fa-solid fa-xmark"></i></div>
-        <form class="form">
-            <p class="heading-in">Edit Profile</p>
-            <p>
-                <span class="prod_val" id="email"></span>
-            </p>
-            <div class="field">
-                <input type="text" class="input-field" id="name" placeholder="Name" autocomplete="off"
-                    pattern="^(?!\s)[a-zA-Z\s]+$" required="true">
+    <body class="body">
+        <!-- ----------------------------edit-profile------------------------ -->
+        <div id="overlay">
+            <div class="closebtn" id="form_off" title="Close Overlay">
+                <i class="fa-solid fa-xmark"></i>
             </div>
-            <div class="field">
-                <input type="tel" class="input-field" id="phone" placeholder="+91" autocomplete="off"
-                    pattern="^(?!\s)[0-9]+" required="true">
-            </div>
-            <div class="field">
-                <input type="text" class="input-field" id="location" placeholder="Location"
-                    pattern="^(?!\s)[a-zA-Z\s]+$" required="true">
-            </div>
-            <div class="btn">
-                <button class="button2" onclick="update(event)">Save</button>
-            </div>
-        </form>
-    </div>
-    <!-- -------------------------------header------------------------ -->
-    <header class="header" id="header">
-    </header>
-    <!-- -------------------------profile----------------------- -->
-    <div class="card">
-        <img class="user-img" id="user-img" alt="">
-        <div class="details">
-            <h1 class="title" id="user_name"></h1>
-            <span class="caption"><i class="fa fa-envelope"></i>
-                <h4 id="user_email"></h4>
-            </span>
-            <span class="caption"><i class="fa fa-phone"></i>
-                <h4 id="user_phone"></h4>
-            </span>
-            <span class="caption"><i class="fa fa-location"></i>
-                <h4 id="user_location"></h4>
-            </span>
-            <div class="btn">
-                <button class="button1 edit" onclick="on()">Edit</button>
-                <button class="button2" onclick="logout()">Log out</button>
-                <button class="button3" onclick="del(event)">Delete</button>
+            <form class="form">
+                <p class="heading-in">Edit Profile</p>
+                <p>
+                    <span class="prod_val" id="email"></span>
+                </p>
+                <div class="field">
+                    <input type="text" class="input-field" id="name" placeholder="Name" autocomplete="off"
+                        pattern="^(?!\s)[a-zA-Z\s]+$" required="true">
+                </div>
+                <div class="field">
+                    <input type="tel" class="input-field" id="phone" placeholder="+91" autocomplete="off"
+                        pattern="^(?!\s)[0-9]+" required="true">
+                </div>
+                <div class="field">
+                    <input type="text" class="input-field" id="location" placeholder="Location"
+                        pattern="^(?!\s)[a-zA-Z\s]+$" required="true">
+                </div>
+                <div class="btn">
+                    <button class="button2" id="update">Save</button>
+                </div>
+            </form>
+        </div>
+        <!-- -------------------------------header------------------------ -->
+        <header class="header" id="header">
+        </header>
+        <!-- -------------------------profile----------------------- -->
+        <div class="card">
+            <img class="user-img" id="user-img" alt="">
+            <div class="details">
+                <h2 class="title" id="user_name"></h2>
+                <span class="caption">
+                    <i class="fa fa-envelope"></i>
+                    <h4 id="user_email"></h4>
+                </span>
+                <span class="caption">
+                    <i class="fa fa-phone"></i>
+                    <h4 id="user_phone"></h4>
+                </span>
+                <span class="caption">
+                    <i class="fa fa-location"></i>
+                    <h4 id="user_location"></h4>
+                </span>
+                <div class="btn">
+                    <button class="button1 edit" id="form_on">Edit</button>
+                    <button class="button2" id="logout">Log out</button>
+                    <button class="button3" id="del">Delete</button>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="messageBtnArea">
-        <button class="messageButton" onclick="MessageButton()" style="display: none;">Your messages</button>
-    </div>
-    <div class="messegedProductBox" style="display: none;">
-
-    </div>
-    <!-- -----------------------product list -seller---------------- -->
-    <div class="list">
-        <div class="topic">
-            <h1>My Product list</h1>
-            <button class="button2 add" onclick="addprod()">Add new product</button>
+        <div class="messageBtnArea">
+            <button class="messageButton" id="MessageButton" style="display: none;">Your messages</button>
         </div>
-        <div class="box">
+        <div class="messegedProductBox" style="display: none;">
+
         </div>
-    </div>
-    <!-- -----------------------------footer--------------------------- -->
-    <footer class="footer" id="footer">
-    </footer>
-    <div class="copy">Copyright © 2021 - 2022 VANHA - Website Designed By KISHORE</div>
-</body>
-<!-- -----------------------------------script--------------------------------- -->
-<script src="../assets/JS/footer.js"></script>
-<script src="../assets/JS/header.js"></script>
-<script src="../assets/JS/index.js"></script>
-<script src="../assets/JS/product.js"></script>
-<script src="../assets/JS/profile.js"></script>
-<script>
-    allheader()
-    footer()
-    // ------------------------------//
-    let email = JSON.parse(localStorage.getItem("unique_id"));
-    let profileImage = document.getElementById("user-img");
-    let stored_data = JSON.parse(localStorage.getItem("user_data")) || [];
-
-    const get_object = (email, stored_data) => stored_data.find(val => val.email === email);
-    let data = get_object(email, stored_data);
-
-    profileImage.setAttribute("src", data.image);
-    profileImage.setAttribute("alt", data.name + " Image");
-
-    document.getElementById("user_name").innerText = data.name;
-    document.getElementById("user_email").innerText = data.email;
-    document.getElementById("user_phone").innerText = data.phone;
-    if (!data.location) {
-        document.getElementById("user_location").innerText = "Location";
-    }
-    if (data.location) {
-        document.getElementById("user_location").innerText = data.location;
-    }
-
-    document.getElementById("name").value = data.name;
-    document.getElementById("email").innerHTML = data.email;
-    document.getElementById("phone").value = data.phone;
-    if (!data.location) {
-        document.getElementById("location").value = "";
-    }
-    if (data.location) {
-        document.getElementById("location").value = data.location;
-    }
-    // --------------------------------//
-    list(product);
-    // -------------------------------//
-
-    let messageArray = JSON.parse(localStorage.getItem("message"));
-    let messager = JSON.parse(localStorage.getItem("unique_id"));
-    let button = document.querySelector(".messageButton");
-
-    let productMessages = messageArray.filter(p => p.content.some(c => c.user === messager));
-
-    if (productMessages) {
-        button.setAttribute("style", "display:inline;")
-    }
-
-    // -------------------------------//
-    function MessageButton() {
-        let productData = JSON.parse(localStorage.getItem("product_data"));
-        let messageBox = document.querySelector(".messegedProductBox");
-        messageBox.setAttribute("style", "display:inline");
-        button.setAttribute("style", "display:none");
-
-        MessageBoxHeading = document.createElement("h1");
-        MessageBoxHeading.innerHTML = "Your messages";
-        messageBox.append(MessageBoxHeading);
-
-        messageArea = document.createElement("div");
-        messageArea.setAttribute("class", "messageBox");
-        messageBox.append(messageArea);
-
-        productMessages.forEach(function (element) {
-
-            let product = productData.find(p => p.unique === element.productId)
-            div_card = document.createElement("div");
-            div_card.setAttribute("data-unique", product.unique);
-            div_card.classList.add("content");
-
-            image = document.createElement("img");
-            image.setAttribute("src", product.image);
-            image.setAttribute("alt", product["name"] + " Image");
-            image.classList.add("product-img");
-            div_card.append(image);
-
-            h2 = document.createElement("h2");
-            h2.setAttribute("class", "prod_name");
-            h2.setAttribute("id", "prod_name");
-            h2.textContent = product["name"];
-            div_card.append(h2);
-
-            let anch = document.createElement("a");
-            anch.setAttribute("href", "./product page.html?product_id=" + product.unique);
-            div_card.append(anch);
-
-            button1 = document.createElement("button");
-            button1.classList.add("button1", "button");
-            button1.textContent = "Message";
-            anch.append(button1);
-
-            document.querySelector("div.messageBox").append(div_card);
-        });
-
-
-    }
-
-
-</script>
+        <!-- -----------------------product list -seller---------------- -->
+        <div class="list">
+            <div class="topic">
+                <h1>My Product list</h1>
+                <button class="button2 add" id="addprod">Add new product</button>
+            </div>
+            <div class="box">
+            </div>
+        </div>
+        <!-- -----------------------------footer--------------------------- -->
+        <footer class="footer" id="footer">
+        </footer>
+        <div class="copy">Copyright © 2021 - 2022 VANHA - Website Designed By KISHORE</div>
+    </body>
+    <!-- -----------------------------------script--------------------------------- -->
+    <script src="../assets/JS/footer.js"></script>
+    <script src="../assets/JS/header.js"></script>
+    <script src="../assets/JS/user profile.js"></script>
 
 </html>

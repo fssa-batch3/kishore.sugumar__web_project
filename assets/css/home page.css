@@ -95,10 +95,11 @@
 
 .classfy p:hover {
     transform: scale(1.1);
-    background-color: whitesmoke;
+    background-color: rgb(244, 245, 255);
 }
 
-.sub_classfy h3 {
+.sub_classfy h4 {
+    font-weight: 500;
     color: var(--primary);
 }
 
@@ -149,10 +150,10 @@
     border-radius: 5%;
     width: 40%;
     background-color: white;
-    animation: floating 1500ms infinite linear;
 }
 
-.design h1 {
+.design p {
+    font-weight: 300px;
     font-size: 1.5rem;
 }
 
@@ -162,7 +163,7 @@
     margin: 5% 0%;
 }
 
-.heading h2 {
+.heading p {
     color: var(--primary);
     font-size: 2vw;
 }
@@ -206,35 +207,22 @@
 }
 
 /* ----------product----------------------- */
-@keyframes floating {
-    0% {
-        transform: translateY(0px);
-    }
-
-    50% {
-        transform: translateY(3px);
-    }
-
-    100% {
-        transform: translateY(0px);
-    }
-}
-
 .product_img {
     max-width: 100%;
-    width: 300px;
+    width: 250px;
     height: 250px;
     border-radius: 10px;
 }
 
 .card {
-    width: 100%;
+    width: 90%;
     height: auto;
     border-radius: 20px;
     background: #f5f5f5;
     padding: 10px;
     border: 2px solid #c3c6ce;
-    transition: 0.5s ease-in;
+    transition: 0.5s ease-out;
+
 }
 
 .card-details {
@@ -256,22 +244,25 @@
 }
 
 .card:hover {
-    color: var(--tertiary);
-    background-color: var(--primary);
     border-color: var(--primary);
+    background-color: rgb(233, 234, 255);
     box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.25);
 }
 
-.card:hover img:hover {
-    animation: floating 2600ms infinite linear;
+#SearchedProductBox{
+    display: grid;
+    grid-template-columns: repeat(3, 300px);
+    justify-content: space-evenly;
+    row-gap: 40px;
+    margin: 50px 0px;
 }
 
 .grid-container {
     display: grid;
     grid-template-columns: repeat(3, 300px);
     justify-content: space-evenly;
-    grid-gap: 40px;
-    margin: 5% 0% 0% 0%;
+    row-gap: 40px;
+    margin: 50px 0px;
 }
 
 .algn {

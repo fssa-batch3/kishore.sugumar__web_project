@@ -1,110 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="../assets/img/illustration/v-removebg-preview.png">
-    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700," rel="stylesheet" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
-        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="../assets/css/buyer page.css">
-    <link rel="stylesheet" href="../assets/css/buttons.css">
-    <link rel="stylesheet" href="../assets/css/footer.css">
-    <link rel="stylesheet" href="../assets/css/header.css">
-    <title>V A N H A</title>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="../assets/img/illustration/v-removebg-preview.png">
+        <link rel="dns-prefetch" href="//fonts.googleapis.com">
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700," rel="stylesheet">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+            integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+            crossorigin="anonymous" referrerpolicy="no-referrer">
+        <link rel="stylesheet" href="../assets/css/buyer page.css">
+        <link rel="stylesheet" href="../assets/css/buttons.css">
+        <link rel="stylesheet" href="../assets/css/footer.css">
+        <link rel="stylesheet" href="../assets/css/header.css">
+        <title>V A N H A</title>
+    </head>
 
-<body class="body">
-    <header class="header" id="header">
+    <body class="body">
+        <header class="header" id="header">
 
-    </header>
-    <main class="main">
-        <section class="main_left">
-            <img class="product_img" id="product_img" alt="">
-            <div class="product_detail">
-                <h1 id="product_name"></h1>
-                <div class="rate">
-                    <p><b>Price :</b></p>
-                    <h3 id="prod_price"></h3>
-                    <h3 class="inr"><b>(INR)</b></h3>
+        </header>
+        <main class="main">
+            <section class="main_left">
+                <img class="product_img" id="product_img" alt="">
+                <div class="product_detail">
+                    <h1 id="product_name"></h1>
+                    <div class="rate">
+                        <p>
+                            <b>Price :</b>
+                        </p>
+                        <h3 id="prod_price"></h3>
+                        <h3 class="inr">
+                            <b>(INR)</b>
+                        </h3>
+                    </div>
                 </div>
-            </div>
-        </section>
-        <section class="main_right">
-            <div class="img">
-                <img src="../assets/img/buyer.png" alt="buyer_img" class="buyer">
-                <span>Buyer info</span>
-            </div>
-            <div class="contact-detail">
-                <div class="right_content">
-                    <label> <i class="fa-solid fa-user"></i> </label>
-                    <h3 class="buyer_detail" id="buyer_name"></h3>
+            </section>
+            <section class="main_right">
+                <div class="img">
+                    <img src="../assets/img/buyer.png" alt="buyer_img" class="buyer">
+                    <span>Buyer info</span>
                 </div>
-                <div class="right_content">
-                    <label><i class="fa-solid fa-phone"></i></label>
-                    <h3 class="buyer_detail" id="buyer_phone"></h3>
+                <div class="contact-detail">
+                    <div class="right_content">
+                        <label>
+                            <i class="fa-solid fa-user"></i> 
+                        </label>
+                        <h3 class="buyer_detail" id="buyer_name"></h3>
+                    </div>
+                    <div class="right_content">
+                        <label>
+                            <i class="fa-solid fa-phone"></i>
+                        </label>
+                        <h3 class="buyer_detail" id="buyer_phone"></h3>
+                    </div>
+                    <div class="right_content">
+                        <label>
+                            <i class="fa-solid fa-location"></i>
+                        </label>
+                        <h3 class="buyer_detail" id="buyer_location"></h3>
+                    </div>
                 </div>
-                <div class="right_content">
-                    <label><i class="fa-solid fa-location"></i></label>
-                    <h3 class="buyer_detail" id="buyer_location"></h3>
+                <div class="btn">
+                    <button class="button2" id="sell">Sell</button>
+                    <button class="button3" id="redirect">Back</button>
                 </div>
-            </div>
-            <div class="btn">
-                <button class="button2" onclick="sell()">Sell</button>
-                <button class="button3" onclick="redirect()">Back</button>
-            </div>
-        </section>
-    </main>
-    <footer class="footer" id="footer">
-    </footer>
-    <div class="copy">Copyright © 2021 - 2022 VANHA - Website Designed By KISHORE</div>
-    <script src="../assets/JS/footer.js"></script>
-    <script src="../assets/JS/header.js"></script>
-    <script>
-        allheader()
-        function redirect() {
-            const productId = new URLSearchParams(window.location.search).get('product_id');
-            window.location.href = `./accept offer.html?product_id=${productId}`;
-        }
-        footer();
-        let product = JSON.parse(localStorage.getItem("product_data"));
-        let buyer = JSON.parse(localStorage.getItem("user_data"))
-
-        let productId = new URLSearchParams(window.location.search).get('product_id');
-        let buyerId = new URLSearchParams(window.location.search).get('buyer_id');
-
-        const product_i = product.findIndex(item => item.unique === productId);
-        let product_index = product[product_i];
-        const buyer_i = buyer.findIndex(item => item.email === buyerId);
-        let buyer_index = buyer[buyer_i];
-
-
-        let img = document.querySelector("#product_img");
-        img.setAttribute("src", product[product_i].image);
-        img.setAttribute("alt", product[product_i].name + "image");
-
-        document.querySelector("#product_name").innerHTML = product[product_i].name;
-        document.querySelector("#prod_price").innerHTML = product[product_i].price;
-        document.querySelector("#buyer_name").innerHTML = buyer[buyer_i].name
-        document.querySelector("#buyer_phone").innerHTML = buyer[buyer_i].phone
-        document.querySelector("#buyer_location").innerHTML = buyer[buyer_i].location
-
-        function sell() {
-            window.location.href = "./sold page.html";
-        }
-
-        let email = JSON.parse(localStorage.getItem("unique_id"));
-        let stored_data = JSON.parse(localStorage.getItem("user_data")) || [];
-
-        const get_object = (email, stored_data) => stored_data.find(val => val.email === email);
-        let data = get_object(email, stored_data);
-
-    </script>
-</body>
+            </section>
+        </main>
+        <footer class="footer" id="footer">
+        </footer>
+        <div class="copy">Copyright © 2021 - 2022 VANHA - Website Designed By KISHORE</div>
+        <script src="../assets/JS/footer.js"></script>
+        <script src="../assets/JS/header.js"></script>
+        <script src="../assets/JS/after accept offer.js"></script>
+    </body>
 
 </html>

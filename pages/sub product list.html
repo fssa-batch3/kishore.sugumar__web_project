@@ -1,91 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="../assets/img/illustration/v-removebg-preview.png">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
-    integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="dns-prefetch" href="//fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700," rel="stylesheet" />
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-  <link rel="stylesheet" href="../assets/css/footer.css">
-  <link rel="stylesheet" href="../assets/css/header.css">
-  <link rel="stylesheet" href="../assets/css/sub page.css">
-  <link rel="stylesheet" href="../assets/css/buttons.css">
-  <link rel="icon" href="../assets/img/illustration/v-removebg-preview.png">
-  <title>V A N H A</title>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="../assets/img/illustration/v-removebg-preview.png">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+            integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+            crossorigin="anonymous" referrerpolicy="no-referrer">
+        <link rel="dns-prefetch" href="//fonts.googleapis.com">
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700," rel="stylesheet">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="../assets/css/footer.css">
+        <link rel="stylesheet" href="../assets/css/header.css">
+        <link rel="stylesheet" href="../assets/css/sub page.css">
+        <link rel="stylesheet" href="../assets/css/buttons.css">
+        <link rel="icon" href="../assets/img/illustration/v-removebg-preview.png">
+        <title>V A N H A</title>
+    </head>
 
-<body class="body">
-  <header class="header" id="header">
-    <img src="../assets/img/illustration/logo.png" alt="logo" class="logo">
-    <div>
-      <h1>V A N H A</h1>
-    </div>
-    <img src="../assets/img/buyer.png" alt="buyer img" class="profile_img">
-  </header>
-  <main class="main">
-    <div class="heading">
-      <div class="border"></div>
-      <h2 id="cate_name"></h2>
-      <div class="border"></div>
-    </div>
-    <div id="grid-container">
-    </div>
-    <button class="button1 algn" id="loadmore">Load more</button>
-  </main>
-  <footer class="footer" id="footer">
-  </footer>
-  <div class="copy">Copyright © 2021 - 2022 VANHA - Website Designed By KISHORE</div>
-  <script src="../assets/JS/index.js"></script>
-  <script src="../assets/JS/footer.js"></script>
-  <script src="../assets/JS/header.js"></script>
-  <script>
-    allheader()
-    document.querySelector("#cate_name").innerHTML = new URLSearchParams(window.location.search).get('Category');;
-    footer();
-    card();
-
-    // ---------load more--------//
-
-    var cardContainer = document.getElementById("grid-container");
-    var cards = document.getElementsByClassName("card");
-    var loadMoreBtn = document.getElementById("loadmore");
-    var currentIndex = 12;
-
-    for (var i = 0; i < cards.length; i++) {
-      if (i >= currentIndex) {
-        cards[i].style.display = "none";
-      }
-    }
-    loadMoreBtn.addEventListener("click", function () {
-      for (var i = currentIndex; i < currentIndex + 8; i++) {
-        if (cards[i]) {
-          cards[i].style.display = "block";
-        }
-      }
-      currentIndex += 8;
-      if (currentIndex >= cards.length) {
-        loadMoreBtn.style.display = "none";
-      }
-    });
-
-    //---------------------------for buyer img--------------------------
-    let email = JSON.parse(localStorage.getItem("unique_id"));
-    let stored_data = JSON.parse(localStorage.getItem("user_data")) || [];
-
-    const get_object = (email, stored_data) => stored_data.find(val => val.email === email);
-    let data = get_object(email, stored_data);
-
-    let profileImage = document.getElementById("profile-img");
-    profileImage.setAttribute("src", data.image);
-    profileImage.setAttribute("alt", data.name + " Image");
-
-  </script>
-</body>
+    <body class="body">
+        <header class="header" id="header">
+            <img src="../assets/img/illustration/logo.png" alt="logo" class="logo">
+            <div>
+                <h1>V A N H A</h1>
+            </div>
+            <img src="../assets/img/buyer.png" alt="buyer img" class="profile_img">
+        </header>
+        <main class="main">
+            <div class="heading">
+                <div class="border"></div>
+                <h2 id="cate_name"></h2>
+                <div class="border"></div>
+            </div>
+            <div id="grid-container">
+            </div>
+            <button class="button1 algn" id="loadmore">Load more</button>
+        </main>
+        <footer class="footer" id="footer">
+        </footer>
+        <div class="copy">Copyright © 2021 - 2022 VANHA - Website Designed By KISHORE</div>
+        <script src="../assets/JS/footer.js"></script>
+        <script src="../assets/JS/home header.js"></script>
+        <script src="../assets/JS/sub product.js"></script>
+    </body>
 
 </html>

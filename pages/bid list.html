@@ -1,66 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="../assets/img/illustration/v-removebg-preview.png">
-  <link rel="dns-prefetch" href="//fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700," rel="stylesheet" />
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
-    integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="../assets/css/list page.css">
-  <link rel="stylesheet" href="../assets/css/buttons.css">
-  <link rel="stylesheet" href="../assets/css/footer.css">
-  <link rel="stylesheet" href="../assets/css/header.css">
-  <title>V A N H A</title>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="../assets/img/illustration/v-removebg-preview.png">
+        <link rel="dns-prefetch" href="//fonts.googleapis.com">
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700," rel="stylesheet">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+            integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+            crossorigin="anonymous" referrerpolicy="no-referrer">
+        <link rel="stylesheet" href="../assets/css/list page.css">
+        <link rel="stylesheet" href="../assets/css/buttons.css">
+        <link rel="stylesheet" href="../assets/css/footer.css">
+        <link rel="stylesheet" href="../assets/css/header.css">
+        <title>V A N H A</title>
+    </head>
 
-<body class="body">
-  <header class="header" id="header">
-    <img src="../assets/img/illustration/logo.png" alt="logo" class="logo">
-    <h1>V A N H A</h1>
-    <img src="../assets/img/buyer.png" alt="profile_buyer" class="buyer_img" onclick="profile()">
-  </header>
-  <main>
-    <div class="heading">
-      <div class="border"></div>
-      <h2>Bided list</h2>
-      <div class="border"></div>
-    </div>
-    <h1 id="no_content" style="display:none"></h1>
-    <div class="box" id="box">
+    <body class="body">
+        <header class="header" id="header">
+        </header>
+        <main>
+            <div class="heading">
+                <div class="border"></div>
+                <h2>Bided list</h2>
+                <div class="border"></div>
+            </div>
+            <h2 id="no_content" style="display:none"></h2>
+            <div class="box" id="box">
 
-    </div>
-    <button class="button3" onclick="back()">Back</button>
-  </main>
-  <footer class="footer" id="footer">
-  </footer>
-  <div class="copy">Copyright © 2021 - 2022 VANHA - Website Designed By KISHORE</div>
-  <script src="../assets/JS/footer.js"></script>
-  <script src="../assets/JS/bidlist.js"></script>
-  <script src="../assets/JS/header.js"></script>
-  <script src="../assets/JS/index.js"></script>
-  <script>
-    allheader()
-    footer();
-    bid_prod();
-
-    let bid_array = JSON.parse(localStorage.getItem("bid"));
-    if(!bid_array){
-
-    }
-
-    let email = JSON.parse(localStorage.getItem("unique_id"));
-    let stored_data = JSON.parse(localStorage.getItem("user_data")) || [];
-
-    const get_object = (email, stored_data) => stored_data.find(val => val.email === email);
-    let data = get_object(email, stored_data);
-
-  </script>
-</body>
+            </div>
+            <button class="button3" id="back">Back</button>
+        </main>
+        <footer class="footer" id="footer">
+        </footer>
+        <div class="copy">Copyright © 2021 - 2022 VANHA - Website Designed By KISHORE</div>
+        <script src="../assets/JS/footer.js"></script>
+        <script src="../assets/JS/header.js"></script>
+        <script src="../assets/JS/bid list page.js"></script>
+    </body>
 
 </html>

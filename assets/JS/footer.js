@@ -1,5 +1,4 @@
- let foot = 
- `<section class="contact">
+const foot = `<section class="contact">
     <div class="contact_detail">
       <i class="fa fa-phone"></i>
       <p>Phone Number : +0123456789</p>
@@ -26,11 +25,11 @@
     </div>
   </section>`;
 
-  function footer(){
-    let foote = document.getElementById('footer');
-    foote.innerHTML = foot;
-  }
-  
-  document.addEventListener("DOMContentLoaded", function() {
-    footer();
-  });
+function footer() {
+  const foote = document.getElementById("footer");
+  foote.innerHTML = foot;
+}
+
+document.addEventListener("DOMContentLoaded", function openLoader() {
+  footer();
+});

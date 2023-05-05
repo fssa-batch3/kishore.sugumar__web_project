@@ -13,9 +13,12 @@
 - `<link>` : https://drive.google.com/drive/folders/12dfKZeC8N-IIPNB0H9HVRO43dRF8pfBY
 
 ### Features :
+* User crud (completed)
+* Product crud (completed)
 * Bargain option (completed)
 * Contact option (completed)
-* Notification (Yet to start)
+* Chatbox (completed)
+* Search (completed)
 
 
 ### User CRUD :
@@ -214,25 +217,49 @@
         4. Start to message in the input feild.
     * Expected Result:
         * User can view their message in the above box.
+* Read message
+    * Scenario 1: Successfully view the message by the user.
+      * Steps:
+        1. Log in as a user.
+        2. Navigate to the profile page.
+        3. Click on the "Your message" button.
+        4. Click on the "message" button.
+        5. page will navigate to the product page.
+        6. Click the message icon.
+    * Expected Result: 
+        * User can view seller message and their message in the dialogue box.
 ### Chat box(seller):
 * Write message
     * Scenario 1: Successfully write the message by the user.
       * Steps:
         1. Log in as a user.
         2. Navigate to the profile page.
-        3. Click on the product card.
-        4. Click on message button.
+        3. Click the "view" button.
+        4. Click on the buyer profile card.
         5. Start to message in the input feild.
+        6. Page will relode.
+        7. Click on the buyer profile card.
     * Expected Result:
-        * User can view their message in the above box.
+        * you can view your message in the below box.
 * Read message
     * Scenario 1: Successfully view the message by the user.
       * Steps:
         1. Log in as a user.
         2. Navigate to the profile page.
-        3. Click on the product card.
-        4. Click on message button.
+        3. Click the "view" button.
+        4. Click on the buyer profile card.
     * Expected Result:
-        * User can view Other message and their message in the above box.
+        * User can view Other's message and their message in the below box.
+
+### Search :
+* Search product
+    * Scenario 1: Successfully view product/item that searched
+      * Steps:
+        1. Log in as a user.
+        2. Navigate to the home page.
+        3. Search any product in the input feild.
+        4. Click the search button which as search icon.  
+    * Expected Result:
+        * Tif product is there. The product card will show below. If not text ("No results found.") will appear.
 
 ### End
