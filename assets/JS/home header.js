@@ -64,19 +64,49 @@ function search() {
     return;
   }
 
-  const product = ProductArray.filter((u) => {
-    const productName = u.name.toLowerCase();
-    const category = u.category.toLowerCase();
-    const searchWord = searchElement.toLowerCase();
-    return productName.includes(searchWord) || category === searchWord;
-  });
+  let product;
 
+  const body = document.querySelector("body");
+  const value = body.getAttribute("id");
+
+  if (value === "home") {
+    product = ProductArray.filter((u) => {
+      const productName = u.name.toLowerCase();
+      const category = u.category.toLowerCase();
+      const searchWord = searchElement.toLowerCase();
+      return productName.includes(searchWord) || category === searchWord;
+    });
+  }
+
+  if (value === "Categorised") {
+    const category_prod = new URLSearchParams(window.location.search).get(
+      "Category"
+    );
+    const CategoryArray = ProductArray.filter((c) => {
+      return c.category === category_prod; // add a return statement here
+    });
+
+    product = CategoryArray.filter((p) => {
+      const productName = p.name.toLowerCase();
+      const searchWord = searchElement.toLowerCase();
+      return productName.includes(searchWord);
+    });
+  }
+
+  const productBOx = document.querySelector("#SearchedProductArea");
   const searchedProductBox = document.querySelector("#SearchedProductBox");
   searchedProductBox.innerHTML = "";
 
   if (product.length === 0) {
-    searchedProductBox.innerHTML = "<p>No results found.</p>";
+    productBOx.setAttribute("style", "display:none");
+    const result = document.querySelector("#result");
+    result.className = "show";
+    setTimeout(function setTimer() {
+      result.className = result.className.replace("show", "");
+    }, 2000);
   } else {
+    productBOx.setAttribute("style", "display:block");
+
     product.forEach(function productCard(element) {
       const div_card = document.createElement("div");
       div_card.setAttribute("class", "card");
@@ -135,16 +165,18 @@ document.addEventListener("DOMContentLoaded", function openLoader() {
   search();
 
   const signinButton = document.getElementById("signin");
-  signinButton.addEventListener("click", signinOn);
+  if (signinButton) {
+    signinButton.addEventListener("click", signinOn);
+  }
 
   const signupButton = document.getElementById("signup");
-  signupButton.addEventListener("click", signupOn);
+  if (signupButton) {
+    signupButton.addEventListener("click", signupOn);
+  }
 
   const searchBtn = document.getElementById("searchBtn");
 
   searchBtn.addEventListener("click", function searchFeat() {
-    const productBOx = document.querySelector("#SearchedProductArea");
-    productBOx.setAttribute("style", "display:block");
     search();
   });
 });

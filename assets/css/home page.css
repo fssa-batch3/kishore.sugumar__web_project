@@ -15,6 +15,11 @@
     display: flex;
 }
 
+.searchResult{
+    display: flex;
+    justify-content: space-evenly;
+}
+
 .nav_links {
     height: 350px;
     position: sticky;
@@ -209,7 +214,7 @@
 /* ----------product----------------------- */
 .product_img {
     max-width: 100%;
-    width: 250px;
+    width: 270px;
     height: 250px;
     border-radius: 10px;
 }
@@ -284,9 +289,24 @@
     top: 100px;
 }
 
+#result {
+    visibility: hidden;
+    min-width: 250px;
+    height: 40px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 10px;
+    padding-top: 15px;
+    position: absolute;
+    z-index: 20;
+    left: 40%;
+    top: 100px;
+}
+
 #snackbar span {
     position: relative;
-    bottom: 25px;
+    bottom: 28px;
 }
 
 .check {
@@ -295,7 +315,7 @@
     padding: 10px 0px 10px 10px;
 }
 
-#snackbar.show {
+#snackbar.show, #result.show {
     visibility: visible;
     -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
     animation: fadein 0.5s, fadeout 0.5s 2.5s;
