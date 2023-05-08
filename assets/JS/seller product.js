@@ -242,13 +242,3 @@ const editFormOnBtn = document.getElementById("editform_on");
 editFormOnBtn.addEventListener("click", function editform_on() {
   document.getElementById("prod_edit").style.display = "block";
 });
-
-// const onBtn = document.getElementById("on");
-// onBtn.addEventListener("click", function on() {
-//   document.getElementById("overlay").style.display = "block";
-// });
-
-// const offBtn = document.getElementById("off");
-// offBtn.addEventListener("click", function off() {
-//   document.getElementById("overlay").style.display = "none";
-// });

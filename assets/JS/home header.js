@@ -117,10 +117,18 @@ function search() {
       div_card.append(div_detail);
 
       const anch = document.createElement("a");
-      anch.setAttribute(
-        "href",
-        `./pages/product page.html?product_id=${element.unique}`
-      );
+      if (value === "home") {
+        anch.setAttribute(
+          "href",
+          `./pages/product page.html?product_id=${element.unique}`
+        );
+      }
+      if (value === "Categorised") {
+        anch.setAttribute(
+          "href",
+          `./product page.html?product_id=${element.unique}`
+        );
+      }
       div_detail.append(anch);
 
       const image = document.createElement("img");
