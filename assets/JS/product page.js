@@ -35,6 +35,47 @@ document.querySelector("#seller_name").innerHTML = user.name;
 document.querySelector("#seller_phone").innerHTML = user.phone;
 document.querySelector("#seller_location").innerHTML = user.location;
 document.querySelector("#seller").innerHTML = user.name;
+// -------------------------------other requests -----------------------------------------//
+const bidArray = JSON.parse(localStorage.getItem("bid"));
+const userArray = JSON.parse(localStorage.getItem("user_data"));
+const container = document.querySelector(".allRequests");
+
+const bids = bidArray.filter((b) => b.productId === productId);
+
+if (bids.length === 0) {
+  const noProductMessage = document.createElement("h2");
+  noProductMessage.setAttribute("class", "noProduct");
+  noProductMessage.textContent = "There are no requests for this product.";
+
+  const noImage = document.createElement("img");
+  noImage.setAttribute("src", "../assets/img/illustration/empty bidlist.png");
+  noImage.setAttribute("alt", "illustration image");
+  noImage.setAttribute("class", "illustration-image");
+
+  container.append(noProductMessage);
+  container.append(noImage);
+}
+
+bids.forEach(function bidRequest(element) {
+  const userprofile = userArray.find((b) => b.email === element.buyer_id);
+
+  const eachUserDiv = document.createElement("div");
+  eachUserDiv.classList.add("eachUser");
+
+  const ProfileImage = document.createElement("img");
+  ProfileImage.src = userprofile.image;
+  ProfileImage.classList.add("profileIMg");
+  ProfileImage.alt = `${userprofile.name} Image`;
+
+  const h4 = document.createElement("h4");
+  h4.classList.add("price");
+  h4.innerHTML = element.new_price;
+
+  eachUserDiv.appendChild(ProfileImage);
+  eachUserDiv.appendChild(h4);
+
+  container.append(eachUserDiv);
+});
 
 // -----------------------------------similar prdocut----------------------------------------//
 
@@ -124,7 +165,7 @@ function bid() {
   );
   const buyer_id = JSON.parse(localStorage.getItem("unique_id"));
 
-  const bidArray = JSON.parse(localStorage.getItem("bid")) || [];
+  const bid_array = JSON.parse(localStorage.getItem("bid")) || [];
 
   if (!productid) {
     alert("There is no account 'Log in'");
@@ -141,18 +182,18 @@ function bid() {
     new_price: amount,
   };
 
-  for (let i = 0; i < bidArray.length; i++) {
+  for (let i = 0; i < bid_array.length; i++) {
     if (
-      productId === bidArray[i].productId &&
-      bidArray[i].buyer_id === buyer_id &&
-      bidArray[i].new_price === amount
+      productId === bid_array[i].productId &&
+      bid_array[i].buyer_id === buyer_id &&
+      bid_array[i].new_price === amount
     ) {
       alert('This amount is already bided. "Bid More"');
       return;
     }
   }
-  bidArray.unshift(bid_amount);
-  localStorage.setItem("bid", JSON.stringify(bidArray));
+  bid_array.unshift(bid_amount);
+  localStorage.setItem("bid", JSON.stringify(bid_array));
 
   const vara = document.getElementById("snackbar");
   vara.className = "show";

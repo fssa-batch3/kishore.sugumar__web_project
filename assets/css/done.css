@@ -5,11 +5,8 @@
 }
 
 .body {
-    background-image: url(../img/illustration/a02f3b64-258c-4b08-8e9b-366a04f95ef8.png);
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: 100% 100%;
     font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
+    background-color: aliceblue;
 }
 
 .body a {
@@ -29,16 +26,23 @@
     height: 500px;
     box-shadow: 5px 7px 20px gray;
     text-align: center;
-    margin: 200px 0px 0px 450px;
     background-color: var(--secondary);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
 }
 
 .content h1 {
-    font-size: 55px;
+    font-size: 40px;
+    margin-top: 40px;
 }
 
-.content h2 {
-    font-size: 35px;
+.content p {
+    font-size: 30px;
+    color: #8ba1ad;
 }
 
 .content a {
