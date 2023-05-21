@@ -95,15 +95,12 @@ font-weight: 600;
 
 #description {
     width: 500px;
-    max-height: 150px;
-    overflow: auto;
 }
 
 .rate {
     font-size: 18px;
     height: 40px;
     display: flex;
-    padding-top: 15px;
     float: inline-start;
 }
 
@@ -278,6 +275,10 @@ input[type=number]::-webkit-outer-spin-button {
 .details h4 {
     color: var(--tertiary);
     margin-top: 5px;
+}
+
+#wish_button, #message{
+    width: 177px;
 }
 
 /* ----------------similar product------------ */
