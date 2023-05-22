@@ -24,12 +24,26 @@
         <header class="header" id="header">
         </header>
         <main class="main">
-            <section class="main_left">
-                <div class="thumbnail-imgs">
+            <section>
+                <div class="main_left">
+                    <div class="thumbnail-imgs">
 
+                    </div>
+                    <div class="main-img">
+                        <img id="imagebox" alt="">
+                    </div>
                 </div>
-                <div class="main-img">
-                    <img id="imagebox" alt="">
+                <div class="otherBids">
+                    <form class="form">
+                        <p>Requests</p>
+                        <div class="allRequests">
+                        </div>
+                        <div class="bid-area">
+                            <input type="number" class="bid-amount" id="bid_amount" placeholder="amount" required
+                                pattern="[0-9]+">
+                            <button class="button2" type="button" id="bid_button">Bid</button>
+                        </div>
+                    </form>
                 </div>
             </section>
             <section class="main_right">
@@ -68,18 +82,16 @@
                                 <h2 id="seller_name"></h2>
                             </div>
                         </div>
-                        <div class="message" id="message">
-                            <i class="fa fa-message"></i>
-                        </div>
                     </div>
-                    <div class="bid-area">
-                        <input type="number" class="bid-amount" id="bid_amount" placeholder="amount" required
-                            pattern="[0-9]+">
-                        <button class="button2" type="button" id="bid_button">Bid</button>
+                    <div>
                         <button class="button1" type="button" id="wish_button">
                             <i class="fa fa-heart"></i>wishlist
                         </button>
+                        <button class="button1" type="button" id="message">
+                            <i class="fa fa-message"></i>Message
+                        </button>
                     </div>
+                    
                 </div>
             </section>
         </main>

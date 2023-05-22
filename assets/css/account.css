@@ -105,6 +105,9 @@
     color: #ffd343;
 }
 
+.error{
+    color: red;
+}
 /* Media Queries for Responsiveness */
 
 @media screen and (max-width: 768px) {

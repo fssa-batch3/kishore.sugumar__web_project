@@ -4,21 +4,22 @@ document.addEventListener("DOMContentLoaded", function wish_prod() {
   const prod = JSON.parse(localStorage.getItem("product_data"));
   const user_id = JSON.parse(localStorage.getItem("unique_id"));
 
+  const box = document.querySelector(".box");
+  box.classList.remove("box");
+  box.classList.add("empty");
+
+  const noProductMessage = document.createElement("h2");
+  noProductMessage.setAttribute("class", "noProduct");
+  noProductMessage.textContent = "There are no products in your wishlist.";
+
+  const noImage = document.createElement("img");
+  noImage.setAttribute("src", "../assets/img/illustration/empty wishlist.png");
+  noImage.setAttribute("alt", "illustration image");
+  noImage.setAttribute("class", "illustration-image");
+
   if (!prod_wish || prod_wish.length === 0) {
-    const box = document.querySelector(".box");
-    box.classList.remove("box");
-    box.classList.add("empty");
-
-    const noProductMessage = document.createElement("h2");
-    noProductMessage.setAttribute("class", "noProduct");
-    noProductMessage.textContent = "There are no products in your wishlist.";
     document.querySelector("#box").append(noProductMessage);
-
-    const image = document.createElement("img");
-    image.setAttribute("src", "../assets/img/illustration/empty wishlist.png");
-    image.setAttribute("alt", "illustration image");
-    image.setAttribute("class", "illustration-image");
-    document.querySelector("#box").append(image);
+    document.querySelector("#box").append(noImage);
   }
 
   if (prod_wish) {
@@ -57,6 +58,9 @@ document.addEventListener("DOMContentLoaded", function wish_prod() {
 
           document.querySelector("#box").append(div_card);
         }
+      } else {
+        document.querySelector("#box").append(noProductMessage);
+        document.querySelector("#box").append(noImage);
       }
     }
   }
