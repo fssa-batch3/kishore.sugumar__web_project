@@ -43,10 +43,6 @@ addProduct.addEventListener("click", function active() {
   const unique_id = crypto.randomUUID();
 
   const now = new Date();
-  const year = now.getFullYear();
-  const month = now.getMonth() + 1;
-  const day = now.getDate();
-  const date = `${year}-${month}-${day}`;
 
   const prodName = document.getElementById("prod_name").value;
   const description = document.getElementById("description").value;
@@ -54,6 +50,7 @@ addProduct.addEventListener("click", function active() {
   const prodDate = document.getElementById("prod_date").value;
   const duration = document.getElementById("duration").value;
   const category = document.getElementById("category_title").textContent;
+  const lowPrice = document.getElementById("lowPrice").value;
 
   let image;
   if (category === "Bike") {
@@ -74,22 +71,31 @@ addProduct.addEventListener("click", function active() {
     description === "" ||
     prodPrice === "" ||
     prodDate === "" ||
-    duration === ""
+    duration === "" ||
+    lowPrice === ""
   ) {
     alert("Please fill in all required fields");
     return;
   }
+
+  if(lowPrice >= prodPrice){
+    alert("Minimum price must lower then the original price");
+    return;
+  }
+
+  if(prodPrice > lowPrice){
 
   const product = {
     unique: unique_id,
     name: prodName,
     description,
     price: prodPrice,
+    minimumPrice: lowPrice,
     date: prodDate,
     duration,
     category,
     user_id,
-    uploded_on: date,
+    uploded_on: now.getTime(),
     image: [image],
   };
 
@@ -97,6 +103,7 @@ addProduct.addEventListener("click", function active() {
   localStorage.setItem("product_data", JSON.stringify(products));
   document.getElementById("form").reset();
   window.location.href = "./buyer profile.html";
+}
 });
 
 // ----------------------------overlay---------------------------//

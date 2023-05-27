@@ -2,10 +2,13 @@
 const productId = new URLSearchParams(window.location.search).get("product_id");
 
 const prod_data = JSON.parse(localStorage.getItem("product_data"));
+const imageArray = JSON.parse(localStorage.getItem("images"));
 
 const product = prod_data.find((data) => {
   return data.unique === productId;
 });
+
+const productImage = imageArray.find((i) => i.unique === productId);
 
 document.querySelector("#prod_name").innerHTML = product.name;
 document.querySelector("#description").innerHTML = product.description;
@@ -14,16 +17,16 @@ document.querySelector("#prod_date").innerHTML = product.date;
 document.querySelector("#duration").innerHTML = product.duration;
 
 const image = document.querySelector("#imagebox");
-image.setAttribute("src", product.image);
+image.setAttribute("src", productImage.image1);
 image.setAttribute("alt", `${product.name}image`);
 
-for (let i = 0; i < 4; i++) {
-  const product_image = document.createElement("img");
-  product_image.setAttribute("src", product.image[i]);
-  product_image.setAttribute("alt", `${product.name}image`);
-  product_image.setAttribute("id", `sub_img${i}`);
-  document.querySelector(".thumbnail-imgs").appendChild(product_image);
-}
+// for (let i = 0; i < 4; i++) {
+//   const product_image = document.createElement("img");
+//   product_image.setAttribute("src", product.image[i]);
+//   product_image.setAttribute("alt", `${product.name}image`);
+//   product_image.setAttribute("id", `sub_img${i}`);
+//   document.querySelector(".thumbnail-imgs").appendChild(product_image);
+// }
 
 const user_data = JSON.parse(localStorage.getItem("user_data"));
 
@@ -32,55 +35,62 @@ const user = user_data.find((data) => {
 });
 
 document.querySelector("#seller_name").innerHTML = user.name;
-document.querySelector("#seller_phone").innerHTML = user.phone;
-document.querySelector("#seller_location").innerHTML = user.location;
-document.querySelector("#seller").innerHTML = user.name;
+let sellerImage = document.querySelector("#seller_img");
+sellerImage.setAttribute("src", user.image);
+sellerImage.setAttribute("alt", `${user.name} Image`);
 // -------------------------------other requests -----------------------------------------//
 const bidArray = JSON.parse(localStorage.getItem("bid"));
 const userArray = JSON.parse(localStorage.getItem("user_data"));
 const container = document.querySelector(".allRequests");
 
-const bids = bidArray.filter((b) => b.productId === productId);
+const noProductMessage = document.createElement("h2");
+noProductMessage.setAttribute("class", "noProduct");
+noProductMessage.textContent = "There are no requests for this product.";
 
-if (bids.length === 0) {
-  const noProductMessage = document.createElement("h2");
-  noProductMessage.setAttribute("class", "noProduct");
-  noProductMessage.textContent = "There are no requests for this product.";
+const noImage = document.createElement("img");
+noImage.setAttribute("src", "../assets/img/illustration/empty bidlist.png");
+noImage.setAttribute("alt", "illustration image");
+noImage.setAttribute("class", "illustration-image");
 
-  const noImage = document.createElement("img");
-  noImage.setAttribute("src", "../assets/img/illustration/empty bidlist.png");
-  noImage.setAttribute("alt", "illustration image");
-  noImage.setAttribute("class", "illustration-image");
-
+if (!bidArray) {
   container.append(noProductMessage);
   container.append(noImage);
 }
+if (bidArray) {
+  const bids = bidArray.filter((b) => b.productId === productId);
 
-bids.forEach(function bidRequest(element) {
-  const userprofile = userArray.find((b) => b.email === element.buyer_id);
+  if (bids.length === 0) {
+    container.append(noProductMessage);
+    container.append(noImage);
+  }
 
-  const eachUserDiv = document.createElement("div");
-  eachUserDiv.classList.add("eachUser");
+  bids.forEach(function bidRequest(element) {
+    const userprofile = userArray.find((b) => b.email === element.buyer_id);
 
-  const ProfileImage = document.createElement("img");
-  ProfileImage.src = userprofile.image;
-  ProfileImage.classList.add("profileIMg");
-  ProfileImage.alt = `${userprofile.name} Image`;
+    const eachUserDiv = document.createElement("div");
+    eachUserDiv.classList.add("eachUser");
 
-  const h4 = document.createElement("h4");
-  h4.classList.add("price");
-  h4.innerHTML = element.new_price;
+    const ProfileImage = document.createElement("img");
+    ProfileImage.src = userprofile.image;
+    ProfileImage.classList.add("profileIMg");
+    ProfileImage.alt = `${userprofile.name} Image`;
 
-  eachUserDiv.appendChild(ProfileImage);
-  eachUserDiv.appendChild(h4);
+    const h4 = document.createElement("h4");
+    h4.classList.add("price");
+    h4.innerHTML = element.new_price;
 
-  container.append(eachUserDiv);
-});
+    eachUserDiv.appendChild(ProfileImage);
+    eachUserDiv.appendChild(h4);
+
+    container.append(eachUserDiv);
+  });
+}
 
 // -----------------------------------similar prdocut----------------------------------------//
 
 document.addEventListener("DOMContentLoaded", function similar() {
   const product_data = JSON.parse(localStorage.getItem("product_data"));
+  const imageArray = JSON.parse(localStorage.getItem("images"));
   const productid = new URLSearchParams(window.location.search).get(
     "product_id"
   );
@@ -120,8 +130,10 @@ document.addEventListener("DOMContentLoaded", function similar() {
       div_detail.setAttribute("class", "card-details");
       div_card.append(div_detail);
 
+      const product_image = imageArray.find((i) => i.unique === randomProduct.unique);
+
       const productImage = document.createElement("img");
-      productImage.setAttribute("src", randomProduct.image);
+      productImage.setAttribute("src", product_image.image1);
       productImage.setAttribute("alt", `${randomProduct.name}Image`);
       productImage.setAttribute("class", "product_img");
       div_detail.append(productImage);
@@ -165,7 +177,12 @@ function bid() {
   );
   const buyer_id = JSON.parse(localStorage.getItem("unique_id"));
 
+  const productArray = JSON.parse(localStorage.getItem("product_data"));
+
   const bid_array = JSON.parse(localStorage.getItem("bid")) || [];
+  
+  const product = productArray.find((e) => e.unique === productid);
+
 
   if (!productid) {
     alert("There is no account 'Log in'");
@@ -173,6 +190,10 @@ function bid() {
   }
   if (amount === "") {
     alert("Quote any amount");
+    return;
+  }
+  if(amount < product.minimumPrice){
+    alert(`Quoted amount is lesser than minimum amount (${product.minimumPrice})`);
     return;
   }
 
@@ -251,43 +272,28 @@ document.getElementById("wish_button").addEventListener("click", addToWishlist);
 
 // -------------------------------------------------//
 
-function img(thumb) {
-  const main_image = document.getElementById("imagebox");
-  main_image.src = thumb.src;
-}
+// function img(thumb) {
+//   const main_image = document.getElementById("imagebox");
+//   main_image.src = thumb.src;
+// }
 
-const thumbnail_image1 = document.getElementById(`sub_img0`);
-const thumbnail_image2 = document.getElementById(`sub_img1`);
-const thumbnail_image3 = document.getElementById(`sub_img2`);
-const thumbnail_image4 = document.getElementById(`sub_img3`);
+// const thumbnail_image1 = document.getElementById(`sub_img0`);
+// const thumbnail_image2 = document.getElementById(`sub_img1`);
+// const thumbnail_image3 = document.getElementById(`sub_img2`);
+// const thumbnail_image4 = document.getElementById(`sub_img3`);
 
-thumbnail_image1.addEventListener("click", function thumbImg1() {
-  img(thumbnail_image1);
-});
-thumbnail_image2.addEventListener("click", function thumbImg2() {
-  img(thumbnail_image2);
-});
-thumbnail_image3.addEventListener("click", function thumbImg3() {
-  img(thumbnail_image3);
-});
-thumbnail_image4.addEventListener("click", function thumbImg4() {
-  img(thumbnail_image4);
-});
-
-const closeSellerInfo = document.getElementById("seller_off");
-closeSellerInfo.addEventListener("click", function seller_off() {
-  document.getElementById("lay").style.display = "none";
-});
-
-const openSellerInfo = document.getElementById("seller_on");
-openSellerInfo.addEventListener("click", function seller_on() {
-  const user_unique = JSON.parse(localStorage.getItem("unique_id"));
-  if (!user_unique) {
-    alert("There is no account please 'Log in'");
-  } else {
-    document.getElementById("lay").style.display = "block";
-  }
-});
+// thumbnail_image1.addEventListener("click", function thumbImg1() {
+//   img(thumbnail_image1);
+// });
+// thumbnail_image2.addEventListener("click", function thumbImg2() {
+//   img(thumbnail_image2);
+// });
+// thumbnail_image3.addEventListener("click", function thumbImg3() {
+//   img(thumbnail_image3);
+// });
+// thumbnail_image4.addEventListener("click", function thumbImg4() {
+//   img(thumbnail_image4);
+// });
 
 const messagePageButton = document.getElementById("message");
 messagePageButton.addEventListener("click", function message() {

@@ -63,6 +63,7 @@ document.addEventListener("DOMContentLoaded", function update_prod() {
   );
 
   const prod_data = JSON.parse(localStorage.getItem("product_data"));
+  const imageArray = JSON.parse(localStorage.getItem("images"));
 
   const product = prod_data.find((data) => {
     return data.unique === productId;
@@ -73,56 +74,65 @@ document.addEventListener("DOMContentLoaded", function update_prod() {
   document.querySelector("#prod_price").innerHTML = product.price;
   document.querySelector("#prod_date").innerHTML = product.date;
   document.querySelector("#duration").innerHTML = product.duration;
-  for (let i = 0; i < 4; i++) {
-    const img = document.createElement("img");
-    img.setAttribute("src", product.image[i]);
-    img.setAttribute("alt", `${product.name} image`);
-    img.setAttribute("id", `sub_img${i}`);
-    img.setAttribute("class", `product_img`);
-    img.setAttribute("onclick", "img(this)");
-    document.querySelector(".images").appendChild(img);
-  }
+
+
+  const productImage = imageArray.find((data) => {
+    return data.unique === productId;
+  });
+
+  const img = document.createElement("img");
+  img.setAttribute("src", productImage.image1);
+  img.setAttribute("alt", `${product.name} image`);
+  img.setAttribute("class", "singleImage")
+  document.querySelector(".images").appendChild(img);
+  // for (let i = 1; i <= 4; i++) {
+  //   const img = document.createElement("img");
+  //   img.setAttribute("src", productImage.image+(i));
+  //   img.setAttribute("alt", `${product.name} image`);
+  //   img.setAttribute("id", `sub_img${i}`);
+  //   img.setAttribute("class", `product_img`);
+  //   img.setAttribute("onclick", "img(this)");
+  //   document.querySelector(".images").appendChild(img);
+  // }
 });
 
 // -----------------------------------seller read other's chat-------------------------------//
 
 document.addEventListener("DOMContentLoaded", function messageAlert() {
   const unique = new URLSearchParams(window.location.search).get("product_id");
-  const messageArray = JSON.parse(localStorage.getItem("message"));
+  const messageArray = JSON.parse(localStorage.getItem("messageArray"));
   const buyerArray = JSON.parse(localStorage.getItem("user_data"));
 
   if (!messageArray) {
     return;
   }
 
-  const productIndex = messageArray.find((m) => m.productId === unique);
-
-  if (!productIndex) {
+  const buyerIndex = messageArray.filter((m) => m.productId === unique);
+  if (!buyerIndex) {
     const display = document.querySelector("section.message-box");
     display.setAttribute("style", "display:none");
-  } else {
-    productIndex.content.forEach(function userMessage(buyer) {
-      const buyerDetail = buyerArray.find(
-        (messager) => messager.email === buyer.user
-      );
-
+  }
+  else{
+    buyerIndex.forEach(function userMessage(buyer) {
+      let buyerIndex = buyerArray.find((b) => b.email === buyer.buyerId)
       const div_card = document.createElement("span");
-      div_card.setAttribute("data-unique", buyerDetail.email);
+      div_card.setAttribute("data-unique", buyerIndex.email);
       div_card.setAttribute("class", "messager-list");
 
       const image = document.createElement("img");
-      image.setAttribute("src", buyerDetail.image);
-      image.setAttribute("alt", `${buyerDetail.name} Image`);
+      image.setAttribute("src", buyerIndex.image);
+      image.setAttribute("alt", `${buyerIndex.name} Image`);
       image.classList.add("messager-img");
       div_card.append(image);
 
       const h2 = document.createElement("h2");
       h2.setAttribute("class", "messager-name");
-      h2.textContent = buyerDetail.name;
+      h2.textContent = buyerIndex .name;
       div_card.append(h2);
 
       document.querySelector("div.messager").append(div_card);
-    });
+      }
+    );
   }
 });
 
@@ -136,14 +146,15 @@ document.addEventListener("DOMContentLoaded", function sellerRead() {
         "product_id"
       );
       const cardId = this.getAttribute("data-unique");
-      const messageArray = JSON.parse(localStorage.getItem("message"));
+
+      sessionStorage.setItem("cardId", JSON.stringify(cardId));
+      const messageArray = JSON.parse(localStorage.getItem("messageArray"));
+      const textArray = JSON.parse(localStorage.getItem("textArray"));
       const seller = JSON.parse(localStorage.getItem("unique_id"));
 
       if (!messageArray) {
         return;
       }
-
-      sessionStorage.setItem("messager", JSON.stringify(cardId));
 
       const parentMessage = document.querySelector(".messages");
       parentMessage.setAttribute("style", "");
@@ -152,28 +163,35 @@ document.addEventListener("DOMContentLoaded", function sellerRead() {
 
       messageArea.innerHTML = "";
 
-      const message = messageArray.find(
-        (findMessage) => findMessage.productId === unique
+      const message = messageArray.filter(
+        (findMessage) =>
+          findMessage.productId === unique
       );
 
-      const messager = message.content.find((buyer) => buyer.user === cardId);
+      const findMessageId = message.find((m) => m.buyerId === cardId);
 
-      messager.messages.forEach(function messageSeperator(text) {
+      const messages = textArray.filter(
+        (text) =>
+          text.productId === unique && text.messageId === findMessageId.messageId
+      );
+
+
+      messages.forEach(function messageSeperator(text) {
         const messageContainer = document.createElement("div");
         messageContainer.classList.add("message-container");
 
         const messageContent = document.createElement("span");
-        if (text.messager === seller) {
+        if (text.messagerId === seller) {
           messageContent.classList.add("sent");
         } else {
           messageContent.classList.add("other-message");
         }
-        messageContent.innerHTML = text.text;
+        messageContent.innerHTML = text.message;
         messageContainer.appendChild(messageContent);
 
         const messageTimestamp = document.createElement("div");
         const timestamp = new Date(text.timestamp);
-        if (text.messager === seller) {
+        if (text.messagerId === seller) {
           messageTimestamp.classList.add("time");
         } else {
           messageTimestamp.classList.add("other-time");
@@ -194,31 +212,32 @@ sellerReplayBox.addEventListener("click", function sellerReplay(event) {
   event.preventDefault();
 
   const seller = JSON.parse(localStorage.getItem("unique_id"));
-  const other = JSON.parse(sessionStorage.getItem("messager"));
+  const other = JSON.parse(sessionStorage.getItem("cardId"));
   const product = new URLSearchParams(window.location.search).get("product_id");
-  const messageArray = JSON.parse(localStorage.getItem("message"));
+  const messageArray = JSON.parse(localStorage.getItem("messageArray"));
+  const textArray = JSON.parse(localStorage.getItem("textArray"));
   const text = document.getElementById("text").value.trim();
   const now = new Date();
 
-  const message = messageArray.find(
-    (findMessage) => findMessage.productId === product
-  );
-
-  const messager = message.content.find((buyer) => buyer.user === other);
-
   if (text === "") {
-    /* empty */
-  } else {
-    const replay = {
-      messager: seller,
-      text,
-      timestamp: now.getTime(),
-    };
-
-    messager.messages.push(replay);
-    localStorage.setItem("message", JSON.stringify(messageArray));
-    window.location.reload();
+    return;
   }
+
+  let findMessageId = textArray.find((id) => id.MessagerId === other && id.productId === product);
+  console.log(findMessageId.messageId);
+
+      let content = {
+      messagerId : seller,
+      messageId : findMessageId.messageId,
+      message : text,
+      productId : product,
+      timestamp : now.getTime(),
+      reciverId : other,
+    }
+
+    textArray.push(content);
+    localStorage.setItem("textArray", JSON.stringify(textArray));
+    window.location.reload();
 });
 // --------------------------------------------//
 
@@ -242,3 +261,15 @@ const editFormOnBtn = document.getElementById("editform_on");
 editFormOnBtn.addEventListener("click", function editform_on() {
   document.getElementById("prod_edit").style.display = "block";
 });
+// // ----------------------------------------scroll down------------------------------------//
+
+// let messageArea = document.querySelector(".chat-box");
+// let messageContainer = document.querySelector(".message-container");
+// document.addEventListener("DOMContentLoaded", function() {
+//   messageArea.scrollTop = messageArea.scrollHeight;
+// });
+// function scrollToBottom() {
+//   messageArea.scrollTop = messageArea.scrollHeight;
+// }
+// messageArea.append(messageContainer);
+// scrollToBottom();

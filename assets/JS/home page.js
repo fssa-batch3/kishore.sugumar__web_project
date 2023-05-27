@@ -8,83 +8,7 @@ links.forEach((link) => {
   const url = `./pages/sub product list.html?Category=${category}`;
   link.setAttribute("href", url);
 });
-// --------------------product card -------------------//
-const prod = JSON.parse(localStorage.getItem("product_data")).reverse();
-const unique = JSON.parse(localStorage.getItem("unique_id"));
 
-const product = prod.filter((u) => u.user_id !== unique);
-
-product.forEach(function productCard(element) {
-  const div_card = document.createElement("div");
-  div_card.setAttribute("class", "card");
-
-  const div_detail = document.createElement("div");
-  div_detail.setAttribute("class", "card-details");
-  div_detail.setAttribute("data-unique", element.unique);
-  div_card.append(div_detail);
-
-  const anch = document.createElement("a");
-  anch.setAttribute(
-    "href",
-    `./pages/product page.html?product_id=${element.unique}`
-  );
-  div_detail.append(anch);
-
-  const image = document.createElement("img");
-  image.setAttribute("src", element.image);
-  image.setAttribute("alt", `${element.name}Image`);
-  image.setAttribute("id", element.unique);
-  image.setAttribute("class", "product_img");
-  anch.append(image);
-
-  const h3 = document.createElement("h3");
-  h3.setAttribute("class", "text-title");
-  h3.innerHTML = element.name;
-  div_detail.append(h3);
-
-  const div_price = document.createElement("div");
-  div_price.setAttribute("class", "text-body");
-  div_detail.append(div_price);
-
-  const p_price = document.createElement("span");
-  div_price.prepend(p_price);
-
-  const p_bold = document.createElement("b");
-  p_bold.innerText = "Price:";
-  p_price.append(p_bold);
-
-  const p_rate = document.createElement("span");
-  p_rate.innerHTML = element.price;
-  div_price.append(p_rate);
-
-  const p_currency = document.createElement("span");
-  p_currency.innerHTML = " (INR)";
-  div_price.append(p_currency);
-
-  document.querySelector("div.grid-container").append(div_card);
-});
-
-// ---------load more--------//
-const cards = document.getElementsByClassName("card");
-const loadMoreBtn = document.getElementById("loadmore");
-let currentIndex = 6;
-
-for (let i = 0; i < cards.length; i++) {
-  if (i >= currentIndex) {
-    cards[i].style.display = "none";
-  }
-}
-loadMoreBtn.addEventListener("click", function loader() {
-  for (let i = currentIndex; i < currentIndex + 6; i++) {
-    if (cards[i]) {
-      cards[i].style.display = "block";
-    }
-  }
-  currentIndex += 6;
-  if (currentIndex >= cards.length) {
-    loadMoreBtn.style.display = "none";
-  }
-});
 
 // ------------------------register-----------------------------//
 function register(event) {
@@ -97,12 +21,16 @@ function register(event) {
     return;
   }
 
+  const now = new Date();
+
   const user_detail = {
     name: document.getElementById("regi_name").value,
     email: document.getElementById("regi_email").value,
     phone: document.getElementById("regi_phone").value,
     password,
     image: "https://source.unsplash.com/featured/200x200?people",
+    registeredOn: now.getTime(),
+    logedOn: now.getTime(),
   };
 
   const stored_data = JSON.parse(localStorage.getItem("user_data")) || [];
@@ -131,6 +59,8 @@ function log_in(event) {
   event.preventDefault();
   const stored_data = JSON.parse(localStorage.getItem("user_data")) || [];
 
+  let time = new Date();
+
   const user_data = {
     email: document.getElementById("email").value,
     password: document.getElementById("password").value,
@@ -140,6 +70,10 @@ function log_in(event) {
       user_data.email === stored_data[i].email &&
       user_data.password === stored_data[i].password
     ) {
+      if (stored_data[i].logedOn) {
+        stored_data[i].logedOn = time.getTime();
+      }
+      localStorage.setItem("user_data", JSON.stringify(stored_data));
       localStorage.setItem("unique_id", JSON.stringify(user_data.email));
       const vara = document.getElementById("snackbar");
       vara.className = "show";
@@ -202,4 +136,85 @@ bidlistPage.addEventListener("click", function bidlist(event) {
 const closeButton = document.getElementById("off");
 closeButton.addEventListener("click", function off() {
   document.getElementById("overlay").style.display = "none";
+});
+
+// --------------------product card -------------------//
+const prod = JSON.parse(localStorage.getItem("product_data")).reverse();
+const unique = JSON.parse(localStorage.getItem("unique_id"));
+const imageArray = JSON.parse(localStorage.getItem("images"));
+
+const product = prod.filter((u) => u.user_id !== unique);
+
+product.forEach(function productCard(element) {
+  const div_card = document.createElement("div");
+  div_card.setAttribute("class", "card");
+
+  const div_detail = document.createElement("div");
+  div_detail.setAttribute("class", "card-details");
+  div_detail.setAttribute("data-unique", element.unique);
+  div_card.append(div_detail);
+
+  const anch = document.createElement("a");
+  anch.setAttribute(
+    "href",
+    `./pages/product page.html?product_id=${element.unique}`
+  );
+  div_detail.append(anch);
+
+  const productImage = imageArray.find((i) => i.unique === element.unique)
+
+  const image = document.createElement("img");
+  image.setAttribute("src", productImage.image1);
+  image.setAttribute("alt", `${element.name} Image`);
+  image.setAttribute("id", element.unique);
+  image.setAttribute("class", "product_img");
+  anch.append(image);
+
+  const h3 = document.createElement("h3");
+  h3.setAttribute("class", "text-title");
+  h3.innerHTML = element.name;
+  div_detail.append(h3);
+
+  const div_price = document.createElement("div");
+  div_price.setAttribute("class", "text-body");
+  div_detail.append(div_price);
+
+  const p_price = document.createElement("span");
+  div_price.prepend(p_price);
+
+  const p_bold = document.createElement("b");
+  p_bold.innerText = "Price:";
+  p_price.append(p_bold);
+
+  const p_rate = document.createElement("span");
+  p_rate.innerHTML = element.price;
+  div_price.append(p_rate);
+
+  const p_currency = document.createElement("span");
+  p_currency.innerHTML = " (INR)";
+  div_price.append(p_currency);
+
+  document.querySelector("div.grid-container").append(div_card);
+});
+
+// ---------load more--------//
+const cards = document.getElementsByClassName("card");
+const loadMoreBtn = document.getElementById("loadmore");
+let currentIndex = 8;
+
+for (let i = 0; i < cards.length; i++) {
+  if (i >= currentIndex) {
+    cards[i].style.display = "none";
+  }
+}
+loadMoreBtn.addEventListener("click", function loader() {
+  for (let i = currentIndex; i < currentIndex + 8; i++) {
+    if (cards[i]) {
+      cards[i].style.display = "block";
+    }
+  }
+  currentIndex += 8;
+  if (currentIndex >= cards.length) {
+    loadMoreBtn.style.display = "none";
+  }
 });

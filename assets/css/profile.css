@@ -76,15 +76,15 @@
 }
 
 .algn {
-  width: 130px;
+  width: 90px;
 }
 
 .remo {
-  width: 200px;
+  width: 140px;
   margin: 20px 0px;
 }
 
-.btn {
+.btn {=
   margin-bottom: 20px;
 }
 
@@ -167,8 +167,8 @@
 /* ----list of prod----- */
 
 .product-img {
-  width: 300px;
-  height: 300px;
+  width: 250px;
+  height: 250px;
   padding: 25px 25px 0px 25px;
   border-radius: 20px;
 }
@@ -200,10 +200,11 @@
 
 .box {
   display: grid;
-  grid-template-columns: repeat(3, 350px);
+  grid-template-columns: repeat(4, 350px);
   justify-content: center;
   align-items: center;
-  column-gap: 120px;
+  column-gap: 15px;
+  margin-left: 40px;
 }
 
 .content i {
@@ -213,7 +214,7 @@
 
 .content {
   text-align: center;
-  width: 350px;
+  width: 300px;
   background-color: whitesmoke;
   margin: 50px 0px 50px 0px;
   border-radius: 10px;

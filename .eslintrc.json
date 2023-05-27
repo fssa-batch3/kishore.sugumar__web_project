@@ -39,7 +39,8 @@
         "prettier/prettier": [
             "error",
             {
-                "singleQuote": false
+                "singleQuote": false,
+                
             }
         ]
     },
