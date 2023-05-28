@@ -13,21 +13,71 @@ links.forEach((link) => {
 // ------------------------register-----------------------------//
 function register(event) {
   event.preventDefault();
-  const password = document.getElementById("regi_password").value;
+  const applicantpassword = document.getElementById("regi_password").value;
   const c_password = document.getElementById("c_password").value;
 
-  if (password !== c_password) {
+  if (applicantpassword !== c_password) {
     alert("Passwords do not match");
     return;
   }
 
+  const applicantName = document.getElementById("regi_name").value;
+  const applicantemail =  document.getElementById("regi_email").value
+  const applicantnumber =  document.getElementById("regi_phone").value
+
   const now = new Date();
 
+  function nameValidation(applicantName) {
+    const nameRegex = /^[A-Za-z]+(?: [A-Za-z]+)*$/;
+    if (!nameRegex.test(applicantName)) {
+      alert("Use only alphabets");
+      return false;
+    }
+    return true;
+  }
+
+  function emailValidation(applicantemail) {
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailRegex.test(applicantemail)) {
+      alert("Use proper email");
+      return false;
+    }
+    return true;
+  }
+
+  function numberValidation(applicantnumber) {
+    const phoneRegex = /^[6-9]\d{9}$/;
+    if (!phoneRegex.test(applicantnumber)) {
+      alert("Invalid phone number format (Use only number and number should start with (6,7,8,9).)");
+      return false;
+    }
+    return true;
+  }
+
+  function passwordValidation(applicantpassword) {
+    const passwordRegex =
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&amp;*_=+-]).{8,24}$/;
+    if (!passwordRegex.test(applicantpassword)) {
+      alert("Password must contain at least one uppercase, one lowercase, one special character, and numbers. It should contain 8 characters (e.g., ABde12!#)");
+      return false;
+    }
+    return true;
+  }
+
+  if (
+    !nameValidation(applicantName) ||
+    !emailValidation(applicantemail) ||
+    !numberValidation(applicantnumber) ||
+    !passwordValidation(applicantpassword)
+  ) {
+    return;
+  }
+
   const user_detail = {
-    name: document.getElementById("regi_name").value,
-    email: document.getElementById("regi_email").value,
-    phone: document.getElementById("regi_phone").value,
-    password,
+    name: applicantName,
+    email: applicantemail,
+    phone: applicantnumber,
+    applicantpassword,
     image: "https://source.unsplash.com/featured/200x200?people",
     registeredOn: now.getTime(),
     logedOn: now.getTime(),
@@ -52,7 +102,9 @@ function register(event) {
   localStorage.setItem("unique_id", JSON.stringify(user_detail.email));
   window.location.href = "../index.html";
 }
+
 document.getElementById("registerForm").addEventListener("submit", register);
+
 // --------------------------login------------------------------//
 
 function log_in(event) {

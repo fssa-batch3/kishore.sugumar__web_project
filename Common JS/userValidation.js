@@ -14,7 +14,8 @@ function UserValidation(event) {
 
 
   if (userPassword !== confirmPassword) {
-    confirmErrorMessage.innerHTML = "Passwords do not match";
+    // confirmErrorMessage.innerHTML = "Passwords do not match";
+    alert("Passwords do not match")
     return;
   }
 
@@ -22,24 +23,26 @@ function UserValidation(event) {
   function nameValidation(name) {
     const nameRegex = /^[A-Za-z]+(?:[^\W\d_ ]+[A-Za-z])*$/g;
     if (!nameRegex.test(name)) {
-      nameErrorMessage.innerHTML = "Invalid name format (Use only alphabets)";
+      // nameErrorMessage.innerHTML = "Invalid name format (Use only alphabets)";
+      alert("Use only alphabets")
       return;
     }
   }
 
   function emailValidation(email) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      emailErrorMessage.innerHTML = "Invalid email format (Use proper email)";
+    // if (!emailRegex.test(email)) {
+    //   emailErrorMessage.innerHTML = "Invalid email format (Use proper email)";
+    alert("Use proper email")
       return;
     }
-  }
 
   function numberValidation(number) {
     const phoneRegex = /^[6-9]\d{9}$/;
     if (!phoneRegex.test(number)) {
-      numberErrorMessage.innerHTML =
-        "Invalid phone number format (Use only number and number should start with (6,7,8,9).)";
+      // numberErrorMessage.innerHTML =
+      //   "Invalid phone number format (Use only number and number should start with (6,7,8,9).)";
+      alert("Invalid phone number format (Use only number and number should start with (6,7,8,9).)")
       return;
     }
   }
@@ -48,8 +51,9 @@ function UserValidation(event) {
     const passwordRegex =
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,24}$/;
     if (!passwordRegex.test(password)) {
-      passwordErrorMessage.innerHTML =
-        "Invalid password format (password must contain atleast one uppercase, one lower, one special character and numbers. It should contain 8 characters eg:ABde12!#)";
+      // passwordErrorMessage.innerHTML =
+      //   "Invalid password format (password must contain atleast one uppercase, one lower, one special character and numbers. It should contain 8 characters eg:ABde12!#)";
+      alert("password must contain atleast one uppercase, one lower, one special character and numbers. It should contain 8 characters eg:ABde12!#)")
       return;
     }
   }
