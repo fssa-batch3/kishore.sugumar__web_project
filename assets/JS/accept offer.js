@@ -3,11 +3,13 @@ document.addEventListener("DOMContentLoaded", function productt() {
     "product_id"
   );
   const productArray = JSON.parse(localStorage.getItem("product_data"));
+  const imageArray = JSON.parse(localStorage.getItem("images"));
+  const image = imageArray.find((i) => i.unique === product_id);
 
   const product = productArray.find((p) => p.unique === product_id);
 
   const productImage = document.getElementById("product_img");
-  productImage.setAttribute("src", product.image);
+  productImage.setAttribute("src", image.image1);
   productImage.setAttribute("alt", `${product.name} image`);
   document.getElementById("product_name").innerHTML = product.name;
   document.getElementById("prod_price").innerHTML = product.price;

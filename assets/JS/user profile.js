@@ -31,16 +31,16 @@ if (data.location) {
 }
 // ------------------------------------------------------//
 
-const messageArray = JSON.parse(localStorage.getItem("message"));
+const messageArray = JSON.parse(localStorage.getItem("messageArray"));
 const messager = JSON.parse(localStorage.getItem("unique_id"));
 const button = document.querySelector(".messageButton");
 
 if (!messageArray) {
   button.setAttribute("style", "display:none;");
 } else {
-  const productMessages = messageArray.filter((p) =>
-    p.content.some((c) => c.user === messager)
-  );
+  const productMessages = messageArray.filter((p) => p.buyerId === messager)
+
+  console.log(productMessages);
 
   if (productMessages.length > 0) {
     button.setAttribute("style", "display:block;");
@@ -54,13 +54,12 @@ messageButton.addEventListener("click", function MessageButton() {
   const messagesArray = JSON.parse(localStorage.getItem("message"));
   const messagerId = JSON.parse(localStorage.getItem("unique_id"));
   const productData = JSON.parse(localStorage.getItem("product_data"));
+  const imageArray= JSON.parse(localStorage.getItem("images"));
   const messageBox = document.querySelector(".messegedProductBox");
   messageBox.setAttribute("style", "display:block");
   button.setAttribute("style", "display:none");
 
-  const productMessages = messagesArray.filter((p) =>
-    p.content.some((c) => c.user === messagerId)
-  );
+  const productMessages = messageArray.filter((p) => p.buyerId === messager)
 
   const MessageBoxHeading = document.createElement("h1");
   if (productMessages !== []) {
@@ -78,8 +77,10 @@ messageButton.addEventListener("click", function MessageButton() {
     div_card.setAttribute("data-unique", product.unique);
     div_card.classList.add("content");
 
+    const productImage = imageArray.find((i) => i.unique === product.unique);
+
     const image = document.createElement("img");
-    image.setAttribute("src", product.image);
+    image.setAttribute("src", productImage.image1);
     image.setAttribute("alt", `${product.name} Image`);
     image.classList.add("product-img");
     div_card.append(image);
@@ -110,6 +111,7 @@ messageButton.addEventListener("click", function MessageButton() {
 
 document.addEventListener("DOMContentLoaded", function sellerProduct() {
   const prod = JSON.parse(localStorage.getItem("product_data"));
+  const imageArray= JSON.parse(localStorage.getItem("images"));
   const unique = JSON.parse(localStorage.getItem("unique_id"));
 
   const products = prod.filter((p) => p.user_id === unique);
@@ -121,13 +123,15 @@ document.addEventListener("DOMContentLoaded", function sellerProduct() {
     div_card.setAttribute("data-unique", elements.unique);
     div_card.classList.add("content");
 
+    const productImage = imageArray.find((i) => i.unique === elements.unique);
+
     const image = document.createElement("img");
-    image.setAttribute("src", elements.image);
+    image.setAttribute("src", productImage.image1);
     image.setAttribute("alt", `${elements.name} Image`);
     image.classList.add("product-img");
     div_card.append(image);
 
-    const h2 = document.createElement("h2");
+    const h2 = document.createElement("h3");
     h2.setAttribute("class", "prod_name");
     h2.setAttribute("id", "prod_name");
     h2.textContent = elements.name;

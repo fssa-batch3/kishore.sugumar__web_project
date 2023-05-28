@@ -172,12 +172,8 @@ input[type=number]::-webkit-outer-spin-button {
     border: 2px solid rgb(204, 204, 204);
     margin-bottom: 30px;
     border-radius: 10px;
-    transition: 0.5s ease-out;
-}
-
-.seller-profile:hover {
-    background-color: var(--secondary);
     color: var(--tertiary);
+    background-color: var(--fifth);
 }
 
 .seller_img {
@@ -206,75 +202,6 @@ input[type=number]::-webkit-outer-spin-button {
 #seller_name {
     width: 230px;
     padding-top: 12%;
-}
-
-/* ----profile------ */
-#lay {
-    position: fixed;
-    display: none;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.688);
-    backdrop-filter: blur(3px);
-    z-index: 2;
-    cursor: pointer;
-}
-
-.card {
-    position: absolute;
-    top: 45%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    text-align: center;
-    padding: 20px;
-    margin-top: 50px;
-    width: 350px;
-    background-color: var(--secondary);
-    border-radius: 20px;
-}
-
-.card i {
-    color: var(--fifth);
-}
-
-.title {
-    color: var(--tertiary);
-    font-size: 40px;
-    margin-bottom: 10px;
-}
-
-.seller_Image {
-    width: 200px;
-    border-radius: 50%;
-    padding: 20px;
-    background-color: rgb(118, 117, 117);
-    box-shadow: rgba(68, 68, 68, 0.25) 0px 25px 50px -12px;
-}
-
-.caption {
-    text-align: center;
-    width: 150px;
-}
-
-.caption h4 {
-    padding: 0px 0px 5px 0px;
-    border-style: solid;
-    border-color: rgb(192, 192, 192);
-    border-width: 0px 0px 2px 0px;
-}
-
-.edit {
-    margin-top: 50px;
-}
-
-.details h4 {
-    color: var(--tertiary);
-    margin-top: 5px;
 }
 
 #wish_button, #message{
@@ -307,7 +234,7 @@ input[type=number]::-webkit-outer-spin-button {
 .product_img {
     max-width: 100%;
     width: 250px;
-    height: 200px;
+    height: 250px;
     border-radius: 10px;
 }
 

@@ -2,6 +2,7 @@
 document.addEventListener("DOMContentLoaded", function wish_prod() {
   const prod_wish = JSON.parse(localStorage.getItem("wishlist"));
   const prod = JSON.parse(localStorage.getItem("product_data"));
+  const imageArray = JSON.parse(localStorage.getItem("images"));
   const user_id = JSON.parse(localStorage.getItem("unique_id"));
 
   const box = document.querySelector(".box");
@@ -21,49 +22,50 @@ document.addEventListener("DOMContentLoaded", function wish_prod() {
     document.querySelector("#box").append(noProductMessage);
     document.querySelector("#box").append(noImage);
   }
-
-  if (prod_wish) {
-    for (let i = 0; i < prod_wish.length; i++) {
-      if (prod_wish[i].user_id === user_id) {
-        const productObj = prod.find((p) => p.unique === prod_wish[i].product);
-        if (productObj) {
-          const div_card = document.createElement("div");
-          div_card.setAttribute("data-unique", productObj.unique);
-          div_card.classList.add("content");
-
-          const anch = document.createElement("a");
-          anch.setAttribute(
-            "href",
-            `./product page.html?product_id=${productObj.unique}`
-          );
-          div_card.append(anch);
-
-          const image = document.createElement("img");
-          image.setAttribute("src", productObj.image);
-          image.setAttribute("alt", `${productObj.name} Image`);
-          image.classList.add("product-img");
-          anch.prepend(image);
-
-          const h3 = document.createElement("h3");
-          h3.setAttribute("class", "prod_name");
-          h3.setAttribute("id", "prod_name");
-          h3.textContent = productObj.name;
-          div_card.append(h3);
-
-          const button2 = document.createElement("button");
-          button2.classList.add("button3", "algn");
-          button2.textContent = "Remove";
-          button2.setAttribute("id", "remove");
-          div_card.append(button2);
-
-          document.querySelector("#box").append(div_card);
-        }
-      } else {
-        document.querySelector("#box").append(noProductMessage);
-        document.querySelector("#box").append(noImage);
-      }
+    let wishedProduct = prod_wish.filter((p) => p.user_id === user_id);
+    if(wishedProduct.length === 0){
+      document.querySelector("#box").append(noProductMessage);
+      document.querySelector("#box").append(noImage);
     }
-  }
+
+    wishedProduct.forEach(function wished(data){
+      const productObj = prod.find((p) => p.unique === data.product);
+      if (productObj) {
+              const div_card = document.createElement("div");
+              div_card.setAttribute("data-unique", productObj.unique);
+              div_card.classList.add("content");
+    
+              const anch = document.createElement("a");
+              anch.setAttribute(
+                "href",
+                `./product page.html?product_id=${productObj.unique}`
+              );
+              div_card.append(anch);
+
+              const productImage = imageArray.find((p) => p.unique === productObj.unique);
+    
+              const image = document.createElement("img");
+              image.setAttribute("src", productImage.image1);
+              image.setAttribute("alt", `${productObj.name} Image`);
+              image.classList.add("product-img");
+              anch.prepend(image);
+    
+              const h3 = document.createElement("h3");
+              h3.setAttribute("class", "prod_name");
+              h3.setAttribute("id", "prod_name");
+              h3.textContent = productObj.name;
+              div_card.append(h3);
+    
+              const button2 = document.createElement("button");
+              button2.classList.add("button3", "algn");
+              button2.textContent = "Remove";
+              button2.setAttribute("id", "remove");
+              div_card.append(button2);
+    
+              document.querySelector("#box").append(div_card);
+    }
+
+  })
 });
 
 // -------------------------delete whishlist-----------------------//

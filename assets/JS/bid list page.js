@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", function bid_prod() {
   const user_id = JSON.parse(localStorage.getItem("unique_id"));
   const prod = JSON.parse(localStorage.getItem("product_data"));
   const bid = JSON.parse(localStorage.getItem("bid")) || [];
+  const imageArray = JSON.parse(localStorage.getItem("images"));
 
   const displayedProducts = [];
 
@@ -16,8 +17,10 @@ document.addEventListener("DOMContentLoaded", function bid_prod() {
         div_card.setAttribute("data-unique", productObj.unique);
         div_card.classList.add("content");
 
+        const productImage =  imageArray.find((i) => i.unique === productObj.unique)
+
         const image = document.createElement("img");
-        image.setAttribute("src", productObj.image);
+        image.setAttribute("src", productImage.image1);
         image.setAttribute("alt", `${productObj.name}Image`);
         image.classList.add("product-img");
         div_card.prepend(image);
@@ -39,22 +42,6 @@ document.addEventListener("DOMContentLoaded", function bid_prod() {
         h4.setAttribute("class", "prod_name");
         h4.setAttribute("id", "prod_name");
         h4.textContent = `Maximum bid price: ${maxBidPrice} (INR)`;
-        div_card.append(h4);
-
-        let yourBidPrice = 0;
-        bid.forEach((bidItem2) => {
-          if (
-            bidItem2.buyer_id === user_id &&
-            bidItem2.productId === productObj.unique
-          ) {
-            yourBidPrice = Math.max(yourBidPrice, Number(bidItem2.new_price));
-          }
-        });
-
-        h4 = document.createElement("h4");
-        h4.setAttribute("class", "prod_name");
-        h4.setAttribute("id", "prod_name");
-        h4.textContent = `Your bid price: ${yourBidPrice} (INR)`;
         div_card.append(h4);
 
         const anch = document.createElement("a");

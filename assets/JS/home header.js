@@ -58,6 +58,7 @@ function signupOn() {
 // ---------------------------------search--------------------------------//
 function search() {
   const ProductArray = JSON.parse(localStorage.getItem("product_data"));
+  const imageArray = JSON.parse(localStorage.getItem("images"));
   const searchElement = document.getElementById("searchFeild").value.trim();
 
   if (searchElement === "") {
@@ -83,7 +84,7 @@ function search() {
       "Category"
     );
     const CategoryArray = ProductArray.filter((c) => {
-      return c.category === category_prod; // add a return statement here
+      return c.category === category_prod;
     });
 
     product = CategoryArray.filter((p) => {
@@ -131,8 +132,10 @@ function search() {
       }
       div_detail.append(anch);
 
+      const productImage = imageArray.find((i) => i.unique === element.unique)
+
       const image = document.createElement("img");
-      image.setAttribute("src", element.image);
+      image.setAttribute("src", productImage.image1);
       image.setAttribute("alt", `${element.name}Image`);
       image.setAttribute("id", element.unique);
       image.setAttribute("class", "product_img");
