@@ -69,16 +69,9 @@ h1 {
     background-color: rgb(227, 227, 227);
 }
 
-.buyer_img {
-    width: 80px;
-    height: 80px;
-    margin: 10px 10px 10px 20px;
-    border-radius: 50%;
-}
-
 .buyer {
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
     margin: 10px 10px 10px 20px;
     border-radius: 50%;
 }
@@ -104,17 +97,12 @@ h1 {
     color: var(--secondary);
 }
 
-.img span {
+.heading {
+    text-align: center;
     font-size: 35px;
-    position: relative;
-    bottom: 150px;
-    left: 50px;
 }
 
 /* -------------after acept offer----------- */
-.img {
-    margin: 20px;
-}
 
 .right_content {
     display: flex;
@@ -132,7 +120,7 @@ h1 {
 }
 
 .contact-detail {
-    margin: 55px 0px 0px 20px;
+    margin: 0px 0px 0px 20px;
 }
 
 .btn {

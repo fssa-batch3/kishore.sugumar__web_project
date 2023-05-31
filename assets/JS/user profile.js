@@ -33,7 +33,7 @@ if (data.location) {
 
 const messageArray = JSON.parse(localStorage.getItem("messageArray"));
 const messager = JSON.parse(localStorage.getItem("unique_id"));
-const button = document.querySelector(".messageButton");
+const button = document.querySelector("#MessageButton");
 
 if (!messageArray) {
   button.setAttribute("style", "display:none;");
@@ -206,6 +206,51 @@ updateButton.addEventListener("click", function update() {
   const phone = document.getElementById("phone").value;
   const location = document.getElementById("location").value;
 
+   if(name === "" || phone === "" || location === "" ){
+    alert("Fill all the field")
+   }
+
+   if(name !== ""){
+  function nameValidation(name) {
+    const nameRegex = /^[A-Za-z]+(?: [A-Za-z]+)*$/;
+    if (!nameRegex.test(name)) {
+      alert("Use only alphabets");
+      return false;
+    }
+    return true;
+  }
+}
+
+if(location !== ""){
+  function locationValidation(location) {
+    const nameRegex = /^[A-Za-z]+(?: [A-Za-z]+)*$/;
+    if (!nameRegex.test(location)) {
+      alert("Use only alphabets");
+      return false;
+    }
+    return true;
+  }
+}
+
+if(phone !== ""){
+  function numberValidation(phone) {
+    const phoneRegex = /^[6-9]\d{9}$/;
+    if (!phoneRegex.test(phone)) {
+      alert("Invalid phone number format (Use only number and number should start with (6,7,8,9).)");
+      return false;
+    }
+    return true;
+  }
+}
+
+  if (
+    !nameValidation(name) ||
+    !numberValidation(phone) ||
+    !locationValidation(location)
+  ) {
+    return;
+  }
+
   let user_data = userArray.find(function findUser(userIndex) {
     return userIndex.email === user_email;
   });
@@ -242,9 +287,6 @@ deleteButton.addEventListener("click", function del() {
   const wishlistArray = JSON.parse(localStorage.getItem("wishlist"));
   const bid = JSON.parse(localStorage.getItem("bid"));
 
-  const products = productArray.filter((product) => product.user_id !== unique);
-  localStorage.setItem("product_data", JSON.stringify(products));
-
   const index = users.findIndex((user) => user.email === unique);
   if (index !== -1) {
     const confirmed = window.confirm(
@@ -257,6 +299,7 @@ deleteButton.addEventListener("click", function del() {
       const filterProducts = products.filter(
         (product) => product.user_id !== unique
       );
+      localStorage.setItem("product_data", JSON.stringify(filterProducts));
 
       if (wishlistArray) {
         const wish_list = wishlistArray.filter(
@@ -270,8 +313,6 @@ deleteButton.addEventListener("click", function del() {
         );
         localStorage.setItem("bid", JSON.stringify(bid_list));
       }
-
-      localStorage.setItem("product_data", JSON.stringify(filterProducts));
 
       localStorage.removeItem("unique_id");
 

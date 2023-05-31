@@ -56,10 +56,13 @@
 
 .text-body {
     display: flex;
+    font-size: 14px;
+    padding-top: 10px;
 }
 
 .text-body span {
     padding-right: 5px;
+    color: #586468;
 }
 
 .text-title {
@@ -68,6 +71,7 @@
 
 .card:hover {
     border-color: var(--primary);
+    background-color: rgb(233, 234, 255);
     box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.25);
 }
 

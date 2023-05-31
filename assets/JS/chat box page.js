@@ -116,13 +116,16 @@ localStorage.setItem("textArray", JSON.stringify(textArray));
   window.location.reload();
 });
 // ----------------------------------------scroll down------------------------------------//
+document.getElementById("redirect").addEventListener("click", function redirect(){
+  history.back()
+})
 
-let messageArea = document.querySelector(".chat-box");
-document.addEventListener("DOMContentLoaded", function() {
-  messageArea.scrollTop = messageArea.scrollHeight;
-});
-function scrollToBottom() {
-  messageArea.scrollTop = messageArea.scrollHeight;
-}
-messageArea.append(messageContainer);
-scrollToBottom();
+// let messageArea = document.querySelector(".chat-box");
+// document.addEventListener("DOMContentLoaded", function() {
+//   messageArea.scrollTop = messageArea.scrollHeight;
+// });
+// function scrollToBottom() {
+//   messageArea.scrollTop = messageArea.scrollHeight;
+// }
+// messageArea.append(messageContainer);
+// scrollToBottom();

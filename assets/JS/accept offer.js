@@ -59,8 +59,8 @@ document.addEventListener("DOMContentLoaded", function buyerBidList() {
         div.classList.add("content");
 
         const img = document.createElement("img");
-        img.src = "../assets/img/buyer.png";
-        img.alt = "buyer_img";
+        img.src = buyer.image;
+        img.alt = `${buyer.name} image`;
         img.classList.add("buyer_img");
         div.appendChild(img);
 
@@ -99,5 +99,5 @@ document.addEventListener("DOMContentLoaded", function buyerBidList() {
 
 const back = document.getElementById("back");
 back.addEventListener("click", function nextPage() {
-  window.location.href = `./buyer profile.html`;
+  history.back()
 });

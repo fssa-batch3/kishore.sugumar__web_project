@@ -81,5 +81,5 @@ document.addEventListener("DOMContentLoaded", function bid_prod() {
 
 const back = document.getElementById("back");
 back.addEventListener("click", function nextPage() {
-  window.location.href = `../index.html`;
+  history.back()
 });
