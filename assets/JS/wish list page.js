@@ -94,5 +94,5 @@ box.addEventListener("click", function erase(e) {
 
 const backButton = document.getElementById("back");
 backButton.addEventListener("click", function back() {
-  window.location.href = "../index.html";
+  history.back()
 });

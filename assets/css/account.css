@@ -105,9 +105,10 @@
     color: #ffd343;
 }
 
-.error{
-    color: red;
+.passwordTitle{
+    color: white;
 }
+
 /* Media Queries for Responsiveness */
 
 @media screen and (max-width: 768px) {

@@ -192,6 +192,7 @@ closeButton.addEventListener("click", function off() {
 
 // --------------------product card -------------------//
 const prod = JSON.parse(localStorage.getItem("product_data")).reverse();
+const userArray = JSON.parse(localStorage.getItem("user_data"))
 const unique = JSON.parse(localStorage.getItem("unique_id"));
 const imageArray = JSON.parse(localStorage.getItem("images"));
 
@@ -246,6 +247,23 @@ product.forEach(function productCard(element) {
   p_currency.innerHTML = " (INR)";
   div_price.append(p_currency);
 
+  const locationDiv = document.createElement("div");
+  locationDiv.setAttribute("class", "text-body");
+  div_detail.append(locationDiv);
+
+  const LocationSpan = document.createElement("span");
+  locationDiv.prepend(LocationSpan);
+
+  const locationHeading = document.createElement("b");
+  locationHeading.innerText = "Location:";
+  LocationSpan.append(locationHeading);
+
+  const sellerId = userArray.find((u) => u.email === element.user_id);
+
+  const LocationBuyer = document.createElement("span");
+  LocationBuyer.innerHTML = sellerId.location;
+  locationDiv.append(LocationBuyer);
+
   document.querySelector("div.grid-container").append(div_card);
 });
 
@@ -268,5 +286,29 @@ loadMoreBtn.addEventListener("click", function loader() {
   currentIndex += 8;
   if (currentIndex >= cards.length) {
     loadMoreBtn.style.display = "none";
+  }
+});
+// -----------------------------show password-----------------------------//
+const passwordInput = document.getElementById('password');
+const newpPassword = document.getElementById('regi_password');
+const confirmPassword = document.getElementById('c_password');
+const showPasswordSignup = document.getElementById('showPassword1');
+const showPasswordLogin = document.getElementById('showPassword2');
+
+showPasswordSignup.addEventListener('change', function () {
+  if (showPasswordSignup.checked || showPasswordLogin.checked) {
+    newpPassword.type = 'text';
+    confirmPassword.type = 'text';
+  } else {
+    newpPassword.type = 'password';
+    confirmPassword.type = 'password';
+  }
+});
+
+showPasswordLogin.addEventListener('change', function () {
+  if (showPasswordLogin.checked) {
+    passwordInput.type = 'text';
+  } else {
+    passwordInput.type = 'password';
   }
 });

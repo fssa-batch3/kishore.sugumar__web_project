@@ -23,18 +23,15 @@ const buyer = JSON.parse(localStorage.getItem("user_data"));
 const productId = new URLSearchParams(window.location.search).get("product_id");
 const buyerId = new URLSearchParams(window.location.search).get("buyer_id");
 
-const product_i = product.findIndex((item) => item.unique === productId);
-const buyer_i = buyer.findIndex((item) => item.email === buyerId);
+const buyerDetail = buyer.find((item) => item.email === buyerId);
 
-const img = document.querySelector("#product_img");
-img.setAttribute("src", product[product_i].image);
-img.setAttribute("alt", `${product[product_i].name}image`);
+const img = document.querySelector(".buyer");
+img.setAttribute("src", buyerDetail.image);
+img.setAttribute("alt", `${buyerDetail.name}image`);
 
-document.querySelector("#product_name").innerHTML = product[product_i].name;
-document.querySelector("#prod_price").innerHTML = product[product_i].price;
-document.querySelector("#buyer_name").innerHTML = buyer[buyer_i].name;
-document.querySelector("#buyer_phone").innerHTML = buyer[buyer_i].phone;
-document.querySelector("#buyer_location").innerHTML = buyer[buyer_i].location;
+document.querySelector("#buyer_name").innerHTML = buyerDetail.name;
+document.querySelector("#buyer_phone").innerHTML = buyerDetail.phone;
+document.querySelector("#buyer_location").innerHTML = buyerDetail.location;
 
 const sellProduct = document.getElementById("sell");
 sellProduct.addEventListener("click", function sell() {
@@ -43,8 +40,5 @@ sellProduct.addEventListener("click", function sell() {
 
 const nextPageButton = document.getElementById("redirect");
 nextPageButton.addEventListener("click", function redirect() {
-  const product_id = new URLSearchParams(window.location.search).get(
-    "product_id"
-  );
-  window.location.href = `./accept offer.html?product_id=${product_id}`;
+  history.back()
 });

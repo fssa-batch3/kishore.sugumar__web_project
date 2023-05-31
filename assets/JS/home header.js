@@ -165,6 +165,23 @@ function search() {
       p_currency.innerHTML = " (INR)";
       div_price.append(p_currency);
 
+      const locationDiv = document.createElement("div");
+      locationDiv.setAttribute("class", "text-body");
+      div_detail.append(locationDiv);
+    
+      const LocationSpan = document.createElement("span");
+      locationDiv.prepend(LocationSpan);
+    
+      const locationHeading = document.createElement("b");
+      locationHeading.innerText = "Location:";
+      LocationSpan.append(locationHeading);
+    
+      const sellerId = userArray.find((u) => u.email === element.user_id);
+    
+      const LocationBuyer = document.createElement("span");
+      LocationBuyer.innerHTML = sellerId.location;
+      locationDiv.append(LocationBuyer);
+
       searchedProductBox.append(div_card);
     });
   }

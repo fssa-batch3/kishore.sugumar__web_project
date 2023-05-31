@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", function card() {
     "Category"
   );
   const prod = JSON.parse(localStorage.getItem("product_data"));
+  const userArray = JSON.parse(localStorage.getItem("user_data"));
   const imageArray = JSON.parse(localStorage.getItem("images"));
   const unique = JSON.parse(localStorage.getItem("unique_id"));
 
@@ -66,6 +67,23 @@ document.addEventListener("DOMContentLoaded", function card() {
     const p_currency = document.createElement("span");
     p_currency.innerHTML = " (INR)";
     div_price.append(p_currency);
+
+    const locationDiv = document.createElement("div");
+    locationDiv.setAttribute("class", "text-body");
+    div_detail.append(locationDiv);
+  
+    const LocationSpan = document.createElement("span");
+    locationDiv.prepend(LocationSpan);
+  
+    const locationHeading = document.createElement("b");
+    locationHeading.innerText = "Location:";
+    LocationSpan.append(locationHeading);
+  
+    const sellerId = userArray.find((u) => u.email === element.user_id);
+  
+    const LocationBuyer = document.createElement("span");
+    LocationBuyer.innerHTML = sellerId.location;
+    locationDiv.append(LocationBuyer);
 
     document.body.appendChild(div_card);
 
