@@ -22,8 +22,8 @@ function register(event) {
   }
 
   const applicantName = document.getElementById("regi_name").value;
-  const applicantemail =  document.getElementById("regi_email").value
-  const applicantnumber =  document.getElementById("regi_phone").value
+  const applicantemail = document.getElementById("regi_email").value
+  const applicantnumber = document.getElementById("regi_phone").value
 
   const now = new Date();
 
@@ -143,6 +143,7 @@ function log_in(event) {
 document.getElementById("login_form").addEventListener("click", log_in);
 // --------------------------------------------//
 
+
 const signUpForm = document.getElementById("over");
 signUpForm.addEventListener("click", function openRegisterPage(event) {
   event.preventDefault();
@@ -191,81 +192,97 @@ closeButton.addEventListener("click", function off() {
 });
 
 // --------------------product card -------------------//
-const prod = JSON.parse(localStorage.getItem("product_data")).reverse();
-const userArray = JSON.parse(localStorage.getItem("user_data"))
-const unique = JSON.parse(localStorage.getItem("unique_id"));
-const imageArray = JSON.parse(localStorage.getItem("images"));
 
-const product = prod.filter((u) => u.user_id !== unique);
+const uri = 'http://localhost:8080/vanhaweb/home';
 
-product.forEach(function productCard(element) {
-  const div_card = document.createElement("div");
-  div_card.setAttribute("class", "card");
+fetch(uri, {
+  method: 'GET',
+})
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return response.json(); // Assuming the response is in JSON format
+  })
+  .then(data => {
+    const loadData = data["data"]; // Assign the JSON data to the loadData variable
+    // Handle the JSON data here
+    console.log(loadData);
 
-  const div_detail = document.createElement("div");
-  div_detail.setAttribute("class", "card-details");
-  div_detail.setAttribute("data-unique", element.unique);
-  div_card.append(div_detail);
+    // Iterate through the data and create product cards
+    loadData.forEach(function createProductCard(element) {
+      const div_card = document.createElement("div");
+      div_card.setAttribute("class", "card");
 
-  const anch = document.createElement("a");
-  anch.setAttribute(
-    "href",
-    `./pages/product page.html?product_id=${element.unique}`
-  );
-  div_detail.append(anch);
+      const div_detail = document.createElement("div");
+      div_detail.setAttribute("class", "card-details");
+      div_detail.setAttribute("data-unique", element.productId);
+      div_card.append(div_detail);
 
-  const productImage = imageArray.find((i) => i.unique === element.unique)
+      const anch = document.createElement("a");
+      anch.setAttribute(
+        "href",
+        `./pages/product page.html?product_id=${element.productId}`
+      );
+      div_detail.append(anch);
 
-  const image = document.createElement("img");
-  image.setAttribute("src", productImage.image1);
-  image.setAttribute("alt", `${element.name} Image`);
-  image.setAttribute("id", element.unique);
-  image.setAttribute("class", "product_img");
-  anch.append(image);
+      const image = document.createElement("img");
+      image.setAttribute("src", element.asset);
+      image.setAttribute("alt", `${element.ProductName} Image`);
+      image.setAttribute("id", element.productId);
+      image.setAttribute("class", "product_img");
+      anch.append(image);
 
-  const h3 = document.createElement("h3");
-  h3.setAttribute("class", "text-title");
-  h3.innerHTML = element.name;
-  div_detail.append(h3);
+      const h3 = document.createElement("h3");
+      h3.setAttribute("class", "text-title");
+      h3.innerHTML = element.ProductName;
+      div_detail.append(h3);
 
-  const div_price = document.createElement("div");
-  div_price.setAttribute("class", "text-body");
-  div_detail.append(div_price);
+      const div_price = document.createElement("div");
+      div_price.setAttribute("class", "text-body");
+      div_detail.append(div_price);
 
-  const p_price = document.createElement("span");
-  div_price.prepend(p_price);
+      const p_price = document.createElement("span");
+      div_price.prepend(p_price);
 
-  const p_bold = document.createElement("b");
-  p_bold.innerText = "Price:";
-  p_price.append(p_bold);
+      const p_bold = document.createElement("b");
+      p_bold.innerText = "Price:";
+      p_price.append(p_bold);
 
-  const p_rate = document.createElement("span");
-  p_rate.innerHTML = element.price;
-  div_price.append(p_rate);
+      const p_rate = document.createElement("span");
+      p_rate.innerHTML = element.price;
+      div_price.append(p_rate);
 
-  const p_currency = document.createElement("span");
-  p_currency.innerHTML = " (INR)";
-  div_price.append(p_currency);
+      const p_currency = document.createElement("span");
+      p_currency.innerHTML = " (INR)";
+      div_price.append(p_currency);
 
-  const locationDiv = document.createElement("div");
-  locationDiv.setAttribute("class", "text-body");
-  div_detail.append(locationDiv);
+      const locationDiv = document.createElement("div");
+      locationDiv.setAttribute("class", "text-body");
+      div_detail.append(locationDiv);
 
-  const LocationSpan = document.createElement("span");
-  locationDiv.prepend(LocationSpan);
+      const LocationSpan = document.createElement("span");
+      locationDiv.prepend(LocationSpan);
 
-  const locationHeading = document.createElement("b");
-  locationHeading.innerText = "Location:";
-  LocationSpan.append(locationHeading);
+      const locationHeading = document.createElement("b");
+      locationHeading.innerText = "Location:";
+      LocationSpan.append(locationHeading);
 
-  const sellerId = userArray.find((u) => u.email === element.user_id);
+      const LocationSeller = document.createElement("span");
+      LocationSeller.innerHTML = element.sellerLocation;
+      locationDiv.append(LocationSeller);
 
-  const LocationBuyer = document.createElement("span");
-  LocationBuyer.innerHTML = sellerId.location;
-  locationDiv.append(LocationBuyer);
+      document.querySelector("div.grid-container").append(div_card);
+    });
+  })
+  .catch(error => {
+    // Handle any errors that occurred during the fetch
+    console.error('Fetch error:', error);
+  });
 
-  document.querySelector("div.grid-container").append(div_card);
-});
+
+
+
 
 // ---------load more--------//
 const cards = document.getElementsByClassName("card");
@@ -312,3 +329,45 @@ showPasswordLogin.addEventListener('change', function () {
     passwordInput.type = 'password';
   }
 });
+
+// ---------------------------------Image---------------------------------//
+const uploadImageButton = document.getElementById("uploadImageButton");
+const submitButton = document.getElementById("submitButton");
+const imageFileInput = document.getElementById("imageFile");
+const imageUrlInput = document.getElementById("imageUrl");
+uploadImageButton.addEventListener("click", () => {
+  const imageFile = imageFileInput.files[0];
+  if (imageFile) {
+    uploadImage(imageFile);
+  } else {
+    alert("Please select an image file.");
+  }
+});
+function uploadImage(imageFile) {
+  const url = 'https://image-cdn.p.rapidapi.com/upload?async=true&allow-webp=true&compression=auto';
+  const data = new FormData();
+  data.append('image', imageFile);
+  const options = {
+    method: 'POST',
+    headers: {
+      'X-RapidAPI-Key': 'your api key',
+      'X-RapidAPI-Host': 'image-cdn.p.rapidapi.com'
+    },
+    body: data
+  };
+  fetch(url, options)
+    .then(response => response.text())
+    .then(result => {
+      const data = JSON.parse(result);
+      const url_value = data['url'];
+      imageUrlInput.value = url_value;
+      console.log(imageUrlInput);
+      console.log(url_value);
+      console.log(data);
+      submitButton.disabled = false;
+    })
+    .catch((error) => {
+      // Handle any errors here
+      console.error('API Error:', error);
+    });
+} 
