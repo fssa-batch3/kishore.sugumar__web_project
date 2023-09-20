@@ -10,28 +10,6 @@
   font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
 }
 
-.header {
-  display: flex;
-  background-color: var(--secondary);
-  color: var(--tertiary);
-  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
-}
-
-.web {
-  position: absolute;
-  top: -5px;
-  left: 670px;
-  color: var(--tertiary);
-  font-size: 30px;
-}
-
-.logo {
-  width: 150px;
-  height: 50px;
-  margin: 10px;
-  background-color: #363636;
-}
-
 /* ----profile------ */
 .card {
   margin: 0% 0% 2% 35%;
@@ -39,21 +17,20 @@
   padding: 20px;
   margin-top: 50px;
   width: 350px;
-  border-radius: 78% 22% 22% 78% / 54% 56% 44% 46%;
-  background-color: rgb(214, 214, 214);
+  box-shadow: 4px 4px 10px #b8b8b8,
+    -4px -4px 10px #ffffff;
+  border-radius: 20px;
 }
 
 .title {
   color: var(--fifth);
-  font-size: 40px;
+  font-size: 35px;
 }
 
-.profile-img {
-  width: 200px;
+.user-img {
+  width: 180px;
+  height:180px;
   border-radius: 50%;
-  padding: 20px;
-  background-color: rgb(118, 117, 117);
-  box-shadow: rgba(68, 68, 68, 0.25) 0px 25px 50px -12px;
 }
 
 .caption {
@@ -61,15 +38,20 @@
   width: 150px;
 }
 
+.caption i {
+  padding: 5px 0px 10px 10px;
+}
+
 .caption h4 {
-  padding: 0px 0px 5px 0px;
+  margin-top: 0px;
+  padding: 0px 0px 10px 10px;
   border-style: solid;
   border-color: rgb(192, 192, 192);
   border-width: 0px 0px 2px 0px;
 }
 
 .edit {
-  margin-top: 50px;
+  margin-top: 30px;
 }
 
 .details h4 {
@@ -77,8 +59,7 @@
 }
 
 /* ------edit------- */
-#overlay,
-#prod_edit {
+#overlay {
   position: fixed;
   display: none;
   width: 100%;
@@ -93,18 +74,19 @@
   cursor: pointer;
 }
 
-.textarea {
-  width: 500px;
-  height: 100px;
+.algn {
+  width: 90px;
+}
+
+.remo {
+  width: 140px;
+  margin: 20px 0px;
+}
+
+.edit-image {
+  width:150px;
+  height: 150px;
   border-radius: 10px;
-  margin-top: 10px;
-  resize: none;
-  outline: none;
-  padding: 10px 0px 0px 10px;
-  color: white;
-  background-color: #363636;
-  box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.3);
-  transition: 300ms ease-in-out;
 }
 
 .btn {
@@ -132,14 +114,18 @@
 
 .heading-in {
   margin: 30px 0px 20px 0px;
-  color: #ffd343;
+  color: var(--primary);
   font-size: 22px;
+}
+
+.prod_val {
+  color: var(--tertiary);
+  padding-left: 5px;
 }
 
 .field {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  justify-content: start;
   gap: 10px;
   border-radius: 25px;
   padding: 10px;
@@ -149,8 +135,13 @@
   background-color: black;
 }
 
+.field label {
+  width: 120px;
+  margin-top: 10px;
+}
+
 .input-field {
-  width: 80%;
+  width: 100%;
   border: 1px solid black;
   outline: none;
   border-radius: 15px;
@@ -161,19 +152,12 @@
   transition: 300ms ease-in-out;
 }
 
-.input-field:hover {
-  border: 1px solid whitesmoke;
-}
-
-.textarea:hover {
-  border: 1px solid whitesmoke;
-}
-
 .closebtn {
   float: right;
   position: relative;
   top: 100px;
-  right: 100px;
+  right: 50px;
+  z-index: 10;
   font-size: 50px;
   color: aliceblue;
 
@@ -183,27 +167,19 @@
   color: #ffd343;
 }
 
-.form .btn {
-  display: flex;
-  justify-content: center;
-  flex-direction: row;
-}
+
 
 /* ----list of prod----- */
-.unique {
-  display: none;
-}
 
 .product-img {
-  width: 100px;
-  height: 100px;
-  padding: 10px;
+  width: 250px;
+  height: 250px;
+  padding: 25px 25px 0px 25px;
   border-radius: 20px;
 }
 
 .prod_name {
-  width: 300px;
-  padding-top: 5px;
+  padding: 10px 0px;
 }
 
 .topic {
@@ -228,56 +204,121 @@
 }
 
 .box {
-  margin: 0px 0px 0px 50px;
+  display: grid;
+  grid-template-columns: repeat(4, 350px);
+  justify-content: center;
+  align-items: center;
+  column-gap: 15px;
+  margin-left: 40px;
+}
+
+.content i {
+  padding: 10px;
+  font-size: 18px
 }
 
 .content {
-  background-image: url(../img/illustration/rm222batch2-mind-21.jpg);
-  object-fit: contain;
-  width: 95%;
+  text-align: center;
+  width: 300px;
   background-color: whitesmoke;
-  display: flex;
-  justify-content: space-between;
-  align-content: center;
-  margin: 50px 0px 20px 0px;
+  margin: 50px 0px 50px 0px;
   border-radius: 10px;
   box-shadow: 5px 7px 20px gray;
 }
 
-.content h2 {
-  width: 300px;
-  margin-top: 40px;
+.content:hover {
+  color: var(--tertiary);
+  background-color: var(--primary);
+  border-color: var(--primary);
+  box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.25);
 }
 
-.algn {
-  height: 35px;
-  margin: 45px 20px 0px 0px;
+.messageBox {
+  display: grid;
+  grid-template-columns: repeat(3, 350px);
+  justify-content: center;
+  align-items: center;
+  column-gap: 120px;
 }
 
-.face i {
-  padding: 0px 4px;
+.button {
+  margin-bottom: 20px;
 }
 
-.Category {
-  width: 200px;
-  height: 30px;
-  outline: none;
-  background-color: #363636;
+.messageButton {
+  padding: 5px 10px;
+  border: 1px solid gray;
+  border-radius: 15px;
   color: white;
-  border-radius: 10px;
-  padding-left: 10px;
+  z-index: 1;
+  background: #878686;
+  position: relative;
+  font-weight: 200;
+  font-size: 17px;
+  transition: all 250ms;
+  overflow: hidden;
+  margin-bottom: 30px;
 }
 
-.detail {
-  color: #ffd343;
+.messageButton::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0;
+  border-radius: 15px;
+  background-color: #212121;
+  z-index: -1;
+  transition: all 250ms
 }
 
-.stanard {
-  text-align: left;
-  padding: 0px 0px 10px 10px;
+.messageButton:hover {
+  color: #e8e8e8;
 }
 
-.prod_val {
-  padding-left: 10px;
-  color: white;
+.messageButton:hover::before {
+  width: 100%;
 }
+
+/* ------------------drop down------------------ */
+.menuButton {
+  font-size: 30px;
+  margin: 20px 50px 0px 0px;
+  border: none;
+  cursor: pointer;
+  background-color: white;
+}
+
+.dropdown {
+  float: right;
+}
+
+.dropdown-content {
+  cursor: pointer;
+  font-size: 18px;
+  display: none;
+  position: absolute;
+  right: 40px;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: rgb(44, 44, 44);
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {}

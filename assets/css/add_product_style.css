@@ -1,27 +1,26 @@
 .body {
     font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
+    text-align: center;
 }
 
 :root {
-    --primary: #3f404b;
+    --primary: #7d8e95;
     --secondary: #222f30;
     --tertiary: #ffeba7;
     --fourth: #fdd13f;
+    --fifth: #4c585e;
 }
 
-.header {
-    display: flex;
-    align-content: space-between;
-    justify-content: space-between;
-    background-color: var(--secondary);
-    color: var(--tertiary);
-    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+.border {
+    height: 1%;
+    width: 35%;
+    margin: auto;
+    border: 1.5px solid;
+    border-color: var(--primary);
 }
 
-.logo {
-    width: 150px;
-    height: 45px;
-    margin-top: 10px;
+h2 {
+    color: var(--fifth);
 }
 
 .sub_icon1:hover,
@@ -210,10 +209,6 @@
     transition: 300ms ease-in-out;
     outline: none;
     border-radius: 5px;
-}
-
-.face i {
-    padding: 0px 3px;
 }
 
 .duration {

@@ -3,6 +3,7 @@
     --secondary: #222f30;
     --tertiary: #ffd8af;
     --fourth: #f1b194;
+    --fifth: #4c585e;
 }
 
 .body {
@@ -10,72 +11,47 @@
     font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
 }
 
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-content: space-around;
-    background-color: var(--secondary);
-    border: 2px solid var(--secondary);
-    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
-}
-
-.header h1 {
-    font-size: 25px;
-    color: var(--tertiary);
-}
-
-.logo {
-    background-color: #3f404b;
-    width: 6em;
-    margin: 5px;
-}
-
-.buyer_img {
-    width: 4em;
-    height: 4em;
-    border-radius: 50%;
-    margin: 5px;
-}
-
-.heading {
-    display: flex;
-    justify-content: space-between;
-    margin: 5% 0%;
-}
-
-.heading h2 {
-    color: var(--primary);
-    font-size: 2vw;
-}
 
 .border {
     height: 1%;
     width: 35%;
     margin: auto;
     border: 1.5px solid;
+    border-color: var(--primary);
+}
+
+.heading h2 {
+    color: var(--fifth);
 }
 
 /* ----list of prod----- */
 .product-img {
-    width: 150px;
-    height: 150px;
+    width: 310px;
+    height: 310px;
     padding: 10px;
     border-radius: 20px;
 }
 
 .box {
-    margin: 50px 0px 0px 50px;
+    align-content: center;
+    display: grid;
+    grid-template-columns: repeat(3, 490px);
+    margin: 0px 0px 50px 50px;
 }
 
 .content {
-    width: 95%;
+    width: 350px;
     background-color: whitesmoke;
-    display: flex;
-    justify-content: space-evenly;
     align-content: center;
     margin: 50px 0px 20px 0px;
     border-radius: 10px;
     box-shadow: 5px 7px 20px gray;
+    transition: 0.3s ease-out;
+}
+
+.content:hover {
+    background-color: var(--fifth);
+    color: var(--tertiary);
 }
 
 .content h2 {
@@ -85,11 +61,25 @@
 }
 
 .algn {
-    width: 150px;
+    width: 100px;
     height: 35px;
-    margin-top: 70px;
+    margin-bottom: 20px;
 }
 
-.face i {
-    padding: 0px 3px;
+.unique {
+    display: none;
+}
+
+.empty {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    margin: 50px 0px;
+}
+
+.noProduct{
+    margin-top: 10%;
+}
+.illustration-image {
+    width: 500px;
 }

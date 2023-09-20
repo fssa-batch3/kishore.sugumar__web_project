@@ -2,182 +2,142 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="../assets/img/illustration/v-removebg-preview.png">
-  <link rel="stylesheet" href="../../assets/css/add_product_style.css">
-  <link rel="stylesheet" href="../assets/css/buttons.css">
-  <link rel="dns-prefetch" href="//fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700," rel="stylesheet" />
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
-    integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="../assets/css/footer.css">
-  <script src="../assets/JS/index.js"></script>
-  <script src="../assets/JS/product.js"></script>
-  <title>V A N H A</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../assets/img/illustration/v-removebg-preview.png">
+    <link rel="stylesheet" href="../../assets/css/add_product_style.css">
+    <link rel="stylesheet" href="../assets/css/buttons.css">
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700," rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="../assets/css/footer.css">
+    <link rel="stylesheet" href="../assets/css/header.css">
+    <title>V A N H A</title>
 </head>
 
 <body class="body">
-  <header class="header">
-    <div>
-      <h2>Add Product</h2>
-    </div>
-    <div><img src="../assets/img/illustration/logo.png" alt="logo" class="logo"></div>
-    <div><img src="../assets/img/buyer.png" alt="seller_img" class="seller_img"></div>
-  </header>
-  <main>
-    <section class="sub" id="category">
-      <div>
-        <span class="tooltip">
-          <img src="../assets/img/illustration/motorcycle.gif" alt="" class="sub_icon1" onclick="on()" id="bike">
-          <span class="tooltiptext">Bike</span>
-        </span>
-        <span class="tooltip">
-          <img src="../assets/img/illustration/car.gif" alt="" class="sub_icon2" onclick="on()" id="car">
-          <span class="tooltiptext">Car</span>
-        </span>
-      </div>
-      <div>
-        <span class="tooltip">
-          <img src="../assets/img/illustration/computer.gif" alt="" class="sub_icon3" onclick="on()" id="laptop">
-          <span class="tooltiptext">Laptop $ Desktop</span>
-        </span>
-        <span class="tooltip">
-          <img src="../assets/img/illustration/responsive.gif" alt="" class="sub_icon4" onclick="on()" id="mobile">
-          <span class="tooltiptext">Mobile</span>
-        </span>
-      </div>
-    </section>
-    <div id="overlay">
-      <form class="main" id="form">
-        <div class="closebtn" onclick="off()" title="Close Overlay"><i class="fa-solid fa-xmark"></i></div>
-        <h1 id="category_title"></h1>
-        <section class="aling">
-          <div class="main-left">
+    <header class="header" id="header">
+
+    </header>
+    <main>
+        <div class="heading">
+            <div class="border"></div>
+            <h2 class="head">Add product</h2>
+            <div class="border"></div>
+        </div>
+        <section class="sub" id="category">
             <div>
-              <h4>Product Name:</h4>
+                <span class="tooltip">
+                    <img src="../assets/img/illustration/motorcycle.gif" alt="category-bike" class="sub_icon1"
+                        id="bike">
+                    <span class="tooltiptext">Bike</span>
+                </span>
+                <span class="tooltip">
+                    <img src="../assets/img/illustration/car.gif" alt="category-car" class="sub_icon2" id="car">
+                    <span class="tooltiptext">Car</span>
+                </span>
             </div>
             <div>
-              <input type="name" id="prod_name" class="product_name" required />
+                <span class="tooltip">
+                    <img src="../assets/img/illustration/computer.gif" alt="category-laptop&desktop" class="sub_icon3"
+                        id="laptop">
+                    <span class="tooltiptext">Laptop $ Desktop</span>
+                </span>
+                <span class="tooltip">
+                    <img src="../assets/img/illustration/responsive.gif" alt="category-mobile" class="sub_icon4"
+                        id="mobile">
+                    <span class="tooltiptext">Mobile</span>
+                </span>
             </div>
-            <div class="left_content">
-              <h4>Product Description:</h4>
-            </div>
-            <div>
-              <textarea class="textarea" placeholder="Make it as points..." id="description" required></textarea>
-            </div>
-            <div class="left-aling">
-              <div>
-                <div>
-                  <h4>Product Price:</h4>
-                </div>
-                <div><input type="number" class="input" id="prod_price" required /></div>
-              </div>
-            </div>
-            <div class="left-aling">
-              <div>
-                <div class="left_content">
-                  <h4>Used</h4>
-                </div>
-                <div><input type="number" id="prod_date" class="input" required /></div>
-              </div>
-              <div class="duration">
-                <div>
-                  <lable>
-                    <h4>Duration</h4>
-                  </lable>
-                </div>
-                <select class="Category" id="duration" required>
-                  <option value="Month">Month</option>
-                  <option value="Year">Year</option>
-                </select>
-              </div>
-            </div>
-          </div>
-          <div class="middle-line"></div>
-          <div class="main-right">
-            <div class="photo" id="imgBox1">
-              <div class="camera1">
-                <input type="file" accept="image/*" name="image" id="image1" style="display: none"
-                  onchange="loadFile(event)" />
-                <label for="image1" class="camera"><i class="fa fa-camera"></i></label>
-              </div>
-            </div>
-            <div class="photo" id="imgBox2">
-              <div class="camera2">
-                <input type="file" accept="image/*" name="image" id="image2" style="display: none"
-                  onchange="loadFile(event)" />
-                <label for="image2" class="camera"><i class="fa fa-camera"></i></label>
-              </div>
-            </div>
-            <div class="photo" id="imgBox3">
-              <div class="camera3">
-                <input type="file" accept="image/*" name="image" id="image3" style="display: none"
-                  onchange="loadFile(event)" />
-                <label for="image3" class="camera"><i class="fa fa-camera"></i></label>
-              </div>
-            </div>
-            <div class="photo" id="imgBox4">
-              <div class="camera4">
-                <input type="file" accept="image/*" name="image" id="image4" style="display: none"
-                  onchange="loadFile(event)" />
-                <label for="image4" class="camera"><i class="fa fa-camera"></i></label>
-              </div>
-            </div>
-          </div>
         </section>
-        <section class="btn algn">
-          <div><button type="submit" class="button2" id="add_product" onclick="active(event)">Add product</button></div>
-          <div><button class="button3" onclick="back()">Discard</button></div>
-        </section>
-      </form>
-    </div>
-  </main>
 
-  <footer class="footer" id="footer">
-  </footer>
-  <script src="../assets/JS/footer.js"></script>
-  <script src="../assets/JS/index.js"></script>
-  <div class="copy">Copyright © 2021 - 2022 VANHA - Website Designed By KISHORE</div>
-  <script src="https://cdn.jsdelivr.net/npm/uuid@8.3.2/dist/umd/uuidv4.min.js"></script>
-  <script>
-    footer()
-    function back() {
-      location.href = "./buyer profile.html";
-    }
+        <div id="overlay">
+            <form class="main" id="form">
+                <div class="closebtn" id="formOff" title="Close Overlay">
+                    <i class="fa-solid fa-xmark"></i>
+                </div>
+                <h1 id="category_title"></h1>
+                <section class="aling" type="form">
+                    <div class="main-left">
+                        <div>
+                            <h4>Product Name:</h4>
+                        </div>
+                        <div>
+                            <input type="name" id="prod_name" class="product_name" pattern="^(?!\s)[a-zA-Z0-9\s]+$"
+                                required>
+                        </div>
+                        <div class="left_content">
+                            <h4>Product Description:</h4>
+                        </div>
+                        <div>
+                            <textarea class="textarea" placeholder="Make it as points..." pattern="^(?!\s)"
+                                id="description" required></textarea>
+                        </div>
+                        <div class="left-aling">
+                            <div>
+                                <div>
+                                    <h4>Product Price:</h4>
+                                </div>
+                                <div>
+                                    <input type="number" class="input" id="prod_price" title="Price only number"
+                                        placeholder="Price only in number" minlength="1" maxlength="99999999" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="left-aling">
+                            <div>
+                                <div>
+                                    <h4>Minimum Price:</h4>
+                                </div>
+                                <div>
+                                    <input type="number" class="input" id="lowPrice" title="Price only number"
+                                        placeholder="Minimum amount to be Bided" minlength="1" maxlength="99999999"
+                                        required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="left-aling">
+                            <div>
+                                <div class="duration">
+                                    <label>Duration :</label>
+                                    <input type="number" class="input-field_prod" id="edit_period"
+                                        placeholder="&quot;1&quot;" required>
+                                    <select class="Category" id="edit_duration" required>
+                                        <option value="" style="font-size:5pt;" disabled>&nbsp;</option>
+                                        <option class="option" value="Month" style="font-size:12pt">Month</option>
+                                        <option value="" style="font-size:5pt;" disabled>&nbsp;</option>
+                                        <option class="option" value="Year" style="font-size:12pt">Year</option>
+                                        <option value="" style="font-size:5pt;" disabled>&nbsp;</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="middle-line"></div>
+                            <div class="main-right">
 
-    // let photoElements = document.querySelectorAll('.photo');
+                            </div>
+                </section>
+                <section class="btn algn">
+                    <div>
+                        <button type="submit" class="button2" id="add_product">Add product</button>
+                    </div>
+                    <div>
+                        <button class="button3" id="back">Discard</button>
+                    </div>
+                </section>
+            </form>
+        </div>
+    </main>
 
-    const bike = document.getElementById("bike");
-    const car = document.getElementById("car");
-    const laptop = document.getElementById("laptop");
-    const mobile = document.getElementById("mobile");
-
-    bike.addEventListener("click", function () {
-      const title = document.querySelector('#category_title');
-      title.innerHTML = "Bike";
-    });
-
-    car.addEventListener("click", function () {
-      const title = document.querySelector('#category_title');
-      title.innerHTML = "Car";
-    });
-
-    laptop.addEventListener("click", function () {
-      const title = document.querySelector('#category_title');
-      title.innerHTML = "Laptop & Desktop";
-    });
-
-    mobile.addEventListener("click", function () {
-      const title = document.querySelector('#category_title');
-      title.innerHTML = "Mobile";
-    });
-
-
-  </script>
+    <footer class="footer" id="footer">
+    </footer>
+    <div class="copy">Copyright © 2021 - 2022 VANHA - Website Designed By KISHORE</div>
+    <script src="../assets/JS/footer.js"></script>
+    <script src="../assets/JS/header.js"></script>
+    <script src="../assets/JS/add product.js"></script>
 </body>
 
 </html>

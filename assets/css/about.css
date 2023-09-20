@@ -1,122 +1,148 @@
 :root {
-    --primary: #7d8e95;
-    --secondary: #222f30;
-    --tertiary: #ffd8af;
-    --fourth: #f1b194;
+  --primary: #7d8e95;
+  --secondary: #222f30;
+  --tertiary: #ffd8af;
+  --fourth: #f1b194;
+  --fifth: #4c585e;
 }
 
 .body {
-    font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
-}
-
-.header {
-    display: flex;
-    align-content: space-between;
-    justify-content: space-between;
-    background-color: var(--secondary);
-    color: var(--tertiary);
-    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
-}
-
-.logo {
-    width: 120px;
-    height: 60px;
-    margin: 10px;
-}
-
-.profile_img {
-    width: 60px;
-    height: 60px;
-    margin: 10px;
-    border-radius: 50%;
+  font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
 }
 
 .main {
-    text-align: center;
-    margin-bottom: 10%;
+  text-align: center;
+  margin-bottom: 10%;
 }
 
 .main li {
-    font-size: 1.5vw;
-    list-style: none;
+  font-size: 1.5vw;
+  list-style: none;
 }
 
 .main h1 {
-    font-size: 2vw;
+  font-size: 18px;
 }
 
 .main ul {
-    margin-bottom: 10%;
+  margin-bottom: 10%;
 }
 
 .img {
-    margin-top: 3%;
-    width: 50%;
-    height: auto;
+  margin-top: 3%;
+  width: 50%;
+  height: auto;
 }
 
 .coustomers {
-    display: flex;
-    justify-content: space-evenly;
-    margin: 10% 0% 0% 0%;
-    padding: 3% 0%;
-    background-color: var(--secondary);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin: 10% 0% 0% 0%;
+  padding: 3% 0%;
+  background-color: var(--secondary);
 }
 
 .seller-img {
-    width: 60%;
-    height: auto;
-    padding: 5%;
+  width: 60%;
+  height: auto;
+  padding: 5%;
 }
 
 .buyer-img {
-    width: 65%;
-    height: auto;
-    padding: 30px;
+  width: 65%;
+  height: auto;
+  padding: 30px;
 }
 
-.seller {
-    width: 30%;
-    height: auto;
-    box-shadow: 5px 7px 20px var(--teritary);
-    background-color: white;
-}
-
-.seller h2 {
-    font-size: 2vw;
-}
-
-.seller h3 {
-    font-size: 1.5vw;
-}
-
+.seller,
 .buyer {
-    width: 30%;
-    height: auto;
-    box-shadow: 5px 7px 20px var(--teritary);
-    background-color: white;
+  width: 100%;
+  margin-bottom: 5%;
 }
 
+.seller h2,
 .buyer h2 {
-    font-size: 2vw;
+  color: var(--tertiary);
+  font-size: 18px;
 }
 
+.seller h3,
 .buyer h3 {
-    font-size: 1.5vw;
+  color: var(--tertiary);
+  font-size: 18px;
 }
 
-.seller p {
-    width: 80%;
-    font-size: 1vw;
-    margin: 0% 0% 0% 10%;
-}
-
+.seller p,
 .buyer p {
-    width: 80%;
-    font-size: 1vw;
-    margin: 0% 0% 0% 10%;
+  width: 100%;
+  font-size: 2vw;
+  margin: 2% 0%;
+  color: var(--primary);
 }
 
-.face i {
-    padding: 2px 0px;
+@media only screen and (min-width: 400px) {
+  .seller-img {
+    width: 30%;
+    padding: 0%;
+  }
+
+  .buyer-img {
+    width: 20%;
+    padding: 10px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+
+  .seller,
+  .buyer {
+    width: 45%;
+    margin: 0% 2.5%;
+  }
+
+  .seller-img {
+    width: 80%;
+    padding: 0%;
+  }
+
+  .buyer-img {
+    width: 80%;
+    padding: 10px;
+  }
+
+  .seller p,
+  .buyer p {
+    width: 80%;
+    font-size: 1vw;
+    margin: 2% 10%;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+
+  .main h1 {
+    font-size: 2vw;
+  }
+
+  .main li {
+    font-size: 2vw;
+  }
+
+  .seller-img {
+    width: 50%;
+    padding: 0%;
+  }
+
+  .buyer-img {
+    width: 54%;
+    padding: 10px;
+  }
+
+  .seller p,
+  .buyer p {
+    width: 70%;
+    font-size: 1vw;
+    margin: 2% 10%;
+  }
 }

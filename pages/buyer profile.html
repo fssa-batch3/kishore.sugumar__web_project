@@ -6,127 +6,92 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../assets/img/illustration/v-removebg-preview.png">
-    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700," rel="stylesheet" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700," rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
         integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+        crossorigin="anonymous" referrerpolicy="no-referrer">
     <link rel="stylesheet" href="../assets/css/buttons.css">
     <link rel="stylesheet" href="../assets/css/profile.css">
     <link rel="stylesheet" href="../assets/css/footer.css">
-    <script src="../assets/JS/footer.js"></script>
-    <script src="../assets/JS/index.js"></script>
-    <script src="../assets/JS/product.js"></script>
-    <script src="../assets/JS/profile.js"></script>
+    <link rel="stylesheet" href="../assets/css/header.css">
     <title>V A N H A</title>
 </head>
 
 <body class="body">
-    <!-- ---------------------product-edit---------------------- -->
-    <div id="prod_edit">
-        <div class="closebtn" onclick="editform_off()" title="Close Overlay"><i class="fa-solid fa-xmark"></i></div>
-        <form class="form">
-            <p class="heading-in">Edit Product </p>
-            <div class="stanard">
-                <p>
-                    <span class="detail">Category :</span><span class="prod_val" id="category"></span>
-                </p>
-                <p>
-                    <span class="detail">uploded on :</span><span class="prod_val" id="uploded_on"></span>
-                </p>
-                <p>
-                    <span class="detail">unique ID :</span><span class="prod_val" id="unique_id"></span>
-                </p>
-                <p>
-                    <span class="detail">User ID:</span><span class="prod_val" id="user_id"></span>
-                </p>
-            </div>
-            <div class="field">
-                <input type="text" class="input-field" id="prod_name" placeholder="product_name" autocomplete="off"
-                    required="true">
-            </div>
-            <div class="field">
-                <textarea class="textarea" id="description" placeholder="make it as point...."></textarea>
-            </div>
-            <div class="field">
-                <input type="tel" class="input-field" id="prod_price" placeholder="product_price" autocomplete="off"
-                    required="true">
-            </div>
-            <div class="duration">
-                <select class="Category" id="duration" required>
-                    <option value="" style="font-size:5pt;" disabled>&nbsp;</option>
-                    <option class="option" style="font-size:12pt">select duration</option>
-                    <option value="" style="font-size:5pt;" disabled>&nbsp;</option>
-                    <option class="option" value="Month" style="font-size:12pt">Month</option>
-                    <option value="" style="font-size:5pt;" disabled>&nbsp;</option>
-                    <option class="option" value="Year" style="font-size:12pt">Year</option>
-                    <option value="" style="font-size:5pt;" disabled>&nbsp;</option>
-                </select>
-            </div>
-            <div class="field">
-                <input type="text" class="input-field" id="used_period" placeholder="used_month" required>
-            </div>
-            <div class="btn">
-                <button class="button2" onclick="edit_prod(event)">Save</button>
-            </div>
-        </form>
-    </div>
     <!-- ----------------------------edit-profile------------------------ -->
     <div id="overlay">
-        <div class="closebtn" onclick="off()" title="Close Overlay"><i class="fa-solid fa-xmark"></i></div>
+        <div class="closebtn" id="form_off" title="Close Overlay">
+            <i class="fa-solid fa-xmark"></i>
+        </div>
         <form class="form">
             <p class="heading-in">Edit Profile</p>
+            <p>
+                <span class="prod_val" id="email"></span>
+            </p>
             <div class="field">
-                <input type="text" class="input-field" id="name" placeholder="Name" autocomplete="off" required="true">
+                <input type="text" class="input-field" id="name" placeholder="Name" autocomplete="off"
+                    pattern="^(?!\s)[a-zA-Z\s]+$" required="true">
             </div>
             <div class="field">
-                <input type="email" class="input-field" id="email" placeholder="example@abc.com" autocomplete="off"
-                    required="true">
+                <input type="tel" class="input-field" id="phone" placeholder="+91" autocomplete="off"
+                    pattern="[6-9]\d{9}" required="true">
             </div>
             <div class="field">
-                <input type="tel" class="input-field" id="phone" placeholder="+91" autocomplete="off" required="true">
-            </div>
-            <div class="field">
-                <input type="text" class="input-field" id="location" placeholder="Location" required="true">
+                <input type="text" class="input-field" id="location" placeholder="Location"
+                    pattern="^(?!\s)[a-zA-Z\s]+$" required="true">
             </div>
             <div class="btn">
-                <button class="button2" onclick="update(event)">Save</button>
+                <button type="button" class="button2" id="update">Save</button>
             </div>
         </form>
     </div>
     <!-- -------------------------------header------------------------ -->
-    <header class="header">
-        <div><img src="../assets/img/illustration/logo.png" alt="logo" class="logo"></div>
-        <div class="web">
-            <p>V A N H A</p>
-        </div>
+    <header class="header" id="header">
     </header>
-    <!-- -------------------------profile----------------------- -->
-    <div class="card">
-        <img src="../assets/img/buyer.png" class="profile-img" alt="buyer_img">
-        <div class="details">
-            <h1 class="title" id="user_name"></h1>
-            <span class="caption"><i class="fa fa-envelope"></i>
-                <h4 id="user_email"></h4>
-            </span>
-            <span class="caption"><i class="fa fa-phone"></i>
-                <h4 id="user_phone"></h4>
-            </span>
-            <span class="caption"><i class="fa fa-location"></i>
-                <h4 id="user_location"></h4>
-            </span>
-            <div class="btn">
-                <button class="button2 edit" onclick="on()">Edit</button>
-                <button class="button3" onclick="del(event)">Log out</button>
-            </div>
+    <div class="dropdown">
+        <button class="menuButton"><i class="fa-solid fa-bars"></i></button>
+        <div class="dropdown-content">
+            <a id="form_on">Edit Profile</a>
+            <a id="logout">Log Out</a>
         </div>
     </div>
+    <!-- -------------------------profile----------------------- -->
+    <div class="card">
+        <img class="user-img" id="user-img" alt="">
+        <input type="hidden" id="imageUrl" name="imageUrl" required>
+        <label for="imageFile" class="fa-regular fa-pen-to-square">
+            <input type="file" name="imageFile" id="imageFile" style="display: none;">
+        </label>
+        <div class="details">
+            <h2 class="title" id="user_name"></h2>
+            <span class="caption">
+                <i class="fa fa-envelope"></i>
+                <h4 id="user_email"></h4>
+            </span>
+            <span class="caption">
+                <i class="fa fa-phone"></i>
+                <h4 id="user_phone"></h4>
+            </span>
+            <span class="caption">
+                <i class="fa fa-location"></i>
+                <h4 id="user_location"></h4>
+            </span>
+        </div>
+
+    </div>
+    <!-- <div class="messageBtnArea">
+        <button class="messageButton" id="MessageButton" style="display: none;">Your messages</button>
+    </div>
+    <div class="messegedProductBox" style="display: none;">
+
+    </div> -->
     <!-- -----------------------product list -seller---------------- -->
     <div class="list">
         <div class="topic">
             <h1>My Product list</h1>
-            <button class="button2 add" onclick="addprod()">Add new product</button>
+            <button class="button2 add" id="addprod">Add new product</button>
         </div>
         <div class="box">
         </div>
@@ -136,28 +101,9 @@
     </footer>
     <div class="copy">Copyright © 2021 - 2022 VANHA - Website Designed By KISHORE</div>
 </body>
-<script>
-    footer()
-    // ------------------------------//
-    let email = JSON.parse(localStorage.getItem("unique_id"));
-    let stored_data = JSON.parse(localStorage.getItem("user_data")) || [];
-
-    const get_object = (email, stored_data) => stored_data.find(val => val.email === email);
-    let data = get_object(email, stored_data);
-
-    document.getElementById("user_name").innerText = data.name;
-    document.getElementById("user_email").innerText = data.email;
-    document.getElementById("user_phone").innerText = data.phone;
-    document.getElementById("user_location").innerText = data.location;
-
-    document.getElementById("name").value = data.name;
-    document.getElementById("email").value = data.email;
-    document.getElementById("phone").value = data.phone;
-    document.getElementById("location").value = data.location;
-    // --------------------------------//
-    list(product);
-    // -------------------------------//
-
-</script>
+<!-- -----------------------------------script--------------------------------- -->
+<script src="../assets/JS/footer.js"></script>
+<script src="../assets/JS/header.js"></script>
+<script src="../assets/JS/user profile.js"></script>
 
 </html>
