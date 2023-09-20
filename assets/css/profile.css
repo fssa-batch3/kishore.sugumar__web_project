@@ -17,8 +17,8 @@
   padding: 20px;
   margin-top: 50px;
   width: 350px;
-  box-shadow:  4px 4px 10px #b8b8b8,
-             -4px -4px 10px #ffffff;
+  box-shadow: 4px 4px 10px #b8b8b8,
+    -4px -4px 10px #ffffff;
   border-radius: 20px;
 }
 
@@ -29,9 +29,8 @@
 
 .user-img {
   width: 180px;
+  height:180px;
   border-radius: 50%;
-  box-shadow:  11px 11px 22px #707070,
-  -11px -11px 22px #cdcdcd;
 }
 
 .caption {
@@ -82,6 +81,12 @@
 .remo {
   width: 140px;
   margin: 20px 0px;
+}
+
+.edit-image {
+  width:150px;
+  height: 150px;
+  border-radius: 10px;
 }
 
 .btn {
@@ -240,11 +245,11 @@
   margin-bottom: 20px;
 }
 
-.messageButton{
+.messageButton {
   padding: 5px 10px;
   border: 1px solid gray;
   border-radius: 15px;
-  color:white;
+  color: white;
   z-index: 1;
   background: #878686;
   position: relative;
@@ -254,6 +259,7 @@
   overflow: hidden;
   margin-bottom: 30px;
 }
+
 .messageButton::before {
   content: "";
   position: absolute;
@@ -265,19 +271,20 @@
   background-color: #212121;
   z-index: -1;
   transition: all 250ms
- }
- .messageButton:hover {
-  color: #e8e8e8;
- }
- 
- .messageButton:hover::before {
-  width: 100%;
- }
+}
 
- /* ------------------drop down------------------ */
- .menuButton {
+.messageButton:hover {
+  color: #e8e8e8;
+}
+
+.messageButton:hover::before {
+  width: 100%;
+}
+
+/* ------------------drop down------------------ */
+.menuButton {
   font-size: 30px;
-  margin: 20px 50px 0px 0px ;
+  margin: 20px 50px 0px 0px;
   border: none;
   cursor: pointer;
   background-color: white;
@@ -295,7 +302,7 @@
   right: 40px;
   background-color: #f9f9f9;
   min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
 }
 
@@ -306,12 +313,12 @@
   display: block;
 }
 
-.dropdown-content a:hover {background-color: #f1f1f1}
+.dropdown-content a:hover {
+  background-color: #f1f1f1
+}
 
 .dropdown:hover .dropdown-content {
   display: block;
 }
 
-.dropdown:hover .dropbtn {
-
-}
+.dropdown:hover .dropbtn {}

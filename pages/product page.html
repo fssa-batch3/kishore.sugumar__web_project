@@ -16,7 +16,7 @@
         <link rel="stylesheet" href="../assets/css/footer.css">
         <link rel="stylesheet" href="../assets/css/header.css">
         <link rel="stylesheet" href="../assets/css/product_page.css">
-
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.5.0/axios.min.js" integrity="sha512-aoTNnqZcT8B4AmeCFmiSnDlc4Nj/KPaZyB5G7JnOnUEkdNpCZs1LCankiYi01sLTyWy+m2P+W4XM+BuQ3Q4/Dg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <title>V A N H A</title>
     </head>
 
@@ -35,13 +35,13 @@
                 </div>
                 <div class="otherBids">
                     <form class="form">
-                        <p>Requests</p>
+                        <p class="bidheading">Requests</p>
                         <div class="allRequests">
                         </div>
                         <div class="bid-area">
                             <input type="number" class="bid-amount" id="bid_amount" placeholder="amount" required
                                 pattern="[0-9]+">
-                            <button class="button2" type="button" id="bid_button">Bid</button>
+                            <button class="button2" type="submit" id="bid_button">Bid</button>
                         </div>
                     </form>
                 </div>
@@ -76,10 +76,11 @@
 
                     </div>
                     <div class="box">
-                        <div class="seller-profile" id="seller_on">
-                            <img src="../assets/img/profile21.png" alt="seller-img" id="seller_img" class="seller_img">
+                        <div class="seller-profile">
+                            <img id="seller_img" class="seller_img">
                             <div class="seller-name">
                                 <h2 id="seller_name"></h2>
+                                <p id="seller_location"></p>
                             </div>
                         </div>
                     </div>

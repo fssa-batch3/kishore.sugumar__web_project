@@ -29,21 +29,23 @@ const AfterLogin = `
 `;
 
 function home_Header() {
-  const userId = JSON.parse(localStorage.getItem("unique_id"));
-  const logheader = document.getElementById("header");
-  if (!userId) {
-    logheader.innerHTML = beforelogin;
+  const user = JSON.parse(sessionStorage.getItem("email"));
+  const image = JSON.parse(sessionStorage.getItem("image"));
+  const nextheader = document.getElementById("header");
+  if (!user) {
+    nextheader.innerHTML = beforelogin;
   } else {
-    logheader.innerHTML = AfterLogin;
+    nextheader.innerHTML = AfterLogin;
 
-    const user_data = JSON.parse(localStorage.getItem("user_data"));
-
-    const userImage = user_data.find((userid) => userid.email === userId);
-
+    if(image === "null" ){
+      const photo = document.querySelector(".profile-img");
+      photo.setAttribute("src", "https://iili.io/JJHvWdu.png");
+      photo.setAttribute("alt", `your Image`);
+    }else{
     const photo = document.querySelector(".profile-img");
-
-    photo.setAttribute("src", userImage.image);
-    photo.setAttribute("alt", `${userImage.name}Image`);
+    photo.setAttribute("src", image);
+    photo.setAttribute("alt", `your Image`);
+    }
   }
 }
 
@@ -168,16 +170,16 @@ function search() {
       const locationDiv = document.createElement("div");
       locationDiv.setAttribute("class", "text-body");
       div_detail.append(locationDiv);
-    
+
       const LocationSpan = document.createElement("span");
       locationDiv.prepend(LocationSpan);
-    
+
       const locationHeading = document.createElement("b");
       locationHeading.innerText = "Location:";
       LocationSpan.append(locationHeading);
-    
+
       const sellerId = userArray.find((u) => u.email === element.user_id);
-    
+
       const LocationBuyer = document.createElement("span");
       LocationBuyer.innerHTML = sellerId.location;
       locationDiv.append(LocationBuyer);

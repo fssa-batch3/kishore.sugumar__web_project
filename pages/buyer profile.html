@@ -1,110 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="icon" href="../assets/img/illustration/v-removebg-preview.png">
-        <link rel="dns-prefetch" href="//fonts.googleapis.com">
-        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700," rel="stylesheet">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
-            integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
-            crossorigin="anonymous" referrerpolicy="no-referrer">
-        <link rel="stylesheet" href="../assets/css/buttons.css">
-        <link rel="stylesheet" href="../assets/css/profile.css">
-        <link rel="stylesheet" href="../assets/css/footer.css">
-        <link rel="stylesheet" href="../assets/css/header.css">
-        <title>V A N H A</title>
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../assets/img/illustration/v-removebg-preview.png">
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700," rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="../assets/css/buttons.css">
+    <link rel="stylesheet" href="../assets/css/profile.css">
+    <link rel="stylesheet" href="../assets/css/footer.css">
+    <link rel="stylesheet" href="../assets/css/header.css">
+    <title>V A N H A</title>
+</head>
 
-    <body class="body">
-        <!-- ----------------------------edit-profile------------------------ -->
-        <div id="overlay">
-            <div class="closebtn" id="form_off" title="Close Overlay">
-                <i class="fa-solid fa-xmark"></i>
-            </div>
-            <form class="form">
-                <p class="heading-in">Edit Profile</p>
-                <p>
-                    <span class="prod_val" id="email"></span>
-                </p>
-                <div class="field">
-                    <input type="text" class="input-field" id="name" placeholder="Name" autocomplete="off"
-                        pattern="^(?!\s)[a-zA-Z\s]+$" required="true">
-                </div>
-                <div class="field">
-                    <input type="tel" class="input-field" id="phone" placeholder="+91" autocomplete="off"
-                        pattern="^(?!\s)[0-9]+" required="true">
-                </div>
-                <div class="field">
-                    <input type="text" class="input-field" id="location" placeholder="Location"
-                        pattern="^(?!\s)[a-zA-Z\s]+$" required="true">
-                </div>
-                <div class="btn">
-                    <button class="button2" id="update">Save</button>
-                </div>
-            </form>
+<body class="body">
+    <!-- ----------------------------edit-profile------------------------ -->
+    <div id="overlay">
+        <div class="closebtn" id="form_off" title="Close Overlay">
+            <i class="fa-solid fa-xmark"></i>
         </div>
-        <!-- -------------------------------header------------------------ -->
-        <header class="header" id="header">
-        </header>
-        <div class="dropdown">
-            <button class="menuButton"><i class="fa-solid fa-bars"></i></button>
-            <div class="dropdown-content">
+        <form class="form">
+            <p class="heading-in">Edit Profile</p>
+            <p>
+                <span class="prod_val" id="email"></span>
+            </p>
+            <div class="field">
+                <input type="text" class="input-field" id="name" placeholder="Name" autocomplete="off"
+                    pattern="^(?!\s)[a-zA-Z\s]+$" required="true">
+            </div>
+            <div class="field">
+                <input type="tel" class="input-field" id="phone" placeholder="+91" autocomplete="off"
+                    pattern="[6-9]\d{9}" required="true">
+            </div>
+            <div class="field">
+                <input type="text" class="input-field" id="location" placeholder="Location"
+                    pattern="^(?!\s)[a-zA-Z\s]+$" required="true">
+            </div>
+            <div class="btn">
+                <button type="button" class="button2" id="update">Save</button>
+            </div>
+        </form>
+    </div>
+    <!-- -------------------------------header------------------------ -->
+    <header class="header" id="header">
+    </header>
+    <div class="dropdown">
+        <button class="menuButton"><i class="fa-solid fa-bars"></i></button>
+        <div class="dropdown-content">
             <a id="form_on">Edit Profile</a>
             <a id="logout">Log Out</a>
-            <a id="del">Delete</a>
-            </div>
-          </div>
-        <!-- -------------------------profile----------------------- -->
-        <div class="card">
-            <img class="user-img" id="user-img" alt="">
-            <div class="details">
-                <h2 class="title" id="user_name"></h2>
-                <span class="caption">
-                    <i class="fa fa-envelope"></i>
-                    <h4 id="user_email"></h4>
-                </span>
-                <span class="caption">
-                    <i class="fa fa-phone"></i>
-                    <h4 id="user_phone"></h4>
-                </span>
-                <span class="caption">
-                    <i class="fa fa-location"></i>
-                    <h4 id="user_location"></h4>
-                </span>
-                <!-- <div class="btn">
-                    <button class="button1 edit" >Edit</button>
-                    <button class="button2" >Log out</button>
-                    <button class="button3" >Delete</button>
-                </div> -->
-            </div>
         </div>
-        <div class="messageBtnArea">
-            <button class="messageButton" id="MessageButton" style="display: none;">Your messages</button>
+    </div>
+    <!-- -------------------------profile----------------------- -->
+    <div class="card">
+        <img class="user-img" id="user-img" alt="">
+        <input type="hidden" id="imageUrl" name="imageUrl" required>
+        <label for="imageFile" class="fa-regular fa-pen-to-square">
+            <input type="file" name="imageFile" id="imageFile" style="display: none;">
+        </label>
+        <div class="details">
+            <h2 class="title" id="user_name"></h2>
+            <span class="caption">
+                <i class="fa fa-envelope"></i>
+                <h4 id="user_email"></h4>
+            </span>
+            <span class="caption">
+                <i class="fa fa-phone"></i>
+                <h4 id="user_phone"></h4>
+            </span>
+            <span class="caption">
+                <i class="fa fa-location"></i>
+                <h4 id="user_location"></h4>
+            </span>
         </div>
-        <div class="messegedProductBox" style="display: none;">
 
+    </div>
+    <!-- <div class="messageBtnArea">
+        <button class="messageButton" id="MessageButton" style="display: none;">Your messages</button>
+    </div>
+    <div class="messegedProductBox" style="display: none;">
+
+    </div> -->
+    <!-- -----------------------product list -seller---------------- -->
+    <div class="list">
+        <div class="topic">
+            <h1>My Product list</h1>
+            <button class="button2 add" id="addprod">Add new product</button>
         </div>
-        <!-- -----------------------product list -seller---------------- -->
-        <div class="list">
-            <div class="topic">
-                <h1>My Product list</h1>
-                <button class="button2 add" id="addprod">Add new product</button>
-            </div>
-            <div class="box">
-            </div>
+        <div class="box">
         </div>
-        <!-- -----------------------------footer--------------------------- -->
-        <footer class="footer" id="footer">
-        </footer>
-        <div class="copy">Copyright © 2021 - 2022 VANHA - Website Designed By KISHORE</div>
-    </body>
-    <!-- -----------------------------------script--------------------------------- -->
-    <script src="../assets/JS/footer.js"></script>
-    <script src="../assets/JS/header.js"></script>
-    <script src="../assets/JS/user profile.js"></script>
+    </div>
+    <!-- -----------------------------footer--------------------------- -->
+    <footer class="footer" id="footer">
+    </footer>
+    <div class="copy">Copyright © 2021 - 2022 VANHA - Website Designed By KISHORE</div>
+</body>
+<!-- -----------------------------------script--------------------------------- -->
+<script src="../assets/JS/footer.js"></script>
+<script src="../assets/JS/header.js"></script>
+<script src="../assets/JS/user profile.js"></script>
 
 </html>

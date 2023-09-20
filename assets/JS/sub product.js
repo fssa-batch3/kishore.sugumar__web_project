@@ -1,95 +1,100 @@
-document.querySelector("#cate_name").innerHTML = new URLSearchParams(
-  window.location.search
-).get("Category");
+const category = new URLSearchParams(window.location.search).get("Category");
 
+document.querySelector("#cate_name").innerHTML = category;
 // ------------------------------------product card-------------------------------------------//
 
-document.addEventListener("DOMContentLoaded", function card() {
-  const category_prod = new URLSearchParams(window.location.search).get(
-    "Category"
-  );
-  const prod = JSON.parse(localStorage.getItem("product_data"));
-  const userArray = JSON.parse(localStorage.getItem("user_data"));
-  const imageArray = JSON.parse(localStorage.getItem("images"));
-  const unique = JSON.parse(localStorage.getItem("unique_id"));
+const uri = `http://localhost:8080/vanhaweb/home/categroyproduct?Category=${category}`;
 
-  let product = prod.filter((p) => p.category === category_prod && unique !== p.user_id)
-  product.forEach(element => {
-    const div_card = document.createElement("div");
-    div_card.setAttribute("class", "card");
+fetch(uri, {
+  method: 'GET',
+})
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return response.json();
+  })
+  .then(data => {
+    console.log(data.data);
+    const loadData = data["data"]; 
 
-    const div_detail = document.createElement("div");
-    div_detail.setAttribute("class", "card-details");
-    div_detail.setAttribute("data-unique", element.unique);
-    div_card.append(div_detail);
+    function createProductCard(product) {
+      const card = document.createElement("div");
+      card.classList.add("card");
 
-    const anch = document.createElement("a");
-    anch.setAttribute(
-      "href",
-      `./product page.html?product_id=${element.unique}`
-    );
-    div_detail.append(anch);
+      const cardDetails = document.createElement("div");
+      cardDetails.classList.add("card-details");
+      card.appendChild(cardDetails);
 
-    const productImage = imageArray.find((i) => i.unique === element.unique)
+      const productLink = document.createElement("a");
+      productLink.href = `./product page.html?productId=${product.productId}`;
+      cardDetails.appendChild(productLink);
 
-    const image = document.createElement("img");
-    image.setAttribute("src", productImage.image1);
-    image.setAttribute("alt", `${element.name}Image`);
-    image.setAttribute("class", "product_img");
-    anch.append(image);
+      const productImage = document.createElement("img");
+      productImage.src = product.asset;
+      productImage.alt = `${product.ProductName} Image`;
+      productImage.classList.add("product_img");
+      productLink.appendChild(productImage);
 
-    const h3 = document.createElement("h3");
-    h3.setAttribute("class", "text-title");
-    h3.innerHTML = element.name;
-    div_detail.append(h3);
+      const productName = document.createElement("h3");
+      productName.classList.add("text-title");
+      productName.textContent = product.ProductName;
+      cardDetails.appendChild(productName);
 
-    const productUnique = document.createElement("p");
-    productUnique.setAttribute("class", "unique");
-    productUnique.setAttribute("id", "unique");
-    productUnique.innerHTML = element.unique;
-    div_detail.append(productUnique);
+      const priceDiv = document.createElement("div");
+      priceDiv.classList.add("text-body");
+      cardDetails.appendChild(priceDiv);
 
-    const div_price = document.createElement("div");
-    div_price.setAttribute("class", "text-body");
-    div_detail.append(div_price);
+      const priceSpan = document.createElement("span");
+      priceDiv.appendChild(priceSpan);
 
-    const p_price = document.createElement("span");
-    div_price.prepend(p_price);
+      const priceBold = document.createElement("b");
+      priceBold.textContent = "Price:";
+      priceSpan.appendChild(priceBold);
 
-    const p_bold = document.createElement("b");
-    p_bold.innerText = "Price:";
-    p_price.append(p_bold);
+      const priceValue = document.createElement("span");
+      priceValue.innerHTML = `${product.price} (INR)`;
+      priceDiv.appendChild(priceValue);
 
-    const p_rate = document.createElement("span");
-    p_rate.innerHTML = element.price;
-    div_price.append(p_rate);
+      const locationDiv = document.createElement("div");
+      locationDiv.classList.add("text-body");
+      cardDetails.appendChild(locationDiv);
 
-    const p_currency = document.createElement("span");
-    p_currency.innerHTML = " (INR)";
-    div_price.append(p_currency);
+      const locationSpan = document.createElement("div");
+      locationDiv.appendChild(locationSpan);
 
-    const locationDiv = document.createElement("div");
-    locationDiv.setAttribute("class", "text-body");
-    div_detail.append(locationDiv);
-  
-    const LocationSpan = document.createElement("span");
-    locationDiv.prepend(LocationSpan);
-  
-    const locationHeading = document.createElement("b");
-    locationHeading.innerText = "Location:";
-    LocationSpan.append(locationHeading);
-  
-    const sellerId = userArray.find((u) => u.email === element.user_id);
-  
-    const LocationBuyer = document.createElement("span");
-    LocationBuyer.innerHTML = sellerId.location;
-    locationDiv.append(LocationBuyer);
+      const sellerInfo = document.createElement("div");
+      sellerInfo.classList.add("sellerInfo");
+      card.appendChild(sellerInfo);
 
-    document.body.appendChild(div_card);
+      const sellerImage = document.createElement("img");
+      sellerImage.src = product.SellerImage;
+      sellerImage.alt = `${product.sellerName} Image`;
+      sellerImage.classList.add("seller_img");
+      sellerInfo.appendChild(sellerImage);
 
-    document.querySelector("#grid-container").append(div_card);
+      const sellerDetails = document.createElement("div");
+      sellerInfo.appendChild(sellerDetails);
+
+      const sellerNameSpan = document.createElement("div");
+      sellerNameSpan.innerHTML = `<b>Seller:</b> ${product.sellerName}`;
+      sellerDetails.appendChild(sellerNameSpan);
+
+      const sellerLocationSpan = document.createElement("div");
+      sellerLocationSpan.innerHTML = `<b>Location:</b> ${product.sellerLocation}`;
+      sellerDetails.appendChild(sellerLocationSpan);
+
+      document.querySelector("#grid-container").appendChild(card);
+    }
+
+    loadData.forEach(createProductCard);
+  })
+  .catch(error => {
+    // Handle any errors that occurred during the fetch
+    console.error('Fetch error:', error);
   });
-});
+
+
 
 // ---------load more--------//
 

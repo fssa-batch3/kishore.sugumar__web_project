@@ -17,7 +17,9 @@
         <link rel="dns-prefetch" href="//fonts.googleapis.com">
         <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700," rel="stylesheet">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="./assets/JS/home header.js"></script>
         <script src="./main.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.5.0/axios.min.js" integrity="sha512-aoTNnqZcT8B4AmeCFmiSnDlc4Nj/KPaZyB5G7JnOnUEkdNpCZs1LCankiYi01sLTyWy+m2P+W4XM+BuQ3Q4/Dg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <title>V A N H A </title>
     </head>
 
@@ -132,22 +134,26 @@
                 </div>
                 <div class="field">
                     <input type="email" class="input-field" id="regi_email" placeholder="example@abc.com" autocomplete="off"
-                        pattern="^(?!\s)[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" title="Use proper email" required="true">
+                        pattern="^(?!\s)[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,4}$" title="Use proper email" required="true">
                 </div>
                 <div class="field">
                     <input type="tel" class="input-field" id="regi_phone" placeholder="Phone Number" autocomplete="off"
                         pattern="^[6-9]\d{9}$" title="Enter your mobile number" maxlength="10" minlength="10" required="true">
                 </div>
                 <div class="field">
+                    <input type="text" class="input-field" id="regi_location" placeholder="Location" autocomplete="off"
+                         title="Enter your location" required="true">
+                </div>
+                <div class="field">
                     <input type="password" class="input-field" id="regi_password" placeholder="Password (ABde12!#)"
-                        pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&amp;*_=+-]).{8,24}$" maxlength="8" minlength="8"
+                        pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+\-]).{8,24}$" maxlength="8" minlength="8"
                         title="password must contain atleast one uppercase, one lower, one special character and numbers. It should contain 8 characters"
                         required="true">
                 </div>
                 <div class="field">
                     <input type="password" class="input-field" id="c_password" placeholder="confirm Password" required="true">
                 </div>
-                <label for="showPassword" class="passwordTitle">
+                <label for="showPassword1" class="passwordTitle">
                     <input type="checkbox" id="showPassword1"> Show Password
                   </label>
                 <div class="btn">
@@ -170,7 +176,7 @@
                 <div class="field">
                     <input type="password" class="input-field" id="password" placeholder="Password" required="true">
                 </div>
-                <label for="showPassword" class="passwordTitle">
+                <label for="showPassword2" class="passwordTitle">
                     <input type="checkbox" id="showPassword2"> Show Password
                   </label>
                 <div class="btn">
@@ -209,7 +215,6 @@
         </div>
 
         <script src="./assets/JS/footer.js"></script>
-        <script src="./assets/JS/home header.js"></script>
         <script src="./assets/JS/home page.js"></script>
     </body>
 
