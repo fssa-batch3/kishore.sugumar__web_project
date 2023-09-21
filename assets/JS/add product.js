@@ -3,36 +3,6 @@ const backButton = document.getElementById("back");
 backButton.addEventListener("click", function back() {
   window.location.href = "./buyer profile.html";
 });
-// --------------------------------------------------------//
-
-// let photoElements = document.querySelectorAll('.photo');
-
-document.addEventListener("DOMContentLoaded", function allCategory() {
-  const bike = document.getElementById("bike");
-  const car = document.getElementById("car");
-  const laptop = document.getElementById("laptop");
-  const mobile = document.getElementById("mobile");
-
-  bike.addEventListener("click", function bIkeCategory() {
-    const title = document.querySelector("#category_title");
-    title.innerHTML = "Bike";
-  });
-
-  car.addEventListener("click", function carCategory() {
-    const title = document.querySelector("#category_title");
-    title.innerHTML = "Car";
-  });
-
-  laptop.addEventListener("click", function laptopCategory() {
-    const title = document.querySelector("#category_title");
-    title.innerHTML = "Laptop-Desktop";
-  });
-
-  mobile.addEventListener("click", function mobileCategory() {
-    const title = document.querySelector("#category_title");
-    title.innerHTML = "Mobile";
-  });
-});
 
 // ------------------------create product----------------------//
 const addProduct = document.getElementById("add_product");
@@ -106,24 +76,3 @@ addProduct.addEventListener("click", function active() {
 }
 });
 
-// ----------------------------overlay---------------------------//
-function formon() {
-  document.getElementById("overlay").style.display = "block";
-}
-
-const openBikeForm = document.getElementById("bike");
-openBikeForm.addEventListener("click", formon);
-
-const openCarForm = document.getElementById("car");
-openCarForm.addEventListener("click", formon);
-
-const openLaptopForm = document.getElementById("laptop");
-openLaptopForm.addEventListener("click", formon);
-
-const openMobileForm = document.getElementById("mobile");
-openMobileForm.addEventListener("click", formon);
-
-const closeForm = document.getElementById("formOff");
-closeForm.addEventListener("click", function off() {
-  document.getElementById("overlay").style.display = "none";
-});

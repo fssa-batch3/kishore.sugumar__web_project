@@ -38,6 +38,7 @@ fetch(uri, {
       }
       product_image.setAttribute("alt", `${object.productName} image`);
       product_image.setAttribute("id", `sub_img${i}`);
+      product_image.setAttribute("onclick", "img(this)");
       document.querySelector(".thumbnail-imgs").appendChild(product_image);
     }
 

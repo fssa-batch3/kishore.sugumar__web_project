@@ -29,107 +29,72 @@
             <h2 class="head">Add product</h2>
             <div class="border"></div>
         </div>
-        <section class="sub" id="category">
-            <div>
-                <span class="tooltip">
-                    <img src="../assets/img/illustration/motorcycle.gif" alt="category-bike" class="sub_icon1"
-                        id="bike">
-                    <span class="tooltiptext">Bike</span>
-                </span>
-                <span class="tooltip">
-                    <img src="../assets/img/illustration/car.gif" alt="category-car" class="sub_icon2" id="car">
-                    <span class="tooltiptext">Car</span>
-                </span>
-            </div>
-            <div>
-                <span class="tooltip">
-                    <img src="../assets/img/illustration/computer.gif" alt="category-laptop&desktop" class="sub_icon3"
-                        id="laptop">
-                    <span class="tooltiptext">Laptop $ Desktop</span>
-                </span>
-                <span class="tooltip">
-                    <img src="../assets/img/illustration/responsive.gif" alt="category-mobile" class="sub_icon4"
-                        id="mobile">
-                    <span class="tooltiptext">Mobile</span>
-                </span>
-            </div>
-        </section>
 
-        <div id="overlay">
-            <form class="main" id="form">
-                <div class="closebtn" id="formOff" title="Close Overlay">
-                    <i class="fa-solid fa-xmark"></i>
+        <form class="main" id="form">
+            <section class="aling" type="form">
+                <div class="main-left">
+                    <div class="field">
+                        <label>Product name :</label>
+                        <input type="text" class="input-field_prod" id="name" placeholder="product_name"
+                            autocomplete="off" pattern="^(?!\s)[a-zA-Z\s\d/]+$" required="true">
+                    </div>
+                    <div class="field">
+                        <div class="duration">
+                            <label>Category :</label>
+                            <select class="Category" id="Category" required>
+                                <option value="" style="font-size:5pt;" disabled>&nbsp;</option>
+                                <option class="option" value="car" style="font-size:12pt">Car</option>
+                                <option value="" style="font-size:5pt;" disabled>&nbsp;</option>
+                                <option class="option" value="bike" style="font-size:12pt">Bike</option>
+                                <option value="" style="font-size:5pt;" disabled>&nbsp;</option>
+                                <option class="option" value="computer" style="font-size:12pt">Laptops & computers</option>
+                                <option value="" style="font-size:5pt;" disabled>&nbsp;</option>
+                                <option class="option" value="mobile" style="font-size:12pt">Mobile</option>
+                                <option value="" style="font-size:5pt;" disabled>&nbsp;</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="desc_label">Description :</label>
+                        <textarea class="textarea" id="description" placeholder="make it as point...."
+                            pattern="^(?!\s).*$"></textarea>
+                    </div>
+                    <div class="field">
+                        <label>Product price :</label>
+                        <input type="number" class="input-field_prod" id="price" placeholder="product price"
+                            autocomplete="off" required="true">
+                    </div>
+                    <div class="field">
+                        <label>Minimum price :</label>
+                        <input type="number" class="input-field_prod" id="min_price" placeholder="minimum price"
+                            autocomplete="off" required="true">
+                    </div>
+                    <div class="duration">
+                        <label>Duration :</label>
+                        <input type="number" class="input-field_prod" id="period" placeholder="&quot;1&quot;" required>
+                        <select class="Category" id="duration" required>
+                            <option value="" style="font-size:5pt;" disabled>&nbsp;</option>
+                            <option class="option" value="month" style="font-size:12pt">Month</option>
+                            <option value="" style="font-size:5pt;" disabled>&nbsp;</option>
+                            <option class="option" value="year" style="font-size:12pt">Year</option>
+                            <option value="" style="font-size:5pt;" disabled>&nbsp;</option>
+                        </select>
+                    </div>
                 </div>
-                <h1 id="category_title"></h1>
-                <section class="aling" type="form">
-                    <div class="main-left">
-                        <div>
-                            <h4>Product Name:</h4>
-                        </div>
-                        <div>
-                            <input type="name" id="prod_name" class="product_name" pattern="^(?!\s)[a-zA-Z0-9\s]+$"
-                                required>
-                        </div>
-                        <div class="left_content">
-                            <h4>Product Description:</h4>
-                        </div>
-                        <div>
-                            <textarea class="textarea" placeholder="Make it as points..." pattern="^(?!\s)"
-                                id="description" required></textarea>
-                        </div>
-                        <div class="left-aling">
-                            <div>
-                                <div>
-                                    <h4>Product Price:</h4>
-                                </div>
-                                <div>
-                                    <input type="number" class="input" id="prod_price" title="Price only number"
-                                        placeholder="Price only in number" minlength="1" maxlength="99999999" required>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="left-aling">
-                            <div>
-                                <div>
-                                    <h4>Minimum Price:</h4>
-                                </div>
-                                <div>
-                                    <input type="number" class="input" id="lowPrice" title="Price only number"
-                                        placeholder="Minimum amount to be Bided" minlength="1" maxlength="99999999"
-                                        required>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="left-aling">
-                            <div>
-                                <div class="duration">
-                                    <label>Duration :</label>
-                                    <input type="number" class="input-field_prod" id="edit_period"
-                                        placeholder="&quot;1&quot;" required>
-                                    <select class="Category" id="edit_duration" required>
-                                        <option value="" style="font-size:5pt;" disabled>&nbsp;</option>
-                                        <option class="option" value="Month" style="font-size:12pt">Month</option>
-                                        <option value="" style="font-size:5pt;" disabled>&nbsp;</option>
-                                        <option class="option" value="Year" style="font-size:12pt">Year</option>
-                                        <option value="" style="font-size:5pt;" disabled>&nbsp;</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="middle-line"></div>
-                            <div class="main-right">
+                <div class="middle-line"></div>
+                <div class="main-right">
 
-                            </div>
-                </section>
-                <section class="btn algn">
-                    <div>
-                        <button type="submit" class="button2" id="add_product">Add product</button>
-                    </div>
-                    <div>
-                        <button class="button3" id="back">Discard</button>
-                    </div>
-                </section>
-            </form>
-        </div>
+                </div>
+            </section>
+            <section class="btn algn">
+                <div>
+                    <button type="submit" class="button2" id="add_product">Add product</button>
+                </div>
+                <div>
+                    <button class="button3" id="back">Discard</button>
+                </div>
+            </section>
+        </form>
     </main>
 
     <footer class="footer" id="footer">

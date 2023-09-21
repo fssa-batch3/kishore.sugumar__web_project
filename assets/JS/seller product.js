@@ -1,4 +1,3 @@
-
 // ------------------------- read product(in seller page)-----------------//
 
 document.addEventListener("DOMContentLoaded", function update_prod() {
@@ -19,7 +18,6 @@ document.addEventListener("DOMContentLoaded", function update_prod() {
     })
     .then(data => {
       const object = data.data;
-      console.log(object);
       document.querySelector("#prod_name").innerHTML = object.productName;
       document.querySelector("#description").innerHTML = object.description;
       document.querySelector("#prod_price").innerHTML = object.price;
@@ -27,18 +25,55 @@ document.addEventListener("DOMContentLoaded", function update_prod() {
       document.querySelector("#duration").innerHTML = object.usedDuration;
 
       for (let i = 0; i < 4; i++) {
+        const imageDiv = document.createElement("div");
+
         const img = document.createElement("img");
         if (object.assets[i] != null) {
           img.setAttribute("src", object.assets[i]["value"]);
+          img.setAttribute("assetId", object.assets[i]["id"]);
         } else {
           img.setAttribute("src", "../assets/img/illustration/blank.jpg");
+          img.setAttribute("assetId", 0);
         }
         img.setAttribute("alt", `${object.productName} image`);
         img.setAttribute("id", `sub_img${i}`);
         img.setAttribute("class", `product_img`);
-        img.setAttribute("onclick", "img(this)");
-        document.querySelector(".images").appendChild(img);
+
+        // Create the label and set its for attribute to match the input's id
+        const label = document.createElement("label");
+        label.htmlFor = `imageFile${i}`;
+        label.className = "fa-regular fa-pen-to-square";
+
+        // Create the file input element
+        const fileInput = document.createElement("input");
+        fileInput.type = "file";
+        fileInput.name = `imageFile${i}`;
+        fileInput.id = `imageFile${i}`;
+        fileInput.style.display = "none";
+
+        fileInput.addEventListener('change', () => {
+          const selectedFile = fileInput.files[0];
+          console.log(selectedFile);
+          if (selectedFile) {
+            try {
+              handleFile(selectedFile, `sub_img${i}`);
+              const assetId = object.assets[i] ? object.assets[i]["id"] : 0;
+              uploadImage(selectedFile, assetId);
+            } catch (error) {
+              alert('Error while showing image.');
+            }
+          } else {
+            alert('Please select a file.');
+          }
+        });
+
+        // Append the elements to the DOM
+        imageDiv.appendChild(img);
+        imageDiv.appendChild(label);
+        imageDiv.appendChild(fileInput);
+        document.querySelector(".images").appendChild(imageDiv);
       }
+
 
       //--------------------Edit from-------------------------//
 
@@ -53,7 +88,84 @@ document.addEventListener("DOMContentLoaded", function update_prod() {
     });
 })
 
-//------------------------edit profile--------------------------------------//
+//---------------------------edit product image------------------------------//
+
+function handleFile(file, imgElement) {
+  let imageArea = document.getElementById(imgElement);
+  if (window.FileReader) {
+    const reader = new FileReader();
+    reader.onload = function (event) {
+      imageArea.src = event.target.result;
+    };
+    reader.readAsDataURL(file);
+  }
+}
+
+async function uploadImage(imageFile, id) {
+  const url = 'https://image-cdn.p.rapidapi.com/upload?async=true&allow-webp=true&compression=auto';
+  const data = new FormData();
+  data.append('image', imageFile);
+
+  const options = {
+    method: 'POST',
+    headers: {
+      'X-RapidAPI-Key': '4e4971d5femsh15cccdf4ec7e51ep156636jsn8731acf769c2',
+      'X-RapidAPI-Host': 'image-cdn.p.rapidapi.com'
+    },
+    body: data
+  };
+
+  try {
+    const response = await fetch(url, options);
+    console.log(response);
+    if (response.ok) {
+      const jsonResult = await response.json();
+      const imageSrc = jsonResult.url + "";
+      await changeProductImage(imageSrc, id);
+    } else {
+      console.error('HTTP error:', response.status);
+    }
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+async function changeProductImage(imgSrc, id) {
+
+  const updateImage = 'http://localhost:8080/vanhaweb/home/profile/productdetail';
+
+  const productId = new URLSearchParams(window.location.search).get("product_id");
+
+  try {
+    const response = await fetch(updateImage, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ imgSrc, id, productId }),
+    });
+
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+
+    const data = await response.json();
+
+    if (data.data != null) {
+      console.log(data.data);
+      alert("Image changed");
+      window.location.reload();
+    } else {
+      alert("Updation failed");
+    }
+  } catch (error) {
+    console.error('Error:', error);
+  }
+
+}
+
+
+//------------------------edit product--------------------------------------//
 
 function nameValidation(prod_name) {
   const nameRegex = /^(?!\s)[a-zA-Z\s\d/]+$/;

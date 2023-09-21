@@ -126,9 +126,8 @@ imageFileInput.addEventListener('change', async () => {
   const selectedFile = imageFileInput.files[0];
 
   if (selectedFile) {
-    handleFile(selectedFile);
     try {
-      await uploadImage(selectedFile);
+      uploadImage(selectedFile);
     } catch (error) {
       alert('Image upload failed. Please try again.');
     }
@@ -137,15 +136,6 @@ imageFileInput.addEventListener('change', async () => {
   }
 });
 
-function handleFile(file) {
-  if (window.FileReader) {
-    const reader = new FileReader();
-    reader.onload = function (event) {
-      imageUrlInput.value = event.target.result;
-    };
-    reader.readAsDataURL(file);
-  }
-}
 
 async function uploadImage(imageFile) {
   const url = 'https://image-cdn.p.rapidapi.com/upload?async=true&allow-webp=true&compression=auto';
