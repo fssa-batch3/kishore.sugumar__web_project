@@ -1,3 +1,15 @@
+
+//----------------------------error message-----------------------//
+function errorBox(errorMessage) {
+  var snackArea = document.getElementById("error");
+  snackArea.className = "show";
+  var message = document.getElementsByClassName("messSpan")[0];
+  message.textContent = errorMessage;
+  setTimeout(function () {
+    snackArea.className = snackArea.className.replace("show", "");
+  }, 3000);
+}
+
 // --------------------product card -------------------//
 
 const uri = 'http://localhost:8080/vanhaweb/home';
@@ -22,79 +34,92 @@ fetch(uri, {
     return response.json();
   })
   .then(data => {
-    const loadData = data["data"];
+    if (data.statusCode === 200) {
+      const loadData = data["data"];
 
-    function createProductCard(product) {
-      const card = document.createElement("div");
-      card.classList.add("card");
+      function createProductCard(product) {
+        const card = document.createElement("div");
+        card.classList.add("card");
 
-      const cardDetails = document.createElement("div");
-      cardDetails.classList.add("card-details");
-      cardDetails.setAttribute("data-unique", product.productId);
-      card.appendChild(cardDetails);
+        const cardDetails = document.createElement("div");
+        cardDetails.classList.add("card-details");
+        cardDetails.setAttribute("data-unique", product.productId);
+        card.appendChild(cardDetails);
 
-      const productLink = document.createElement("a");
-      productLink.href = `./pages/product page.html?productId=${product.productId}`;
-      cardDetails.appendChild(productLink);
+        const productLink = document.createElement("a");
+        productLink.href = `./pages/product page.html?productId=${product.productId}`;
+        cardDetails.appendChild(productLink);
 
-      const productImage = document.createElement("img");
-      productImage.src = product.asset;
-      productImage.alt = `${product.ProductName} Image`;
-      productImage.classList.add("product_img");
-      productLink.appendChild(productImage);
+        const productImage = document.createElement("img");
+        productImage.src = product.asset;
+        productImage.alt = `${product.ProductName} Image`;
+        productImage.classList.add("product_img");
+        productLink.appendChild(productImage);
 
-      const productName = document.createElement("h3");
-      productName.classList.add("text-title");
-      productName.textContent = product.ProductName;
-      cardDetails.appendChild(productName);
+        const productName = document.createElement("h3");
+        productName.classList.add("text-title");
+        productName.textContent = product.ProductName;
+        cardDetails.appendChild(productName);
 
-      const priceDiv = document.createElement("div");
-      priceDiv.classList.add("text-body");
-      cardDetails.appendChild(priceDiv);
+        const priceDiv = document.createElement("div");
+        priceDiv.classList.add("text-body");
+        cardDetails.appendChild(priceDiv);
 
-      const priceSpan = document.createElement("span");
-      priceDiv.appendChild(priceSpan);
+        const priceSpan = document.createElement("span");
+        priceDiv.appendChild(priceSpan);
 
-      const priceBold = document.createElement("b");
-      priceBold.textContent = "Price:";
-      priceSpan.appendChild(priceBold);
+        const priceBold = document.createElement("b");
+        priceBold.textContent = "Price:";
+        priceSpan.appendChild(priceBold);
 
-      const priceValue = document.createElement("span");
-      priceValue.innerHTML = `${product.price} (INR)`;
-      priceDiv.appendChild(priceValue);
+        const priceValue = document.createElement("span");
+        priceValue.innerHTML = `${product.price} (INR)`;
+        priceDiv.appendChild(priceValue);
 
-      const locationDiv = document.createElement("div");
-      locationDiv.classList.add("text-body");
-      cardDetails.appendChild(locationDiv);
+        const locationDiv = document.createElement("div");
+        locationDiv.classList.add("text-body");
+        cardDetails.appendChild(locationDiv);
 
-      const locationSpan = document.createElement("div");
-      locationDiv.appendChild(locationSpan);
+        const locationSpan = document.createElement("div");
+        locationDiv.appendChild(locationSpan);
 
-      const sellerInfo = document.createElement("div");
-      sellerInfo.classList.add("sellerInfo");
-      card.appendChild(sellerInfo);
+        const sellerInfo = document.createElement("div");
+        sellerInfo.classList.add("sellerInfo");
+        card.appendChild(sellerInfo);
 
-      const sellerImage = document.createElement("img");
-      sellerImage.src = product.SellerImage;
-      sellerImage.alt = `${product.sellerName} Image`;
-      sellerImage.classList.add("seller_img");
-      sellerInfo.appendChild(sellerImage);
+        const sellerImage = document.createElement("img");
+        sellerImage.src = product.SellerImage;
+        sellerImage.alt = `${product.sellerName} Image`;
+        sellerImage.classList.add("seller_img");
+        sellerInfo.appendChild(sellerImage);
 
-      const sellerDetails = document.createElement("div");
-      sellerInfo.appendChild(sellerDetails);
+        const sellerDetails = document.createElement("div");
+        sellerInfo.appendChild(sellerDetails);
 
-      const sellerNameSpan = document.createElement("div");
-      sellerNameSpan.innerHTML = `<b>Seller:</b> ${product.sellerName}`;
-      sellerDetails.appendChild(sellerNameSpan);
+        const sellerNameSpan = document.createElement("div");
+        sellerNameSpan.innerHTML = `<b>Seller:</b> ${product.sellerName}`;
+        sellerDetails.appendChild(sellerNameSpan);
 
-      const sellerLocationSpan = document.createElement("div");
-      sellerLocationSpan.innerHTML = `<b>Location:</b> ${product.sellerLocation}`;
-      sellerDetails.appendChild(sellerLocationSpan);
+        const sellerLocationSpan = document.createElement("div");
+        sellerLocationSpan.innerHTML = `<b>Location:</b> ${product.sellerLocation}`;
+        sellerDetails.appendChild(sellerLocationSpan);
 
-      document.querySelector("div.grid-container").appendChild(card);
+        document.querySelector("div.grid-container").appendChild(card);
+      }
+
+      loadData.forEach(createProductCard);
+    } else if (data.statusCode === 500) {
+      window.location.href = "../error/500error.html";
+    } else {
+      let errorMessage = '';
+      if (data.statusCode === 400) {
+        errorMessage = data.message;
+        console.log(errorMessage);
+        errorBox(errorMessage);
+      } else {
+        errorMessage = 'An unknown error occurred.';
+      }
     }
-
-    loadData.forEach(createProductCard);
   })
 
 // --------------category---------//
@@ -129,28 +154,28 @@ aboutPage.addEventListener("click", function about(event) {
   window.location.href = "./pages/about us.html";
 });
 
-const wishlistLink = document.getElementById("wishlist-link");
-wishlistLink.addEventListener("click", function wishlist(event) {
-  event.preventDefault();
+// const wishlistLink = document.getElementById("wishlist-link");
+// wishlistLink.addEventListener("click", function wishlist(event) {
+//   event.preventDefault();
 
-  const user_unique = JSON.parse(localStorage.getItem("unique_id"));
-  if (!user_unique) {
-    alert("There is no account please 'Log in'");
-  } else {
-    window.location.href = "./pages/wish list.html";
-  }
-});
+//   const user_unique = JSON.parse(localStorage.getItem("unique_id"));
+//   if (!user_unique) {
+//     alert("There is no account please 'Log in'");
+//   } else {
+//     window.location.href = "./pages/wish list.html";
+//   }
+// });
 
-const bidlistPage = document.getElementById("bidlist");
-bidlistPage.addEventListener("click", function bidlist(event) {
-  event.preventDefault();
-  const user = JSON.parse(localStorage.getItem("unique_id"));
-  if (!user) {
-    alert("There is no account please 'Log in'");
-  } else {
-    window.location.href = "./pages/bid list.html";
-  }
-});
+// const bidlistPage = document.getElementById("bidlist");
+// bidlistPage.addEventListener("click", function bidlist(event) {
+//   event.preventDefault();
+//   const user = JSON.parse(localStorage.getItem("unique_id"));
+//   if (!user) {
+//     alert("There is no account please 'Log in'");
+//   } else {
+//     window.location.href = "./pages/bid list.html";
+//   }
+// });
 
 const closeButton = document.getElementById("off");
 closeButton.addEventListener("click", function off() {
@@ -158,25 +183,28 @@ closeButton.addEventListener("click", function off() {
 });
 
 // ---------------------------load more---------------------------//
-const cards = document.getElementsByClassName("card");
-const loadMoreBtn = document.getElementById("loadmore");
-let currentIndex = 8;
+document.addEventListener("DOMContentLoaded", function () {
+  const cards = document.getElementsByClassName("card");
+  const loadMoreBtn = document.getElementById("loadmore");
+  let currentIndex = 8;
 
-for (let i = 0; i < cards.length; i++) {
-  if (i >= currentIndex) {
-    cards[i].style.display = "none";
-  }
-}
-loadMoreBtn.addEventListener("click", function loader() {
-  for (let i = currentIndex; i < currentIndex + 8; i++) {
-    if (cards[i]) {
-      cards[i].style.display = "block";
+  for (let i = 0; i < cards.length; i++) {
+    if (i >= currentIndex) {
+      cards[i].style.display = "none";
     }
   }
-  currentIndex += 8;
-  if (currentIndex >= cards.length) {
-    loadMoreBtn.style.display = "none";
-  }
+
+  loadMoreBtn.addEventListener("click", function loader() {
+    for (let i = currentIndex; i < currentIndex + 8; i++) {
+      if (cards[i]) {
+        cards[i].style.display = "block";
+      }
+    }
+    currentIndex += 8;
+    if (currentIndex >= cards.length) {
+      loadMoreBtn.style.display = "none";
+    }
+  });
 });
 // -----------------------------show password-----------------------------//
 const passwordInput = document.getElementById('password');
@@ -225,31 +253,39 @@ async function log_in(event) {
 
     if (!response.ok) {
       throw new Error('Network response was not ok');
-    } else {
-      console.log(response);
     }
 
     const data = await response.json();
 
-    if (data.data != null) {
+    if (data.statusCode == 200) {
       const vara = document.getElementById("snackbar");
       vara.className = "show";
       setTimeout(function setTimer() {
         vara.className = vara.className.replace("show", "");
-        window.location.reload();
       }, 2000);
 
-      console.log(JSON.stringify(data.data));
-
-      if(JSON.stringify(data.data.image) === "null"){
-        sessionStorage.setItem("image", null);   
-      }else{
-      sessionStorage.setItem("image", JSON.stringify(data.data.image));
+      if (JSON.stringify(data.data.image) === "null") {
+        sessionStorage.setItem("image", null);
+      } else {
+        sessionStorage.setItem("image", JSON.stringify(data.data.image));
       }
       sessionStorage.setItem("email", JSON.stringify(data.data.email));
       window.location.reload();
+    } else if (data.statusCode === 500) {
+      window.location.href = "../error/500error.html";
     } else {
-      alert("Login failed");
+      let errorMessage = '';
+      if (data.statusCode === 400) {
+        errorMessage = data.message;
+        console.log(errorMessage);
+        errorBox(errorMessage);
+      } else {
+        errorMessage = 'An unknown error occurred.';
+      }
+      const errorElement = document.getElementById("error-message");
+      if (errorElement) {
+        errorElement.textContent = errorMessage;
+      }
     }
   } catch (error) {
     console.error('Error:', error);
@@ -257,7 +293,6 @@ async function log_in(event) {
 }
 
 document.getElementById("login_form").addEventListener("click", log_in);
-
 // ------------------------register-----------------------------//
 async function register(event) {
   event.preventDefault();
@@ -362,13 +397,25 @@ async function register(event) {
     const data = await response.json();
 
     console.log(data);
-    if (data.data != null) {
+    if (data.statusCode === 200) {
       sessionStorage.setItem("email", JSON.stringify(data.data.email));
       sessionStorage.setItem("image", null);
       alert("Register Successfully");
       window.location.reload();
+    } else if (data.statusCode === 500) {
+      window.location.href = "../error/500error.html";
     } else {
-      alert("Register failed");
+      let errorMessage = '';
+      if (data.statusCode === 400) {
+        errorMessage = data.message;
+        errorBox(errorMessage);
+      } else {
+        errorMessage = 'An unknown error occurred.';
+      }
+      const errorElement = document.getElementById("error-message");
+      if (errorElement) {
+        errorElement.textContent = errorMessage;
+      }
     }
   } catch (error) {
     console.error('Error:', error);
@@ -378,3 +425,40 @@ async function register(event) {
 document.getElementById("registerForm").addEventListener("submit", register);
 
 //--------------------------------------------------------------------------//
+
+function showRequirement(inputId) {
+  const requirementMessage = getRequirementMessage(inputId);
+  const requirementElement = document.getElementById(inputId + '-requirement');
+  if (requirementElement) {
+    requirementElement.textContent = requirementMessage;
+  }
+}
+
+function clearRequirement() {
+  const requirements = document.querySelectorAll('.requirement');
+  requirements.forEach((requirement) => {
+    requirement.textContent = '';
+  });
+}
+
+function getRequirementMessage(inputId) {
+
+  if (inputId === 'name') {
+    return 'Use only alphabets. eg( Joe )';
+  } else if (inputId === 'email') {
+    return "Please enter a valid email address. eg ( joe@gmail.com )";
+  } else if (inputId === 'number') {
+    return 'Use only number.';
+  } else if (inputId === 'location') {
+    return 'Enter your location.';
+  } else if (inputId === 'password') {
+    return 'password must contain atleast one uppercase, one lower, one special character and numbers. It should contain 8 characters.';
+  } else if (inputId === 'confirm') {
+    return 'Confirm password should match the password';
+  }
+
+}
+
+
+
+

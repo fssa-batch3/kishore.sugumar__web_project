@@ -1,22 +1,51 @@
 const category = new URLSearchParams(window.location.search).get("Category");
+if (category === "car") {
+  document.querySelector("#cate_name").innerHTML = "Cars";
+} else if (category === "computer") {
+  document.querySelector("#cate_name").innerHTML = "Laptops and Compuers";
+} else if (category === "bike") {
+  document.querySelector("#cate_name").innerHTML = "Bikes";
+} else if (category === "mobile") {
+  document.querySelector("#cate_name").innerHTML = "Mobile phones";
+}
 
-document.querySelector("#cate_name").innerHTML = category;
+//----------------------------error message-----------------------//
+function errorBox(errorMessage) {
+  var snackArea = document.getElementById("error");
+  snackArea.className = "show";
+  var message = document.getElementsByClassName("messSpan")[0];
+  message.textContent = errorMessage;
+  setTimeout(function () {
+    snackArea.className = snackArea.className.replace("show", "");
+  }, 3000);
+}
 // ------------------------------------product card-------------------------------------------//
 
 const uri = `http://localhost:8080/vanhaweb/home/categroyproduct?Category=${category}`;
 
+const user = sessionStorage.getItem('email');
+const headers = {
+  'Content-Type': 'application/json',
+};
+
+if (user) {
+  headers['Authorization'] = `Bearer ${user}`;
+}
+
 fetch(uri, {
   method: 'GET',
+  headers: headers,
 })
   .then(response => {
     if (!response.ok) {
       throw new Error('Network response was not ok');
     }
     return response.json();
+
   })
   .then(data => {
-    console.log(data.data);
-    const loadData = data["data"]; 
+    console.log(data);
+    const loadData = data["data"];
 
     function createProductCard(product) {
       const card = document.createElement("div");
@@ -87,10 +116,35 @@ fetch(uri, {
       document.querySelector("#grid-container").appendChild(card);
     }
 
-    loadData.forEach(createProductCard);
+    if (data.statusCode === 200) {
+      if (loadData != null) {
+        loadData.forEach(createProductCard);
+      } else {
+        let noImageBox = document.querySelector(".main");
+
+        let noImage = document.createElement("img");
+        noImage.src = "https://iili.io/JJ5i29f.png";
+        noImage.alt = "empty product list";
+        noImage.classList.add("noProd");
+        noImageBox.appendChild(noImage);
+
+        let button = document.getElementById("loadmore");
+        button.setAttribute("style", "display:none")
+      }
+    } else if (data.statusCode === 500) {
+      window.location.href = "../error/500error.html";
+    } else {
+      let errorMessage = '';
+      if (data.statusCode === 400) {
+        errorMessage = data.message;
+        console.log(errorMessage);
+        errorBox(errorMessage);
+      } else {
+        errorMessage = 'An unknown error occurred.';
+      }
+    }
   })
   .catch(error => {
-    // Handle any errors that occurred during the fetch
     console.error('Fetch error:', error);
   });
 

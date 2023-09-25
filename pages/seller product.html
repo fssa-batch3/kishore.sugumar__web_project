@@ -89,31 +89,37 @@
     <div id="prod_edit">
         <form class="form-product">
             <h2 class="heading-in">Edit your Product </h2>
-            <!-- <div class="devide"> -->
             <div>
                 <div class="field">
                     <label>Product name :</label>
                     <input type="text" class="input-field_prod" id="edit_name" placeholder="product_name"
-                        autocomplete="off" pattern="^(?!\s)[a-zA-Z\s\d/]+$" required="true">
+                        monfocus="showRequirement('name')" onblur="clearRequirement()" pattern="^(?!\s)[a-zA-Z\s\d\/]+$"
+                        required>
                 </div>
+                <div id="name-requirement" class="requirement"></div>
                 <div class="field">
                     <label class="desc_label">Description :</label>
                     <textarea class="textarea" id="edit_description" placeholder="make it as point...."
-                        pattern="^(?!\s).*$"></textarea>
+                        onfocus="showRequirement('description')" onblur="clearRequirement()" pattern="^(?!\s).*$"
+                        required></textarea>
                 </div>
+                <div id="description-requirement" class="requirement"></div>
                 <div class="field">
                     <label>Product price :</label>
                     <input type="number" class="input-field_prod" id="edit_price" placeholder="product price"
-                        autocomplete="off" required="true">
+                        onfocus="showRequirement('price')" onblur="clearRequirement()" required>
                 </div>
+                <div id="price-requirement" class="requirement"></div>
                 <div class="field">
                     <label>Minimum price :</label>
                     <input type="number" class="input-field_prod" id="edit_min_price" placeholder="minimum price"
-                        autocomplete="off" required="true">
+                        onfocus="showRequirement('min_price')" onblur="clearRequirement()" required>
                 </div>
+                <div id="min_price-requirement" class="requirement"></div>
                 <div class="duration">
                     <label>Duration :</label>
-                    <input type="number" class="input-field_prod" id="edit_period" placeholder="&quot;1&quot;" required>
+                    <input type="number" class="input-field_prod" id="edit_period" placeholder="&quot;1&quot;"
+                        onfocus="showRequirement('period')" onblur="clearRequirement()" required>
                     <select class="Category" id="edit_duration" required>
                         <option value="" style="font-size:5pt;" disabled>&nbsp;</option>
                         <option class="option" value="month" style="font-size:12pt">Month</option>
@@ -122,47 +128,7 @@
                         <option value="" style="font-size:5pt;" disabled>&nbsp;</option>
                     </select>
                 </div>
-                <!-- </div> -->
-                <!-- <div>
-                        <div class="main-right">
-                            <div class="photo" id="imgBox1">
-                                <div class="camera1">
-                                    <input type="file" accept="image/*" name="image" id="image1" style="display: none"
-                                        onchange="loadFile(event)">
-                                    <label for="image1" class="camera">
-                                        <i class="fa fa-camera"></i>
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="photo" id="imgBox2">
-                                <div class="camera2">
-                                    <input type="file" accept="image/*" name="image" id="image2" style="display: none"
-                                        onchange="loadFile(event)">
-                                    <label for="image2" class="camera">
-                                        <i class="fa fa-camera"></i>
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="photo" id="imgBox3">
-                                <div class="camera3">
-                                    <input type="file" accept="image/*" name="image" id="image3" style="display: none"
-                                        onchange="loadFile(event)">
-                                    <label for="image3" class="camera">
-                                        <i class="fa fa-camera"></i>
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="photo" id="imgBox4">
-                                <div class="camera4">
-                                    <input type="file" accept="image/*" name="image" id="image4" style="display: none"
-                                        onchange="loadFile(event)">
-                                    <label for="image4" class="camera">
-                                        <i class="fa fa-camera"></i>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
+                <div id="period-requirement" class="requirement"></div>
             </div>
             <div class="btn">
                 <button class="button2" id="editProduct" type="button">Save</button>
@@ -170,9 +136,13 @@
             </div>
         </form>
     </div>
+    <!-- --------------snack bar----------------- -->
+    <div id="error" class="error">
+        <span class="messSpan"></span>
+    </div>
     <script src="../assets/JS/header.js"></script>
     <script src="../assets/JS/footer.js"></script>
-    <script src="../assets/JS/seller product.js"></script>
+    <script type="module" src="../assets/JS/seller product.js"></script>
 </body>
 
 </html>
