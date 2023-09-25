@@ -1,3 +1,14 @@
+
+//----------------------------error message-----------------------//
+function errorBox(errorMessage) {
+  var snackArea = document.getElementById("error");
+  snackArea.className = "show";
+  var message = document.getElementsByClassName("messSpan")[0];
+  message.textContent = errorMessage;
+  setTimeout(function () {
+    snackArea.className = snackArea.className.replace("show", "");
+  }, 3000);
+}
 // ------------------------- read product(in seller page)-----------------//
 
 document.addEventListener("DOMContentLoaded", function update_prod() {
@@ -17,71 +28,85 @@ document.addEventListener("DOMContentLoaded", function update_prod() {
       return response.json();
     })
     .then(data => {
-      const object = data.data;
-      document.querySelector("#prod_name").innerHTML = object.productName;
-      document.querySelector("#description").innerHTML = object.description;
-      document.querySelector("#prod_price").innerHTML = object.price;
-      document.querySelector("#prod_date").innerHTML = object.usedPeriod;
-      document.querySelector("#duration").innerHTML = object.usedDuration;
 
-      for (let i = 0; i < 4; i++) {
-        const imageDiv = document.createElement("div");
+      if (data.statusCode === 200) {
 
-        const img = document.createElement("img");
-        if (object.assets[i] != null) {
-          img.setAttribute("src", object.assets[i]["value"]);
-          img.setAttribute("assetId", object.assets[i]["id"]);
-        } else {
-          img.setAttribute("src", "../assets/img/illustration/blank.jpg");
-          img.setAttribute("assetId", 0);
-        }
-        img.setAttribute("alt", `${object.productName} image`);
-        img.setAttribute("id", `sub_img${i}`);
-        img.setAttribute("class", `product_img`);
+        const object = data.data;
+        document.querySelector("#prod_name").innerHTML = object.productName;
+        document.querySelector("#description").innerHTML = object.description;
+        document.querySelector("#prod_price").innerHTML = object.price;
+        document.querySelector("#prod_date").innerHTML = object.usedPeriod;
+        document.querySelector("#duration").innerHTML = object.usedDuration;
 
-        // Create the label and set its for attribute to match the input's id
-        const label = document.createElement("label");
-        label.htmlFor = `imageFile${i}`;
-        label.className = "fa-regular fa-pen-to-square";
+        for (let i = 0; i < 4; i++) {
+          const imageDiv = document.createElement("div");
 
-        // Create the file input element
-        const fileInput = document.createElement("input");
-        fileInput.type = "file";
-        fileInput.name = `imageFile${i}`;
-        fileInput.id = `imageFile${i}`;
-        fileInput.style.display = "none";
-
-        fileInput.addEventListener('change', () => {
-          const selectedFile = fileInput.files[0];
-          console.log(selectedFile);
-          if (selectedFile) {
-            try {
-              handleFile(selectedFile, `sub_img${i}`);
-              const assetId = object.assets[i] ? object.assets[i]["id"] : 0;
-              uploadImage(selectedFile, assetId);
-            } catch (error) {
-              alert('Error while showing image.');
-            }
+          const img = document.createElement("img");
+          if (object.assets[i] != null) {
+            img.setAttribute("src", object.assets[i]["value"]);
+            img.setAttribute("assetId", object.assets[i]["id"]);
           } else {
-            alert('Please select a file.');
+            img.setAttribute("src", "https://iili.io/JJTtQaa.jpg");
+            img.setAttribute("assetId", 0);
           }
-        });
+          img.setAttribute("alt", `${object.productName} image`);
+          img.setAttribute("id", `sub_img${i}`);
+          img.setAttribute("class", `product_img`);
 
-        // Append the elements to the DOM
-        imageDiv.appendChild(img);
-        imageDiv.appendChild(label);
-        imageDiv.appendChild(fileInput);
-        document.querySelector(".images").appendChild(imageDiv);
+          // Create the label and set its for attribute to match the input's id
+          const label = document.createElement("label");
+          label.htmlFor = `imageFile${i}`;
+          label.className = "fa-regular fa-pen-to-square";
+
+          // Create the file input element
+          const fileInput = document.createElement("input");
+          fileInput.type = "file";
+          fileInput.name = `imageFile${i}`;
+          fileInput.id = `imageFile${i}`;
+          fileInput.style.display = "none";
+
+          fileInput.addEventListener('change', () => {
+            const selectedFile = fileInput.files[0];
+            if (selectedFile) {
+              try {
+                handleFile(selectedFile, `sub_img${i}`);
+                const assetId = object.assets[i] ? object.assets[i]["id"] : 0;
+                uploadImage(selectedFile, assetId);
+              } catch (error) {
+                alert('Error while showing image.');
+              }
+            } else {
+              alert('Please select a file.');
+            }
+          });
+
+          // Append the elements to the DOM
+          imageDiv.appendChild(img);
+          imageDiv.appendChild(label);
+          imageDiv.appendChild(fileInput);
+          document.querySelector(".images").appendChild(imageDiv);
+        }
+
+
+        //--------------------Edit from-------------------------//
+
+        document.querySelector("#edit_name").value = object.productName;
+        document.querySelector("#edit_description").value = object.description;
+        document.querySelector("#edit_price").value = object.price;
+        document.querySelector("#edit_period").value = object.usedPeriod;
+        document.querySelector("#edit_min_price").value = object.minPrice;
+      }else if (data.statusCode === 500) {
+        window.location.href = "../error/500error.html";
+      } else {
+        let errorMessage = '';
+        if (data.statusCode === 400) {
+          errorMessage = data.message;
+          console.log(errorMessage);
+          errorBox(errorMessage);
+        } else {
+          errorMessage = 'An unknown error occurred.';
+        }
       }
-
-
-      //--------------------Edit from-------------------------//
-
-      document.querySelector("#edit_name").value = object.productName;
-      document.querySelector("#edit_description").value = object.description;
-      document.querySelector("#edit_price").value = object.price;
-      document.querySelector("#edit_period").value = object.usedPeriod;
-      document.querySelector("#edit_min_price").value = object.minPrice;
     })
     .catch(error => {
       console.error('Fetch error:', error);
@@ -251,11 +276,20 @@ async function updateProduct() {
 
     .then(responseText => {
       console.log(responseText);
-      if (responseText.data === 1) {
+      if (responseText.statusCode === 200) {
         alert("Edited Successfully");
         window.location.reload();
+      }  else if (data.statusCode === 500) {
+        window.location.href = "../error/500error.html";
       } else {
-        alert("Updation failed");
+        let errorMessage = '';
+        if (data.statusCode === 400) {
+          errorMessage = data.message;
+          console.log(errorMessage);
+          errorBox(errorMessage);
+        } else {
+          errorMessage = 'An unknown error occurred.';
+        }
       }
     })
     .catch(error => {
@@ -283,6 +317,39 @@ const backPage = document.getElementById("back");
 backPage.addEventListener("click", function back() {
   window.location.href = "buyer profile.html";
 });
+
+//------------------------------------------//
+function showRequirement(inputId) {
+  const requirementMessage = getRequirementMessage(inputId);
+  const requirementElement = document.getElementById(inputId + '-requirement');
+  if (requirementElement) {
+    requirementElement.textContent = requirementMessage;
+  }
+}
+
+function clearRequirement() {
+  const requirements = document.querySelectorAll('.requirement');
+  requirements.forEach((requirement) => {
+    requirement.textContent = '';
+  });
+}
+
+function getRequirementMessage(inputId) {
+  
+  if (inputId === 'name') {
+    return 'Enter your product name.';
+  } else if (inputId === 'price') {
+    return "Price should not exceed 1 crore Rs and not less than 10 Rs.";
+  }else if (inputId === 'min_price') {
+    return 'Minimum price should be lesser then price.';
+  }else if (inputId === 'description') {
+    return 'Give your description in points.';
+  }else if (inputId === 'period') {
+    return 'Give number of year or month.';
+  }
+
+}
+
 // // -----------------------------------seller read other's chat-------------------------------//
 
 // document.addEventListener("DOMContentLoaded", function messageAlert() {

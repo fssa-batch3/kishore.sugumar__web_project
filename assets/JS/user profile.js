@@ -1,3 +1,14 @@
+
+//----------------------------error message-----------------------//
+function errorBox(errorMessage) {
+  var snackArea = document.getElementById("error");
+  snackArea.className = "show";
+  var message = document.getElementsByClassName("messSpan")[0];
+  message.textContent = errorMessage;
+  setTimeout(function () {
+    snackArea.className = snackArea.className.replace("show", "");
+  }, 3000);
+}
 // -------------------------------------------//
 const userEmail = JSON.parse(sessionStorage.getItem("email"));
 
@@ -11,111 +22,134 @@ if (userEmail) {
   headers['Authorization'] = `Bearer ${userEmail}`;
 }
 
-
 fetch(proflieFetch, {
   method: 'GET',
   headers: headers,
 })
-
-  .then(response => {
+  .then(async (response) => {
     if (!response.ok) {
       throw new Error('Network response was not ok');
     }
-    return response.json();
+    const data = await response.json();
+    return data;
   })
-  .then(data => {
-    document.getElementById("user_name").innerHTML = data.user.name;
-    document.getElementById("user_email").innerHTML = data.user.email;
-    document.getElementById("user_phone").innerHTML = data.user.number;
-    if (data.user.location === null) {
-      document.getElementById("user_location").innerHTML = "Location";
-    }
-    if (data.user.location) {
-      document.getElementById("user_location").innerHTML = data.user.location;
-    }
 
-    const profileImage = document.getElementById("user-img");
-    if (data.user.image != null) {
-      profileImage.setAttribute("src", data.user.image);
+  .then((data) => {
+    if (data.statusCode === 200) {
+      console.log(data.data);
+      updateUserInfo(data.data.user);
+      updateProductList(data.data.products);
+    } else if (data.statusCode === 500) {
+      window.location.href = "../error/500error.html";
     } else {
-      profileImage.setAttribute("src", "https://iili.io/JJHvWdu.png");
-    }
-    profileImage.setAttribute("alt", `${data.user.name} Image`);
-
-    document.getElementById("name").value = data.user.name;
-    document.getElementById("email").innerText = data.user.email;
-    document.getElementById("phone").value = data.user.number;
-    if (data.user.location === null) {
-      document.getElementById("location").value = "";
-    }
-    if (data.user.location) {
-      document.getElementById("location").value = data.user.location;
-    }
-    if (data.products != null) {
-      let allProduct = data.products;
-      allProduct.forEach(function everyProduct(elements) {
-        const div_card = document.createElement("div");
-        div_card.classList.add("content");
-
-        const image = document.createElement("img");
-        image.setAttribute("src", elements.asset);
-        image.setAttribute("alt", `${elements.ProductName} Image`);
-        image.classList.add("product-img");
-        div_card.append(image);
-
-        const h2 = document.createElement("h3");
-        h2.setAttribute("class", "prod_name");
-        h2.setAttribute("id", "prod_name");
-        h2.textContent = elements.ProductName;
-        div_card.append(h2);
-
-        const anch = document.createElement("a");
-        anch.setAttribute(
-          "href",
-          `./accept offer.html?product_id=${elements.productId}`
-        );
-        div_card.append(anch);
-
-        const button1 = document.createElement("button");
-        button1.classList.add("button1", "algn");
-        button1.textContent = "offers";
-        anch.append(button1);
-
-        const anc = document.createElement("a");
-        anc.setAttribute(
-          "href",
-          `./seller product.html?product_id=${elements.productId}`
-        );
-        div_card.append(anc);
-
-        const button3 = document.createElement("button");
-        button3.classList.add("button2", "algn");
-        button3.textContent = "View";
-        anc.append(button3);
-
-        const button_remove = document.createElement("div");
-        div_card.append(button_remove);
-
-        const button2 = document.createElement("button");
-        button2.classList.add("button3", "remo");
-        button2.setAttribute("product_id", elements.productId);
-        button2.textContent = "Remove";
-        button2.setAttribute("id", "remove");
-        button2.addEventListener("click", async function () {
-          const id = button2.getAttribute("product_id");
-          await del(id);
-        });
-
-        button_remove.append(button2);
-
-        document.querySelector("div.box").append(div_card);
-      });
-
+      let errorMessage = '';
+      if (data.statusCode === 400) {
+        errorMessage = data.message;
+        console.log(errorMessage);
+        errorBox(errorMessage);
+      } else {
+        errorMessage = 'An unknown error occurred.';
+      }
     }
   })
-  .catch(error => {
+  .catch((error) => {
     console.error('Fetch error:', error);
   });
+
+function updateUserInfo(user) {
+  document.getElementById("user_name").textContent = user.name;
+  document.getElementById("user_email").textContent = user.email;
+  document.getElementById("user_phone").textContent = user.number;
+  document.getElementById("user_location").textContent = user.location || "Location";
+
+  const profileImage = document.getElementById("user-img");
+  profileImage.setAttribute("src", user.image || "https://iili.io/JJHvWdu.png");
+  profileImage.setAttribute("alt", `${user.name} Image`);
+
+  document.getElementById("name").value = user.name;
+  document.getElementById("email").innerText = user.email;
+  document.getElementById("phone").value = user.number;
+  document.getElementById("location").value = user.location || "";
+}
+
+function updateProductList(products) {
+  if (products != null) {
+    const productContainer = document.querySelector("div.box");
+    products.forEach(function (element) {
+      const div_card = createProductCard(element);
+      productContainer.append(div_card);
+    });
+  }
+}
+
+function createProductCard(element) {
+  const div_card = document.createElement("div");
+  div_card.classList.add("content");
+
+  const image = document.createElement("img");
+  if (element.asset != null) {
+    image.setAttribute("src", element.asset);
+  } else {
+    image.setAttribute("src", "https://iili.io/JJTtQaa.jpg");
+  }
+  image.setAttribute("alt", `${element.ProductName} Image`);
+  image.classList.add("product-img");
+  div_card.append(image);
+
+  const h2 = document.createElement("h3");
+  h2.setAttribute("class", "prod_name");
+  h2.setAttribute("id", "prod_name");
+  h2.textContent = element.ProductName;
+  div_card.append(h2);
+
+  const anch = document.createElement("a");
+  anch.setAttribute(
+    "href",
+    `./accept offer.html?product_id=${element.productId}`
+  );
+  div_card.append(anch);
+
+  const button1 = document.createElement("button");
+  button1.classList.add("button1", "algn");
+  button1.textContent = "offers";
+  anch.append(button1);
+
+  const anc = document.createElement("a");
+  anc.setAttribute(
+    "href",
+    `./seller product.html?product_id=${element.productId}`
+  );
+  div_card.append(anc);
+
+  const button3 = document.createElement("button");
+  button3.classList.add("button2", "algn");
+  button3.textContent = "View";
+  anc.append(button3);
+
+  const button_remove = document.createElement("div");
+  div_card.append(button_remove);
+
+  const button2 = document.createElement("button");
+  button2.classList.add("button3", "remo");
+  button2.setAttribute("product_id", element.productId);
+  button2.textContent = "Remove";
+  button2.setAttribute("id", "remove");
+  button2.setAttribute("type", "button");
+  button2.addEventListener("click", async function () {
+    if (window.confirm("Do you want to delete your product")) {
+      const id = button2.getAttribute("product_id");
+      await del(id);
+    } else {
+      return;
+    }
+  });
+
+  button_remove.append(button2);
+
+  return div_card;
+}
+
+
 
 //------------------------------------image--------------------------------//
 
@@ -127,7 +161,7 @@ imageFileInput.addEventListener('change', async () => {
 
   if (selectedFile) {
     try {
-      uploadImage(selectedFile);
+      await uploadImage(selectedFile);
     } catch (error) {
       alert('Image upload failed. Please try again.');
     }
@@ -165,7 +199,6 @@ async function uploadImage(imageFile) {
   }
 }
 
-
 async function changeImage(image) {
   const updateImage = 'http://localhost:8080/vanhaweb//home/profile';
 
@@ -186,11 +219,21 @@ async function changeImage(image) {
 
     const data = await response.json();
 
-    if (data.data != null) {
+    if (data.statusCode === 200) {
       alert("Image changed");
+      sessionStorage.setItem("image", json.stringify(image));
       window.location.reload();
+    } else if (data.statusCode === 500) {
+      window.location.href = "../error/500error.html";
     } else {
-      alert("Updation failed");
+      let errorMessage = '';
+      if (data.statusCode === 400) {
+        errorMessage = data.message;
+        console.log(errorMessage);
+        errorBox(errorMessage);
+      } else {
+        errorMessage = 'An unknown error occurred.';
+      }
     }
   } catch (error) {
     console.error('Error:', error);
@@ -255,11 +298,20 @@ async function updateProfile() {
 
     const data = await response.json();
 
-    if (data.data != null) {
+    if (data.statusCode === 200) {
       alert("Edited Successfully");
       window.location.reload();
+    } else if (data.statusCode === 500) {
+      window.location.href = "../error/500error.html";
     } else {
-      alert("Updation failed");
+      let errorMessage = '';
+      if (data.statusCode === 400) {
+        errorMessage = data.message;
+        console.log(errorMessage);
+        errorBox(errorMessage);
+      } else {
+        errorMessage = 'An unknown error occurred.';
+      }
     }
   } catch (error) {
     console.error('Error:', error);
@@ -271,36 +323,42 @@ updateButton.addEventListener("click", async function () {
   await updateProfile();
 });
 
-// -------------------------delete profile-----------------------//
+// -------------------------delete product-----------------------//
 
 async function del(id) {
 
-  const deleteProduct = 'http://localhost:8080/vanhaweb/home/profile/productdetail/delete';
-
-  const headers = {
-    'Content-Type': 'application/json',
-  };
-
-  if (id != null) {
-    headers['Authorization'] = `Bearer ${id}`;
-  }
+  const deleteProduct = `http://localhost:8080/vanhaweb/home/profile/productdetail/delete?productId=${id}`;
 
   try {
-    const response = await fetch(deleteProduct, {
-      method: 'GET',
-      headers: headers,
-    });
+    const response = await (
+      fetch(deleteProduct, {
+        method: 'GET',
+      })
+    );
 
     if (!response.ok) {
       throw new Error('Network response was not ok');
     }
 
-    const data = response;
+    console.log(response);
 
-    if (data.data != 1) {
+    const result = await response.json();
+
+    console.log(result);
+
+    if (result.statusCode === 200) {
       window.location.reload();
+    } else if (data.statusCode === 500) {
+      window.location.href = "../error/500error.html";
     } else {
-      alert("Deletion failed");
+      let errorMessage = '';
+      if (data.statusCode === 400) {
+        errorMessage = data.message;
+        console.log(errorMessage);
+        errorBox(errorMessage);
+      } else {
+        errorMessage = 'An unknown error occurred.';
+      }
     }
   } catch (error) {
     console.error('Error:', error);
@@ -339,6 +397,32 @@ formOffBtn.addEventListener("click", function form_off() {
   document.getElementById("overlay").style.display = "none";
 });
 
+//--------------------------------------------------------------//
+function showRequirement(inputId) {
+  const requirementMessage = getRequirementMessage(inputId);
+  const requirementElement = document.getElementById(inputId + '-requirement');
+  if (requirementElement) {
+    requirementElement.textContent = requirementMessage;
+  }
+}
+
+function clearRequirement() {
+  const requirements = document.querySelectorAll('.requirement');
+  requirements.forEach((requirement) => {
+    requirement.textContent = '';
+  });
+}
+
+function getRequirementMessage(inputId) {
+
+  if (inputId === 'name') {
+    return 'Use only alphabets. eg( Joe )';
+  } else if (inputId === 'number') {
+    return 'Use only number.';
+  } else if (inputId === 'location') {
+    return 'Enter your location.';
+  }
+}
 // // ------------------------------------------------------//
 
 // const messageArray = JSON.parse(localStorage.getItem("messageArray"));

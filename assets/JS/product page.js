@@ -1,3 +1,15 @@
+
+//----------------------------error message-----------------------//
+function errorBox(errorMessage) {
+  var snackArea = document.getElementById("error");
+  snackArea.className = "show";
+  var message = document.getElementsByClassName("messSpan")[0];
+  message.textContent = errorMessage;
+  setTimeout(function () {
+    snackArea.className = snackArea.className.replace("show", "");
+  }, 3000);
+}
+//----------------------------------------------------------------//
 const productId = new URLSearchParams(window.location.search).get("productId");
 
 const uri = `http://localhost:8080/vanhaweb/home/productdetail?productId=${productId}`;
@@ -13,78 +25,91 @@ fetch(uri, {
   })
   .then(data => {
 
-    const object = data.data;
-    document.querySelector("#prod_name").innerHTML = object.productName;
-    document.querySelector("#description").innerHTML = object.description;
-    document.querySelector("#prod_price").innerHTML = object.price;
-    document.querySelector("#prod_date").innerHTML = object.usedPeriod;
-    document.querySelector("#duration").innerHTML = object.usedDuration;
-    document.querySelector("#seller_name").innerHTML = object.sellerName;
-    document.querySelector("#seller_location").innerHTML = object.SellerLocation;
-    let seller_image = document.querySelector("#seller_img");
-    seller_image.setAttribute("src", object.sellerImage);
-    seller_image.setAttribute("alt", `${object.productName} Image`);
+    if (data.statusCode === 200) {
+      const object = data.data;
+      document.querySelector("#prod_name").innerHTML = object.productName;
+      document.querySelector("#description").innerHTML = object.description;
+      document.querySelector("#prod_price").innerHTML = object.price;
+      document.querySelector("#prod_date").innerHTML = object.usedPeriod;
+      document.querySelector("#duration").innerHTML = object.usedDuration;
+      document.querySelector("#seller_name").innerHTML = object.sellerName;
+      document.querySelector("#seller_location").innerHTML = object.SellerLocation;
+      let seller_image = document.querySelector("#seller_img");
+      seller_image.setAttribute("src", object.sellerImage);
+      seller_image.setAttribute("alt", `${object.productName} Image`);
 
-    let image = document.querySelector("#imagebox");
-    image.setAttribute("src", object.assets[0]["value"]);
-    image.setAttribute("alt", `${object.productName} image`)
+      let image = document.querySelector("#imagebox");
+      image.setAttribute("src", object.assets[0]["value"]);
+      image.setAttribute("alt", `${object.productName} image`)
 
-    for (let i = 0; i < 4; i++) {
-      const product_image = document.createElement("img");
-      if (object.assets[i] != null) {
-        product_image.setAttribute("src", object.assets[i]["value"]);
-      } else {
-        product_image.setAttribute("src", "../assets/img/illustration/blank.jpg");
+      for (let i = 0; i < 4; i++) {
+        const product_image = document.createElement("img");
+        if (object.assets[i] != null) {
+          product_image.setAttribute("src", object.assets[i]["value"]);
+        } else {
+          product_image.setAttribute("src", "../assets/img/illustration/blank.jpg");
+        }
+        product_image.setAttribute("alt", `${object.productName} image`);
+        product_image.setAttribute("id", `sub_img${i}`);
+        product_image.setAttribute("onclick", "img(this)");
+        document.querySelector(".thumbnail-imgs").appendChild(product_image);
       }
-      product_image.setAttribute("alt", `${object.productName} image`);
-      product_image.setAttribute("id", `sub_img${i}`);
-      product_image.setAttribute("onclick", "img(this)");
-      document.querySelector(".thumbnail-imgs").appendChild(product_image);
-    }
 
 
-    const container = document.querySelector(".allRequests");
-    if (object.bids.length == 0) {
-      const noProductMessage = document.createElement("h2");
-      noProductMessage.setAttribute("class", "noProduct");
-      noProductMessage.textContent = "There are no requests for this product.";
-
-      const noImage = document.createElement("img");
-      noImage.setAttribute("src", "../assets/img/illustration/empty bidlist.png");
-      noImage.setAttribute("alt", "illustration image");
-      noImage.setAttribute("class", "illustration-image");
-      container.append(noProductMessage);
-      container.append(noImage);
-    }
-    else {
-
-      const bidsArray = object.bids;
       const container = document.querySelector(".allRequests");
+      if (object.bids.length == 0) {
+        const noProductMessage = document.createElement("h2");
+        noProductMessage.setAttribute("class", "noProduct");
+        noProductMessage.textContent = "There are no requests for this product.";
 
-      for (let i = 0; i < bidsArray.length; i++) {
-        const bid = bidsArray[i];
+        const noImage = document.createElement("img");
+        noImage.setAttribute("src", "../assets/img/illustration/empty bidlist.png");
+        noImage.setAttribute("alt", "illustration image");
+        noImage.setAttribute("class", "illustration-image");
+        container.append(noProductMessage);
+        container.append(noImage);
+      }
+      else {
 
-        const lineDiv = document.createElement("div");
-        lineDiv.classList.add("bidblock");
+        const bidsArray = object.bids;
+        const container = document.querySelector(".allRequests");
 
-        const paragraph = document.createElement("p");
+        for (let i = 0; i < bidsArray.length; i++) {
+          const bid = bidsArray[i];
 
-        const buyerNameText = document.createTextNode(bid.buyerName);
-        paragraph.appendChild(buyerNameText);
+          const lineDiv = document.createElement("div");
+          lineDiv.classList.add("bidblock");
 
-        const amountSpan = document.createElement("span");
-        amountSpan.textContent = bid.amount;
-        paragraph.appendChild(amountSpan);
+          const paragraph = document.createElement("p");
 
-        const buyerImage = document.createElement("img");
-        buyerImage.src = bid.buyerImage;
-        buyerImage.alt = `${bid.buyerName} Image`;
-        buyerImage.classList.add("buyer_img");
-        paragraph.appendChild(buyerImage);
+          const buyerNameText = document.createTextNode(bid.buyerName);
+          paragraph.appendChild(buyerNameText);
 
-        lineDiv.appendChild(paragraph);
+          const amountSpan = document.createElement("span");
+          amountSpan.textContent = bid.amount;
+          paragraph.appendChild(amountSpan);
 
-        container.appendChild(lineDiv);
+          const buyerImage = document.createElement("img");
+          buyerImage.src = bid.buyerImage;
+          buyerImage.alt = `${bid.buyerName} Image`;
+          buyerImage.classList.add("buyer_img");
+          paragraph.appendChild(buyerImage);
+
+          lineDiv.appendChild(paragraph);
+
+          container.appendChild(lineDiv);
+        }
+      }
+    } else if (data.statusCode === 500) {
+      window.location.href = "../error/500error.html";
+    } else {
+      let errorMessage = '';
+      if (data.statusCode === 400) {
+        errorMessage = data.message;
+        console.log(errorMessage);
+        errorBox(errorMessage);
+      } else {
+        errorMessage = 'An unknown error occurred.';
       }
     }
 
@@ -211,15 +236,24 @@ async function bid(event) {
       }
       const data = await response.json();
 
-      if (data.data === 1) {
+      if (data.statusCode === 200) {
         const vara = document.getElementById("snackbar");
         vara.className = "show";
         setTimeout(function setTimer() {
           vara.className = vara.className.replace("show", "");
           window.location.reload();
         }, 2000);
+      } else if (data.statusCode === 500) {
+        window.location.href = "../error/500error.html";
       } else {
-        alert("Bid failed");
+        let errorMessage = '';
+        if (data.statusCode === 400) {
+          errorMessage = data.message;
+          console.log(errorMessage);
+          errorBox(errorMessage);
+        } else {
+          errorMessage = 'An unknown error occurred.';
+        }
       }
     } catch (error) {
       console.error('Error:', error);

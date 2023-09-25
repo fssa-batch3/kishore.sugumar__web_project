@@ -24,82 +24,116 @@
 
     </header>
     <main>
-        <div class="heading">
-            <div class="border"></div>
-            <h2 class="head">Add product</h2>
-            <div class="border"></div>
-        </div>
 
-        <form class="main" id="form">
-            <section class="aling" type="form">
-                <div class="main-left">
-                    <div class="field">
-                        <label>Product name :</label>
-                        <input type="text" class="input-field_prod" id="name" placeholder="product_name"
-                            autocomplete="off" pattern="^(?!\s)[a-zA-Z\s\d/]+$" required="true">
+        <form class="form">
+            <h1>Add Your Product</h1>
+            <div class="align">
+                <section class="left">
+                    <div class="divide">
+                        <section>
+                            <div>
+                                <div>
+                                    <p>Product Name:</p>
+                                </div>
+                                <div>
+                                    <input type="text" name="name" id="name" onfocus="showRequirement('name')"
+                                        onblur="clearRequirement()" required>
+                                </div>
+                                <div id="name-requirement" class="requirement"></div>
+                            </div>
+                            <div>
+                                <div>
+                                    <p>Product Price:</p>
+                                </div>
+                                <div>
+                                    <input type="number" onfocus="showRequirement('price')" onblur="clearRequirement()"
+                                        name="price" id="price" required>
+                                </div>
+                                <div id="price-requirement" class="requirement"></div>
+                            </div>
+                            <div>
+                                <div>
+                                    <p>Minimum Price:</p>
+                                </div>
+                                <div>
+                                    <input type="number" name="min_price" id="min_price"
+                                        onfocus="showRequirement('min_price')" onblur="clearRequirement()" required>
+                                </div>
+                                <div id="min_price-requirement" class="requirement"></div>
+                            </div>
+                        </section>
+                        <section>
+
+                        </section>
+                        <section>
+                            <div>
+                                <div>
+                                    <div>
+                                        <p>Used</p>
+                                    </div>
+                                    <div class="used">
+                                        <input type="number" name="period" class="period" id="period"
+                                            onfocus="showRequirement('period')" onblur="clearRequirement()"
+                                            placeholder="&quot;1&quot;" required>
+                                        <div class="duration">
+                                            <select id="duration" name="duration" required>
+                                                <option value="month">Month</option>
+                                                <option value="year">Year</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div id="period-requirement" class="requirement"></div>
+                                </div>
+                                <div>
+                                    <div>
+                                        <p>Category</p>
+                                    </div>
+                                    <div>
+                                        <select name="category" id="category" required>
+                                            <option value="car">Car</option>
+                                            <option value="bike">Bike</option>
+                                            <option value="computer">Computer</option>
+                                            <option value="mobile">Mobile</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
                     </div>
-                    <div class="field">
-                        <div class="duration">
-                            <label>Category :</label>
-                            <select class="Category" id="Category" required>
-                                <option value="" style="font-size:5pt;" disabled>&nbsp;</option>
-                                <option class="option" value="car" style="font-size:12pt">Car</option>
-                                <option value="" style="font-size:5pt;" disabled>&nbsp;</option>
-                                <option class="option" value="bike" style="font-size:12pt">Bike</option>
-                                <option value="" style="font-size:5pt;" disabled>&nbsp;</option>
-                                <option class="option" value="computer" style="font-size:12pt">Laptops & computers</option>
-                                <option value="" style="font-size:5pt;" disabled>&nbsp;</option>
-                                <option class="option" value="mobile" style="font-size:12pt">Mobile</option>
-                                <option value="" style="font-size:5pt;" disabled>&nbsp;</option>
-                            </select>
+                    <div>
+                        <div>
+                            <p>Product Description:</p>
                         </div>
+                        <div>
+                            <textarea name="description" id="description" onfocus="showRequirement('description')"
+                                onblur="clearRequirement()" required></textarea>
+                        </div>
+                        <div id="description-requirement" class="requirement"></div>
                     </div>
-                    <div class="field">
-                        <label class="desc_label">Description :</label>
-                        <textarea class="textarea" id="description" placeholder="make it as point...."
-                            pattern="^(?!\s).*$"></textarea>
+                    <div class="note">
+                        <p><b>Note:</b> Please follow these steps to upload your product images:</p>
+                        <ol>
+                            <li>Go to your profile page.</li>
+                            <li>Click on the product for which you want to upload an image.</li>
+                            <li>Click the product e-dir button and start uploading your images.</li>
+                        </ol>
                     </div>
-                    <div class="field">
-                        <label>Product price :</label>
-                        <input type="number" class="input-field_prod" id="price" placeholder="product price"
-                            autocomplete="off" required="true">
-                    </div>
-                    <div class="field">
-                        <label>Minimum price :</label>
-                        <input type="number" class="input-field_prod" id="min_price" placeholder="minimum price"
-                            autocomplete="off" required="true">
-                    </div>
-                    <div class="duration">
-                        <label>Duration :</label>
-                        <input type="number" class="input-field_prod" id="period" placeholder="&quot;1&quot;" required>
-                        <select class="Category" id="duration" required>
-                            <option value="" style="font-size:5pt;" disabled>&nbsp;</option>
-                            <option class="option" value="month" style="font-size:12pt">Month</option>
-                            <option value="" style="font-size:5pt;" disabled>&nbsp;</option>
-                            <option class="option" value="year" style="font-size:12pt">Year</option>
-                            <option value="" style="font-size:5pt;" disabled>&nbsp;</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="middle-line"></div>
-                <div class="main-right">
-
-                </div>
-            </section>
-            <section class="btn algn">
-                <div>
-                    <button type="submit" class="button2" id="add_product">Add product</button>
-                </div>
-                <div>
-                    <button class="button3" id="back">Discard</button>
-                </div>
-            </section>
+                </section>
+            </div>
+            <div class="btn">
+                <button type="button" id="back" class="button3">Back</button>
+                <button type="button" id="add_product" class="button2">Add Product</button>
+            </div>
         </form>
     </main>
 
     <footer class="footer" id="footer">
     </footer>
     <div class="copy">Copyright © 2021 - 2022 VANHA - Website Designed By KISHORE</div>
+    <!-- --------------snack bar----------------- -->
+    <div id="error" class="error">
+        <span class="messSpan"></span>
+    </div>
     <script src="../assets/JS/footer.js"></script>
     <script src="../assets/JS/header.js"></script>
     <script src="../assets/JS/add product.js"></script>
