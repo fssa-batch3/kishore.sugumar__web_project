@@ -1,101 +1,118 @@
-document.addEventListener("DOMContentLoaded", function productt() {
-  const product_id = new URLSearchParams(window.location.search).get(
-    "product_id"
-  );
-  const productArray = JSON.parse(localStorage.getItem("product_data"));
-  const imageArray = JSON.parse(localStorage.getItem("images"));
-  const image = imageArray.find((i) => i.unique === product_id);
 
-  const product = productArray.find((p) => p.unique === product_id);
+//----------------------------error message-----------------------//
+function errorBox(errorMessage) {
+  var snackArea = document.getElementById("error");
+  snackArea.className = "show";
+  var message = document.getElementsByClassName("messSpan")[0];
+  message.textContent = errorMessage;
+  setTimeout(function () {
+    snackArea.className = snackArea.className.replace("show", "");
+  }, 3000);
+}
 
-  const productImage = document.getElementById("product_img");
-  productImage.setAttribute("src", image.image1);
-  productImage.setAttribute("alt", `${product.name} image`);
-  document.getElementById("product_name").innerHTML = product.name;
-  document.getElementById("prod_price").innerHTML = product.price;
-});
+//-----------------------------------------------------------------//
 
-// --------------------------------------------------------//
+const productId = new URLSearchParams(window.location.search).get("product_id");
 
-document.addEventListener("DOMContentLoaded", function buyerBidList() {
-  const bid_array = JSON.parse(localStorage.getItem("bid"));
-  const productId = new URLSearchParams(window.location.search).get(
-    "product_id"
-  );
-  const user = JSON.parse(localStorage.getItem("user_data"));
+console.log(productId);
 
-  const container = document.getElementById("bid-list");
+const viewBids = `http://localhost:8080/vanhaweb/home/profile/allbids?productId=${productId}`;
 
-  const productExist = bid_array.filter((p) => p.productId === productId);
+fetch(viewBids, {
+  method: 'GET',
+})
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return response.json();
+  })
+  .then(data => {
+    const object = data.data;
+    const Image = document.getElementById("product_img");
+    Image.setAttribute("src", object.productImage);
+    Image.setAttribute("alt", `${object.productName} image`);
+    document.getElementById("product_name").innerHTML = object.productName;
+    document.getElementById("prod_price").innerHTML = object.productPrice;
 
-  if (!bid_array || bid_array.length === 0 || productExist.length === 0) {
-    const div = document.createElement("div");
+    const container = document.getElementById("bid-list");
 
-    const name = document.createElement("h3");
-    name.innerText = "There is no Offers";
-    div.appendChild(name);
-
-    const image = document.createElement("img");
-    image.setAttribute("src", "../assets/img/illustration/no result.png");
-    image.setAttribute("alt", "no result found");
-    image.setAttribute("class", "illuimg");
-    div.appendChild(image);
-
-    container.appendChild(div);
-    return;
-  }
-
-  if (bid_array.length !== 0) {
-    for (let i = 0; i < bid_array.length; i++) {
-      const index = user.findIndex(
-        (item) => item.email === bid_array[i].buyer_id
-      );
-      const buyer = user[index];
-      if (
-        productId === bid_array[i].productId &&
-        bid_array[i].buyer_id === buyer.email
-      ) {
+    if (data.statusCode === 200) {
+      if (object.bids.length === 0) {
         const div = document.createElement("div");
-        div.classList.add("content");
 
-        const img = document.createElement("img");
-        img.src = buyer.image;
-        img.alt = `${buyer.name} image`;
-        img.classList.add("buyer_img");
-        div.appendChild(img);
-
-        const name = document.createElement("h4");
-        name.classList.add("buyer_name");
-        name.textContent = buyer.name;
+        const name = document.createElement("h3");
+        name.innerText = "There is no Offers";
         div.appendChild(name);
 
-        const rate = document.createElement("div");
-        rate.classList.add("title");
-        rate.textContent = "Price : ";
-        div.appendChild(rate);
-
-        const rateDiv = document.createElement("div");
-        rateDiv.classList.add("price");
-        rateDiv.textContent = bid_array[i].new_price;
-        div.appendChild(rateDiv);
-
-        const anch = document.createElement("a");
-        anch.setAttribute(
-          "href",
-          `./after accept offer.html?buyer_id=${bid_array[i].buyer_id}&product_id=${productId}`
-        );
-        div.append(anch);
-
-        const sellButton = document.createElement("button");
-        sellButton.classList.add("button2", "algn");
-        sellButton.textContent = "sell";
-        anch.appendChild(sellButton);
+        const image = document.createElement("img");
+        image.setAttribute("src", "../assets/img/illustration/no result.png");
+        image.setAttribute("alt", "no result found");
+        image.setAttribute("class", "illuimg");
+        div.appendChild(image);
 
         container.appendChild(div);
+        return;
+      } else {
+        let allBids = object.bids;
+        allBids.forEach(function everyProduct(elements) {
+          const div = document.createElement("div");
+          div.classList.add("content");
+
+          const img = document.createElement("img");
+          img.src = elements.buyerImage;
+          img.alt = `${elements.buyerName} image`;
+          img.classList.add("buyer_img");
+          div.appendChild(img);
+
+          const name = document.createElement("h4");
+          name.classList.add("buyer_name");
+          name.textContent = elements.buyerName;
+          div.appendChild(name);
+
+          const rate = document.createElement("div");
+          rate.classList.add("title");
+          rate.textContent = "Price : ";
+          div.appendChild(rate);
+
+          const rateDiv = document.createElement("div");
+          rateDiv.classList.add("price");
+          rateDiv.textContent = elements.amount;
+          div.appendChild(rateDiv);
+
+          const anch = document.createElement("a");
+          // anch.setAttribute(
+          //   "href",
+          //   `./after accept offer.html?buyer_id=${bid_array[i].buyer_id}&product_id=${productId}`
+          // );
+          div.append(anch);
+
+          const sellButton = document.createElement("button");
+          sellButton.classList.add("button2", "algn");
+          sellButton.textContent = "sell";
+          anch.appendChild(sellButton);
+
+          container.appendChild(div);
+        });
+      }
+    } else if (data.statusCode === 500) {
+      window.location.href = "../error/500error.html";
+    } else {
+      let errorMessage = '';
+      if (data.statusCode === 400) {
+        errorMessage = data.message;
+        console.log(errorMessage);
+        errorBox(errorMessage);
+      } else {
+        errorMessage = 'An unknown error occurred.';
       }
     }
-  }
-});
+  })
+  .catch(error => {
+    console.error('Fetch error:', error);
+  });
+
+//------------------------back button----------------------//
 
 const back = document.getElementById("back");
 back.addEventListener("click", function nextPage() {

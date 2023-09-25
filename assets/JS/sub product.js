@@ -1,95 +1,154 @@
-document.querySelector("#cate_name").innerHTML = new URLSearchParams(
-  window.location.search
-).get("Category");
+const category = new URLSearchParams(window.location.search).get("Category");
+if (category === "car") {
+  document.querySelector("#cate_name").innerHTML = "Cars";
+} else if (category === "computer") {
+  document.querySelector("#cate_name").innerHTML = "Laptops and Compuers";
+} else if (category === "bike") {
+  document.querySelector("#cate_name").innerHTML = "Bikes";
+} else if (category === "mobile") {
+  document.querySelector("#cate_name").innerHTML = "Mobile phones";
+}
 
+//----------------------------error message-----------------------//
+function errorBox(errorMessage) {
+  var snackArea = document.getElementById("error");
+  snackArea.className = "show";
+  var message = document.getElementsByClassName("messSpan")[0];
+  message.textContent = errorMessage;
+  setTimeout(function () {
+    snackArea.className = snackArea.className.replace("show", "");
+  }, 3000);
+}
 // ------------------------------------product card-------------------------------------------//
 
-document.addEventListener("DOMContentLoaded", function card() {
-  const category_prod = new URLSearchParams(window.location.search).get(
-    "Category"
-  );
-  const prod = JSON.parse(localStorage.getItem("product_data"));
-  const userArray = JSON.parse(localStorage.getItem("user_data"));
-  const imageArray = JSON.parse(localStorage.getItem("images"));
-  const unique = JSON.parse(localStorage.getItem("unique_id"));
+const uri = `http://localhost:8080/vanhaweb/home/categroyproduct?Category=${category}`;
 
-  let product = prod.filter((p) => p.category === category_prod && unique !== p.user_id)
-  product.forEach(element => {
-    const div_card = document.createElement("div");
-    div_card.setAttribute("class", "card");
+const user = sessionStorage.getItem('email');
+const headers = {
+  'Content-Type': 'application/json',
+};
 
-    const div_detail = document.createElement("div");
-    div_detail.setAttribute("class", "card-details");
-    div_detail.setAttribute("data-unique", element.unique);
-    div_card.append(div_detail);
+if (user) {
+  headers['Authorization'] = `Bearer ${user}`;
+}
 
-    const anch = document.createElement("a");
-    anch.setAttribute(
-      "href",
-      `./product page.html?product_id=${element.unique}`
-    );
-    div_detail.append(anch);
+fetch(uri, {
+  method: 'GET',
+  headers: headers,
+})
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return response.json();
 
-    const productImage = imageArray.find((i) => i.unique === element.unique)
+  })
+  .then(data => {
+    console.log(data);
+    const loadData = data["data"];
 
-    const image = document.createElement("img");
-    image.setAttribute("src", productImage.image1);
-    image.setAttribute("alt", `${element.name}Image`);
-    image.setAttribute("class", "product_img");
-    anch.append(image);
+    function createProductCard(product) {
+      const card = document.createElement("div");
+      card.classList.add("card");
 
-    const h3 = document.createElement("h3");
-    h3.setAttribute("class", "text-title");
-    h3.innerHTML = element.name;
-    div_detail.append(h3);
+      const cardDetails = document.createElement("div");
+      cardDetails.classList.add("card-details");
+      card.appendChild(cardDetails);
 
-    const productUnique = document.createElement("p");
-    productUnique.setAttribute("class", "unique");
-    productUnique.setAttribute("id", "unique");
-    productUnique.innerHTML = element.unique;
-    div_detail.append(productUnique);
+      const productLink = document.createElement("a");
+      productLink.href = `./product page.html?productId=${product.productId}`;
+      cardDetails.appendChild(productLink);
 
-    const div_price = document.createElement("div");
-    div_price.setAttribute("class", "text-body");
-    div_detail.append(div_price);
+      const productImage = document.createElement("img");
+      productImage.src = product.asset;
+      productImage.alt = `${product.ProductName} Image`;
+      productImage.classList.add("product_img");
+      productLink.appendChild(productImage);
 
-    const p_price = document.createElement("span");
-    div_price.prepend(p_price);
+      const productName = document.createElement("h3");
+      productName.classList.add("text-title");
+      productName.textContent = product.ProductName;
+      cardDetails.appendChild(productName);
 
-    const p_bold = document.createElement("b");
-    p_bold.innerText = "Price:";
-    p_price.append(p_bold);
+      const priceDiv = document.createElement("div");
+      priceDiv.classList.add("text-body");
+      cardDetails.appendChild(priceDiv);
 
-    const p_rate = document.createElement("span");
-    p_rate.innerHTML = element.price;
-    div_price.append(p_rate);
+      const priceSpan = document.createElement("span");
+      priceDiv.appendChild(priceSpan);
 
-    const p_currency = document.createElement("span");
-    p_currency.innerHTML = " (INR)";
-    div_price.append(p_currency);
+      const priceBold = document.createElement("b");
+      priceBold.textContent = "Price:";
+      priceSpan.appendChild(priceBold);
 
-    const locationDiv = document.createElement("div");
-    locationDiv.setAttribute("class", "text-body");
-    div_detail.append(locationDiv);
-  
-    const LocationSpan = document.createElement("span");
-    locationDiv.prepend(LocationSpan);
-  
-    const locationHeading = document.createElement("b");
-    locationHeading.innerText = "Location:";
-    LocationSpan.append(locationHeading);
-  
-    const sellerId = userArray.find((u) => u.email === element.user_id);
-  
-    const LocationBuyer = document.createElement("span");
-    LocationBuyer.innerHTML = sellerId.location;
-    locationDiv.append(LocationBuyer);
+      const priceValue = document.createElement("span");
+      priceValue.innerHTML = `${product.price} (INR)`;
+      priceDiv.appendChild(priceValue);
 
-    document.body.appendChild(div_card);
+      const locationDiv = document.createElement("div");
+      locationDiv.classList.add("text-body");
+      cardDetails.appendChild(locationDiv);
 
-    document.querySelector("#grid-container").append(div_card);
+      const locationSpan = document.createElement("div");
+      locationDiv.appendChild(locationSpan);
+
+      const sellerInfo = document.createElement("div");
+      sellerInfo.classList.add("sellerInfo");
+      card.appendChild(sellerInfo);
+
+      const sellerImage = document.createElement("img");
+      sellerImage.src = product.SellerImage;
+      sellerImage.alt = `${product.sellerName} Image`;
+      sellerImage.classList.add("seller_img");
+      sellerInfo.appendChild(sellerImage);
+
+      const sellerDetails = document.createElement("div");
+      sellerInfo.appendChild(sellerDetails);
+
+      const sellerNameSpan = document.createElement("div");
+      sellerNameSpan.innerHTML = `<b>Seller:</b> ${product.sellerName}`;
+      sellerDetails.appendChild(sellerNameSpan);
+
+      const sellerLocationSpan = document.createElement("div");
+      sellerLocationSpan.innerHTML = `<b>Location:</b> ${product.sellerLocation}`;
+      sellerDetails.appendChild(sellerLocationSpan);
+
+      document.querySelector("#grid-container").appendChild(card);
+    }
+
+    if (data.statusCode === 200) {
+      if (loadData != null) {
+        loadData.forEach(createProductCard);
+      } else {
+        let noImageBox = document.querySelector(".main");
+
+        let noImage = document.createElement("img");
+        noImage.src = "https://iili.io/JJ5i29f.png";
+        noImage.alt = "empty product list";
+        noImage.classList.add("noProd");
+        noImageBox.appendChild(noImage);
+
+        let button = document.getElementById("loadmore");
+        button.setAttribute("style", "display:none")
+      }
+    } else if (data.statusCode === 500) {
+      window.location.href = "../error/500error.html";
+    } else {
+      let errorMessage = '';
+      if (data.statusCode === 400) {
+        errorMessage = data.message;
+        console.log(errorMessage);
+        errorBox(errorMessage);
+      } else {
+        errorMessage = 'An unknown error occurred.';
+      }
+    }
+  })
+  .catch(error => {
+    console.error('Fetch error:', error);
   });
-});
+
+
 
 // ---------load more--------//
 

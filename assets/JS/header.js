@@ -1,3 +1,4 @@
+//--------------header-------------//
 const myOrigin = window.location.origin;
 const logoSrc = `${myOrigin}/assets/img/illustration/logo.png`;
 const profilepage = `${myOrigin}/pages/buyer profile.html`;
@@ -21,21 +22,23 @@ const AfterLoginNew = `
 `;
 
 function allheader() {
-  const userId = JSON.parse(localStorage.getItem("unique_id"));
+  const user = JSON.parse(sessionStorage.getItem("email"));
+  const image = JSON.parse(sessionStorage.getItem("image"));
   const nextheader = document.getElementById("header");
-  if (!userId) {
+  if (!user) {
     nextheader.innerHTML = beforeloginNew;
   } else {
     nextheader.innerHTML = AfterLoginNew;
 
-    const user_data = JSON.parse(localStorage.getItem("user_data"));
-
-    const userImage = user_data.find((userid) => userid.email === userId);
-
+    if(image === "null" | image === null){
+      const photo = document.querySelector(".profile-img");
+      photo.setAttribute("src", "https://iili.io/JJHvWdu.png");
+      photo.setAttribute("alt", `your Image`);
+    }else{
     const photo = document.querySelector(".profile-img");
-
-    photo.setAttribute("src", userImage.image);
-    photo.setAttribute("alt", `${userImage.name}Image`);
+    photo.setAttribute("src", image);
+    photo.setAttribute("alt", `your Image`);
+    }
   }
 }
 

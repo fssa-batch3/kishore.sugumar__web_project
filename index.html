@@ -1,216 +1,225 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="icon" href="../assets/img/illustration/v-removebg-preview.png">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
-            integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
-            crossorigin="anonymous" referrerpolicy="no-referrer">
-        <link rel="stylesheet" href="./assets/css/home page.css">
-        <link rel="stylesheet" href="./assets/css/buttons.css">
-        <link rel="stylesheet" href="./assets/css/footer.css">
-        <link rel="stylesheet" href="./assets/css/header.css">
-        <link rel="stylesheet" href="./assets/css/account.css">
-        <link rel="dns-prefetch" href="//fonts.googleapis.com">
-        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700," rel="stylesheet">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-        <script src="./main.js"></script>
-        <title>V A N H A </title>
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../assets/img/illustration/v-removebg-preview.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="./assets/css/home page.css">
+    <link rel="stylesheet" href="./assets/css/buttons.css">
+    <link rel="stylesheet" href="./assets/css/footer.css">
+    <link rel="stylesheet" href="./assets/css/header.css">
+    <link rel="stylesheet" href="./assets/css/account.css">
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700," rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="./assets/JS/home header.js"></script>
+    <script src="./main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.5.0/axios.min.js"
+        integrity="sha512-aoTNnqZcT8B4AmeCFmiSnDlc4Nj/KPaZyB5G7JnOnUEkdNpCZs1LCankiYi01sLTyWy+m2P+W4XM+BuQ3Q4/Dg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <title>V A N H A </title>
+</head>
 
-    <body class="body" id="home">
-        <header class="header" id="header">
+<body class="body" id="home">
+    <header class="header" id="header">
 
-        </header>
-  </div>
-        <main class="main">
-            <section class="nav_links">
-                <div class="tooltip">
-                    <a id="about">
-                        <i class="fa fa-address-card"></i>
-                    </a>
-                    <span class="tooltiptext">About Us</span>
-                </div>
-                <div class="tooltip">
-                    <a href="#footer">
-                        <i class="fa fa-address-book"></i>
-                    </a>
-                    <span class="tooltiptext">Contact Us</span>
-                </div>
-                <div class="tooltip">
-                    <a id="wishlist-link">
-                        <i class="fa fa-heart"></i>
-                    </a>
-                    <span class="tooltiptext">Wish List</span>
-                </div>
-                <div class="tooltip">
-                    <a id="bidlist">
-                        <i class="fa fa-rectangle-list"></i>
-                    </a>
-                    <span class="tooltiptext">Bided List</span>
-                </div>
-            </section>
-            <section class="classfy">
-                <div class="sub_classfy">
-                    <h4>Categorys</h4>
-                    <a href="./pages/sub product list.html?Category=" + Cate>
-                        <p value="Bike" class="categ">
-                            <i class="fa fa-person-biking"></i>
-                        </p>
-                    </a>
-                    <a href="./pages/sub product list.html?Category=" + Cate>
-                        <p value="Car" class="categ">
-                            <i class="fa fa-car-side"></i>
-                        </p>
-                    </a>
-                    <a href="./pages/sub product list.html?Category=" + Cate>
-                        <p value="Laptop-Desktop" class="categ">
-                            <i class="fa fa-laptop"></i>
-                            <i class="fa fa-desktop"></i>
-                        </p>
-                    </a>
-                    <a href="./pages/sub product list.html?Category=" + Cate>
-                        <p value="Mobile" class="categ">
-                            <i class="fa fa-tablet-screen-button"></i>
-                        </p>
-                    </a>
-                </div>
-            </section>
-            <section class="content">
-                <div class="illsuration">
-                    <div class="design">
-                        <div class="image_aling">
-                            <img src="./assets/img/illustration/sell_home.png" alt="illsuration_img"
-                                class="illsuration_img"></div>
-                        <p>Sell It</p>
+    </header>
+    </div>
+    <main class="main">
+        <section class="nav_links">
+            <div class="tooltip">
+                <a id="about">
+                    <i class="fa fa-address-card"></i>
+                </a>
+                <span class="tooltiptext">About Us</span>
+            </div>
+            <div class="tooltip">
+                <a href="#footer">
+                    <i class="fa fa-address-book"></i>
+                </a>
+                <span class="tooltiptext">Contact Us</span>
+            </div>
+            <!-- <div class="tooltip">
+                <a id="wishlist-link">
+                    <i class="fa fa-heart"></i>
+                </a>
+                <span class="tooltiptext">Wish List</span>
+            </div>
+            <div class="tooltip">
+                <a id="bidlist">
+                    <i class="fa fa-rectangle-list"></i>
+                </a>
+                <span class="tooltiptext">Bided List</span>
+            </div> -->
+        </section>
+        <section class="classfy">
+            <div class="sub_classfy">
+                <h4>Categorys</h4>
+                <a href="./pages/sub product list.html?Category=" + Cate>
+                    <p value="bike" class="categ">
+                        <i class="fa fa-person-biking"></i>
+                    </p>
+                </a>
+                <a href="./pages/sub product list.html?Category=" + Cate>
+                    <p value="car" class="categ">
+                        <i class="fa fa-car-side"></i>
+                    </p>
+                </a>
+                <a href="./pages/sub product list.html?Category=" + Cate>
+                    <p value="compute" class="categ">
+                        <i class="fa fa-laptop"></i>
+                        <i class="fa fa-desktop"></i>
+                    </p>
+                </a>
+                <a href="./pages/sub product list.html?Category=" + Cate>
+                    <p value="mobile" class="categ">
+                        <i class="fa fa-tablet-screen-button"></i>
+                    </p>
+                </a>
+            </div>
+        </section>
+        <section class="content">
+            <div class="illsuration">
+                <div class="design">
+                    <div class="image_aling">
+                        <img src="./assets/img/illustration/sell_home.png" alt="illsuration_img"
+                            class="illsuration_img">
                     </div>
-                    <div class="design">
-                        <div class="image_aling">
-                            <img src="./assets/img/illustration/Search_home.png" alt="illsuration_img"
-                                class="illsuration_img"></div>
-                        <p>Search It</p>
-                    </div>
-                    <div class="design">
-                        <div class="image_aling">
-                            <img src="./assets/img/illustration/buy_home.png" alt="illsuration_img"
-                                class="illsuration_img"></div>
-                        <p>Buy It</p>
-                    </div>
+                    <p>Sell It</p>
                 </div>
-                <div id="noResult"></div>
-                <section class="SearchedProduct" id="SearchedProductArea" style="display: none;">
-                    <div class="heading">
-                        <div class="border"></div>
-                        <h2>You  searched  for</h2>
-                        <div class="border"></div>
+                <div class="design">
+                    <div class="image_aling">
+                        <img src="./assets/img/illustration/Search_home.png" alt="illsuration_img"
+                            class="illsuration_img">
                     </div>
-                    <div id="SearchedProductBox">
-
+                    <p>Search It</p>
+                </div>
+                <div class="design">
+                    <div class="image_aling">
+                        <img src="./assets/img/illustration/buy_home.png" alt="illsuration_img" class="illsuration_img">
                     </div>
-                </section>
+                    <p>Buy It</p>
+                </div>
+            </div>
+            <div id="noResult"></div>
+            <section class="SearchedProduct" id="SearchedProductArea" style="display: none;">
                 <div class="heading">
                     <div class="border"></div>
-                    <h2>Newly Launched</h2>
+                    <h2>You searched for</h2>
                     <div class="border"></div>
                 </div>
-                <div class="grid-container">
+                <div id="SearchedProductBox">
+
                 </div>
-                 <button class="button1 algn" type="button" id="loadmore">Load more</button> 
             </section>
-        </main>
-        <!-- -----------------------register----------------------- -->
-        <div id="register">
-            <form class="form" id="registerForm">
-                <img src="../assets/img/illustration/logo.png" alt="logo" class="logo_re">
-                <p class="heading">Sign up</p>
-                <div class="field">
-                    <input type="text" class="input-field" id="regi_name" placeholder="Your name" autocomplete="off"
-                        pattern="^(?!\s)[a-zA-Z\s]+$" title="Use only alphabets" required="true">
-                </div>
-                <div class="field">
-                    <input type="email" class="input-field" id="regi_email" placeholder="example@abc.com" autocomplete="off"
-                        pattern="^(?!\s)[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" title="Use proper email" required="true">
-                </div>
-                <div class="field">
-                    <input type="tel" class="input-field" id="regi_phone" placeholder="Phone Number" autocomplete="off"
-                        pattern="^[6-9]\d{9}$" title="Enter your mobile number" maxlength="10" minlength="10" required="true">
-                </div>
-                <div class="field">
-                    <input type="password" class="input-field" id="regi_password" placeholder="Password (ABde12!#)"
-                        pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&amp;*_=+-]).{8,24}$" maxlength="8" minlength="8"
-                        title="password must contain atleast one uppercase, one lower, one special character and numbers. It should contain 8 characters"
-                        required="true">
-                </div>
-                <div class="field">
-                    <input type="password" class="input-field" id="c_password" placeholder="confirm Password" required="true">
-                </div>
-                <label for="showPassword" class="passwordTitle">
-                    <input type="checkbox" id="showPassword1"> Show Password
-                  </label>
-                <div class="btn">
-                    <button class="button2" type="submit" id="btn">Register</button>
-                    <button class="button3" type="button" id="show_off">Back</button>
-                </div>
-            </form>
-        </div>
-        <!-- ---------------------------------login------------------- -->
-        <div id="overlay">
-            <div class="closebtn" id="off" title="Close Overlay">
-                <i class="fa-solid fa-xmark"></i>
+            <div class="heading">
+                <div class="border"></div>
+                <h2>Newly Launched</h2>
+                <div class="border"></div>
             </div>
-            <form class="form" id="log_in">
-                <p class="heading-in">Sign in</p>
-                <div class="field">
-                    <input type="email" class="input-field" id="email" placeholder="example@abc.com" title="Use proper email"
-                        autocomplete="off" required="true">
-                </div>
-                <div class="field">
-                    <input type="password" class="input-field" id="password" placeholder="Password" required="true">
-                </div>
-                <label for="showPassword" class="passwordTitle">
-                    <input type="checkbox" id="showPassword2"> Show Password
-                  </label>
-                <div class="btn">
-                    <button class="button1" type="button" id="login_form">Login</button>
-                    <button class="button2" type="button" id="over">Sign Up</button>
-                </div>
-                <div class="socila_link">
-                    <p>or</p>
-                    <p>Login with</p>
-                    <div class="links-in">
-                        <div class="face-in">
-                            <i class="fa-brands fa-facebook"></i>
-                        </div>
-                        <div class="twit-in">
-                            <i class="fa-brands fa-twitter"></i>
-                        </div>
-                        <div class="goog-in">
-                            <i class="fa-brands fa-google"></i>
-                        </div>
-                    </div>
-                </div>
-            </form>
+            <div class="grid-container">
+            </div>
+            <button class="button1 algn" type="button" id="loadmore">Load more</button>
+        </section>
+    </main>
+    <!-- -----------------------register----------------------- -->
+    <div id="register">
+        <form class="form" id="registerForm">
+            <img src="../assets/img/illustration/logo.png" alt="logo" class="logo_re">
+            <p class="heading">Sign up</p>
+            <div class="field">
+                <input type="text" class="input-field" id="regi_name" placeholder="Your name"
+                    onfocus="showRequirement('name')" onblur="clearRequirement()" autocomplete="off"
+                    pattern="^(?!\s)[a-zA-Z\s]+$" name="name" required="true">
+                <div id="name-requirement" class="requirement"></div>
+            </div>
+            <div class="field">
+                <input type="email" class="input-field" id="regi_email" onfocus="showRequirement('email')"
+                    onblur="clearRequirement()" placeholder="example@abc.com" autocomplete="off"
+                    pattern="^(?!\s)[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,4}$" name="email" required="true">
+                <div id="email-requirement" class="requirement"></div>
+            </div>
+            <div class="field">
+                <input type="tel" class="input-field" id="regi_phone" onfocus="showRequirement('number')"
+                    onblur="clearRequirement()" placeholder="Phone Number" autocomplete="off" pattern="^[6-9]\d{9}$"
+                    name="number" maxlength="10" minlength="10" required="true">
+                <div id="number-requirement" class="requirement"></div>
+            </div>
+            <div class="field">
+                <input type="text" class="input-field" id="regi_location" onfocus="showRequirement('location')"
+                    onblur="clearRequirement()" placeholder="Location" autocomplete="off" name="location"
+                    required="true">
+                <div id="location-requirement" class="requirement"></div>
+            </div>
+            <div class="field">
+                <input type="password" class="input-field" id="regi_password" onfocus="showRequirement('password')"
+                    onblur="clearRequirement()" placeholder="Password (ABde12!#)"
+                    pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+\-]).{8,24}$" maxlength="8"
+                    minlength="8" name="password" required="true">
+                <div id="password-requirement" class="requirement"></div>
+            </div>
+            <div class="field">
+                <input type="password" class="input-field" id="c_password" onfocus="showRequirement('confirm')"
+                    onblur="clearRequirement()" placeholder="confirm Password" name="confirm" required="true">
+                <div id="confirm-requirement" class="requirement"></div>
+            </div>
+            <label for="showPassword1" class="passwordTitle">
+                <input type="checkbox" id="showPassword1"> Show Password
+            </label>
+            <div class="btn">
+                <button class="button2" type="submit" id="btn">Register</button>
+                <button class="button3" type="button" id="show_off">Back</button>
+            </div>
+        </form>
+    </div>
+    <!-- ---------------------------------login------------------- -->
+    <div id="overlay">
+        <div class="closebtn" id="off" title="Close Overlay">
+            <i class="fa-solid fa-xmark"></i>
         </div>
-        <!-- --------------------------------------footer-------------------------------- -->
-        <footer class="footer" id="footer">
-        </footer>
-        <div class="copy">Copyright © 2021 - 2022 VANHA - Website Designed By KISHORE</div>
-        <!-- --------------snack bar----------------- -->
-        <div id="snackbar">
-            <span>You are loged in</span>
-            <img src="./assets/img/illustration/green-tick.gif" alt="checked" class="check">
-        </div>
+        <form class="form" id="log_in">
+            <p class="heading-in">Sign in</p>
+            <div class="field">
+                <input type="email" class="input-field" id="email" placeholder="example@abc.com"
+                    title="Use proper email" autocomplete="off" required="true">
+            </div>
+            <div class="field">
+                <input type="password" class="input-field" id="password" placeholder="Password" required="true">
+            </div>
+            <label for="showPassword2" class="passwordTitle">
+                <input type="checkbox" id="showPassword2"> Show Password
+            </label>
+            <div class="btn">
+                <button class="button1" type="button" id="login_form">Login</button>
+                <button class="button2" type="button" id="over">Sign Up</button>
+            </div>
+        </form>
+    </div>
+    <!-- --------------------------------------footer-------------------------------- -->
+    <footer class="footer" id="footer">
+    </footer>
+    <div class="copy">Copyright © 2021 - 2022 VANHA - Website Designed By KISHORE</div>
+    <!-- --------------snack bar----------------- -->
+    <div id="snackbar">
+        <span>You are loged in</span>
+        <img src="./assets/img/illustration/green-tick.gif" alt="checked" class="check">
+    </div>
 
-        <div id="result" class="searchResult">
-            <span>No results found.....</span>
-        </div>
+    <div id="result" class="searchResult">
+        <span>No results found.....</span>
+    </div>
 
-        <script src="./assets/JS/footer.js"></script>
-        <script src="./assets/JS/home header.js"></script>
-        <script src="./assets/JS/home page.js"></script>
-    </body>
+    <div id="error" class="error">
+        <span class="messSpan"></span>
+    </div>
+
+    <script src="./assets/JS/footer.js"></script>
+    <script src="./assets/JS/home page.js"></script>
+</body>
 
 </html>

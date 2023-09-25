@@ -42,52 +42,67 @@
     border-radius: 20px;
     filter: drop-shadow(2px 2px 2.5px gray);
 }
+
 /*--------------------bid area------------------*/
-.form p{
-background-color: #9cb2bc;
-padding: 15px 0px;
-font-size: 22px;
-font-weight: 600;
+.bidheading {
+    background-color: #9cb2bc;
+    padding: 15px 0px;
+    font-size: 22px;
+    font-weight: 600;
 }
-.otherBids{
+
+.otherBids {
     margin-top: 50px;
     text-align: center;
     width: 500px;
-    box-shadow:  20px 20px 60px #bebebe,
-    -20px -20px 60px #ffffff;
+    box-shadow: 20px 20px 60px #bebebe,
+        -20px -20px 60px #ffffff;
 }
-.bid-area{
+
+.bid-area {
     position: relative;
     top: 0px;
     padding: 20px 0px;
 }
-.allRequests{
-    margin-left: 50px;
-    max-height: 500px;
-    overflow-y: scroll;
+
+.allRequests {
+    max-height: 100%;
+    overflow: auto;
 }
-.eachUser{
+
+.bidblock {
+    border-bottom: 1px solid #ccc;
+    padding: 10px;
+}
+
+.bidblock p {
+    margin: 0;
     display: flex;
-    width: 400px;
-    background-color: whitesmoke;
-    margin-bottom: 10px;
+    justify-content: space-between;
+    align-items: center;
 }
-.profileIMg{
-    width: 50px;
-    margin: 5px 25px 5px 5px;
+
+.buyer_img {
+    max-width: 50px;
+    max-height: 50px;
     border-radius: 50%;
+    margin-left: 10px;
 }
-.illustration-image{
+
+.illustration-image {
     width: 200px;
 }
-.noProduct{
+
+.noProduct {
     font-weight: 450;
-    color:#282f32;
+    color: #282f32;
 }
-.product-detail{
+
+.product-detail {
     position: sticky;
     top: 30px;
 }
+
 /* -------------------main-right--------------- */
 .desc {
     color: var(--fifth);
@@ -191,7 +206,7 @@ input[type=number]::-webkit-outer-spin-button {
     justify-content: space-between;
 }
 
-.box{
+.box {
     display: flex;
 }
 
@@ -204,7 +219,8 @@ input[type=number]::-webkit-outer-spin-button {
     padding-top: 12%;
 }
 
-#wish_button, #message{
+#wish_button,
+#message {
     width: 177px;
 }
 

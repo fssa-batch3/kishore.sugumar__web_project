@@ -1,295 +1,123 @@
 .body {
-    font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
-    text-align: center;
+  font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
 }
 
 :root {
-    --primary: #7d8e95;
-    --secondary: #222f30;
-    --tertiary: #ffeba7;
-    --fourth: #fdd13f;
-    --fifth: #4c585e;
-}
-
-.border {
-    height: 1%;
-    width: 35%;
-    margin: auto;
-    border: 1.5px solid;
-    border-color: var(--primary);
-}
-
-h2 {
-    color: var(--fifth);
-}
-
-.sub_icon1:hover,
-.sub_icon2:hover,
-.sub_icon3:hover,
-.sub_icon4:hover {
-    border-radius: 50%;
-    background: linear-gradient(145deg, #cccccc, #d8d8d8);
-    box-shadow: 10px 10px 20px #666666, -10px -10px 20px #ffffff;
-    border-color: black;
-}
-
-.sub_icon1,
-.sub_icon2,
-.sub_icon3,
-.sub_icon4 {
-    width: 200px;
-    margin: 30px;
-    padding: 20px;
-    border-style: solid;
-    border-color: #838383;
-    transition: 0.5s ease-out;
-}
-
-.sub_icon1 {
-    border-width: 0px 2px 0px 0px;
-}
-
-.sub_icon2 {
-    border-width: 0px 0px 2px 0px;
-}
-
-.sub_icon3 {
-    border-width: 2px 0px 0px 0px;
-}
-
-.sub_icon4 {
-    border-width: 0px 0px 0px 2px;
-}
-
-.sub {
-    text-align: center;
-    margin: 50px 0px;
-}
-
-.photo {
-    width: 300px;
-    height: 200px;
-    border: 1px solid #ccc;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #363636;
-}
-
-.body h4 {
-    margin: 0px
-}
-
-.camera i {
-    padding: 10px;
-    border-radius: 50%;
-    background-color: var(--secondary);
-    color: var(--tertiary);
-}
-
-.camera {
-    font-size: 20px;
-    cursor: pointer;
-}
-
-.btn {
-    margin: 100px 600px;
-    max-width: 100%;
-    display: flex;
-}
-
-.seller_img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    padding: 10px;
-}
-
-.header h2 {
-    margin: 15px 0px 0px 10px;
-}
-
-.main {
-    margin-top: 50px;
-    background-color: transparent;
-    backdrop-filter: blur(100px);
-}
-
-.main-left {
-    margin: 80px;
-    font-size: 20px;
-    padding: 0px;
-    color: white;
-}
-
-.left_content {
-    margin: 20px 0px 0px 0px;
-}
-
-.left-aling {
-    display: flex;
-    margin: 10px 0px 0px 0px;
-}
-
-.middle-line {
-    border-right: 2px solid rgb(58, 58, 58);
-    margin: 20px 0px;
-}
-
-.main-right {
-    display: grid;
-    grid-template-columns: repeat(2, 320px);
-    gap: 20px;
-    margin: 60px 0px 0px 50px;
+  --primary: #7d8e95;
+  --secondary: #222f30;
+  --tertiary: #ffeba7;
+  --fourth: #fdd13f;
+  --fifth: #4c585e;
 }
 
 .form {
-    display: grid;
-    grid-gap: 30px;
+  max-width: 50%;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+  margin-top: 80px;
+  margin-bottom: 80px;
 }
 
-.main-right p {
-    font-size: 25px;
+.align {
+  border-style: solid;
+  border-color: rgb(191, 191, 191);
+  border-width: 2px 0px 2px 0px;
+  padding: 50px 0px;
 }
 
-.product_name {
-    width: 370px;
-    height: 30px;
-    border-radius: 25px;
-    border-style: solid;
-    border-width: 0px 0px 1px 0px;
-    outline: none;
-    padding-left: 10px;
-    color: white;
-    background-color: #363636;
-    box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.3);
-    transition: 300ms ease-in-out;
+.divide {
+  display: flex;
+  justify-content: space-evenly;
 }
 
-.textarea {
-    width: 500px;
-    height: 100px;
-    border-radius: 10px;
-    margin-top: 10px;
-    resize: none;
-    outline: none;
-    padding: 10px 0px 0px 10px;
-    color: white;
-    background-color: #363636;
-    box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.3);
-    transition: 300ms ease-in-out;
+h1 {
+  text-align: center;
+  border: 0px 0px 1px 0px solid gray;
 }
 
-.input {
-    width: 200px;
-    height: 30px;
-    border-radius: 25px;
-    border-style: solid;
-    border-width: 0px 0px 1px 0px;
-    outline: none;
-    padding-left: 10px;
-    margin-top: 5px;
-    color: white;
-    background-color: #363636;
-    box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.3);
-    transition: 300ms ease-in-out;
+h4 {
+  margin: 10px 0;
 }
 
-.classify {
-    margin: 0px 0px 0px 40px;
+div {
+  margin-bottom: 15px;
 }
 
-.Category {
-    width: 200px;
-    height: 30px;
-    margin-top: 5px;
-    color: white;
-    background-color: #363636;
-    box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.3);
-    transition: 300ms ease-in-out;
-    outline: none;
-    border-radius: 5px;
+input[type="text"],
+input[type="number"],
+textarea,
+select {
+  width: 90%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
 }
 
 .duration {
-    margin: 20px 39px;
+  width: 150px;
+  margin-left: 10px;
 }
 
-#overlay {
-    position: fixed;
-    display: none;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.688);
-    backdrop-filter: blur(3px);
-    z-index: 2;
-    cursor: pointer;
-    text-align: center;
+.used {
+  display: flex;
 }
 
-.tooltip {
-    position: relative;
-    display: inline-block;
+.period {
+  max-width: 30px;
+  height: 16px;
 }
 
-.tooltiptext {
-    visibility: hidden;
-    width: 120px;
-    background-color: black;
-    color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    padding: 5px 5px;
-    position: absolute;
-    z-index: 1;
-    top: 95%;
-    left: 50%;
-    margin-left: -60px;
+.period::placeholder {
+  padding-left: 5px;
 }
 
-.tooltip .tooltiptext::after {
-    content: "";
-    position: absolute;
-    bottom: 100%;
-    left: 50%;
-    margin-left: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: transparent transparent black transparent;
+.left-aling {
+  display: flex;
+  align-items: center;
 }
 
-.tooltip:hover .tooltiptext {
-    visibility: visible;
-
+.left_content {
+  margin-right: 10px;
 }
 
-.closebtn {
-    float: right;
-    margin: 0px 20px 20px 0px;
-    font-size: 50px;
-    color: aliceblue;
+textarea {
+  width: 95%;
+  height: 100px;
 }
 
-.closebtn:hover {
-    color: #ffd343;
+.note {
+  padding: 10px;
+  background-color: rgb(244, 244, 244);
+  color: rgb(150, 150, 150);
+  border-radius: 10px;
 }
 
-#overlay h1 {
-    font-size: 40px;
-    color: #ffd343;
-    margin-top: 50px;
+.note b {
+  color: rgb(110, 110, 110);
 }
 
-.aling {
-    display: flex;
+.requirement{
+  color: rgb(70, 160, 35);
+}
+ol li {
+  padding: 2px;
+  font-size: 15px;
+}
+
+.btn {
+  text-align: center;
+}
+
+.error {
+  color: red;
 }
 
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+  -webkit-appearance: none;
+  margin: 0;
 }
