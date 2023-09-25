@@ -31,16 +31,23 @@
                 <span class="prod_val" id="email"></span>
             </p>
             <div class="field">
-                <input type="text" class="input-field" id="name" placeholder="Name" autocomplete="off"
-                    pattern="^(?!\s)[a-zA-Z\s]+$" required="true">
+                <div>
+                    <input type="text" class="input-field" id="name" onfocus="showRequirement('name')"
+                        onblur="clearRequirement()" placeholder="Name" autocomplete="off" pattern="^(?!\s)[a-zA-Z\s]+$"
+                        required="true">
+                </div>
+                <div id="name-requirement" class="requirement"></div>
             </div>
             <div class="field">
-                <input type="tel" class="input-field" id="phone" placeholder="+91" autocomplete="off"
-                    pattern="[6-9]\d{9}" required="true">
+                <input type="tel" class="input-field" id="phone" onfocus="showRequirement('number')"
+                    onblur="clearRequirement()" placeholder="+91" autocomplete="off" pattern="[6-9]\d{9}"
+                    required="true">
+                <div id="number-requirement" class="requirement"></div>
             </div>
             <div class="field">
-                <input type="text" class="input-field" id="location" placeholder="Location"
-                    pattern="^(?!\s)[a-zA-Z\s]+$" required="true">
+                <input type="text" class="input-field" id="location" onfocus="showRequirement('location')"
+                    onblur="clearRequirement()" placeholder="Location" pattern="^(?!\s)[a-zA-Z\s]+$" required="true">
+                <div id="location-requirement" class="requirement"></div>
             </div>
             <div class="btn">
                 <button type="button" class="button2" id="update">Save</button>
@@ -100,6 +107,10 @@
     <footer class="footer" id="footer">
     </footer>
     <div class="copy">Copyright © 2021 - 2022 VANHA - Website Designed By KISHORE</div>
+    <!-- --------------snack bar----------------- -->
+    <div id="error" class="error">
+        <span class="messSpan"></span>
+    </div>
 </body>
 <!-- -----------------------------------script--------------------------------- -->
 <script src="../assets/JS/footer.js"></script>

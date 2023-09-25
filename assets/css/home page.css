@@ -22,7 +22,7 @@
 }
 
 .nav_links {
-    height: 350px;
+    height: 190px;
     position: sticky;
     top: 0px;
     margin-top: 30px;
@@ -330,7 +330,7 @@
     padding: 10px 0px 10px 10px;
 }
 
-#snackbar.show, #result.show {
+#snackbar.show, #result.show{
     visibility: visible;
     -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
     animation: fadein 0.5s, fadeout 0.5s 2.5s;

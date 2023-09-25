@@ -1,125 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-seile=1.0">
-        <link rel="icon" href="../assets/img/illustration/v-removebg-preview.png">
-        <link rel="dns-prefetch" href="//fonts.googleapis.com">
-        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700," rel="stylesheet">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
-            integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
-            crossorigin="anonymous" referrerpolicy="no-referrer">
-        <link rel="stylesheet" href="../assets/css/buttons.css">
-        <link rel="stylesheet" href="../assets/css/footer.css">
-        <link rel="stylesheet" href="../assets/css/header.css">
-        <link rel="stylesheet" href="../assets/css/product_page.css">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.5.0/axios.min.js" integrity="sha512-aoTNnqZcT8B4AmeCFmiSnDlc4Nj/KPaZyB5G7JnOnUEkdNpCZs1LCankiYi01sLTyWy+m2P+W4XM+BuQ3Q4/Dg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        <title>V A N H A</title>
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-seile=1.0">
+    <link rel="icon" href="../assets/img/illustration/v-removebg-preview.png">
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700," rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="../assets/css/buttons.css">
+    <link rel="stylesheet" href="../assets/css/footer.css">
+    <link rel="stylesheet" href="../assets/css/header.css">
+    <link rel="stylesheet" href="../assets/css/product_page.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.5.0/axios.min.js"
+        integrity="sha512-aoTNnqZcT8B4AmeCFmiSnDlc4Nj/KPaZyB5G7JnOnUEkdNpCZs1LCankiYi01sLTyWy+m2P+W4XM+BuQ3Q4/Dg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <title>V A N H A</title>
+</head>
 
-    <body class="body">
-        <header class="header" id="header">
-        </header>
-        <main class="main">
-            <section>
-                <div class="main_left">
-                    <div class="thumbnail-imgs">
+<body class="body">
+    <header class="header" id="header">
+    </header>
+    <main class="main">
+        <section>
+            <div class="main_left">
+                <div class="thumbnail-imgs">
 
+                </div>
+                <div class="main-img">
+                    <img id="imagebox" alt="">
+                </div>
+            </div>
+            <div class="otherBids">
+                <form class="form">
+                    <p class="bidheading">Requests</p>
+                    <div class="allRequests">
                     </div>
-                    <div class="main-img">
-                        <img id="imagebox" alt="">
+                    <div class="bid-area">
+                        <input type="number" class="bid-amount" id="bid_amount" placeholder="amount" required
+                            pattern="[0-9]+">
+                        <button class="button2" type="submit" id="bid_button">Bid</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+        <section class="main_right">
+            <div class="product-detail">
+                <h2 class="prod_name" id="prod_name"></h2>
+                <p class="desc">
+                    <b>Description :</b>
+                </p>
+                <p id="description">
+                </p>
+                <div class="rate">
+                    <p>
+                        <b>Price :</b>
+                    </p>
+                    <h3 id="prod_price"></h3>
+                    <h3 class="inr">
+                        <b>(INR)</b>
+                    </h3>
+                </div>
+                <div class="duration">
+                    <p>
+                        <b>Used period :</b>
+                    </p>
+                    <h3 id="prod_date"></h3>
+                    <h3 id="duration"></h3>
+                </div>
+
+                <div class="seller-info">
+                    <h2>Contact info :</h2>
+
+                </div>
+                <div class="box">
+                    <div class="seller-profile">
+                        <img id="seller_img" class="seller_img">
+                        <div class="seller-name">
+                            <h2 id="seller_name"></h2>
+                            <p id="seller_location"></p>
+                        </div>
                     </div>
                 </div>
-                <div class="otherBids">
-                    <form class="form">
-                        <p class="bidheading">Requests</p>
-                        <div class="allRequests">
-                        </div>
-                        <div class="bid-area">
-                            <input type="number" class="bid-amount" id="bid_amount" placeholder="amount" required
-                                pattern="[0-9]+">
-                            <button class="button2" type="submit" id="bid_button">Bid</button>
-                        </div>
-                    </form>
-                </div>
-            </section>
-            <section class="main_right">
-                <div class="product-detail">
-                    <h2 class="prod_name" id="prod_name"></h2>
-                    <p class="desc">
-                        <b>Description :</b>
-                    </p>
-                    <p id="description">
-                    </p>
-                    <div class="rate">
-                        <p>
-                            <b>Price :</b>
-                        </p>
-                        <h3 id="prod_price"></h3>
-                        <h3 class="inr">
-                            <b>(INR)</b>
-                        </h3>
-                    </div>
-                    <div class="duration">
-                        <p>
-                            <b>Used period :</b>
-                        </p>
-                        <h3 id="prod_date"></h3>
-                        <h3 id="duration"></h3>
-                    </div>
-
-                    <div class="seller-info">
-                        <h2>Contact info :</h2>
-
-                    </div>
-                    <div class="box">
-                        <div class="seller-profile">
-                            <img id="seller_img" class="seller_img">
-                            <div class="seller-name">
-                                <h2 id="seller_name"></h2>
-                                <p id="seller_location"></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <button class="button1" type="button" id="wish_button">
+                <div>
+                    <!-- <button class="button1" type="button" id="wish_button">
                             <i class="fa fa-heart"></i>wishlist
-                        </button>
-                        <button class="button1" type="button" id="message">
+                        </button> -->
+                    <!-- <button class="button1" type="button" id="message">
                             <i class="fa fa-message"></i>Message
-                        </button>
-                    </div>
-                    
+                        </button> -->
                 </div>
-            </section>
-        </main>
-        <section class="similar">
-            <h2>Similar product</h2>
-            <div class="strike"></div>
+
+            </div>
         </section>
-        <section class="similar_container">
+    </main>
+    <section class="similar">
+        <h2>Similar product</h2>
+        <div class="strike"></div>
+    </section>
+    <section class="similar_container">
 
-        </section>
+    </section>
 
-        <footer class="footer" id="footer">
-        </footer>
-        <div class="copy">Copyright © 2021 - 2022 VANHA - Website Designed By KISHORE</div>
-        <!-- ----------snack bar---------------- -->
-        <div id="snackbar">
-            <span>Bided successfully</span>
-            <img src="../assets/img/illustration/1122-thumb-down-outline.gif" alt="Bided" class="thumb">
-        </div>
-        <div id="snackbar1">
-            <span>Added to your wish list</span>
-            <img src="../assets/img/illustration/20-love-heart-outline.gif" alt="check" class="heart">
-        </div>
+    <footer class="footer" id="footer">
+    </footer>
+    <div class="copy">Copyright © 2021 - 2022 VANHA - Website Designed By KISHORE</div>
+    <!-- ----------snack bar---------------- -->
+    <div id="error" class="error">
+        <span class="messSpan"></span>
+    </div>
+    <div id="snackbar">
+        <span>Bided successfully</span>
+        <img src="../assets/img/illustration/1122-thumb-down-outline.gif" alt="Bided" class="thumb">
+    </div>
+    <div id="snackbar1">
+        <span>Added to your wish list</span>
+        <img src="../assets/img/illustration/20-love-heart-outline.gif" alt="check" class="heart">
+    </div>
 
-        <script src="../assets/JS/footer.js"></script>
-        <script src="../assets/JS/header.js"></script>
-        <script src="../assets/JS/product page.js"></script>
-    </body>
+    <script src="../assets/JS/footer.js"></script>
+    <script src="../assets/JS/header.js"></script>
+    <script src="../assets/JS/product page.js"></script>
+</body>
 
 </html>

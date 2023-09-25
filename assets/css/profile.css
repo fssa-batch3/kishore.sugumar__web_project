@@ -124,9 +124,6 @@
 }
 
 .field {
-  display: flex;
-  justify-content: start;
-  gap: 10px;
   border-radius: 25px;
   padding: 10px;
   border: none;
@@ -141,7 +138,7 @@
 }
 
 .input-field {
-  width: 100%;
+  width: 90%;
   border: 1px solid black;
   outline: none;
   border-radius: 15px;

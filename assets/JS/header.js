@@ -30,7 +30,7 @@ function allheader() {
   } else {
     nextheader.innerHTML = AfterLoginNew;
 
-    if(image === "null" ){
+    if(image === "null" | image === null){
       const photo = document.querySelector(".profile-img");
       photo.setAttribute("src", "https://iili.io/JJHvWdu.png");
       photo.setAttribute("alt", `your Image`);
