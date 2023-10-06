@@ -25,11 +25,11 @@ addProduct.addEventListener("click", async function active() {
 
   const prodName = document.getElementById("name").value;
   const description = document.getElementById("description").value;
-  const prodPrice = parseInt(document.getElementById("price").value);
+  const prodPrice = document.getElementById("price").value;
   const prodDate = document.getElementById("period").value;
   const duration = document.getElementById("duration").value;
   const category = document.getElementById("category").value;
-  const lowPrice = parseInt(document.getElementById("min_price").value);
+  const lowPrice = document.getElementById("min_price").value;
 
 
   if (
@@ -44,7 +44,7 @@ addProduct.addEventListener("click", async function active() {
     return;
   }
 
-  if (prodPrice <= lowPrice) {
+  if (parseInt(prodPrice) <= parseInt(lowPrice)) {
     alert("Minimum price "+lowPrice+" must lower then the product price "+prodPrice);
     return;
   } else {
@@ -53,8 +53,8 @@ addProduct.addEventListener("click", async function active() {
       unique: unique_id,
       name: prodName,
       description: description,
-      price: prodPrice,
-      minimumPrice: lowPrice,
+      price: parseInt(prodPrice),
+      minimumPrice: parseInt(lowPrice),
       date: prodDate,
       duration: duration,
       category: category,
