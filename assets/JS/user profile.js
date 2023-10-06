@@ -12,49 +12,47 @@ function errorBox(errorMessage) {
 // -------------------------------------------//
 const userEmail = JSON.parse(sessionStorage.getItem("email"));
 
-const proflieFetch = 'http://localhost:8080/vanhaweb/home/profile';
+if (!userEmail) {
+  errorBox('User email is missing.');
+} else {
+  const proflieFetch = `http://localhost:8080/vanhaweb/home/profile?userEmail=${userEmail}`;
 
-const headers = {
-  'Content-Type': 'application/json',
-};
-
-if (userEmail) {
-  headers['Authorization'] = `Bearer ${userEmail}`;
+  fetch(proflieFetch, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then(async (response) => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const data = await response.json();
+      return data;
+    })
+    .then((data) => {
+      if (data.statusCode === 200) {
+        console.log(data.data);
+        updateUserInfo(data.data.user);
+        updateProductList(data.data.products);
+      } else if (data.statusCode === 500) {
+        window.location.href = "../error/500error.html";
+      } else {
+        let errorMessage = '';
+        if (data.statusCode === 400) {
+          errorMessage = data.message;
+          console.log(errorMessage);
+          errorBox(errorMessage);
+        } else {
+          errorMessage = 'An unknown error occurred.';
+        }
+      }
+    })
+    .catch((error) => {
+      console.error('Fetch error:', error);
+    });
 }
 
-fetch(proflieFetch, {
-  method: 'GET',
-  headers: headers,
-})
-  .then(async (response) => {
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
-    }
-    const data = await response.json();
-    return data;
-  })
-
-  .then((data) => {
-    if (data.statusCode === 200) {
-      console.log(data.data);
-      updateUserInfo(data.data.user);
-      updateProductList(data.data.products);
-    } else if (data.statusCode === 500) {
-      window.location.href = "../error/500error.html";
-    } else {
-      let errorMessage = '';
-      if (data.statusCode === 400) {
-        errorMessage = data.message;
-        console.log(errorMessage);
-        errorBox(errorMessage);
-      } else {
-        errorMessage = 'An unknown error occurred.';
-      }
-    }
-  })
-  .catch((error) => {
-    console.error('Fetch error:', error);
-  });
 
 function updateUserInfo(user) {
   document.getElementById("user_name").textContent = user.name;
