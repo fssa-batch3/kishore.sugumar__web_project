@@ -21,20 +21,15 @@ function errorBox(errorMessage) {
 }
 // ------------------------------------product card-------------------------------------------//
 
-const uri = `http://localhost:8080/vanhaweb/home/categroyproduct?Category=${category}`;
-
 const user = sessionStorage.getItem('email');
-const headers = {
-  'Content-Type': 'application/json',
-};
 
-if (user) {
-  headers['Authorization'] = `Bearer ${user}`;
-}
+const uri = `http://localhost:8080/vanhaweb/home/categroyproduct?Category=${category}&email=${user}`;
 
 fetch(uri, {
   method: 'GET',
-  headers: headers,
+  headers : {
+    'Content-Type': 'application/json',
+  },
 })
   .then(response => {
     if (!response.ok) {

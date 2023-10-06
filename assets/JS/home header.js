@@ -136,8 +136,13 @@ function search() {
 
       const productImage = imageArray.find((i) => i.unique === element.unique)
 
+      console.log(productImage);
       const image = document.createElement("img");
+      if(productImage.image1 === undefined){
+        image.setAttribute("src", "https://iili.io/JJHvWdu.png");
+      }else{
       image.setAttribute("src", productImage.image1);
+      }
       image.setAttribute("alt", `${element.name}Image`);
       image.setAttribute("id", element.unique);
       image.setAttribute("class", "product_img");

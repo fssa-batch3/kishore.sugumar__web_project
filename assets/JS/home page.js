@@ -166,16 +166,16 @@ aboutPage.addEventListener("click", function about(event) {
 //   }
 // });
 
-// const bidlistPage = document.getElementById("bidlist");
-// bidlistPage.addEventListener("click", function bidlist(event) {
-//   event.preventDefault();
-//   const user = JSON.parse(localStorage.getItem("unique_id"));
-//   if (!user) {
-//     alert("There is no account please 'Log in'");
-//   } else {
-//     window.location.href = "./pages/bid list.html";
-//   }
-// });
+const bidlistPage = document.getElementById("bidlist");
+bidlistPage.addEventListener("click", function bidlist(event) {
+  event.preventDefault();
+  const user = JSON.parse(sessionStorage.getItem("email"));
+  if (!user) {
+    alert("There is no account please 'Log in'");
+  } else {
+    window.location.href = "./pages/bid list.html";
+  }
+});
 
 const closeButton = document.getElementById("off");
 closeButton.addEventListener("click", function off() {
