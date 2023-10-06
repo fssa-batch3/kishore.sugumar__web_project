@@ -12,7 +12,8 @@ function errorBox(errorMessage) {
 
 // --------------------product card -------------------//
 
-const uri = 'http://localhost:8080/vanhaweb/home';
+// const uri = 'http://localhost:8080/vanhaweb/home';
+const uri = 'http://13.233.151.156:8080/vanhaweb/home';
 
 const user = sessionStorage.getItem('email');
 const headers = {
