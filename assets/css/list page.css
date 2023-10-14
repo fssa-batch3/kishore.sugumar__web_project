@@ -26,8 +26,8 @@
 
 /* ----list of prod----- */
 .product-img {
-    width: 310px;
-    height: 310px;
+    width: 300px;
+    height: 300px;
     padding: 10px;
     border-radius: 20px;
 }
@@ -35,12 +35,12 @@
 .box {
     align-content: center;
     display: grid;
-    grid-template-columns: repeat(3, 490px);
+    grid-template-columns: repeat(4, 350px);
     margin: 0px 0px 50px 50px;
 }
 
 .content {
-    width: 350px;
+    width: 320px;
     background-color: whitesmoke;
     align-content: center;
     margin: 50px 0px 20px 0px;
@@ -54,10 +54,20 @@
     color: var(--tertiary);
 }
 
+.content:hover p{
+    color: var(--fifth);
+}
+
 .content h2 {
     font-size: 28px;
     width: 300px;
     margin-top: 50px;
+}
+
+.sold {
+    font-size: 25px;
+    padding: 5px;
+    background-color: #d3e1e7;
 }
 
 .algn {
@@ -77,9 +87,10 @@
     margin: 50px 0px;
 }
 
-.noProduct{
+.noProduct {
     margin-top: 10%;
 }
+
 .illustration-image {
     width: 500px;
 }

@@ -1,46 +1,45 @@
 // -----------------------------read bid (buyer)--------------------------//
 
 document.addEventListener("DOMContentLoaded", function bid_prod() {
-const userEmail = JSON.parse(sessionStorage.getItem("email"));
+  const userEmail = JSON.parse(sessionStorage.getItem("email"));
 
-if (!userEmail) {
-  errorBox('User email is missing.');
-} else {
-  const proflieFetch = `http://localhost:8080/vanhaweb/home/listproduct?userEmail=${userEmail}`;
+  if (!userEmail) {
+    errorBox('User email is missing.');
+  } else {
+    const proflieFetch = `${serverPath}/home/listproduct?userEmail=${userEmail}`;
 
-  fetch(proflieFetch, {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  })
-    .then(async (response) => {
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      const data = await response.json();
-      return data;
+    fetch(proflieFetch, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
     })
-    .then((data) => {
-      if (data.statusCode === 200) {
-        displayProducts(data.data);
-      } else if (data.statusCode === 500) {
-        window.location.href = "../error/500error.html";
-      } else {
-        let errorMessage = '';
-        if (data.statusCode === 400) {
-          errorMessage = data.message;
-          console.log(errorMessage);
-          errorBox(errorMessage);
-        } else {
-          errorMessage = 'An unknown error occurred.';
+      .then(async (response) => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
         }
-      }
-    })
-    .catch((error) => {
-      console.error('Fetch error:', error);
-    });
-}
+        const data = await response.json();
+        return data;
+      })
+      .then((data) => {
+        if (data.statusCode === 200) {
+          displayProducts(data.data);
+        } else if (data.statusCode === 500) {
+          window.location.href = "../error/500error.html";
+        } else {
+          let errorMessage = '';
+          if (data.statusCode === 400) {
+            errorMessage = data.message;
+            errorBox(errorMessage);
+          } else {
+            errorMessage = 'An unknown error occurred.';
+          }
+        }
+      })
+      .catch((error) => {
+        console.error('Fetch error:', error);
+      });
+  }
 });
 
 function displayProducts(element) {
@@ -53,7 +52,11 @@ function displayProducts(element) {
       div_card.classList.add("content");
 
       const image = document.createElement("img");
-      image.setAttribute("src", productObj.image);
+      if (productObj.image == null) {
+        image.setAttribute("src", "https://iili.io/JJTtQaa.jpg");
+      } else {
+        image.setAttribute("src", productObj.image);
+      }
       image.setAttribute("alt", `${productObj.name}Image`);
       image.classList.add("product-img");
       div_card.prepend(image);
@@ -64,18 +67,25 @@ function displayProducts(element) {
       h3.textContent = productObj.name;
       div_card.append(h3);
 
-      const anch = document.createElement("a");
-      anch.setAttribute(
-        "href",
-        `./product page.html?productId=${productObj.productId}`
-      );
-      div_card.append(anch);
+      if (productObj.status === 'a') {
+        const anch = document.createElement("a");
+        anch.setAttribute(
+          "href",
+          `./product page.html?productId=${productObj.productId}`
+        );
+        div_card.append(anch);
 
-      const button2 = document.createElement("button");
-      button2.classList.add("button2", "algn");
-      button2.textContent = "Bid more";
-      button2.setAttribute("id", "Bid more");
-      anch.append(button2);
+        const button2 = document.createElement("button");
+        button2.classList.add("button2", "algn");
+        button2.textContent = "Bid more";
+        button2.setAttribute("id", "Bid more");
+        anch.append(button2);
+      } else {
+        const sold = document.createElement("p");
+        sold.setAttribute("class", "sold");
+        sold.textContent = "Product sold";
+        div_card.append(sold);
+      }
 
       box.append(div_card);
     });

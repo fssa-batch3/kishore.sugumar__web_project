@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function update_prod() {
 
   const productId = new URLSearchParams(window.location.search).get("product_id");
 
-  const sellerProductUri = `http://localhost:8080/vanhaweb/home/profile/productdetail?productId=${productId}`;
+  const sellerProductUri = `${serverPath}/home/profile/productdetail?productId=${productId}`;
 
 
   fetch(sellerProductUri, {
@@ -101,7 +101,6 @@ document.addEventListener("DOMContentLoaded", function update_prod() {
         let errorMessage = '';
         if (data.statusCode === 400) {
           errorMessage = data.message;
-          console.log(errorMessage);
           errorBox(errorMessage);
         } else {
           errorMessage = 'An unknown error occurred.';
@@ -142,7 +141,6 @@ async function uploadImage(imageFile, id) {
 
   try {
     const response = await fetch(url, options);
-    console.log(response);
     if (response.ok) {
       const jsonResult = await response.json();
       const imageSrc = jsonResult.url + "";
@@ -157,7 +155,7 @@ async function uploadImage(imageFile, id) {
 
 async function changeProductImage(imgSrc, id) {
 
-  const updateImage = 'http://localhost:8080/vanhaweb/home/profile/productdetail';
+  const updateImage = `${serverPath}/home/profile/productdetail`;
 
   const productId = new URLSearchParams(window.location.search).get("product_id");
 
@@ -177,7 +175,6 @@ async function changeProductImage(imgSrc, id) {
     const data = await response.json();
 
     if (data.data != null) {
-      console.log(data.data);
       alert("Image changed");
       window.location.reload();
     } else {
@@ -225,11 +222,11 @@ async function updateProduct() {
     return alert("Give proper message");
   }
 
-  if (prod_price <= 0) {
+  if (parseInt(prod_price) <= 0) {
     return alert("Product price cannot be 0");
   }
 
-  if (min_price <= 0) {
+  if (parseInt(min_price) <= 0) {
     return alert("Minimum price cannot be 0");
   }
 
@@ -241,7 +238,7 @@ async function updateProduct() {
     return alert("Duration should be year or month no other than this");
   }
 
-  if (prod_price < min_price) {
+  if (parseInt(prod_price) <= parseInt(min_price)) {
     return alert("Minimum price should greater than tha actual price");
   }
 
@@ -249,15 +246,13 @@ async function updateProduct() {
     productId: id,
     name: prod_name,
     description: description,
-    price: prod_price,
-    min_price: min_price,
+    price: parseInt(prod_price),
+      minimumPrice: parseInt(min_price),
     usedPeriod: used_period,
     usedDuration: duration,
   };
 
-  console.log(product_detail);
-
-  const updateProduct = 'http://localhost:8080/vanhaweb/home/profile/productdetail/update';
+  const updateProduct = `${serverPath}/home/profile/productdetail/update`;
 
   fetch(updateProduct, {
     method: 'POST',
@@ -275,7 +270,6 @@ async function updateProduct() {
     })
 
     .then(responseText => {
-      console.log(responseText);
       if (responseText.statusCode === 200) {
         alert("Edited Successfully");
         window.location.reload();
@@ -285,7 +279,6 @@ async function updateProduct() {
         let errorMessage = '';
         if (data.statusCode === 400) {
           errorMessage = data.message;
-          console.log(errorMessage);
           errorBox(errorMessage);
         } else {
           errorMessage = 'An unknown error occurred.';
@@ -478,7 +471,6 @@ function getRequirementMessage(inputId) {
 //   }
 
 //   let findMessageId = textArray.find((id) => id.MessagerId === other && id.productId === product);
-//   console.log(findMessageId.messageId);
 
 //       let content = {
 //       messagerId : seller,

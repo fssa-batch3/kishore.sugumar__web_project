@@ -43,16 +43,17 @@
     filter: drop-shadow(2px 2px 2.5px gray);
 }
 
-/*--------------------bid area------------------*/
+/*-------------------bid area-------------------*/
 .bidheading {
     background-color: #9cb2bc;
     padding: 15px 0px;
     font-size: 22px;
     font-weight: 600;
+    margin-bottom: 0;
 }
 
 .otherBids {
-    margin-top: 50px;
+    margin: 50px 0px 0px 100px;
     text-align: center;
     width: 500px;
     box-shadow: 20px 20px 60px #bebebe,
@@ -70,25 +71,6 @@
     overflow: auto;
 }
 
-.bidblock {
-    border-bottom: 1px solid #ccc;
-    padding: 10px;
-}
-
-.bidblock p {
-    margin: 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.buyer_img {
-    max-width: 50px;
-    max-height: 50px;
-    border-radius: 50%;
-    margin-left: 10px;
-}
-
 .illustration-image {
     width: 200px;
 }
@@ -103,6 +85,57 @@
     top: 30px;
 }
 
+/* Styles for the table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+}
+
+th {
+    background-color: #f2f2f2;
+    padding: 8px;
+    text-align: center;
+}
+
+td {
+    padding: 8px;
+}
+
+td span {
+    padding-top: 13px;
+}
+
+tr {
+    border-bottom: 1px solid #ccc;
+}
+
+td .buyer_img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+
+.aling {
+    display: flex;
+    max-width: 200px;
+    width: 200px;
+    overflow: hidden;
+}
+
+.date {
+    font-size: 14px;
+    width: 100px;
+}
+
+.amount {
+    width: 100px;
+}
+
+
 /* -------------------main-right--------------- */
 .desc {
     color: var(--fifth);
@@ -116,14 +149,12 @@
     font-size: 18px;
     height: 40px;
     display: flex;
-    float: inline-start;
 }
 
 .duration {
     height: 40px;
     display: flex;
     padding-bottom: 15px;
-    float: inline-start;
     border-width: 0px 0px 2px 0px;
     border-style: solid;
     border-color: rgb(160, 160, 160);
@@ -168,6 +199,10 @@
     padding-right: 10px;
 }
 
+.my{
+    background-color: rgb(238, 242, 245);
+}
+
 .bid-amount {
     height: 28px;
     margin-right: 10px;
@@ -206,17 +241,15 @@ input[type=number]::-webkit-outer-spin-button {
     justify-content: space-between;
 }
 
-.box {
-    display: flex;
-}
-
 .seller-info h1 {
     color: var(--fifth);
 }
 
-#seller_name {
+#seller_name, #seller_location {
     width: 230px;
-    padding-top: 12%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 #wish_button,

@@ -12,7 +12,7 @@ function errorBox(errorMessage) {
 //----------------------------------------------------------------//
 const productId = new URLSearchParams(window.location.search).get("productId");
 
-const uri = `http://localhost:8080/vanhaweb/home/productdetail?productId=${productId}`;
+const uri = `${serverPath}/home/productdetail?productId=${productId}`;
 
 fetch(uri, {
   method: 'GET',
@@ -74,39 +74,69 @@ fetch(uri, {
         const bidsArray = object.bids;
         const container = document.querySelector(".allRequests");
 
+        const table = document.createElement("table");
+        
+        const headerRow = document.createElement("tr");
+        const headerCells = ["No", "Buyer", "Amount", "Date"];
+        
+        headerCells.forEach((cellText) => {
+          const headerCell = document.createElement("th");
+          headerCell.textContent = cellText;
+          headerRow.appendChild(headerCell);
+        });
+        
+        table.appendChild(headerRow);
+        
+        const  user = JSON.parse(sessionStorage.getItem("email"));
+
         for (let i = 0; i < bidsArray.length; i++) {
           const bid = bidsArray[i];
+        
+          const dataRow = document.createElement("tr");
 
-          const lineDiv = document.createElement("div");
-          lineDiv.classList.add("bidblock");
-
-          const paragraph = document.createElement("p");
-
-          const buyerNameText = document.createTextNode(bid.buyerName);
-          paragraph.appendChild(buyerNameText);
-
-          const amountSpan = document.createElement("span");
-          amountSpan.textContent = bid.amount;
-          paragraph.appendChild(amountSpan);
-
+          console.log(bid);
+          if(bid.buyerEmail === user){
+            dataRow.setAttribute("class", "my");
+          }
+        
+          const listNoCell = document.createElement("td");
+          listNoCell.textContent = bid.listNo;
+        
+          const buyerCell = document.createElement("td");
           const buyerImage = document.createElement("img");
           buyerImage.src = bid.buyerImage;
           buyerImage.alt = `${bid.buyerName} Image`;
           buyerImage.classList.add("buyer_img");
-          paragraph.appendChild(buyerImage);
-
-          lineDiv.appendChild(paragraph);
-
-          container.appendChild(lineDiv);
+          buyerCell.setAttribute("class", "aling");
+          buyerCell.appendChild(buyerImage);
+          const name = document.createElement("span");
+          name.innerHTML = bid.buyerName;
+          buyerCell.appendChild(name);
+        
+          const amountCell = document.createElement("td");
+          amountCell.setAttribute("class", "amount");
+          amountCell.textContent = `${bid.amount} ₹`;
+        
+          const dateCell = document.createElement("td");
+          dateCell.setAttribute("class", "date");
+          dateCell.textContent = formatDateTime(bid.date);
+        
+          dataRow.appendChild(listNoCell);
+          dataRow.appendChild(buyerCell);
+          dataRow.appendChild(amountCell);
+          dataRow.appendChild(dateCell);
+        
+          table.appendChild(dataRow);
         }
-      }
+        
+        container.appendChild(table);
+      }        
     } else if (data.statusCode === 500) {
       window.location.href = "../error/500error.html";
     } else {
       let errorMessage = '';
       if (data.statusCode === 400) {
         errorMessage = data.message;
-        console.log(errorMessage);
         errorBox(errorMessage);
       } else {
         errorMessage = 'An unknown error occurred.';
@@ -201,6 +231,58 @@ fetch(uri, {
 //   }
 // });
 
+//---------------------------time formatter------------------------//
+function getMonthAbbreviation(monthNumber) {
+  switch (monthNumber) {
+    case "01":
+      return "Jan";
+    case "02":
+      return "Feb";
+    case "03":
+      return "Mar";
+    case "04":
+      return "Apr";
+    case "05":
+      return "May";
+    case "06":
+      return "Jun";
+    case "07":
+      return "Jul";
+    case "08":
+      return "Aug";
+    case "09":
+      return "Sep";
+    case "10":
+      return "Oct";
+    case "11":
+      return "Nov";
+    case "12":
+      return "Dec";
+    default:
+      return "Invalid Month";
+  }
+}
+
+function getAmOrPm(hour) {
+  var time = Number(hour);
+  if (time >= 0 && time < 12) {
+    return "AM";
+  } else {
+    return "PM";
+  }
+}
+
+function formatDateTime(dateTimeString) {
+  var date = dateTimeString;
+  var year = date.substring(0, 4);
+  let num = date.substring(5, 7);
+  var month = getMonthAbbreviation(num);
+  var day = date.substring(8, 10);
+  var time = date.substring(11, 16);
+  var std = getAmOrPm(date.substring(11, 13));
+  return day + " " + month + " " + year + " " + time + " " + std;
+}
+
 // -----------------------------create bid--------------------------//
 async function bid(event) {
   event.preventDefault();
@@ -214,7 +296,7 @@ async function bid(event) {
       "productId"
     );
     const buyer = JSON.parse(sessionStorage.getItem("email"));
-    const bid = 'http://localhost:8080/vanhaweb/home/productdetail/bid';
+    const bid = `${serverPath}/home/productdetail/bid`;
 
     const requestBody = {
       buyer: buyer,
@@ -249,7 +331,6 @@ async function bid(event) {
         let errorMessage = '';
         if (data.statusCode === 400) {
           errorMessage = data.message;
-          console.log(errorMessage);
           errorBox(errorMessage);
         } else {
           errorMessage = 'An unknown error occurred.';
@@ -333,7 +414,6 @@ document.getElementById("bid_button").addEventListener("click", bid);
 //   const thumbnail_image4 = document.querySelector("#sub_img3");
 
 //   thumbnail_image1.addEventListener("click", function () {
-//     console.log("clicked");
 //     img(thumbnail_image1);
 //   });
 
