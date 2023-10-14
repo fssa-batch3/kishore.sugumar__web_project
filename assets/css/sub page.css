@@ -109,7 +109,19 @@
 }
 
 .sellerInfo {
+    width: 100%;
     text-align-last: start;
+    display: flex;
+    margin-top: 5px;
+    border-top: 1px solid gray;
+    padding-top: 10px;
+}
+
+.seller_name, .seller_location {
+    width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .algn {

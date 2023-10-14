@@ -101,6 +101,7 @@ textarea {
 }
 
 .requirement{
+  max-width: 300px;
   color: rgb(70, 160, 35);
 }
 ol li {

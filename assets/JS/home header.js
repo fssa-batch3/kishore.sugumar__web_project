@@ -39,7 +39,7 @@ function home_Header() {
 
     if(image === "null" | image === null){
       const photo = document.querySelector(".profile-img");
-      photo.setAttribute("src", "https://iili.io/JJHvWdu.png");
+      photo.setAttribute("src", "https://iili.io/JH5FmAJ.jpg");
       photo.setAttribute("alt", `your Image`);
     }else{
     const photo = document.querySelector(".profile-img");
@@ -136,10 +136,9 @@ function search() {
 
       const productImage = imageArray.find((i) => i.unique === element.unique)
 
-      console.log(productImage);
       const image = document.createElement("img");
       if(productImage.image1 === undefined){
-        image.setAttribute("src", "https://iili.io/JJHvWdu.png");
+        image.setAttribute("src", "https://iili.io/JH5FmAJ.jpg");
       }else{
       image.setAttribute("src", productImage.image1);
       }

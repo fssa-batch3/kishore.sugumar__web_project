@@ -1,6 +1,6 @@
 :root {
     --primary: #3f404b;
-    --secondary: #222f30;
+    --secondary: #81d1f7;
     --tertiary: #ffeba7;
     --fourth: #fdd13f;
     --fifth: #4c585e;
@@ -274,7 +274,19 @@
 }
 
 .sellerInfo {
+    width: 100%;
     text-align-last: start;
+    display: flex;
+    margin-top: 5px;
+    border-top: 1px solid gray;
+    padding-top: 10px;
+}
+
+.seller_name, .seller_location {
+    width: 150px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .grid-container {

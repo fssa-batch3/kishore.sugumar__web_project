@@ -29,7 +29,7 @@
 
 .user-img {
   width: 180px;
-  height:180px;
+  height: 180px;
   border-radius: 50%;
 }
 
@@ -84,7 +84,7 @@
 }
 
 .edit-image {
-  width:150px;
+  width: 150px;
   height: 150px;
   border-radius: 10px;
 }
@@ -198,6 +198,11 @@
 .add {
   height: 45px;
   margin: 23px 20px 0px 0px;
+}
+
+.sold {
+  font-size: 35px;
+  margin: 0;
 }
 
 .box {
@@ -317,5 +322,3 @@
 .dropdown:hover .dropdown-content {
   display: block;
 }
-
-.dropdown:hover .dropbtn {}

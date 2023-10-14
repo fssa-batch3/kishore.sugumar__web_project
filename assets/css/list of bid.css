@@ -77,9 +77,8 @@ h1 {
   background-color: var(--fifth);
 }
 
-.algn {
-  height: 35px;
-  margin-top: 33px;
+.content {
+  margin-top: 0px;
 }
 
 #bid-list {
@@ -92,48 +91,106 @@ h1 {
   bottom: 30px;
 }
 
-.content {
-  width: 95%;
-  display: flex;
-  justify-content: space-between;
-  border-radius: 20px;
-  border-style: solid;
-  border-color: grey;
-  border-width: 0px 0px 0px 2px;
-  margin: 20px 0px 20px 20px;
-  font-size: 23px;
-  background-color: rgb(227, 227, 227);
+table {
+  border-collapse: collapse;
+  border-spacing: 0 10px;
+  width: 100%;
+  margin-top: 20px;
+}
+
+thead {
+  border: 1px solid #ccc;
+}
+
+thead th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+  text-align: center;
+  padding: 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+td {
+  padding: 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  border-bottom: 1px solid #ccc;
+}
+
+th:nth-child(2) {
+  width: 20%;
+  text-align: end;
+}
+
+td:nth-child(3) {
+  width: 20%;
+  text-align: start;
+}
+
+th:nth-child(3) {
+  width: 20%;
+}
+
+th:nth-child(4) {
+  width: 20%;
+}
+
+th:nth-child(5) {
+  width: 35%;
+}
+
+tr:not(:first-child) {
+  margin-top: 10px;
+}
+
+.high1 {
+  background-color: #ACE1FA;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.high2 {
+  background-color: #CBECFC;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.high3 {
+  background-color: #E4F5FD;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 
 .buyer_img {
-  width: 80px;
-  height: 80px;
-  margin: 10px 20px 10px 10px;
+  max-width: 60px;
+  max-height: 60px;
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
   border-radius: 50%;
+  vertical-align: middle;
 }
 
-.buyer_name {
-  width: 250px;
-}
-
-.price {
-  font-weight: bold;
-  color: var(--fifth);
-  padding: 32px 30px 0px 0px;
-}
-
-.title {
-  font-weight: bold;
-  color: var(--primary);
-  padding: 32px 5px 0px 0px;
+.sold {
+  font-size: 35px;
+  margin: 0;
 }
 
 .algn {
+  text-align: center;
+}
+
+.date {
+  font-size: 14px;
   width: 80px;
-  margin-left: 10px;
+}
+
+.amount {
+  width: 100px;
 }
 
 /* -------------after acept offer----------- */
+
 .img {
   margin: 20px;
 }

@@ -61,7 +61,7 @@ addProduct.addEventListener("click", async function active() {
       user_id: user_id,
     };
 
-    const createProduct = 'http://localhost:8080/vanhaweb/home/create';
+    const createProduct = `${serverPath}/home/create`;
 
   try {
     const response = await fetch(createProduct, {
@@ -87,7 +87,6 @@ addProduct.addEventListener("click", async function active() {
       let errorMessage = '';
       if (data.statusCode === 400) {
         errorMessage = data.message;
-        console.log(errorMessage);
         errorBox(errorMessage);
       } else {
         errorMessage = 'An unknown error occurred.';

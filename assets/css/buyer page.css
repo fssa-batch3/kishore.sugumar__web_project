@@ -69,6 +69,10 @@ h1 {
     background-color: rgb(227, 227, 227);
 }
 
+.imgDiv {
+    text-align: center;
+}
+
 .buyer {
     width: 150px;
     height: 150px;

@@ -15,7 +15,7 @@ const userEmail = JSON.parse(sessionStorage.getItem("email"));
 if (!userEmail) {
   errorBox('User email is missing.');
 } else {
-  const proflieFetch = `http://localhost:8080/vanhaweb/home/profile?userEmail=${userEmail}`;
+  const proflieFetch = `${serverPath}/home/profile?userEmail=${userEmail}`;
 
   fetch(proflieFetch, {
     method: 'GET',
@@ -32,7 +32,6 @@ if (!userEmail) {
     })
     .then((data) => {
       if (data.statusCode === 200) {
-        console.log(data.data);
         updateUserInfo(data.data.user);
         updateProductList(data.data.products);
       } else if (data.statusCode === 500) {
@@ -41,7 +40,6 @@ if (!userEmail) {
         let errorMessage = '';
         if (data.statusCode === 400) {
           errorMessage = data.message;
-          console.log(errorMessage);
           errorBox(errorMessage);
         } else {
           errorMessage = 'An unknown error occurred.';
@@ -61,7 +59,7 @@ function updateUserInfo(user) {
   document.getElementById("user_location").textContent = user.location || "Location";
 
   const profileImage = document.getElementById("user-img");
-  profileImage.setAttribute("src", user.image || "https://iili.io/JJHvWdu.png");
+  profileImage.setAttribute("src", user.image || "https://iili.io/JH5FmAJ.jpg");
   profileImage.setAttribute("alt", `${user.name} Image`);
 
   document.getElementById("name").value = user.name;
@@ -74,8 +72,13 @@ function updateProductList(products) {
   if (products != null) {
     const productContainer = document.querySelector("div.box");
     products.forEach(function (element) {
-      const div_card = createProductCard(element);
-      productContainer.append(div_card);
+      if (element.status == 'a') {
+        let div_card = createProductCard(element);
+        productContainer.append(div_card);
+      } else {
+        let div_card = soldProductCard(element);
+        productContainer.append(div_card);
+      }
     });
   }
 }
@@ -143,6 +146,45 @@ function createProductCard(element) {
   });
 
   button_remove.append(button2);
+  return div_card;
+}
+
+function soldProductCard(element) {
+  const div_card = document.createElement("div");
+  div_card.classList.add("content");
+
+  const image = document.createElement("img");
+  if (element.asset != null) {
+    image.setAttribute("src", element.asset);
+  } else {
+    image.setAttribute("src", "https://iili.io/JJTtQaa.jpg");
+  }
+  image.setAttribute("alt", `${element.ProductName} Image`);
+  image.classList.add("product-img");
+  div_card.append(image);
+
+  const h2 = document.createElement("h3");
+  h2.setAttribute("class", "prod_name");
+  h2.setAttribute("id", "prod_name");
+  h2.textContent = element.ProductName;
+  div_card.append(h2);
+
+  const sold = document.createElement("p");
+  sold.setAttribute("class", "sold");
+  sold.textContent = "SOLD";
+  div_card.append(sold);
+
+  const anc = document.createElement("a");
+  anc.setAttribute(
+    "href",
+    `./after accept offer.html?id=${element.bid_id}&sold=yes`
+  );
+  div_card.append(anc);
+
+  const button3 = document.createElement("button");
+  button3.classList.add("button2", "remo");
+  button3.textContent = "View Buyer";
+  anc.append(button3);
 
   return div_card;
 }
@@ -187,7 +229,7 @@ async function uploadImage(imageFile) {
     const response = await fetch(url, options);
     if (response.ok) {
       const jsonResult = await response.json();
-      const imageSrc = jsonResult.url+"";
+      const imageSrc = jsonResult.url + "";
       await changeImage(imageSrc);
     } else {
       console.error('HTTP error:', response.status);
@@ -198,7 +240,7 @@ async function uploadImage(imageFile) {
 }
 
 async function changeImage(image) {
-  const updateImage = 'http://localhost:8080/vanhaweb//home/profile';
+  const updateImage = `${serverPath}/home/profile`;
 
   const email = JSON.parse(sessionStorage.getItem("email"));
 
@@ -227,7 +269,6 @@ async function changeImage(image) {
       let errorMessage = '';
       if (data.statusCode === 400) {
         errorMessage = data.message;
-        console.log(errorMessage);
         errorBox(errorMessage);
       } else {
         errorMessage = 'An unknown error occurred.';
@@ -277,9 +318,7 @@ async function updateProfile() {
     location: location,
   };
 
-  console.log(user_detail);
-
-  const updateUser = 'http://localhost:8080/vanhaweb/home/update';
+  const updateUser = `${serverPath}/home/update`;
 
   try {
     const response = await fetch(updateUser, {
@@ -305,7 +344,6 @@ async function updateProfile() {
       let errorMessage = '';
       if (data.statusCode === 400) {
         errorMessage = data.message;
-        console.log(errorMessage);
         errorBox(errorMessage);
       } else {
         errorMessage = 'An unknown error occurred.';
@@ -325,7 +363,7 @@ updateButton.addEventListener("click", async function () {
 
 async function del(id) {
 
-  const deleteProduct = `http://localhost:8080/vanhaweb/home/profile/productdetail/delete?productId=${id}`;
+  const deleteProduct = `${serverPath}/home/profile/productdetail/delete?productId=${id}`;
 
   try {
     const response = await (
@@ -338,11 +376,7 @@ async function del(id) {
       throw new Error('Network response was not ok');
     }
 
-    console.log(response);
-
     const result = await response.json();
-
-    console.log(result);
 
     if (result.statusCode === 200) {
       window.location.reload();
@@ -352,7 +386,6 @@ async function del(id) {
       let errorMessage = '';
       if (data.statusCode === 400) {
         errorMessage = data.message;
-        console.log(errorMessage);
         errorBox(errorMessage);
       } else {
         errorMessage = 'An unknown error occurred.';
@@ -431,8 +464,6 @@ function getRequirementMessage(inputId) {
 //   button.setAttribute("style", "display:none;");
 // } else {
 //   const productMessages = messageArray.filter((p) => p.buyerId === messager)
-
-//   console.log(productMessages);
 
 //   if (productMessages.length > 0) {
 //     button.setAttribute("style", "display:block;");

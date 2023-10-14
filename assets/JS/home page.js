@@ -12,8 +12,7 @@ function errorBox(errorMessage) {
 
 // --------------------product card -------------------//
 
-// const uri = 'http://localhost:8080/vanhaweb/home';
-const uri = 'http://13.233.151.156:8080/vanhaweb/home';
+const uri = `${serverPath}/home`;
 
 const user = sessionStorage.getItem('email');
 const headers = {
@@ -37,7 +36,6 @@ fetch(uri, {
   .then(data => {
     if (data.statusCode === 200) {
       const loadData = data["data"];
-
       function createProductCard(product) {
         const card = document.createElement("div");
         card.classList.add("card");
@@ -52,7 +50,11 @@ fetch(uri, {
         cardDetails.appendChild(productLink);
 
         const productImage = document.createElement("img");
+        if(product.asset == undefined){
+          productImage.src = "https://iili.io/JJTtQaa.jpg";
+        }else{
         productImage.src = product.asset;
+        }
         productImage.alt = `${product.ProductName} Image`;
         productImage.classList.add("product_img");
         productLink.appendChild(productImage);
@@ -99,10 +101,12 @@ fetch(uri, {
 
         const sellerNameSpan = document.createElement("div");
         sellerNameSpan.innerHTML = `<b>Seller:</b> ${product.sellerName}`;
+        sellerNameSpan.classList.add("seller_name");
         sellerDetails.appendChild(sellerNameSpan);
 
         const sellerLocationSpan = document.createElement("div");
         sellerLocationSpan.innerHTML = `<b>Location:</b> ${product.sellerLocation}`;
+        sellerLocationSpan.classList.add("seller_location");
         sellerDetails.appendChild(sellerLocationSpan);
 
         document.querySelector("div.grid-container").appendChild(card);
@@ -115,7 +119,6 @@ fetch(uri, {
       let errorMessage = '';
       if (data.statusCode === 400) {
         errorMessage = data.message;
-        console.log(errorMessage);
         errorBox(errorMessage);
       } else {
         errorMessage = 'An unknown error occurred.';
@@ -241,7 +244,7 @@ async function log_in(event) {
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
 
-  const loginUrl = 'http://localhost:8080/vanhaweb/home/login';
+  const loginUrl = `${serverPath}/home/login`;
 
   try {
     const response = await fetch(loginUrl, {
@@ -278,7 +281,6 @@ async function log_in(event) {
       let errorMessage = '';
       if (data.statusCode === 400) {
         errorMessage = data.message;
-        console.log(errorMessage);
         errorBox(errorMessage);
       } else {
         errorMessage = 'An unknown error occurred.';
@@ -375,10 +377,8 @@ async function register(event) {
     location: applicantlocation,
   };
 
-  console.log(user_detail);
 
-
-  const registerUser = 'http://localhost:8080/vanhaweb/home/user/create';
+  const registerUser = `${serverPath}/home/user/create`;
 
   try {
     const response = await fetch(registerUser, {
@@ -391,13 +391,9 @@ async function register(event) {
 
     if (!response.ok) {
       throw new Error('Network response was not ok');
-    } else {
-      console.log(response);
-    }
-
+    } 
     const data = await response.json();
 
-    console.log(data);
     if (data.statusCode === 200) {
       sessionStorage.setItem("email", JSON.stringify(data.data.email));
       sessionStorage.setItem("image", null);

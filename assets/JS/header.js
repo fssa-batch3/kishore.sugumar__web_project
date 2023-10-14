@@ -32,7 +32,7 @@ function allheader() {
 
     if(image === "null" | image === null){
       const photo = document.querySelector(".profile-img");
-      photo.setAttribute("src", "https://iili.io/JJHvWdu.png");
+      photo.setAttribute("src", "https://iili.io/JH5FmAJ.jpg");
       photo.setAttribute("alt", `your Image`);
     }else{
     const photo = document.querySelector(".profile-img");

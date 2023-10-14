@@ -23,7 +23,7 @@ function errorBox(errorMessage) {
 
 const user = sessionStorage.getItem('email');
 
-const uri = `http://localhost:8080/vanhaweb/home/categroyproduct?Category=${category}&email=${user}`;
+const uri = `${serverPath}/home/categroyproduct?Category=${category}&email=${user}`;
 
 fetch(uri, {
   method: 'GET',
@@ -39,7 +39,6 @@ fetch(uri, {
 
   })
   .then(data => {
-    console.log(data);
     const loadData = data["data"];
 
     function createProductCard(product) {
@@ -55,7 +54,11 @@ fetch(uri, {
       cardDetails.appendChild(productLink);
 
       const productImage = document.createElement("img");
+      if(product.asset == undefined){
+        productImage.src = "https://iili.io/JJTtQaa.jpg";
+      }else{
       productImage.src = product.asset;
+      }
       productImage.alt = `${product.ProductName} Image`;
       productImage.classList.add("product_img");
       productLink.appendChild(productImage);
@@ -102,10 +105,12 @@ fetch(uri, {
 
       const sellerNameSpan = document.createElement("div");
       sellerNameSpan.innerHTML = `<b>Seller:</b> ${product.sellerName}`;
+      sellerNameSpan.classList.add("seller_name");
       sellerDetails.appendChild(sellerNameSpan);
 
       const sellerLocationSpan = document.createElement("div");
       sellerLocationSpan.innerHTML = `<b>Location:</b> ${product.sellerLocation}`;
+      sellerLocationSpan.classList.add("seller_location");
       sellerDetails.appendChild(sellerLocationSpan);
 
       document.querySelector("#grid-container").appendChild(card);
@@ -126,18 +131,18 @@ fetch(uri, {
         let button = document.getElementById("loadmore");
         button.setAttribute("style", "display:none")
       }
-    } else if (data.statusCode === 500) {
-      window.location.href = "../error/500error.html";
-    } else {
-      let errorMessage = '';
-      if (data.statusCode === 400) {
-        errorMessage = data.message;
-        console.log(errorMessage);
-        errorBox(errorMessage);
-      } else {
-        errorMessage = 'An unknown error occurred.';
-      }
     }
+    //  else if (data.statusCode === 500) {
+    //   window.location.href = "../error/500error.html";
+    // } else {
+    //   let errorMessage = '';
+    //   if (data.statusCode === 400) {
+    //     errorMessage = data.message;
+    //     errorBox(errorMessage);
+    //   } else {
+    //     errorMessage = 'An unknown error occurred.';
+    //   }
+    // }
   })
   .catch(error => {
     console.error('Fetch error:', error);

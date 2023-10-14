@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="../assets/css/header.css">
     <link rel="stylesheet" href="../assets/css/seller product.css">
     <link rel="stylesheet" href="../assets/css/chat box.css">
-
+    <script src="../assets/JS/server.js"></script>
     <title>V A N H A</title>
 </head>
 
@@ -43,7 +43,7 @@
                         </p>
                         <h3 id="prod_price"></h3>
                         <h3 class="inr">
-                            <b>(INR)</b>
+                            <b>₹</b>
                         </h3>
                     </div>
                     <div class="durat">
@@ -107,13 +107,13 @@
                 <div class="field">
                     <label>Product price :</label>
                     <input type="number" class="input-field_prod" id="edit_price" placeholder="product price"
-                        onfocus="showRequirement('price')" onblur="clearRequirement()" required>
+                        onfocus="showRequirement('price')" onblur="clearRequirement()" placeholder="In Rupees ₹" required>
                 </div>
                 <div id="price-requirement" class="requirement"></div>
                 <div class="field">
                     <label>Minimum price :</label>
                     <input type="number" class="input-field_prod" id="edit_min_price" placeholder="minimum price"
-                        onfocus="showRequirement('min_price')" onblur="clearRequirement()" required>
+                        onfocus="showRequirement('min_price')" onblur="clearRequirement()"placeholder="In Rupees ₹"  required>
                 </div>
                 <div id="min_price-requirement" class="requirement"></div>
                 <div class="duration">
