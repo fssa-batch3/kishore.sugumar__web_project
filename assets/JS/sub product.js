@@ -23,7 +23,12 @@ function errorBox(errorMessage) {
 
 const user = sessionStorage.getItem('email');
 
-const uri = `${serverPath}/home/categroyproduct?Category=${category}&email=${user}`;
+var uri;
+if(user != null){
+  uri = `${serverPath}/home/categroyproduct?Category=${category}&email=${user}`;
+}else{
+  uri = `${serverPath}/home/categroyproduct?Category=${category}`; 
+}
 
 fetch(uri, {
   method: 'GET',
@@ -132,17 +137,17 @@ fetch(uri, {
         button.setAttribute("style", "display:none")
       }
     }
-    //  else if (data.statusCode === 500) {
-    //   window.location.href = "../error/500error.html";
-    // } else {
-    //   let errorMessage = '';
-    //   if (data.statusCode === 400) {
-    //     errorMessage = data.message;
-    //     errorBox(errorMessage);
-    //   } else {
-    //     errorMessage = 'An unknown error occurred.';
-    //   }
-    // }
+     else if (data.statusCode === 500) {
+      window.location.href = "../error/500error.html";
+    } else {
+      let errorMessage = '';
+      if (data.statusCode === 400) {
+        errorMessage = data.message;
+        errorBox(errorMessage);
+      } else {
+        errorMessage = 'An unknown error occurred.';
+      }
+    }
   })
   .catch(error => {
     console.error('Fetch error:', error);

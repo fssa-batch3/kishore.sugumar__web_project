@@ -94,7 +94,6 @@ fetch(uri, {
         
           const dataRow = document.createElement("tr");
 
-          console.log(bid);
           if(bid.buyerEmail === user){
             dataRow.setAttribute("class", "my");
           }
@@ -131,6 +130,9 @@ fetch(uri, {
         
         container.appendChild(table);
       }        
+      const user = JSON.parse(sessionStorage.getItem("email"));
+      console.log(object.category, user);
+      similar(object.category, user);
     } else if (data.statusCode === 500) {
       window.location.href = "../error/500error.html";
     } else {
@@ -150,6 +152,130 @@ fetch(uri, {
 
 // -----------------------------------similar prdocut----------------------------------------//
 
+function similar(category, user){
+
+  var similarURL;
+  if(user != null){
+  similarURL = `${serverPath}/home/categroyproduct?Category=${category}&email=${user}`;
+  }else{
+  similarURL = `${serverPath}/home/categroyproduct?Category=${category}`; 
+  }
+
+  fetch(similarURL, {
+    method: 'GET',
+    headers : {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+  
+    })
+    .then(data => {
+      const loadData = data["data"];
+  
+      function createProductCard(product) {
+        const card = document.createElement("div");
+        card.classList.add("card");
+  
+        const cardDetails = document.createElement("div");
+        cardDetails.classList.add("card-details");
+        card.appendChild(cardDetails);
+  
+        const productLink = document.createElement("a");
+        productLink.href = `./product page.html?productId=${product.productId}`;
+        cardDetails.appendChild(productLink);
+  
+        const productImage = document.createElement("img");
+        if(product.asset == undefined){
+          productImage.src = "https://iili.io/JJTtQaa.jpg";
+        }else{
+        productImage.src = product.asset;
+        }
+        productImage.alt = `${product.ProductName} Image`;
+        productImage.classList.add("similar_img");
+        productLink.appendChild(productImage);
+  
+        const productName = document.createElement("h3");
+        productName.classList.add("text-title");
+        productName.textContent = product.ProductName;
+        cardDetails.appendChild(productName);
+  
+        const priceDiv = document.createElement("div");
+        priceDiv.classList.add("text-body");
+        cardDetails.appendChild(priceDiv);
+  
+        const priceSpan = document.createElement("span");
+        priceDiv.appendChild(priceSpan);
+  
+        const priceBold = document.createElement("b");
+        priceBold.textContent = "Price:";
+        priceSpan.appendChild(priceBold);
+  
+        const priceValue = document.createElement("span");
+        priceValue.innerHTML = `${product.price} (INR)`;
+        priceDiv.appendChild(priceValue);
+  
+        const locationDiv = document.createElement("div");
+        locationDiv.classList.add("text-body");
+        cardDetails.appendChild(locationDiv);
+  
+        const locationSpan = document.createElement("div");
+        locationDiv.appendChild(locationSpan);
+  
+        const sellerInfo = document.createElement("div");
+        sellerInfo.classList.add("sellerInfo");
+        card.appendChild(sellerInfo);
+  
+        const sellerImage = document.createElement("img");
+        sellerImage.src = product.SellerImage;
+        sellerImage.alt = `${product.sellerName} Image`;
+        sellerImage.classList.add("other_seller_img");
+        sellerInfo.appendChild(sellerImage);
+  
+        const sellerDetails = document.createElement("div");
+        sellerInfo.appendChild(sellerDetails);
+  
+        const sellerNameSpan = document.createElement("div");
+        sellerNameSpan.innerHTML = `<b>Seller:</b> ${product.sellerName}`;
+        sellerNameSpan.classList.add("other_seller_name");
+        sellerDetails.appendChild(sellerNameSpan);
+  
+        const sellerLocationSpan = document.createElement("div");
+        sellerLocationSpan.innerHTML = `<b>Location:</b> ${product.sellerLocation}`;
+        sellerLocationSpan.classList.add("other_seller_location");
+        sellerDetails.appendChild(sellerLocationSpan);
+  
+        document.querySelector(".similar_container").appendChild(card);
+      }
+
+      if (data.statusCode === 200) {
+        if (loadData != null) {
+          loadData.forEach(createProductCard);
+        } else {
+          let noSimilar = document.getElementById("similar");
+          noSimilar.remove();
+        }
+      }
+       else if (data.statusCode === 500) {
+        window.location.href = "../error/500error.html";
+      } else {
+        let errorMessage = '';
+        if (data.statusCode === 400) {
+          errorMessage = data.message;
+          errorBox(errorMessage);
+        } else {
+          errorMessage = 'An unknown error occurred.';
+        }
+      }
+    })
+    .catch(error => {
+      console.error('Fetch error:', error);
+    });
+}
 // document.addEventListener("DOMContentLoaded", function similar() {
 //   const product_data = JSON.parse(localStorage.getItem("product_data"));
 //   const imageArray = JSON.parse(localStorage.getItem("images"));
@@ -404,28 +530,28 @@ document.getElementById("bid_button").addEventListener("click", bid);
 // });
 
 //---------------------------------image change-----------------------------------------//
-// function img(thumb) {
-//   const main_image = document.getElementById("imagebox");
-//   main_image.src = thumb.src;
+function img(thumb) {
+  const main_image = document.getElementById("imagebox");
+  main_image.src = thumb.src;
 
-//   const thumbnail_image1 = document.querySelector("#sub_img0");
-//   const thumbnail_image2 = document.querySelector("#sub_img1");
-//   const thumbnail_image3 = document.querySelector("#sub_img2");
-//   const thumbnail_image4 = document.querySelector("#sub_img3");
+  const thumbnail_image1 = document.querySelector("#sub_img0");
+  const thumbnail_image2 = document.querySelector("#sub_img1");
+  const thumbnail_image3 = document.querySelector("#sub_img2");
+  const thumbnail_image4 = document.querySelector("#sub_img3");
 
-//   thumbnail_image1.addEventListener("click", function () {
-//     img(thumbnail_image1);
-//   });
+  thumbnail_image1.addEventListener("click", function () {
+    img(thumbnail_image1);
+  });
 
-//   thumbnail_image2.addEventListener("click", function () {
-//     img(thumbnail_image2);
-//   });
+  thumbnail_image2.addEventListener("click", function () {
+    img(thumbnail_image2);
+  });
 
-//   thumbnail_image3.addEventListener("click", function () {
-//     img(thumbnail_image3);
-//   });
+  thumbnail_image3.addEventListener("click", function () {
+    img(thumbnail_image3);
+  });
 
-//   thumbnail_image4.addEventListener("click", function () {
-//     img(thumbnail_image4);
-//   });
-// }
+  thumbnail_image4.addEventListener("click", function () {
+    img(thumbnail_image4);
+  });
+}

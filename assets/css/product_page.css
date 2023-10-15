@@ -53,9 +53,9 @@
 }
 
 .otherBids {
-    margin: 50px 0px 0px 100px;
+    margin: 50px 0px 0px 30px;
     text-align: center;
-    width: 500px;
+    width: 600px;
     box-shadow: 20px 20px 60px #bebebe,
         -20px -20px 60px #ffffff;
 }
@@ -67,8 +67,8 @@
 }
 
 .allRequests {
-    max-height: 100%;
-    overflow: auto;
+    max-height: 600px;
+    overflow-y: scroll;
 }
 
 .illustration-image {
@@ -199,7 +199,7 @@ td .buyer_img {
     padding-right: 10px;
 }
 
-.my{
+.my {
     background-color: rgb(238, 242, 245);
 }
 
@@ -245,7 +245,8 @@ input[type=number]::-webkit-outer-spin-button {
     color: var(--fifth);
 }
 
-#seller_name, #seller_location {
+#seller_name,
+#seller_location {
     width: 230px;
     white-space: nowrap;
     overflow: hidden;
@@ -258,9 +259,94 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 /* ----------------similar product------------ */
+.similar_img {
+    max-width: 100%;
+    width: 250px;
+    height: 250px;
+    border-radius: 10px;
+}
+
+.card {
+    width: 250px;
+    text-align: center;
+    border-radius: 20px;
+    background: #f5f5f5;
+    padding: 10px;
+    border: 2px solid #c3c6ce;
+    transition: 0.5s ease-out;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card-details {
+    color: black;
+    display: grid;
+    place-content: center;
+}
+
+.text-body {
+    display: flex;
+    font-size: 14px;
+    padding-top: 10px;
+}
+
+.text-body span {
+    padding-right: 5px;
+    color: #586468;
+}
+
+.text-title {
+    font-weight: bold;
+}
+
+.card:hover {
+    border-color: var(--primary);
+    background-color: rgb(233, 234, 255);
+    box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.25);
+}
+
+.other_seller_img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.sellerInfo {
+    width: 100%;
+    text-align-last: start;
+    display: flex;
+    margin-top: 5px;
+    border-top: 1px solid gray;
+    padding-top: 10px;
+}
+
+.other_seller_name,
+.other_seller_location {
+    width: 150px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(4, 250px);
+    justify-content: space-evenly;
+    row-gap: 20px;
+    margin: 50px 0px 50px 20px;
+}
+
+.algn {
+    margin-top: 50px;
+}
+
+/* ----------product----------------------- */
+
 .similar {
     display: flex;
     justify-content: space-evenly;
+    margin: 50px 0;
 }
 
 .similar h1 {
@@ -275,7 +361,6 @@ input[type=number]::-webkit-outer-spin-button {
     border-color: var(--primary);
 }
 
-/* ----------product----------------------- */
 .unique {
     display: none;
 }
