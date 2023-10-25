@@ -32,6 +32,7 @@ document.addEventListener("DOMContentLoaded", function update_prod() {
       if (data.statusCode === 200) {
 
         const object = data.data;
+        console.log(object);
         document.querySelector("#prod_name").innerHTML = object.productName;
         document.querySelector("#description").innerHTML = object.description;
         document.querySelector("#prod_price").innerHTML = object.price;
@@ -93,6 +94,7 @@ document.addEventListener("DOMContentLoaded", function update_prod() {
         document.querySelector("#edit_name").value = object.productName;
         document.querySelector("#edit_description").value = object.description;
         document.querySelector("#edit_price").value = object.price;
+        document.querySelector("#edit_min_price").value = object.minPrice;
         document.querySelector("#edit_period").value = object.usedPeriod;
         document.querySelector("#edit_min_price").value = object.minPrice;
       }else if (data.statusCode === 500) {
@@ -126,17 +128,17 @@ function handleFile(file, imgElement) {
 }
 
 async function uploadImage(imageFile, id) {
-  const url = 'https://image-cdn.p.rapidapi.com/upload?async=true&allow-webp=true&compression=auto';
+  const url = 'https://freeimage.host/api/1/upload';
   const data = new FormData();
   data.append('image', imageFile);
 
   const options = {
-    method: 'POST',
+    key: '6d207e02198a847aa98d0a2a901485a5',
+    action: ['values', 'upload'],
+    source: data,
     headers: {
-      'X-RapidAPI-Key': '4e4971d5femsh15cccdf4ec7e51ep156636jsn8731acf769c2',
-      'X-RapidAPI-Host': 'image-cdn.p.rapidapi.com'
+      'Content-Type': 'multipart/form-data',
     },
-    body: data
   };
 
   try {
@@ -214,8 +216,9 @@ async function updateProduct() {
     return;
   }
 
-  if (!nameValidation(prod_name)) {
-    return alert("Use only alphabets");
+  if (!/^[a-zA-Z\s]{2,50}$/.test(prod_name)) {
+    alert("Product name should contain only alphabets and be 2-50 characters long");
+    return;
   }
 
   if (!descriptionValidation(description)) {

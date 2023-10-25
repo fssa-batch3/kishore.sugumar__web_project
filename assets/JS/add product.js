@@ -1,4 +1,7 @@
 // ---------------------------------------------------------//
+/**
+ * Handles the "back" button click by navigating to the previous page in the browser's history.
+ */
 const backButton = document.getElementById("back");
 backButton.addEventListener("click", function back() {
   window.location.href = "./buyer profile.html";
@@ -6,6 +9,7 @@ backButton.addEventListener("click", function back() {
 
 
 //----------------------------error message-----------------------//
+// Function to display an error message and hide it after 3 seconds
 function errorBox(errorMessage) {
   var snackArea = document.getElementById("error");
   snackArea.className = "show";
@@ -31,7 +35,6 @@ addProduct.addEventListener("click", async function active() {
   const category = document.getElementById("category").value;
   const lowPrice = document.getElementById("min_price").value;
 
-
   if (
     prodName === "" ||
     description === "" ||
@@ -44,24 +47,53 @@ addProduct.addEventListener("click", async function active() {
     return;
   }
 
-  if (parseInt(prodPrice) <= parseInt(lowPrice)) {
-    alert("Minimum price "+lowPrice+" must lower then the product price "+prodPrice);
+  // Check if prodName contains only alphabets and is between 2 and 50 characters
+  if (!/^[a-zA-Z\s]{2,50}$/.test(prodName)) {
+    alert("Product name should contain only alphabets and be 2-50 characters long");
     return;
-  } else {
+  }
 
-    const product = {
-      unique: unique_id,
-      name: prodName,
-      description: description,
-      price: parseInt(prodPrice),
-      minimumPrice: parseInt(lowPrice),
-      date: prodDate,
-      duration: duration,
-      category: category,
-      user_id: user_id,
-    };
+  // Check if description is valid (you can customize this validation)
+  if (!descriptionValidation(description)) {
+    alert("Please provide a valid description");
+    return;
+  }
 
-    const createProduct = `${serverPath}/home/create`;
+  // Check if prodPrice, lowPrice, and used_period are valid numbers
+  const prodPriceNum = parseInt(prodPrice);
+  const lowPriceNum = parseInt(lowPrice);
+  const used_period = parseInt(prodDate);
+
+  if (isNaN(prodPriceNum) || isNaN(lowPriceNum) || isNaN(used_period) || prodPriceNum <= 0 || lowPriceNum <= 0 || used_period <= 0) {
+    alert("Please provide valid numeric values for prices and duration");
+    return;
+  }
+
+  // Check if duration is 'month' or 'year'
+  if (duration !== "month" && duration !== "year") {
+    alert("Duration should be 'year' or 'month', no other options are allowed");
+    return;
+  }
+
+  // Check if prodPrice is greater than lowPrice
+  if (prodPriceNum <= lowPriceNum) {
+    alert("Minimum price should be greater than the actual price");
+    return;
+  }
+
+  const product = {
+    unique: unique_id,
+    name: prodName,
+    description: description,
+    price: prodPriceNum,
+    minimumPrice: lowPriceNum,
+    date: used_period,
+    duration: duration,
+    category: category,
+    user_id: user_id,
+  };
+
+  const createProduct = `${serverPath}/home/create`;
 
   try {
     const response = await fetch(createProduct, {
@@ -80,7 +112,7 @@ addProduct.addEventListener("click", async function active() {
 
     if (data.statusCode === 200) {
       alert("Created Successfully");
-      window.location.href="./buyer profile.html";
+      window.location.href = "./buyer profile.html";
     } else if (data.statusCode === 500) {
       window.location.href = "../error/500error.html";
     } else {
@@ -95,10 +127,10 @@ addProduct.addEventListener("click", async function active() {
   } catch (error) {
     console.error('Error:', error);
   }
-  }
 });
 
 //------------------------------------------//
+// Function to show requirement messages for input fields
 function showRequirement(inputId) {
   const requirementMessage = getRequirementMessage(inputId);
   const requirementElement = document.getElementById(inputId + '-requirement');
@@ -107,12 +139,15 @@ function showRequirement(inputId) {
   }
 }
 
+// Function to clear requirement messages
 function clearRequirement() {
   const requirements = document.querySelectorAll('.requirement');
   requirements.forEach((requirement) => {
     requirement.textContent = '';
   });
 }
+
+// Function to get requirement messages based on the input field
 
 function getRequirementMessage(inputId) {
   

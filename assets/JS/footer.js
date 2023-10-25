@@ -25,11 +25,19 @@ const foot = `<section class="contact">
     </div>
   </section>`;
 
+/**
+ * Function to update the content of the footer element on the page.
+ */
 function footer() {
+  // Find the element with the id "footer" and store it in the variable "foote".
   const foote = document.getElementById("footer");
+  
+  // Set the HTML content of the "foote" element to the value of the "foot" variable (assuming "foot" is defined elsewhere in your code).
   foote.innerHTML = foot;
 }
 
+// Add an event listener to run the "footer" function when the DOM (Document Object Model) is fully loaded.
 document.addEventListener("DOMContentLoaded", function openLoader() {
+  // Call the "footer" function to update the footer content.
   footer();
 });

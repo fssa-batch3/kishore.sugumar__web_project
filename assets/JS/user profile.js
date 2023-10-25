@@ -217,12 +217,12 @@ async function uploadImage(imageFile) {
   data.append('image', imageFile);
 
   const options = {
-    method: 'POST',
+    key: '6d207e02198a847aa98d0a2a901485a5',
+    action: ['values', 'upload'],
+    source: data,
     headers: {
-      'X-RapidAPI-Key': '4e4971d5femsh15cccdf4ec7e51ep156636jsn8731acf769c2',
-      'X-RapidAPI-Host': 'image-cdn.p.rapidapi.com'
+      'Content-Type': 'multipart/form-data',
     },
-    body: data
   };
 
   try {
@@ -282,7 +282,7 @@ async function changeImage(image) {
 //------------------------edit profile--------------------------------------//
 
 function nameValidation(name) {
-  const nameRegex = /^[A-Za-z]+(?: [A-Za-z]+)*$/;
+  const nameRegex = /^[A-Za-z]{3,}(?: [A-Za-z]+)*$/;
   return nameRegex.test(name);
 }
 

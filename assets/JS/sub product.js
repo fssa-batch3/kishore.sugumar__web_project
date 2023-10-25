@@ -23,12 +23,8 @@ function errorBox(errorMessage) {
 
 const user = sessionStorage.getItem('email');
 
-var uri;
-if(user != null){
-  uri = `${serverPath}/home/categroyproduct?Category=${category}&email=${user}`;
-}else{
-  uri = `${serverPath}/home/categroyproduct?Category=${category}`; 
-}
+var uri = `${serverPath}/home/categroyproduct?Category=${category}&email=${user}`;
+
 
 fetch(uri, {
   method: 'GET',
