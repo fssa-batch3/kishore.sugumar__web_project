@@ -1,4 +1,10 @@
 // -----------------------------read bid (buyer)--------------------------//
+/**
+ * This script is responsible for fetching and displaying products that a buyer can bid on.
+ * It listens for the 'DOMContentLoaded' event and fetches the products associated with the user's email.
+ * If products are found, it displays them. If no products are found, it displays a message.
+ * This script also handles the 'Bid more' button click event.
+ */
 
 document.addEventListener("DOMContentLoaded", function bid_prod() {
   const userEmail = JSON.parse(sessionStorage.getItem("email"));
@@ -41,6 +47,11 @@ document.addEventListener("DOMContentLoaded", function bid_prod() {
       });
   }
 });
+
+/**
+ * Display the list of products.
+ * @param {Array} element - Array of product objects to display.
+ */
 
 function displayProducts(element) {
   const box = document.querySelector(".box");
@@ -106,7 +117,7 @@ function displayProducts(element) {
   }
 }
 
-
+// Event listener for the "Back" button
 const back = document.getElementById("back");
 back.addEventListener("click", function nextPage() {
   history.back()

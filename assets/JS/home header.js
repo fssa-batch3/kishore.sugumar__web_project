@@ -1,8 +1,16 @@
+/**
+ * This JavaScript file handles the functionality for the home page of a website.
+ * It includes functions for rendering the header based on user login status,
+ * handling sign-in and sign-up actions, and implementing a search feature.
+ */
+
+// Define global constants for URLs
 const myOrigin = window.location.origin;
 const logoSrc = `${myOrigin}/assets/img/illustration/logo.png`;
 const profilepage = `${myOrigin}/pages/buyer profile.html`;
 const home = `${myOrigin}/index.html`;
 
+// Define HTML templates for the header before and after login
 const beforelogin = `
     <a href="${home}"><img src="${logoSrc}" alt="logo" class="logo"></a>
     <div  class="serc">
@@ -28,14 +36,24 @@ const AfterLogin = `
 <a href="${profilepage}"><img class="profile-img" id="profile-img"></a>
 `;
 
+/**
+ * Updates the header of the home page based on user login status.
+ */
 function home_Header() {
+    // Retrieve user information from session storage
   const user = JSON.parse(sessionStorage.getItem("email"));
   const image = JSON.parse(sessionStorage.getItem("image"));
   const nextheader = document.getElementById("header");
+   // Check if the user is logged in
   if (!user) {
+     // User is not logged in, display the "beforelogin" header
     nextheader.innerHTML = beforelogin;
   } else {
+        // User is logged in, display the "AfterLogin" header
+
+    // Check if a user profile image is available
     nextheader.innerHTML = AfterLogin;
+
 
     if(image === "null" | image === null){
       const photo = document.querySelector(".profile-img");
@@ -49,15 +67,24 @@ function home_Header() {
   }
 }
 
+/**
+ * Displays the sign-in overlay.
+ */
 function signinOn() {
   document.getElementById("overlay").style.display = "block";
 }
 
+/**
+ * Displays the sign-up form.
+ */
 function signupOn() {
   document.getElementById("register").style.display = "block";
 }
 
 // ---------------------------------search--------------------------------//
+/**
+ * Perform a search based on user input and update the product list.
+ */
 function search() {
   const ProductArray = JSON.parse(localStorage.getItem("product_data"));
   const imageArray = JSON.parse(localStorage.getItem("images"));

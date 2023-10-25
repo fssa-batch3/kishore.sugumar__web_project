@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="./assets/css/footer.css">
     <link rel="stylesheet" href="./assets/css/header.css">
     <link rel="stylesheet" href="./assets/css/account.css">
+    <link rel="stylesheet" href="./assets/css/slider.css">
     <link rel="dns-prefetch" href="//fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700," rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -31,80 +32,87 @@
     </header>
     </div>
     <main class="main">
-        <section class="nav_links">
-            <div class="tooltip">
-                <a id="about">
-                    <i class="fa fa-address-card"></i>
-                </a>
-                <span class="tooltiptext">About Us</span>
+        <section class="nav-section">
+            <div class="nav-container">
+                <div class="nav_links">
+                    <div class="tooltip">
+                        <a id="about">
+                            <i class="fa fa-address-card"></i>
+                        </a>
+                        <span class="tooltiptext">About Us</span>
+                    </div>
+                    <div class="tooltip">
+                        <a href="#footer">
+                            <i class="fa fa-address-book"></i>
+                        </a>
+                        <span class="tooltiptext">Contact Us</span>
+                    </div>
+                    <!-- <div class="tooltip">
+                        <a id="wishlist-link">
+                           <i class="fa fa-heart"></i>
+                         </a>
+                        <span class="tooltiptext">Wish List</span>
+                    </div> -->
+                    <div class="tooltip">
+                        <a id="bidlist">
+                            <i class="fa fa-rectangle-list"></i>
+                        </a>
+                        <span class="tooltiptext">Bided List</span>
+                    </div>
+                </div>
+                <div class="classfy">
+                    <div class="sub_classfy">
+                        <p class="div-heading">Categorys</p>
+                        <a href="./pages/sub product list.html?Category=" + Cate>
+                            <p value="bike" class="categ">
+                                <i class="fa fa-person-biking"></i>
+                            </p>
+                        </a>
+                        <a href="./pages/sub product list.html?Category=" + Cate>
+                            <p value="car" class="categ">
+                                <i class="fa fa-car-side"></i>
+                            </p>
+                        </a>
+                        <a href="./pages/sub product list.html?Category=" + Cate>
+                            <p value="computer" class="categ">
+                                <i class="fa fa-laptop"></i>
+                                <i class="fa fa-desktop"></i>
+                            </p>
+                        </a>
+                        <a href="./pages/sub product list.html?Category=" + Cate>
+                            <p value="mobile" class="categ">
+                                <i class="fa fa-tablet-screen-button"></i>
+                            </p>
+                        </a>
+                    </div>
+                </div>
             </div>
-            <div class="tooltip">
-                <a href="#footer">
-                    <i class="fa fa-address-book"></i>
-                </a>
-                <span class="tooltiptext">Contact Us</span>
+            <div class="filter-container">
+
+                <button class="filter-button" id="toggleButton">
+                    <span class="hover-underline-animation"> Filter </span>
+                    <i class="fa-solid fa-chevron-down" id="downArrow"></i>
+                    <i class="fa-solid fa-chevron-up" id="upArrow"></i>
+                </button>
+                <div id="dropdown-content" class="hidden">
+                    <div class="eachDiv">
+                        <p class="label">Price low >> high</p>
+                        <button type="button" class="reset"><u>reset</u></button>
+                    </div>
+                    <div class="eachDiv">
+                        <p class="label">Price high >> low</p>
+                        <button type="button" class="reset"><u>reset</u></button>
+                    </div>
+                    <div class="eachDiv">
+                        <p class="label">Recent product</p>
+                        <button type="button" class="reset"><u>reset</u></button>
+                    </div>
+                </div>
             </div>
-            <!-- <div class="tooltip">
-                <a id="wishlist-link">
-                    <i class="fa fa-heart"></i>
-                </a>
-                <span class="tooltiptext">Wish List</span>
-            </div> -->
-            <div class="tooltip">
-                <a id="bidlist">
-                    <i class="fa fa-rectangle-list"></i>
-                </a>
-                <span class="tooltiptext">Bided List</span>
-            </div>
-        </section>
-        <section class="classfy">
-            <div class="sub_classfy">
-                <h4>Categorys</h4>
-                <a href="./pages/sub product list.html?Category=" + Cate>
-                    <p value="bike" class="categ">
-                        <i class="fa fa-person-biking"></i>
-                    </p>
-                </a>
-                <a href="./pages/sub product list.html?Category=" + Cate>
-                    <p value="car" class="categ">
-                        <i class="fa fa-car-side"></i>
-                    </p>
-                </a>
-                <a href="./pages/sub product list.html?Category=" + Cate>
-                    <p value="computer" class="categ">
-                        <i class="fa fa-laptop"></i>
-                        <i class="fa fa-desktop"></i>
-                    </p>
-                </a>
-                <a href="./pages/sub product list.html?Category=" + Cate>
-                    <p value="mobile" class="categ">
-                        <i class="fa fa-tablet-screen-button"></i>
-                    </p>
-                </a>
             </div>
         </section>
         <section class="content">
-            <div class="illsuration">
-                <div class="design">
-                    <div class="image_aling">
-                        <img src="./assets/img/illustration/sell_home.png" alt="illsuration_img"
-                            class="illsuration_img">
-                    </div>
-                    <p>Sell It</p>
-                </div>
-                <div class="design">
-                    <div class="image_aling">
-                        <img src="./assets/img/illustration/Search_home.png" alt="illsuration_img"
-                            class="illsuration_img">
-                    </div>
-                    <p>Search It</p>
-                </div>
-                <div class="design">
-                    <div class="image_aling">
-                        <img src="./assets/img/illustration/buy_home.png" alt="illsuration_img" class="illsuration_img">
-                    </div>
-                    <p>Buy It</p>
-                </div>
+
             </div>
             <div id="noResult"></div>
             <section class="SearchedProduct" id="SearchedProductArea" style="display: none;">
@@ -117,14 +125,42 @@
 
                 </div>
             </section>
-            <div class="heading">
-                <div class="border"></div>
-                <h2>Newly Launched</h2>
-                <div class="border"></div>
-            </div>
             <div class="grid-container">
             </div>
             <button class="button1 algn" type="button" id="loadmore">Load more</button>
+            <div>
+                <p class="add">Advertisement</p>
+                <div class="slideshow-container">
+
+                    <div class="mySlides fade">
+                        <div class="numbertext">1 / 4</div>
+                        <img src="./assets/img/add/Screenshot (89).png">
+                    </div>
+
+                    <div class="mySlides fade">
+                        <div class="numbertext">2 / 4</div>
+                        <img src="./assets/img/add/Screenshot (90).png">
+                    </div>
+
+                    <div class="mySlides fade">
+                        <div class="numbertext">3 / 4</div>
+                        <img src="./assets/img/add/Screenshot (91).png">
+                    </div>
+
+                    <div class="mySlides fade">
+                        <div class="numbertext">4 / 4</div>
+                        <img src="./assets/img/add/Screenshot (92).png">
+                    </div>
+                </div>
+                <br>
+
+                <div style="text-align:center" class="add">
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+            </div>
         </section>
     </main>
     <!-- -----------------------register----------------------- -->
@@ -140,8 +176,8 @@
             </div>
             <div class="field">
                 <input type="email" class="input-field" id="regi_email" onfocus="showRequirement('email')"
-                    onblur="clearRequirement()" placeholder="example@abc.com" autocomplete="off"
-                     name="email" required="true">
+                    onblur="clearRequirement()" placeholder="example@abc.com" autocomplete="off" name="email"
+                    required="true">
                 <div id="email-requirement" class="requirement"></div>
             </div>
             <div class="field">

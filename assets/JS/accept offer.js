@@ -1,5 +1,11 @@
 
 //---------------------------time formatter------------------------//
+/**
+ * Converts a month number (e.g., "01") to its abbreviation (e.g., "Jan").
+ *
+ * @param {string} monthNumber - The month number in the format "MM".
+ * @returns {string} The abbreviated month name.
+ */
 function getMonthAbbreviation(monthNumber) {
   switch (monthNumber) {
     case "01":
@@ -31,6 +37,12 @@ function getMonthAbbreviation(monthNumber) {
   }
 }
 
+/**
+ * Determines whether a given hour is in the AM or PM time period.
+ *
+ * @param {number} hour - The hour to check (24-hour format).
+ * @returns {string} "AM" if it's in the morning, "PM" if it's in the afternoon or evening.
+ */
 function getAmOrPm(hour) {
   var time = Number(hour);
   if (time >= 0 && time < 12) {
@@ -40,6 +52,12 @@ function getAmOrPm(hour) {
   }
 }
 
+/**
+ * Formats a date and time string to a more readable format.
+ *
+ * @param {string} dateTimeString - The date and time string to format.
+ * @returns {string} The formatted date and time string.
+ */
 function formatDateTime(dateTimeString) {
   var date = dateTimeString;
   var year = date.substring(0, 4);
@@ -51,6 +69,12 @@ function formatDateTime(dateTimeString) {
   return day + " " + month + " " + year + " " + time + " " + std;
 }
 //----------------------------error message-----------------------//
+
+/**
+ * Displays an error message in a designated area and hides it after a delay.
+ *
+ * @param {string} errorMessage - The error message to display.
+ */
 function errorBox(errorMessage) {
   var snackArea = document.getElementById("error");
   snackArea.className = "show";
@@ -205,6 +229,9 @@ fetch(viewBids, {
 
 //------------------------back button----------------------//
 
+/**
+ * Handles the "back" button click by navigating to the previous page in the browser's history.
+ */
 const back = document.getElementById("back");
 back.addEventListener("click", function nextPage() {
   history.back()

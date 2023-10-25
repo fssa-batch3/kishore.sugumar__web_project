@@ -59,13 +59,7 @@
 
 #description {
     width: 580px;
-    height: 150px;
     font-size: 16px;
-    max-height: 150px;
-    padding: 10px;
-    border-radius: 20px;
-    border: 1px solid rgb(187, 187, 187);
-    overflow: auto;
 }
 
 .rate,

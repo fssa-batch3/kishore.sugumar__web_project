@@ -1,3 +1,10 @@
+/**
+ * This JavaScript code manages chat functionality for buyers in a web application.
+ * It includes features such as reading chat history, creating chat messages, and displaying product details.
+ */
+
+// Function to populate product details when the page loads
+
 document.addEventListener("DOMContentLoaded", function sell_prod() {
   const productId = new URLSearchParams(window.location.search).get(
     "product_id"
@@ -18,6 +25,7 @@ document.addEventListener("DOMContentLoaded", function sell_prod() {
 });
 // --------------------------------- buyer read their chat ---------------------------//
 
+// Function to read chat messages
 document.addEventListener("DOMContentLoaded", function readChat() {
   const messageArray = JSON.parse(localStorage.getItem("messageArray"));
   const textArray = JSON.parse(localStorage.getItem("textArray"));
@@ -63,6 +71,7 @@ document.addEventListener("DOMContentLoaded", function readChat() {
 })
 
 // ---------------------------- buyer create chat ------------------------------//
+// Function to send chat messages
 const sendButton = document.getElementById("send");
 sendButton.addEventListener("click", function send() {
   const messageArray = JSON.parse(localStorage.getItem("messageArray")) || [];
@@ -116,6 +125,8 @@ localStorage.setItem("textArray", JSON.stringify(textArray));
   window.location.reload();
 });
 // ----------------------------------------scroll down------------------------------------//
+
+// Function to go back to the previous page
 document.getElementById("redirect").addEventListener("click", function redirect(){
   history.back()
 })
