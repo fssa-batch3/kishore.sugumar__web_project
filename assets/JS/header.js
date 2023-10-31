@@ -23,7 +23,7 @@ const beforeloginNew = `
 // Define the HTML content for the header when the user is logged in
 const AfterLoginNew = `
   <a href="${home}"><img src="${logoSrc}" alt="logo" class="logo"></a>
-  <h2 class "web-name">V A N H A</h2>
+  <h2 class="web-name">V A N H A</h2>
   <a href="${profilepage}"><img class="profile-img"></a>
 `;
 
@@ -31,7 +31,7 @@ const AfterLoginNew = `
 function allheader() {
   // Retrieve user information from the session storage
   const user = JSON.parse(sessionStorage.getItem("email"));
-  const image = JSON.parse(sessionStorage.getItem("image"));
+  const image = sessionStorage.getItem("image");
 
   // Get the header element where the content will be displayed
   const nextheader = document.getElementById("header");

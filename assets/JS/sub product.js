@@ -23,7 +23,12 @@ function errorBox(errorMessage) {
 
 const user = sessionStorage.getItem('email');
 
-var uri = `${serverPath}/home/categroyproduct?Category=${category}&email=${user}`;
+if(user == undefined){
+  var uri = `${serverPath}/home/categroyproduct?Category=${category}`;
+}else{
+  var uri = `${serverPath}/home/categroyproduct?Category=${category}&email=${user}`
+}
+
 
 
 fetch(uri, {

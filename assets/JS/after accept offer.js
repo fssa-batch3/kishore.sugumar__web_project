@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function product() {
     .then(data => {
       if (data.statusCode === 200) {
         // Extract and display the product and buyer details.
-
+        let object = data.data;
         // Set the product image source and alt attribute.
         const productImage = document.getElementById("product_img");
         productImage.setAttribute("src", object.productImage);

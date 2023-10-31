@@ -16,8 +16,7 @@
 .web-name {
   font-size: 26px;
   color: #ffeba7;
-  margin: 15px;
-  flex: 1;
+  margin: 5px 0;
   text-align: center;
 }
   
@@ -41,8 +40,8 @@
   }
   
   .profile-img {
-    width: 55px;
-    height: 55px;
+    width: 50px;
+    height: 50px;
     margin: 5px 5px 0px 0px;
     border-radius: 50%;
   }

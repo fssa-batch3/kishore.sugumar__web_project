@@ -75,35 +75,39 @@ fetch(uri, {
         const container = document.querySelector(".allRequests");
 
         const table = document.createElement("table");
-        
+
         const headerRow = document.createElement("tr");
         const headerCells = ["No", "Buyer", "Amount", "Date"];
-        
+
         headerCells.forEach((cellText) => {
           const headerCell = document.createElement("th");
           headerCell.textContent = cellText;
           headerRow.appendChild(headerCell);
         });
-        
+
         table.appendChild(headerRow);
-        
-        const  user = JSON.parse(sessionStorage.getItem("email"));
+
+        const user = JSON.parse(sessionStorage.getItem("email"));
 
         for (let i = 0; i < bidsArray.length; i++) {
           const bid = bidsArray[i];
-        
+
           const dataRow = document.createElement("tr");
 
-          if(bid.buyerEmail === user){
+          if (bid.buyerEmail === user) {
             dataRow.setAttribute("class", "my");
           }
-        
+
           const listNoCell = document.createElement("td");
           listNoCell.textContent = bid.listNo;
-        
+
           const buyerCell = document.createElement("td");
           const buyerImage = document.createElement("img");
-          buyerImage.src = bid.buyerImage;
+          if (bid.buyerImage != null) {
+            buyerImage.setAttribute("src", bid.buyerImage);
+          } else {
+            buyerImage.setAttribute("src", "https://iili.io/JH5FmAJ.jpg");
+          }
           buyerImage.alt = `${bid.buyerName} Image`;
           buyerImage.classList.add("buyer_img");
           buyerCell.setAttribute("class", "aling");
@@ -111,25 +115,25 @@ fetch(uri, {
           const name = document.createElement("span");
           name.innerHTML = bid.buyerName;
           buyerCell.appendChild(name);
-        
+
           const amountCell = document.createElement("td");
           amountCell.setAttribute("class", "amount");
           amountCell.textContent = `${bid.amount} ₹`;
-        
+
           const dateCell = document.createElement("td");
           dateCell.setAttribute("class", "date");
           dateCell.textContent = formatDateTime(bid.date);
-        
+
           dataRow.appendChild(listNoCell);
           dataRow.appendChild(buyerCell);
           dataRow.appendChild(amountCell);
           dataRow.appendChild(dateCell);
-        
+
           table.appendChild(dataRow);
         }
-        
+
         container.appendChild(table);
-      }        
+      }
       const user = JSON.parse(sessionStorage.getItem("email"));
       console.log(object.category, user);
       similar(object.category, user);
@@ -152,18 +156,18 @@ fetch(uri, {
 
 // -----------------------------------similar prdocut----------------------------------------//
 
-function similar(category, user){
+function similar(category, user) {
 
   var similarURL;
-  if(user != null){
-  similarURL = `${serverPath}/home/categroyproduct?Category=${category}&email=${user}`;
-  }else{
-  similarURL = `${serverPath}/home/categroyproduct?Category=${category}`; 
+  if (user != null) {
+    similarURL = `${serverPath}/home/categroyproduct?Category=${category}&email=${user}`;
+  } else {
+    similarURL = `${serverPath}/home/categroyproduct?Category=${category}`;
   }
 
   fetch(similarURL, {
     method: 'GET',
-    headers : {
+    headers: {
       'Content-Type': 'application/json',
     },
   })
@@ -172,83 +176,83 @@ function similar(category, user){
         throw new Error('Network response was not ok');
       }
       return response.json();
-  
+
     })
     .then(data => {
       const loadData = data["data"];
-  
+
       function createProductCard(product) {
         const card = document.createElement("div");
         card.classList.add("card");
-  
+
         const cardDetails = document.createElement("div");
         cardDetails.classList.add("card-details");
         card.appendChild(cardDetails);
-  
+
         const productLink = document.createElement("a");
         productLink.href = `./product page.html?productId=${product.productId}`;
         cardDetails.appendChild(productLink);
-  
+
         const productImage = document.createElement("img");
-        if(product.asset == undefined){
+        if (product.asset == undefined) {
           productImage.src = "https://iili.io/JJTtQaa.jpg";
-        }else{
-        productImage.src = product.asset;
+        } else {
+          productImage.src = product.asset;
         }
         productImage.alt = `${product.ProductName} Image`;
         productImage.classList.add("similar_img");
         productLink.appendChild(productImage);
-  
+
         const productName = document.createElement("h3");
         productName.classList.add("text-title");
         productName.textContent = product.ProductName;
         cardDetails.appendChild(productName);
-  
+
         const priceDiv = document.createElement("div");
         priceDiv.classList.add("text-body");
         cardDetails.appendChild(priceDiv);
-  
+
         const priceSpan = document.createElement("span");
         priceDiv.appendChild(priceSpan);
-  
+
         const priceBold = document.createElement("b");
         priceBold.textContent = "Price:";
         priceSpan.appendChild(priceBold);
-  
+
         const priceValue = document.createElement("span");
         priceValue.innerHTML = `${product.price} (INR)`;
         priceDiv.appendChild(priceValue);
-  
+
         const locationDiv = document.createElement("div");
         locationDiv.classList.add("text-body");
         cardDetails.appendChild(locationDiv);
-  
+
         const locationSpan = document.createElement("div");
         locationDiv.appendChild(locationSpan);
-  
+
         const sellerInfo = document.createElement("div");
         sellerInfo.classList.add("sellerInfo");
         card.appendChild(sellerInfo);
-  
+
         const sellerImage = document.createElement("img");
         sellerImage.src = product.SellerImage;
         sellerImage.alt = `${product.sellerName} Image`;
         sellerImage.classList.add("other_seller_img");
         sellerInfo.appendChild(sellerImage);
-  
+
         const sellerDetails = document.createElement("div");
         sellerInfo.appendChild(sellerDetails);
-  
+
         const sellerNameSpan = document.createElement("div");
         sellerNameSpan.innerHTML = `<b>Seller:</b> ${product.sellerName}`;
         sellerNameSpan.classList.add("other_seller_name");
         sellerDetails.appendChild(sellerNameSpan);
-  
+
         const sellerLocationSpan = document.createElement("div");
         sellerLocationSpan.innerHTML = `<b>Location:</b> ${product.sellerLocation}`;
         sellerLocationSpan.classList.add("other_seller_location");
         sellerDetails.appendChild(sellerLocationSpan);
-  
+
         document.querySelector(".similar_container").appendChild(card);
       }
 
@@ -260,7 +264,7 @@ function similar(category, user){
           noSimilar.remove();
         }
       }
-       else if (data.statusCode === 500) {
+      else if (data.statusCode === 500) {
         window.location.href = "../error/500error.html";
       } else {
         let errorMessage = '';

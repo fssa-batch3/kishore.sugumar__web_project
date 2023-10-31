@@ -215,14 +215,13 @@ async function uploadImage(imageFile) {
   const url = 'https://image-cdn.p.rapidapi.com/upload?async=true&allow-webp=true&compression=auto';
   const data = new FormData();
   data.append('image', imageFile);
-
   const options = {
-    key: '6d207e02198a847aa98d0a2a901485a5',
-    action: ['values', 'upload'],
-    source: data,
+    method: 'POST',
     headers: {
-      'Content-Type': 'multipart/form-data',
+      'X-RapidAPI-Key': '4e4971d5femsh15cccdf4ec7e51ep156636jsn8731acf769c2',
+      'X-RapidAPI-Host': 'image-cdn.p.rapidapi.com'
     },
+    body: data
   };
 
   try {
@@ -261,7 +260,7 @@ async function changeImage(image) {
 
     if (data.statusCode === 200) {
       alert("Image changed");
-      sessionStorage.setItem("image", json.stringify(image));
+      sessionStorage.setItem("image", image);
       window.location.reload();
     } else if (data.statusCode === 500) {
       window.location.href = "../error/500error.html";

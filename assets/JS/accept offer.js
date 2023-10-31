@@ -89,10 +89,17 @@ function errorBox(errorMessage) {
 
 const productId = new URLSearchParams(window.location.search).get("product_id");
 
+console.log(productId);
+
 const viewBids = `${serverPath}/home/profile/allbids?productId=${productId}`;
+
+console.log(serverPath);
 
 fetch(viewBids, {
   method: 'GET',
+  headers: {
+    'Content-Type': 'application/json',
+  },
 })
   .then(response => {
     if (!response.ok) {

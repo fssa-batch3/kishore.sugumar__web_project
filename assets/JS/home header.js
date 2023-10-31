@@ -42,7 +42,7 @@ const AfterLogin = `
 function home_Header() {
     // Retrieve user information from session storage
   const user = JSON.parse(sessionStorage.getItem("email"));
-  const image = JSON.parse(sessionStorage.getItem("image"));
+  const image = sessionStorage.getItem("image");
   const nextheader = document.getElementById("header");
    // Check if the user is logged in
   if (!user) {
