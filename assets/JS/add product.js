@@ -47,17 +47,17 @@ addProduct.addEventListener("click", async function active() {
     return;
   }
 
-  // Check if prodName contains only alphabets and is between 2 and 50 characters
-  if (!/^[a-zA-Z\s]{2,50}$/.test(prodName)) {
-    alert("Product name should contain only alphabets and be 2-50 characters long");
-    return;
-  }
+  // // Check if prodName contains only alphabets and is between 2 and 50 characters
+  // if (/[A-Za-z0-9]+$/.test(prodName)) {
+  //   alert("Product name should contain only alphabets and be 2-50 characters long");
+  //   return;
+  // }
 
   // Check if description is valid (you can customize this validation)
-  if (!descriptionValidation(description)) {
-    alert("Please provide a valid description");
-    return;
-  }
+  // if (!descriptionValidation(description)) {
+  //   alert("Please provide a valid description");
+  //   return;
+  // }
 
   // Check if prodPrice, lowPrice, and used_period are valid numbers
   const prodPriceNum = parseInt(prodPrice);

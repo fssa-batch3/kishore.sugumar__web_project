@@ -128,17 +128,17 @@ function handleFile(file, imgElement) {
 }
 
 async function uploadImage(imageFile, id) {
-  const url = 'https://freeimage.host/api/1/upload';
+  const url = 'https://image-cdn.p.rapidapi.com/upload?async=true&allow-webp=true&compression=auto';
   const data = new FormData();
   data.append('image', imageFile);
-
+  
   const options = {
-    key: '6d207e02198a847aa98d0a2a901485a5',
-    action: ['values', 'upload'],
-    source: data,
+    method: 'POST',
     headers: {
-      'Content-Type': 'multipart/form-data',
+      'X-RapidAPI-Key': '4e4971d5femsh15cccdf4ec7e51ep156636jsn8731acf769c2',
+      'X-RapidAPI-Host': 'image-cdn.p.rapidapi.com'
     },
+    body: data
   };
 
   try {
@@ -153,7 +153,6 @@ async function uploadImage(imageFile, id) {
   } catch (error) {
     console.error(error);
   }
-}
 
 async function changeProductImage(imgSrc, id) {
 
@@ -187,19 +186,19 @@ async function changeProductImage(imgSrc, id) {
   }
 
 }
-
+}
 
 //------------------------edit product--------------------------------------//
 
-function nameValidation(prod_name) {
-  const nameRegex = /^(?!\s)[a-zA-Z\s\d/]+$/;
-  return nameRegex.test(prod_name);
-}
+// function nameValidation(prod_name) {
+//   const nameRegex = /^(?!\s)[a-zA-Z\s\d/]+$/;
+//   return nameRegex.test(prod_name);
+// }
 
-function descriptionValidation(description) {
-  const nameRegex = /^(?!\s)/;
-  return nameRegex.test(description);
-}
+// function descriptionValidation(description) {
+//   const nameRegex = /^(?!\s)/;
+//   return nameRegex.test(description);
+// }
 
 async function updateProduct() {
 
@@ -216,14 +215,14 @@ async function updateProduct() {
     return;
   }
 
-  if (!/^[a-zA-Z\s]{2,50}$/.test(prod_name)) {
-    alert("Product name should contain only alphabets and be 2-50 characters long");
-    return;
-  }
+  // if (!/^[a-zA-Z\s]{2,50}$/.test(prod_name)) {
+  //   alert("Product name should contain only alphabets and be 2-50 characters long");
+  //   return;
+  // }
 
-  if (!descriptionValidation(description)) {
-    return alert("Give proper message");
-  }
+  // if (!descriptionValidation(description)) {
+  //   return alert("Give proper message");
+  // }
 
   if (parseInt(prod_price) <= 0) {
     return alert("Product price cannot be 0");
