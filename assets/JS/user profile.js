@@ -150,6 +150,7 @@ function createProductCard(element) {
 }
 
 function soldProductCard(element) {
+  console.log(element);
   const div_card = document.createElement("div");
   div_card.classList.add("content");
 
@@ -177,7 +178,7 @@ function soldProductCard(element) {
   const anc = document.createElement("a");
   anc.setAttribute(
     "href",
-    `./after accept offer.html?id=${element.bid_id}&sold=yes`
+    `./after accept offer.html?id=${element.bidId}&sold=yes`
   );
   div_card.append(anc);
 
