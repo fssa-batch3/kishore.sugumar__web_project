@@ -4,6 +4,7 @@
   background-color: #222f30;
   margin-bottom: 20px;
   flex-wrap: wrap;
+  height:61px;
 }
 
 .logo {
@@ -16,7 +17,7 @@
 .web-name {
   font-size: 26px;
   color: #ffeba7;
-  margin: 5px 0;
+  margin-top: 15px;
   text-align: center;
 }
   

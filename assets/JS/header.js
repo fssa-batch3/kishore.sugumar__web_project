@@ -31,7 +31,7 @@ const AfterLoginNew = `
 function allheader() {
   // Retrieve user information from the session storage
   const user = JSON.parse(sessionStorage.getItem("email"));
-  const image = sessionStorage.getItem("image");
+  const image = JSON.parse(sessionStorage.getItem("image"));
 
   // Get the header element where the content will be displayed
   const nextheader = document.getElementById("header");
