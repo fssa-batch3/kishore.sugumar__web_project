@@ -178,3 +178,19 @@ loadMoreBtn.addEventListener("click", function loader() {
     loadMoreBtn.style.display = "none";
   }
 });
+
+//-----------------------------------//
+var eventName = "Category viewed"
+var properties = {
+    "customProperties": {
+        "page_url":{
+            "t": "string",
+            "v": "https://vanha.netlify.app/pages/sub%20product%20list.html?Category=bike"
+        },
+        "page_title":{
+            "t": "string",
+            "v": "Bike page"
+        }
+    }
+}
+_cl.pageview(eventName, properties)
